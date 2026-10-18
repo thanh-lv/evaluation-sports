@@ -1,0 +1,30 @@
+{
+  "schema": "synthetic-truth.v1",
+  "skill": "bd.smash",
+  "hz": 30,
+  "seed": 102,
+  "playsWith": "right",
+  "declared": "right",
+  "mirrored": false,
+  "torsoT": 0.18,
+  "f": 1,
+  "contactsUs": [2663829, 4998423, 7642952, 10071694],
+  "peakSpeedsTps": [27.883, 27.761, 27.994, 27.838],
+  "spikes": [
+    {
+      "joint": "lWri",
+      "index": 294,
+      "tUs": 11001103
+    },
+    {
+      "joint": "lWri",
+      "index": 207,
+      "tUs": 8101285
+    },
+    {
+      "joint": "lWri",
+      "index": 18,
+      "tUs": 1667205
+    }
+  ]
+}

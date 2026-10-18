@@ -1,0 +1,30 @@
+{
+  "schema": "synthetic-truth.v1",
+  "skill": "bd.clear_fh",
+  "hz": 30,
+  "seed": 107,
+  "playsWith": "right",
+  "declared": "right",
+  "mirrored": true,
+  "torsoT": 0.18,
+  "f": -1,
+  "contactsUs": [2761182, 5032906, 7456057, 9929745],
+  "peakSpeedsTps": [23.858, 23.736, 23.983, 23.837],
+  "spikes": [
+    {
+      "joint": "lKne",
+      "index": 293,
+      "tUs": 10831872
+    },
+    {
+      "joint": "rElb",
+      "index": 280,
+      "tUs": 10332552
+    },
+    {
+      "joint": "lWri",
+      "index": 22,
+      "tUs": 1733146
+    }
+  ]
+}

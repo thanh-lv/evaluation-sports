@@ -37,6 +37,7 @@ export const CheckpointDefSchema = z.object({
   >),
   velocityBased: z.boolean(),
   injuryFlag: z.literal(true).optional(),
+  safety: LocalizedText.optional(),
   vAnchors: z.tuple([z.string(), z.string(), z.string(), z.string(), z.string()]).optional(),
   name: LocalizedText,
   plain: z.object({ vi: PlainPair, en: PlainPair }),

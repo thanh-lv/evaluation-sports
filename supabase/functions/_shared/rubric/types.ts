@@ -59,6 +59,11 @@ export interface CheckpointDef {
   /** Confidence halved at 30 Hz. */
   velocityBased: boolean;
   injuryFlag?: true;
+  /**
+   * Fixed safety note shown when `injuryFlag` is set (required with it). Ends with "nếu đau, hãy hỏi HLV/chuyên gia"
+   * (VI) / "if it hurts, ask a coach or professional" (EN). Advice only, never a diagnosis.
+   */
+  safety?: LocalizedText;
   /** Required for V: anchors for levels 0..4 (English, sent to Claude in RUBRIC_TEXT). */
   vAnchors?: FiveAnchors;
   name: LocalizedText;
