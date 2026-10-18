@@ -1,0 +1,29 @@
+{
+  "version": "placeholder-0",
+  "drills": [
+    {
+      "id": "bd.drill.towel_snap",
+      "sport": "badminton",
+      "dose": { "sets": 3, "reps": 10 },
+      "title": { "vi": "Vung khăn", "en": "Towel snap" },
+      "steps": {
+        "vi": ["Cầm một đầu khăn như cầm vợt.", "Nâng khuỷu ngang vai.", "Vung mạnh để khăn kêu tách phía trước."],
+        "en": [
+          "Hold a towel like a racket.",
+          "Lift the elbow to shoulder height.",
+          "Swing so the towel snaps in front."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.low_toss",
+      "sport": "pickleball",
+      "dose": { "sets": 3, "reps": 10 },
+      "title": { "vi": "Giao bóng điểm chạm thấp", "en": "Low-contact serves" },
+      "steps": {
+        "vi": ["Thả bóng ngang hông.", "Chạm bóng dưới thắt lưng.", "Vung vợt từ dưới lên."],
+        "en": ["Drop the ball at hip height.", "Contact it below the waist.", "Swing low to high."]
+      }
+    }
+  ]
+}

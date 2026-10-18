@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://racketcoach.app/schemas/prepare-response.v1.json",
+  "title": "prepare.v1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "prepare.v1"
+    },
+    "analysisId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "status": {
+      "type": "string",
+      "const": "prepared"
+    },
+    "frameMode": {
+      "type": "string",
+      "enum": ["frames", "pose_only"]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["fps_low", "view_low_confidence", "view_mismatch", "view_not_recommended", "skill_mismatch_suspected", "few_strokes", "player_small", "handedness_mismatch"]
+      }
+    },
+    "viewGuess": {
+      "type": "object",
+      "properties": {
+        "view": {
+          "type": "string",
+          "enum": ["side", "behind", "front", "diagonal"]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": ["view", "confidence"],
+      "additionalProperties": false
+    },
+    "handednessSuggestion": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["right", "left"]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "strokes": {
+      "minItems": 1,
+      "maxItems": 12,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PreparedStroke"
+      }
+    },
+    "frameRequests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FrameRequest"
+      }
+    },
+    "maxLongEdge": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "cleanTrackPath": {
+      "type": "string"
+    },
+    "quota": {
+      "$ref": "#/$defs/QuotaPreview"
+    }
+  },
+  "required": ["schema", "analysisId", "status", "frameMode", "warnings", "viewGuess", "handednessSuggestion", "strokes", "frameRequests", "maxLongEdge", "cleanTrackPath", "quota"],
+  "additionalProperties": false,
+  "$defs": {
+    "PreparedStroke": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "tStartUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "tContactUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "contactIsEstimate": {
+          "type": "boolean"
+        },
+        "tEndUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "phases": {
+          "$ref": "#/$defs/StrokePhasesUs"
+        },
+        "quality": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": ["best", "worst"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "thumbTUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "excluded": {
+          "type": "boolean"
+        }
+      },
+      "required": ["id", "tStartUs", "tContactUs", "contactIsEstimate", "tEndUs", "phases", "quality", "role", "thumbTUs", "excluded"],
+      "additionalProperties": false
+    },
+    "StrokePhasesUs": {
+      "type": "object",
+      "properties": {
+        "ready": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "bsEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "contact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ftStop": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": ["ready", "bsEnd", "contact", "ftStop"],
+      "additionalProperties": false
+    },
+    "FrameRequest": {
+      "type": "object",
+      "properties": {
+        "frameId": {
+          "type": "string",
+          "enum": ["F1", "F2", "F3", "F4", "F5", "L1", "L2", "L3", "L4"]
+        },
+        "strokeId": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["ready", "bsEnd", "contact", "ftStop", "overview"]
+        },
+        "tUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "crop": {
+          "$ref": "#/$defs/NormRect"
+        },
+        "upload": {
+          "type": "boolean"
+        }
+      },
+      "required": ["frameId", "strokeId", "phase", "tUs", "crop", "upload"],
+      "additionalProperties": false
+    },
+    "NormRect": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "w": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "h": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": ["x", "y", "w", "h"],
+      "additionalProperties": false
+    },
+    "QuotaPreview": {
+      "type": "object",
+      "properties": {
+        "tier": {
+          "type": "string",
+          "enum": ["free", "trial", "premium"]
+        },
+        "remaining": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "nextKind": {
+          "type": "string",
+          "enum": ["basic", "standard"]
+        },
+        "resetsAt": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["tier", "remaining", "nextKind", "resetsAt"],
+      "additionalProperties": false
+    }
+  }
+}

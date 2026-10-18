@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://racketcoach.app/schemas/pose.v1.json",
+  "title": "pose.v1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "pose.v1"
+    },
+    "analysisId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "client": {
+      "$ref": "#/$defs/PoseClient"
+    },
+    "session": {
+      "$ref": "#/$defs/PoseSession"
+    },
+    "video": {
+      "$ref": "#/$defs/PoseVideo"
+    },
+    "quality": {
+      "$ref": "#/$defs/PoseQuality"
+    },
+    "track": {
+      "$ref": "#/$defs/PoseTrack"
+    }
+  },
+  "required": ["schema", "analysisId", "client", "session", "video", "quality", "track"],
+  "$defs": {
+    "PoseClient": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "build": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        },
+        "poseApi": {
+          "type": "string"
+        },
+        "algo": {
+          "type": "string"
+        }
+      },
+      "required": ["app", "build", "os", "device", "poseApi", "algo"]
+    },
+    "PoseSession": {
+      "type": "object",
+      "properties": {
+        "sport": {
+          "type": "string",
+          "enum": ["badminton", "pickleball"]
+        },
+        "skill": {
+          "type": "string",
+          "pattern": "^(bd|pb)\\.[a-z0-9_]+$"
+        },
+        "handedness": {
+          "type": "string",
+          "enum": ["right", "left"]
+        },
+        "level": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": ["beginner", "improving", "intermediate", "advanced"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cameraView": {
+          "type": "string",
+          "enum": ["side", "behind", "front", "diagonal", "auto"]
+        },
+        "subject": {
+          "type": "string",
+          "enum": ["self", "other"]
+        },
+        "subjectConsent": {
+          "type": "boolean"
+        },
+        "subjectMinor": {
+          "type": "boolean"
+        },
+        "language": {
+          "type": "string",
+          "enum": ["vi", "en"]
+        }
+      },
+      "required": ["sport", "skill", "handedness", "cameraView", "subject", "subjectConsent", "subjectMinor", "language"]
+    },
+    "PoseVideo": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": ["recorded", "imported"]
+        },
+        "durationMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "segment": {
+          "type": "object",
+          "properties": {
+            "startMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "endMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": ["startMs", "endMs"]
+        },
+        "srcFps": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "analysisHz": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "display": {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "h": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": ["w", "h"]
+        },
+        "mirrored": {
+          "type": "boolean"
+        }
+      },
+      "required": ["source", "durationMs", "segment", "srcFps", "analysisHz", "display", "mirrored"]
+    },
+    "PoseQuality": {
+      "type": "object",
+      "properties": {
+        "framesTotal": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "framesWithTarget": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "meanLimbConf": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "playerHeightFrac": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trackResets": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ambiguousAtMs": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      },
+      "required": ["framesTotal", "framesWithTarget", "meanLimbConf", "playerHeightFrac", "trackResets", "ambiguousAtMs"]
+    },
+    "PoseTrack": {
+      "type": "object",
+      "properties": {
+        "jointOrder": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tUs": {
+          "minItems": 2,
+          "maxItems": 2048,
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "kp": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          }
+        }
+      },
+      "required": ["jointOrder", "tUs", "kp", "bbox", "flags"]
+    }
+  }
+}

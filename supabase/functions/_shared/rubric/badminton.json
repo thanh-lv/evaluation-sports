@@ -1,0 +1,84 @@
+{
+  "version": "placeholder-0",
+  "sport": "badminton",
+  "skills": [
+    {
+      "id": "bd.clear_fh",
+      "sport": "badminton",
+      "name": { "vi": "Phông cầu thuận tay", "en": "Forehand overhead clear" },
+      "weights": { "stance": 15, "footwork": 10, "swing": 30, "contact": 25, "follow": 10, "recovery": 10 },
+      "vmin": 4,
+      "nms": 0.8,
+      "family": "overhead",
+      "contactOffsetMs": 0,
+      "views": { "recommended": ["D"], "allowed": ["D", "B", "S", "F"] },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Cầu chạm vạch là cầu trong. Phông cầu tốt rơi sát vạch cuối sân.",
+        "en": "A shuttle landing on the line is in. A good clear lands near the back line."
+      },
+      "checkpoints": ["bd.clear_fh.C3", "bd.ready.R7"]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "bd.clear_fh.C3",
+      "sport": "badminton",
+      "skills": ["bd.clear_fh"],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 2,
+      "assess": "M",
+      "metric": { "fn": "elbowRel", "params": { "arm": "racket" }, "target": [-0.15, null], "tol": 0.2, "unit": "T" },
+      "views": { "S": 1, "B": 1, "D": 1 },
+      "velocityBased": false,
+      "name": { "vi": "Khuỷu tay cao khi vung", "en": "Racket elbow up" },
+      "plain": {
+        "vi": { "low": "khuỷu tay còn thấp khi kéo vợt", "high": "khuỷu tay nâng cao như ném bóng" },
+        "en": { "low": "elbow stays low in the backswing", "high": "elbow up like a throw" }
+      },
+      "faults": ["bd.clear_fh.low_elbow"],
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "bd.ready.R7",
+      "sport": "badminton",
+      "skills": ["bd.clear_fh"],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "V",
+      "views": { "S": 1, "B": 1, "D": 1 },
+      "velocityBased": false,
+      "vAnchors": [
+        "racket head pointing at the floor",
+        "racket head below the hand",
+        "racket head level with the hand",
+        "racket head slightly up",
+        "racket head clearly up, in front"
+      ],
+      "name": { "vi": "Đầu vợt hướng lên", "en": "Racket head up" },
+      "plain": {
+        "vi": { "low": "đầu vợt chúc xuống khi chờ cầu", "high": "đầu vợt luôn hướng lên" },
+        "en": { "low": "racket head drops while waiting", "high": "racket head stays up" }
+      },
+      "faults": [],
+      "joints": ["rWri"]
+    }
+  ],
+  "faults": [
+    {
+      "id": "bd.clear_fh.low_elbow",
+      "checkpoint": "bd.clear_fh.C3",
+      "when": "low",
+      "title": { "vi": "Khuỷu tay thấp, đẩy cầu", "en": "Low elbow, pushing the shuttle" },
+      "cue": { "vi": "Khuỷu tay ngang vai, như ném bóng", "en": "Elbow at shoulder height, like a throw" },
+      "why": {
+        "vi": "Khuỷu thấp làm mất lực và cầu không đi sâu.",
+        "en": "A low elbow costs power, so the shuttle falls short."
+      },
+      "drills": ["bd.drill.towel_snap"],
+      "defaultDrill": "bd.drill.towel_snap"
+    }
+  ]
+}

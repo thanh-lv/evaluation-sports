@@ -1,0 +1,785 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://racketcoach.app/schemas/coach-result.v1.json",
+  "title": "coach-result.v1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "coach-result.v1"
+    },
+    "analysisId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "sport": {
+      "type": "string",
+      "enum": ["badminton", "pickleball"]
+    },
+    "skill": {
+      "type": "string",
+      "pattern": "^(bd|pb)\\.[a-z0-9_]+$"
+    },
+    "narrativeLanguage": {
+      "type": "string",
+      "enum": ["vi", "en"]
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["succeeded", "rejected"]
+    },
+    "rejection": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "enum": ["not_assessable", "wrong_sport", "wrong_skill"]
+            },
+            "tips": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["camera.tip.full_body", "camera.tip.move_closer", "camera.tip.player_height", "camera.tip.lighting", "camera.tip.steady_camera", "camera.tip.one_player", "camera.tip.fps_60", "camera.tip.repetitions", "camera.tip.clip_length", "camera.tip.recommended_view", "camera.tip.choose_skill"]
+              }
+            }
+          },
+          "required": ["code", "tips"],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "access": {
+      "type": "string",
+      "enum": ["full", "free"]
+    },
+    "locked": {
+      "type": "object",
+      "properties": {
+        "strengths": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "weaknesses": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "plan": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": ["strengths", "weaknesses", "plan"],
+      "additionalProperties": false
+    },
+    "aiGenerated": {
+      "type": "boolean",
+      "const": true
+    },
+    "hero": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ResultHero"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "overall": {
+      "$ref": "#/$defs/ResultOverall"
+    },
+    "subScores": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultSubScore"
+      }
+    },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultCheckpoint"
+      }
+    },
+    "strengths": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultStrength"
+      }
+    },
+    "weaknesses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultWeakness"
+      }
+    },
+    "plan": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultPlanItem"
+      }
+    },
+    "strokes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultStroke"
+      }
+    },
+    "safety": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ResultSafetyNote"
+      }
+    },
+    "notAssessable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "aspect": {
+            "type": "string"
+          },
+          "howToCapture": {
+            "type": "string"
+          }
+        },
+        "required": ["aspect", "howToCapture"],
+        "additionalProperties": false
+      }
+    },
+    "recordingTips": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rulesTip": {
+      "$ref": "#/$defs/LocalizedText"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "meta": {
+      "$ref": "#/$defs/ResultMeta"
+    }
+  },
+  "required": ["schema", "analysisId", "sport", "skill", "narrativeLanguage", "createdAt", "status", "rejection", "access", "locked", "aiGenerated", "hero", "overall", "subScores", "strengths", "weaknesses", "plan", "strokes", "safety", "notAssessable", "recordingTips", "rulesTip", "summary", "meta"],
+  "additionalProperties": false,
+  "$defs": {
+    "ResultHero": {
+      "type": "object",
+      "properties": {
+        "checkpointId": {
+          "type": "string"
+        },
+        "faultId": {
+          "type": ["string", "null"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "observation": {
+          "type": "string"
+        },
+        "cue": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "drill": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResultDrill"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "frameId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": ["F1", "F2", "F3", "F4", "F5", "L1", "L2", "L3", "L4"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "joints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["nose", "lEye", "rEye", "lEar", "rEar", "neck", "lSho", "rSho", "lElb", "rElb", "lWri", "rWri", "root", "lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+          }
+        }
+      },
+      "required": ["checkpointId", "faultId", "title", "observation", "cue", "drill", "frameId", "joints"],
+      "additionalProperties": false
+    },
+    "LocalizedText": {
+      "type": "object",
+      "properties": {
+        "vi": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      },
+      "required": ["vi", "en"],
+      "additionalProperties": false
+    },
+    "ResultDrill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "steps": {
+          "type": "object",
+          "properties": {
+            "vi": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "en": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": ["vi", "en"],
+          "additionalProperties": false
+        },
+        "dose": {
+          "type": "object",
+          "properties": {
+            "sets": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "reps": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "seconds": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": ["sets", "reps", "seconds"],
+          "additionalProperties": false
+        },
+        "safety": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": ["id", "title", "steps", "dose", "safety"],
+      "additionalProperties": false
+    },
+    "ResultOverall": {
+      "type": "object",
+      "properties": {
+        "displayScore": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "level": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": ["beginner", "improving", "intermediate", "advanced"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "partial": {
+          "type": "boolean"
+        },
+        "beta": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "required": ["displayScore", "level", "coverage", "partial", "beta"],
+      "additionalProperties": false
+    },
+    "ResultSubScore": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "enum": ["stance", "footwork", "swing", "contact", "follow", "recovery"]
+        },
+        "displayScore": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "name": {
+          "$ref": "#/$defs/LocalizedText"
+        }
+      },
+      "required": ["key", "displayScore", "coverage", "confidence", "name"],
+      "additionalProperties": false
+    },
+    "ResultCheckpoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "subscore": {
+          "type": "string",
+          "enum": ["stance", "footwork", "swing", "contact", "follow", "recovery"]
+        },
+        "assess": {
+          "type": "string",
+          "enum": ["M", "M~", "V", "N"]
+        },
+        "s": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "c": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "valueText": {
+          "type": "string"
+        },
+        "targetText": {
+          "type": "string"
+        },
+        "perStroke": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "strokeId": {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              },
+              "value": {
+                "type": ["number", "null"]
+              }
+            },
+            "required": ["strokeId", "value"],
+            "additionalProperties": false
+          }
+        },
+        "name": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "joints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["nose", "lEye", "rEye", "lEar", "rEar", "neck", "lSho", "rSho", "lElb", "rElb", "lWri", "rWri", "root", "lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+          }
+        }
+      },
+      "required": ["id", "subscore", "assess", "s", "c", "valueText", "targetText", "perStroke", "name", "joints"],
+      "additionalProperties": false
+    },
+    "ResultStrength": {
+      "type": "object",
+      "properties": {
+        "checkpointId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultEvidence"
+          }
+        }
+      },
+      "required": ["checkpointId", "title", "detail", "evidence"],
+      "additionalProperties": false
+    },
+    "ResultEvidence": {
+      "type": "object",
+      "properties": {
+        "strokeId": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "tUs": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "frameId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": ["F1", "F2", "F3", "F4", "F5", "L1", "L2", "L3", "L4"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "metricKey": {
+          "type": ["string", "null"]
+        },
+        "observation": {
+          "type": "string"
+        },
+        "plain": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "valueText": {
+                  "type": "string"
+                },
+                "targetText": {
+                  "type": "string"
+                }
+              },
+              "required": ["valueText", "targetText"],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "joints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["nose", "lEye", "rEye", "lEar", "rEar", "neck", "lSho", "rSho", "lElb", "rElb", "lWri", "rWri", "root", "lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+          }
+        }
+      },
+      "required": ["strokeId", "tUs", "frameId", "metricKey", "observation", "plain", "detail", "joints"],
+      "additionalProperties": false
+    },
+    "ResultWeakness": {
+      "type": "object",
+      "properties": {
+        "checkpointId": {
+          "type": "string"
+        },
+        "faultId": {
+          "type": ["string", "null"]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "whyItMatters": {
+          "type": "string"
+        },
+        "cue": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultEvidence"
+          }
+        }
+      },
+      "required": ["checkpointId", "faultId", "severity", "title", "detail", "whyItMatters", "cue", "evidence"],
+      "additionalProperties": false
+    },
+    "ResultPlanItem": {
+      "type": "object",
+      "properties": {
+        "priority": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "faultId": {
+          "type": ["string", "null"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "howToFix": {
+          "type": "string"
+        },
+        "cues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "goal": {
+          "type": "string"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "metricKey": {
+                  "type": "string"
+                },
+                "current": {
+                  "type": "string"
+                },
+                "goal": {
+                  "type": "string"
+                }
+              },
+              "required": ["metricKey", "current", "goal"],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "drills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ResultDrill"
+          }
+        }
+      },
+      "required": ["priority", "faultId", "title", "howToFix", "cues", "goal", "target", "drills"],
+      "additionalProperties": false
+    },
+    "ResultStroke": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "tStartUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "tContactUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "contactIsEstimate": {
+          "type": "boolean"
+        },
+        "tEndUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "phases": {
+          "$ref": "#/$defs/StrokePhasesUs"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": ["best", "worst"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": ["id", "tStartUs", "tContactUs", "contactIsEstimate", "tEndUs", "phases", "role"],
+      "additionalProperties": false
+    },
+    "StrokePhasesUs": {
+      "type": "object",
+      "properties": {
+        "ready": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "bsEnd": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "contact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ftStop": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": ["ready", "bsEnd", "contact", "ftStop"],
+      "additionalProperties": false
+    },
+    "ResultSafetyNote": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["warmup", "load", "technique_risk", "see_professional"]
+        },
+        "message": {
+          "type": "string"
+        },
+        "localized": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "checkpointId": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["kind", "message", "localized", "checkpointId"],
+      "additionalProperties": false
+    },
+    "ResultMeta": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["basic", "standard"]
+        },
+        "promptVersion": {
+          "type": "string"
+        },
+        "rubricVersion": {
+          "type": "string"
+        },
+        "algoVersion": {
+          "type": "string"
+        },
+        "schemaVersion": {
+          "type": "string"
+        }
+      },
+      "required": ["model", "kind", "promptVersion", "rubricVersion", "algoVersion", "schemaVersion"],
+      "additionalProperties": false
+    }
+  }
+}

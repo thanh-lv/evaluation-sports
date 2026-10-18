@@ -1,0 +1,594 @@
+{
+  "schema": "coach-result.v1",
+  "analysisId": "0b0c4f1e-5a8d-4c47-9b1e-6c1f2a3b4c5d",
+  "sport": "badminton",
+  "skill": "bd.clear_fh",
+  "narrativeLanguage": "vi",
+  "createdAt": "2026-10-20T08:15:42Z",
+  "status": "succeeded",
+  "rejection": null,
+  "access": "full",
+  "locked": {
+    "strengths": 0,
+    "weaknesses": 0,
+    "plan": 0
+  },
+  "aiGenerated": true,
+  "hero": {
+    "checkpointId": "bd.clear_fh.C3",
+    "faultId": "bd.clear_fh.low_elbow",
+    "title": "Khuỷu tay thấp khi kéo vợt",
+    "observation": "Ở cuối pha kéo vợt, khuỷu tay của bạn còn thấp hơn vai nên cú đánh giống đẩy cầu hơn là ném cầu.",
+    "cue": {
+      "vi": "Khuỷu tay ngang vai, như ném bóng",
+      "en": "Elbow at shoulder height, like a throw"
+    },
+    "drill": {
+      "id": "bd.drill.towel_snap",
+      "title": {
+        "vi": "Vung khăn",
+        "en": "Towel snap"
+      },
+      "steps": {
+        "vi": [
+          "Cầm một đầu khăn như cầm vợt.",
+          "Nâng khuỷu tay ngang vai, khăn ra sau lưng.",
+          "Vung mạnh lên trên và ra trước để khăn kêu tách."
+        ],
+        "en": [
+          "Hold one end of a towel like a racket.",
+          "Lift the elbow to shoulder height, towel behind your back.",
+          "Swing up and forward so the towel snaps."
+        ]
+      },
+      "dose": {
+        "sets": 3,
+        "reps": 10,
+        "seconds": null
+      },
+      "safety": null
+    },
+    "frameId": "F2",
+    "joints": [
+      "rSho",
+      "rElb",
+      "rWri"
+    ]
+  },
+  "overall": {
+    "displayScore": 55,
+    "level": "improving",
+    "coverage": 0.82,
+    "partial": false,
+    "beta": true
+  },
+  "subScores": [
+    {
+      "key": "stance",
+      "displayScore": 70,
+      "coverage": 0.9,
+      "confidence": "high",
+      "name": {
+        "vi": "Tư thế & Thăng bằng",
+        "en": "Stance & Balance"
+      }
+    },
+    {
+      "key": "footwork",
+      "displayScore": 60,
+      "coverage": 0.55,
+      "confidence": "medium",
+      "name": {
+        "vi": "Di chuyển (bộ pháp)",
+        "en": "Footwork"
+      }
+    },
+    {
+      "key": "swing",
+      "displayScore": 45,
+      "coverage": 0.85,
+      "confidence": "high",
+      "name": {
+        "vi": "Kỹ thuật vung vợt",
+        "en": "Swing mechanics"
+      }
+    },
+    {
+      "key": "contact",
+      "displayScore": 60,
+      "coverage": 0.8,
+      "confidence": "medium",
+      "name": {
+        "vi": "Điểm chạm cầu",
+        "en": "Contact point"
+      }
+    },
+    {
+      "key": "follow",
+      "displayScore": 65,
+      "coverage": 0.6,
+      "confidence": "medium",
+      "name": {
+        "vi": "Kết thúc động tác",
+        "en": "Follow-through"
+      }
+    },
+    {
+      "key": "recovery",
+      "displayScore": null,
+      "coverage": 0.3,
+      "confidence": "low",
+      "name": {
+        "vi": "Về vị trí (hồi vị)",
+        "en": "Recovery"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "bd.clear_fh.C3",
+      "subscore": "swing",
+      "assess": "M",
+      "s": 0.35,
+      "c": 0.8,
+      "valueText": "−0,32 T",
+      "targetText": "≥ −0,15 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": -0.29
+        },
+        {
+          "strokeId": 2,
+          "value": -0.3
+        },
+        {
+          "strokeId": 3,
+          "value": -0.38
+        }
+      ],
+      "name": {
+        "vi": "Khuỷu tay cao khi vung",
+        "en": "Racket elbow up"
+      },
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C5",
+      "subscore": "contact",
+      "assess": "M",
+      "s": 0.95,
+      "c": 0.85,
+      "valueText": "0,9",
+      "targetText": "≥ 0,85",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.88
+        },
+        {
+          "strokeId": 2,
+          "value": 0.93
+        },
+        {
+          "strokeId": 3,
+          "value": 0.86
+        }
+      ],
+      "name": {
+        "vi": "Chạm cầu ở điểm cao",
+        "en": "Hits at a high point"
+      },
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C1",
+      "subscore": "swing",
+      "assess": "M~",
+      "s": 0.4,
+      "c": 0.6,
+      "valueText": "38°",
+      "targetText": "≥ 60°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 41
+        },
+        {
+          "strokeId": 2,
+          "value": 40
+        },
+        {
+          "strokeId": 3,
+          "value": 33
+        }
+      ],
+      "name": {
+        "vi": "Xoay người nghiêng",
+        "en": "Side-on turn"
+      },
+      "joints": [
+        "lSho",
+        "rSho",
+        "lHip",
+        "rHip"
+      ]
+    },
+    {
+      "id": "bd.ready.R7",
+      "subscore": "stance",
+      "assess": "V",
+      "s": 0.75,
+      "c": 0.7,
+      "valueText": "3/4",
+      "targetText": "4/4",
+      "perStroke": [],
+      "name": {
+        "vi": "Đầu vợt hướng lên",
+        "en": "Racket head up"
+      },
+      "joints": [
+        "rWri"
+      ]
+    }
+  ],
+  "strengths": [
+    {
+      "checkpointId": "bd.clear_fh.C5",
+      "title": "Chạm cầu ở điểm cao",
+      "detail": "Bạn vươn tay lên cao khi chạm cầu ở cả ba cú đánh, đây là nền tảng tốt cho phông cầu sâu.",
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 7883333,
+          "frameId": "F3",
+          "metricKey": "bd.clear_fh.C5",
+          "observation": "Tay vợt gần như duỗi thẳng lên trên khi chạm cầu.",
+          "plain": {
+            "vi": "chạm cầu ở điểm cao",
+            "en": "contact at a high point"
+          },
+          "detail": {
+            "valueText": "0,93",
+            "targetText": "≥ 0,85"
+          },
+          "joints": [
+            "rSho",
+            "rWri"
+          ]
+        }
+      ]
+    },
+    {
+      "checkpointId": "bd.ready.R7",
+      "title": "Vợt luôn sẵn sàng",
+      "detail": "Khi chờ cầu, bạn giữ đầu vợt hướng lên, giúp vào tư thế đánh nhanh hơn.",
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 6883333,
+          "frameId": "F1",
+          "metricKey": null,
+          "observation": "Đầu vợt hướng lên ở tư thế chuẩn bị.",
+          "plain": {
+            "vi": "đầu vợt luôn hướng lên",
+            "en": "racket head stays up"
+          },
+          "detail": null,
+          "joints": [
+            "rWri"
+          ]
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "checkpointId": "bd.clear_fh.C1",
+      "faultId": "bd.clear_fh.no_turn",
+      "severity": "medium",
+      "title": "Chưa xoay người nghiêng",
+      "detail": "Vai của bạn vẫn hướng nhiều về phía lưới khi kéo vợt.",
+      "whyItMatters": "Xoay người giúp dùng lực cả thân, cầu đi sâu hơn mà tay đỡ mỏi.",
+      "cue": {
+        "vi": "Chĩa vai trái về phía cầu",
+        "en": "Point your non-racket shoulder at the shuttle"
+      },
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 7733333,
+          "frameId": "F2",
+          "metricKey": "bd.clear_fh.C1",
+          "observation": "Vai còn mở về phía lưới ở cuối pha kéo vợt.",
+          "plain": {
+            "vi": "vai còn hướng về lưới khi kéo vợt",
+            "en": "shoulders still face the net"
+          },
+          "detail": {
+            "valueText": "40°",
+            "targetText": "≥ 60°"
+          },
+          "joints": [
+            "lSho",
+            "rSho"
+          ]
+        }
+      ]
+    },
+    {
+      "checkpointId": "bd.clear_fh.C2",
+      "faultId": "bd.clear_fh.limp_arm",
+      "severity": "low",
+      "title": "Tay không cầm vợt buông thấp",
+      "detail": "Tay trái của bạn chưa giơ lên chỉ cầu trước khi vung.",
+      "whyItMatters": "Tay chỉ cầu giúp giữ thăng bằng và canh điểm rơi chính xác hơn.",
+      "cue": {
+        "vi": "Chỉ lên, rồi kéo xuống khi vung",
+        "en": "Point up, then pull down as you swing"
+      },
+      "evidence": [
+        {
+          "strokeId": 3,
+          "tUs": 11666667,
+          "frameId": "L2",
+          "metricKey": "bd.clear_fh.C2",
+          "observation": "Tay không cầm vợt ở thấp ngang ngực.",
+          "plain": {
+            "vi": "tay không cầm vợt còn buông thấp",
+            "en": "free arm stays low"
+          },
+          "detail": {
+            "valueText": "0,6 T",
+            "targetText": "≥ 1,1 T"
+          },
+          "joints": [
+            "lSho",
+            "lElb",
+            "lWri"
+          ]
+        }
+      ]
+    }
+  ],
+  "plan": [
+    {
+      "priority": 1,
+      "faultId": "bd.clear_fh.low_elbow",
+      "title": "Nâng khuỷu tay như ném bóng",
+      "howToFix": "Khi kéo vợt ra sau, đưa khuỷu tay lên ngang vai rồi mới vung lên đón cầu.",
+      "cues": [
+        "Khuỷu ngang vai",
+        "Ném vợt lên cầu"
+      ],
+      "goal": "Khuỷu tay ngang vai ở cả ba cú đánh trong lần quay tới.",
+      "target": {
+        "metricKey": "bd.clear_fh.C3",
+        "current": "−0,32 T",
+        "goal": "≥ −0,15 T"
+      },
+      "drills": [
+        {
+          "id": "bd.drill.towel_snap",
+          "title": {
+            "vi": "Vung khăn",
+            "en": "Towel snap"
+          },
+          "steps": {
+            "vi": [
+              "Cầm một đầu khăn như cầm vợt.",
+              "Nâng khuỷu tay ngang vai, khăn ra sau lưng.",
+              "Vung mạnh lên trên và ra trước để khăn kêu tách."
+            ],
+            "en": [
+              "Hold one end of a towel like a racket.",
+              "Lift the elbow to shoulder height, towel behind your back.",
+              "Swing up and forward so the towel snaps."
+            ]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 10,
+            "seconds": null
+          },
+          "safety": null
+        },
+        {
+          "id": "bd.drill.overhead_throw",
+          "title": {
+            "vi": "Ném cầu qua đầu",
+            "en": "Overhead shuttle throw"
+          },
+          "steps": {
+            "vi": [
+              "Đứng nghiêng, chân thuận phía sau.",
+              "Kéo khuỷu tay lên cao ngang vai.",
+              "Ném quả cầu đi xa nhất có thể."
+            ],
+            "en": [
+              "Stand side-on, racket-side foot back.",
+              "Pull the elbow up to shoulder height.",
+              "Throw a shuttle as far as you can."
+            ]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 15,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    },
+    {
+      "priority": 2,
+      "faultId": "bd.clear_fh.no_turn",
+      "title": "Xoay người nghiêng trước khi đánh",
+      "howToFix": "Lùi chân phải về sau và xoay vai để vai trái hướng về phía cầu.",
+      "cues": [
+        "Vai trái chỉ cầu"
+      ],
+      "goal": "Vai nghiêng rõ ở cuối pha kéo vợt.",
+      "target": {
+        "metricKey": "bd.clear_fh.C1",
+        "current": "40°",
+        "goal": "≥ 60°"
+      },
+      "drills": [
+        {
+          "id": "bd.drill.shadow_turn_point",
+          "title": {
+            "vi": "Xoay người và chỉ tay",
+            "en": "Shadow turn-and-point"
+          },
+          "steps": {
+            "vi": [
+              "Đứng ở tư thế chuẩn bị.",
+              "Xoay vai, tay không cầm vợt chỉ lên cầu tưởng tượng.",
+              "Vung vợt chậm rồi về tư thế chuẩn bị."
+            ],
+            "en": [
+              "Start in the ready stance.",
+              "Turn your shoulders and point the free hand at an imaginary shuttle.",
+              "Swing slowly, then return to ready."
+            ]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 10,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    },
+    {
+      "priority": 3,
+      "faultId": "bd.clear_fh.limp_arm",
+      "title": "Dùng tay không cầm vợt",
+      "howToFix": "Giơ tay trái chỉ lên cầu, rồi kéo tay xuống sát người khi vung vợt.",
+      "cues": [
+        "Chỉ lên – kéo xuống"
+      ],
+      "goal": "Tay trái giơ cao hơn đầu trước mỗi cú đánh.",
+      "target": {
+        "metricKey": "bd.clear_fh.C2",
+        "current": "0,6 T",
+        "goal": "≥ 1,1 T"
+      },
+      "drills": [
+        {
+          "id": "bd.drill.point_pull",
+          "title": {
+            "vi": "Chỉ lên – kéo xuống",
+            "en": "Point and pull"
+          },
+          "steps": {
+            "vi": [
+              "Giơ tay không cầm vợt chỉ lên cao.",
+              "Khi vung vợt, kéo tay đó xuống sát người.",
+              "Đếm nhịp \"chỉ – kéo\" thành tiếng."
+            ],
+            "en": [
+              "Raise the free hand and point up.",
+              "As you swing, pull that hand down to your body.",
+              "Count \"point – pull\" out loud."
+            ]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 10,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    }
+  ],
+  "strokes": [
+    {
+      "id": 1,
+      "tStartUs": 3420000,
+      "tContactUs": 3910583,
+      "contactIsEstimate": true,
+      "tEndUs": 4300000,
+      "phases": {
+        "ready": 2900000,
+        "bsEnd": 3760000,
+        "contact": 3910583,
+        "ftStop": 4116667
+      },
+      "role": null
+    },
+    {
+      "id": 2,
+      "tStartUs": 7400000,
+      "tContactUs": 7883333,
+      "contactIsEstimate": true,
+      "tEndUs": 8283333,
+      "phases": {
+        "ready": 6883333,
+        "bsEnd": 7733333,
+        "contact": 7883333,
+        "ftStop": 8100000
+      },
+      "role": "best"
+    },
+    {
+      "id": 3,
+      "tStartUs": 11350000,
+      "tContactUs": 11816667,
+      "contactIsEstimate": true,
+      "tEndUs": 12233333,
+      "phases": {
+        "ready": 10833333,
+        "bsEnd": 11666667,
+        "contact": 11816667,
+        "ftStop": 12050000
+      },
+      "role": "worst"
+    }
+  ],
+  "safety": [
+    {
+      "kind": "warmup",
+      "message": "Khởi động vai và cổ tay vài phút trước khi tập các bài vung vợt.",
+      "localized": null,
+      "checkpointId": null
+    }
+  ],
+  "notAssessable": [
+    {
+      "aspect": "Cách cầm vợt",
+      "howToCapture": "Cách cầm vợt khó thấy từ xa; hãy hỏi HLV kiểm tra trực tiếp."
+    },
+    {
+      "aspect": "Độ sâu của cầu",
+      "howToCapture": "Ứng dụng chưa theo dõi được quả cầu; hãy tự quan sát cầu có rơi sát vạch cuối không."
+    }
+  ],
+  "recordingTips": [
+    "Đặt máy ở góc chéo phía sau, cao ngang đầu, để thấy rõ vai và khuỷu tay.",
+    "Quay 5–10 cú phông cầu liên tiếp, đủ cả người và vợt trong khung hình."
+  ],
+  "rulesTip": {
+    "vi": "Cầu chạm vạch là cầu trong. Phông cầu tốt rơi sát vạch cuối sân.",
+    "en": "A shuttle landing on the line is in. A good clear lands near the back line."
+  },
+  "summary": "Bạn đã chạm cầu ở điểm cao và giữ vợt sẵn sàng rất tốt. Điều cần sửa trước là nâng khuỷu tay ngang vai khi kéo vợt, để cú phông cầu có lực và đi sâu hơn.",
+  "meta": {
+    "model": "claude-sonnet-5-5",
+    "kind": "standard",
+    "promptVersion": "base-system-v2.0",
+    "rubricVersion": "placeholder-0+drills-placeholder-0",
+    "algoVersion": "engine-0.1.0",
+    "schemaVersion": "coach.v1"
+  }
+}

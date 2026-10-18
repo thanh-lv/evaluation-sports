@@ -1,0 +1,81 @@
+{
+  "version": "placeholder-0",
+  "sport": "pickleball",
+  "skills": [
+    {
+      "id": "pb.serve",
+      "sport": "pickleball",
+      "name": { "vi": "Giao bóng", "en": "Serve" },
+      "weights": { "stance": 20, "footwork": 5, "swing": 30, "contact": 25, "follow": 15, "recovery": 5 },
+      "vmin": 2,
+      "nms": 2,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": { "recommended": ["S"], "allowed": ["S", "D"] },
+      "solo": true,
+      "rulesTip": {
+        "vi": "Giao bóng từ dưới lên, điểm chạm thấp hơn thắt lưng, chéo sân.",
+        "en": "Serve underhand, contact below the waist, diagonally cross-court."
+      },
+      "checkpoints": ["pb.serve.SV2", "pb.ready.PR6"]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "pb.serve.SV2",
+      "sport": "pickleball",
+      "skills": ["pb.serve"],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M",
+      "metric": { "fn": "wristH", "params": { "arm": "racket" }, "target": [null, 0.6], "tol": 0.3, "unit": "T" },
+      "views": { "S": 1, "B": 1, "D": 1 },
+      "velocityBased": false,
+      "name": { "vi": "Điểm chạm thấp", "en": "Low contact point" },
+      "plain": {
+        "vi": { "low": "điểm chạm thấp, đúng luật", "high": "điểm chạm còn cao" },
+        "en": { "low": "contact is low, as required", "high": "contact is too high" }
+      },
+      "faults": ["pb.serve.high_contact"],
+      "joints": ["rWri", "root"]
+    },
+    {
+      "id": "pb.ready.PR6",
+      "sport": "pickleball",
+      "skills": ["pb.serve"],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "V",
+      "views": { "S": 1, "B": 1, "D": 1 },
+      "velocityBased": false,
+      "vAnchors": [
+        "paddle hanging at the side",
+        "paddle low, below the waist",
+        "paddle at waist height",
+        "paddle up, slightly in front",
+        "paddle up in front, ready"
+      ],
+      "name": { "vi": "Vợt ở phía trước", "en": "Paddle up in front" },
+      "plain": {
+        "vi": { "low": "vợt buông thấp khi chờ bóng", "high": "vợt luôn ở phía trước" },
+        "en": { "low": "paddle drops while waiting", "high": "paddle stays up in front" }
+      },
+      "faults": [],
+      "joints": ["rWri"]
+    }
+  ],
+  "faults": [
+    {
+      "id": "pb.serve.high_contact",
+      "checkpoint": "pb.serve.SV2",
+      "when": "high",
+      "title": { "vi": "Điểm chạm quá cao", "en": "Contact too high" },
+      "cue": { "vi": "Chạm bóng dưới thắt lưng", "en": "Contact below your waist" },
+      "why": { "vi": "Giao bóng phải chạm dưới thắt lưng.", "en": "The serve must be struck below the waist." },
+      "drills": ["pb.drill.low_toss"],
+      "defaultDrill": "pb.drill.low_toss"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+# Dependencies / build output
+node_modules/
+weblab/dist/
+
+# Secrets and local env (keep the example)
+.env*
+!.env.example
+supabase/.temp/
+supabase/functions/.env.local
+
+# Xcode / iOS
+ios/*.xcodeproj
+ios/Config/Local.xcconfig
+ios/Config/Secrets.xcconfig
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# OS
+.DS_Store
