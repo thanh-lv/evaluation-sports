@@ -315,7 +315,7 @@ const INSTANT_METRICS: Record<InstantKey, Instant> = {
     const value = Math.min(1.5, Math.max(-0.5, (root.x - rear.x) / (front.x - rear.x)));
     return { value, conf: mean([l.c, r.c, root.c]) };
   },
-  baseErr: (ctx, i, _p, s) => {
+  baseErr: (ctx, i, p, s) => {
     const root = pt(ctx.track, 'root', i);
     if (!root) return NONE;
     let base: { x: number; y: number; c: number } | null = null;
@@ -338,7 +338,12 @@ const INSTANT_METRICS: Record<InstantKey, Instant> = {
       baseScale = 0.5;
     }
     if (!base) return NONE;
-    return { value: dist(root, base) / ctx.track.torsoT, conf: mean([root.c, base.c]) * baseScale };
+    // `forward`: signed displacement along the hitting direction (moving up to the net after a drop or return);
+    // `any`: distance back from base, whatever the direction.
+    const value = p.dir === 'forward'
+      ? ((root.x - base.x) * ctx.f) / ctx.track.torsoT
+      : dist(root, base) / ctx.track.torsoT;
+    return { value, conf: mean([root.c, base.c]) * baseScale };
   },
 };
 
@@ -377,7 +382,9 @@ const WINDOW_METRICS: Record<WindowKey, WindowFn> = {
     let best: number | null = null;
     const confs: number[] = [];
     for (const ank of ['lAnk', 'rAnk'] as const) {
-      const a0 = pt(ctx.track, ank, s.ready.index);
+      // Setup position: the ankle's median over the ready window (one noisy sample as the reference would add its
+      // jitter to every displacement), else the ready frame.
+      const a0 = windowMedian(ctx, ank, s.readyWindow) ?? pt(ctx.track, ank, s.ready.index);
       if (!a0) continue;
       let m = 0;
       for (let i = s.ready.index; i <= s.contact.index; i++) {
@@ -607,6 +614,25 @@ function pathLength(ctx: MetricContext, a: number, b: number): MetricValue {
   if (used < METRIC_CONSTANTS.minWindowCoverage * (b - a)) return NONE;
   // Scale up for the skipped segments so a short dropout does not shorten the path.
   return { value: (len * ((b - a) / used)) / ctx.track.torsoT, conf: mean(confs) };
+}
+
+/** Per-axis median position of a joint over a grid window (null without the window or with < 60 % coverage). */
+function windowMedian(
+  ctx: MetricContext,
+  j: Joint,
+  w: { startIndex: number; endIndex: number } | null,
+): { x: number; y: number } | null {
+  if (!w) return null;
+  const xs: number[] = [], ys: number[] = [];
+  for (let i = w.startIndex; i <= w.endIndex; i++) {
+    const q = pt(ctx.track, j, i);
+    if (q) {
+      xs.push(q.x);
+      ys.push(q.y);
+    }
+  }
+  if (xs.length < METRIC_CONSTANTS.minWindowCoverage * (w.endIndex - w.startIndex + 1)) return null;
+  return { x: median(xs), y: median(ys) };
 }
 
 /** Angle at b in degrees for the polyline a–b–c (180° = straight). */

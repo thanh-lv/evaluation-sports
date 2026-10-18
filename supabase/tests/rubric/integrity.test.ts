@@ -110,6 +110,20 @@ Deno.test('measured checkpoints reference a registered metric with valid params,
   }
 });
 
+Deno.test('baseErr dir=forward is a side-view displacement: excluded in behind / front views', () => {
+  let forward = 0;
+  for (const r of bundles()) {
+    for (const c of r.checkpoints) {
+      if (c.metric?.fn !== 'baseErr' || c.metric.params?.dir !== 'forward') continue;
+      forward++;
+      assertEquals(c.views.B, 0, `${c.id}: forward motion is along the camera axis in B/F views`);
+      assert(Array.isArray(c.metric.target) && c.metric.target[0] !== null, `${c.id}: needs a lower bound`);
+    }
+  }
+  // "Move up after the shot" checkpoints must not pass when the player backs off (pb.drop3.TD7, pb.return.RT6).
+  assertEquals(forward, 2);
+});
+
 Deno.test('V checkpoints have 5 anchors and a key-frame phase; N checkpoints carry nothing scorable', () => {
   for (const r of bundles()) {
     for (const c of r.checkpoints) {

@@ -1,7 +1,7 @@
 -- Schema shape, function hygiene, client privileges and seed values (DESIGN.md §6.5, §8.1, §9.3, D21).
 begin;
 \ir _helpers.psql
-select plan(28);
+select plan(33);
 
 -- Tables -----------------------------------------------------------------------------------------------------------
 select has_table('public', t, format('public.%s exists', t))
@@ -66,6 +66,40 @@ select is(
   array['feedback', 'profiles'],
   'authenticated can write only feedback (insert) and profiles (update)');
 
+select is(
+  (select array_agg(n.nspname || '.' || c.relname order by n.nspname || '.' || c.relname)
+   from pg_class c join pg_namespace n on n.oid = c.relnamespace
+   where n.nspname in ('public', 'private') and c.relkind in ('r', 'v', 'm')
+     and (has_table_privilege('authenticated', c.oid, 'delete') or has_table_privilege('anon', c.oid, 'delete')
+       or has_table_privilege('authenticated', c.oid, 'truncate') or has_table_privilege('anon', c.oid, 'truncate')
+       or has_table_privilege('authenticated', c.oid, 'references')
+       or has_table_privilege('authenticated', c.oid, 'trigger'))),
+  array['public.analyses'],
+  'clients may DELETE only analyses (own rows via RLS); no TRUNCATE/REFERENCES/TRIGGER anywhere');
+
+-- Default privileges: a function or table a LATER migration creates must not reach clients by default. (PostgreSQL's
+-- EXECUTE-to-PUBLIC default is global; a per-schema ALTER DEFAULT PRIVILEGES cannot revoke it.)
+create function public.zz_future_fn() returns int language sql as 'select 1';
+create function private.zz_future_fn() returns int language sql as 'select 1';
+create table public.zz_future_table (id int);
+select ok(
+  not has_function_privilege('anon', 'public.zz_future_fn()', 'execute')
+  and not has_function_privilege('authenticated', 'public.zz_future_fn()', 'execute')
+  and has_function_privilege('service_role', 'public.zz_future_fn()', 'execute'),
+  'a new public function is not executable by anon/authenticated by default (service_role keeps it)');
+select is(
+  (select count(*)::int from pg_proc p, aclexplode(coalesce(p.proacl, acldefault('f', p.proowner))) a
+   where p.oid in ('public.zz_future_fn()'::regprocedure, 'private.zz_future_fn()'::regprocedure)
+     and a.grantee = 0 and a.privilege_type = 'EXECUTE'),
+  0, 'new functions in public/private carry no EXECUTE for PUBLIC');
+select ok(
+  not has_table_privilege('anon', 'public.zz_future_table', 'select')
+  and not has_table_privilege('authenticated', 'public.zz_future_table', 'select,insert,update,delete'),
+  'a new public table is not readable or writable by clients by default');
+drop table public.zz_future_table;
+drop function public.zz_future_fn();
+drop function private.zz_future_fn();
+
 -- Seed values --------------------------------------------------------------------------------------------------------
 select results_eq(
   $$select tier, period_type, total_limit, standard_limit, first_ever_standard, max_in_flight, free_retry_limit,
@@ -88,6 +122,11 @@ select results_eq(
 
 select is((select value from public.app_config where key = 'min_user_age'), '18'::jsonb, 'min_user_age = 18 (D21)');
 select is((select value from public.app_config where key = 'budget_usd'), '30'::jsonb, 'budget_usd = 30 (§8.7)');
+select is(
+  (select jsonb_object_agg(key, value) from public.app_config
+   where key in ('budget_alert_ratio', 'budget_hard_cap_mult', 'event_daily_limit', 'event_props_max_bytes')),
+  '{"budget_alert_ratio": 0.7, "budget_hard_cap_mult": 2, "event_daily_limit": 300, "event_props_max_bytes": 2048}'::jsonb,
+  'budget guard (70 %, 2x hard cap, §8.7) and log_event limits (300/day, 2 KB, §6.5)');
 select ok(
   (select value ? 'pdpl' and value ? 'ai' from public.app_config where key = 'consent_versions'),
   'consent_versions has pdpl and ai');

@@ -49,7 +49,9 @@ begin
   if p_tier = 'trial' then
     return query select 'trial:' || coalesce(p_original_transaction_id, 'none'), null::timestamptz, null::timestamptz;
   elsif p_tier = 'premium' then
-    v_anchor := coalesce(p_anchor, p_at) at time zone v_tz;
+    -- No anchor (e.g. a manual entitlement): ICT calendar months. Anchoring on p_at instead would start a new window,
+    -- and a fresh quota, on every call.
+    v_anchor := coalesce(p_anchor at time zone v_tz, date_trunc('month', v_local));
     v_months := (extract(year from v_local)::int - extract(year from v_anchor)::int) * 12
       + (extract(month from v_local)::int - extract(month from v_anchor)::int);
     if v_anchor + make_interval(months => v_months) > v_local then
@@ -599,10 +601,13 @@ begin
     return null;
   end if;
 
+  -- "coalesce(grace, expires)" is computed as greatest(): a grace end is always after the Apple expiry, so the two
+  -- agree while a grace period runs, but a stale grace_expires_at left over from an earlier billing issue must not
+  -- cut a renewed subscription short.
   select * into v_s from public.app_store_subscriptions s
   where s.user_id = p_user_id and s.revoked_at is null and s.status in (1, 4)
-    and coalesce(s.grace_expires_at, s.expires_at) > now()
-  order by coalesce(s.grace_expires_at, s.expires_at) desc
+    and greatest(s.grace_expires_at, s.expires_at) > now()
+  order by greatest(s.grace_expires_at, s.expires_at) desc
   limit 1;
 
   if found then
@@ -611,9 +616,10 @@ begin
       billing_issue, in_grace, source
     ) values (
       p_user_id, case when v_s.is_trial then 'trial' else 'premium' end, v_s.is_trial, v_s.product_id,
-      v_s.original_transaction_id, coalesce(v_s.grace_expires_at, v_s.expires_at),
+      v_s.original_transaction_id, greatest(v_s.grace_expires_at, v_s.expires_at),
       coalesce(v_s.period_anchor, v_s.original_purchase_at, v_s.created_at), v_s.auto_renew,
-      v_s.status in (3, 4), v_s.status = 4 or (v_s.grace_expires_at is not null and v_s.expires_at <= now()),
+      v_s.status in (3, 4),
+      v_s.status = 4 or coalesce(v_s.grace_expires_at > now() and v_s.expires_at <= now(), false),
       case when v_s.environment = 'Xcode' then 'xcode' else 'app_store' end
     )
     on conflict (user_id) do update set
@@ -626,7 +632,7 @@ begin
     -- keep the billing-retry signal so the app can say "update your payment method"
     select * into v_latest from public.app_store_subscriptions s
     where s.user_id = p_user_id
-    order by coalesce(s.grace_expires_at, s.expires_at) desc nulls last
+    order by greatest(s.grace_expires_at, s.expires_at) desc nulls last
     limit 1;
     insert into public.entitlements as e (
       user_id, tier, is_trial, product_id, original_transaction_id, expires_at, period_anchor, will_renew,
@@ -804,6 +810,10 @@ begin
   if not exists (select 1 from public.profiles where id = p_to_user_id) then
     return jsonb_build_object('merged', false, 'code', 'not_found');
   end if;
+  -- the target must be a permanent account (§6.1: JWT of the permanent account)
+  if coalesce((select u.is_anonymous from auth.users u where u.id = p_to_user_id), true) then
+    return jsonb_build_object('merged', false, 'code', 'forbidden');
+  end if;
 
   -- both users' quota state changes: lock in uuid order so concurrent merges cannot deadlock
   perform pg_advisory_xact_lock(hashtextextended(least(p_from_user_id, p_to_user_id)::text, 0));
@@ -923,7 +933,9 @@ as $$
     'plan', '[]'::jsonb);
 $$;
 
--- The caller's result, redacted by the CURRENT tier (an upgrade unlocks past reports).
+-- The caller's result, redacted by the CURRENT tier (an upgrade unlocks past reports). Free users may open only the
+-- results get_history shows unlocked (the newest features.history_full_limit = 3); an older one raises PT403
+-- forbidden, so the history stubs cannot be bypassed by calling get_result with the id.
 create or replace function public.get_result(p_analysis_id uuid)
 returns jsonb
 language plpgsql
@@ -934,11 +946,14 @@ as $$
 declare
   v_uid uuid := auth.uid();
   v_result jsonb;
+  v_created timestamptz;
+  v_full_limit int;
+  v_newer int;
 begin
   if v_uid is null then
     raise sqlstate 'PT401' using message = 'unauthorized';
   end if;
-  select r.result into v_result
+  select r.result, a.created_at into v_result, v_created
   from public.analysis_results r
   join public.analyses a on a.id = r.analysis_id
   where r.analysis_id = p_analysis_id and a.user_id = v_uid;
@@ -946,6 +961,17 @@ begin
     raise sqlstate 'PT404' using message = 'analysis_not_found';
   end if;
   if private.tier_of(v_uid) = 'free' then
+    select (p.features ->> 'history_full_limit')::int into v_full_limit from public.plan_limits p where p.tier = 'free';
+    if v_full_limit is not null then
+      -- same order and rank as get_history: (analyses.created_at, id) descending, counting results only
+      select count(*) into v_newer
+      from public.analysis_results r
+      join public.analyses a on a.id = r.analysis_id
+      where a.user_id = v_uid and (a.created_at, a.id) > (v_created, p_analysis_id);
+      if v_newer >= v_full_limit then
+        raise sqlstate 'PT403' using message = 'forbidden', detail = 'older results require premium or trial';
+      end if;
+    end if;
     return private.redact_result_free(v_result);
   end if;
   return v_result || jsonb_build_object('access', 'full', 'locked',

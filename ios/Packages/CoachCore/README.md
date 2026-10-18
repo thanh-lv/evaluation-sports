@@ -47,7 +47,7 @@ Platforms: iOS 17, macOS 14. Add it to the app as a local package (`project.yml`
 
 ### `Sampling/`
 - `FrameScheduler(targetHz:srcFps:)`; `mutating shouldKeep(ptsUs:) -> Bool`. Keeps a frame if `pts ≥ nextT − 0.5/srcFps`, then `nextT = max(nextT, pts) + 1/targetHz` (no burst after a VFR gap); non-increasing PTS are dropped. `resume(afterUs:)` for a new reader after a background resume. Codable.
-- `RateChooser(srcFps:segmentSec:)`; `recordVisionCall(milliseconds:)` (calls 1–5 are warm-up, 6–25 timed), `isComplete`, `msPerFrame`, `decide(thermal:) -> 30|60`; pure `RateChooser.choose(srcFps:msPerFrame:segmentSec:thermal:)`; `RateChooser.sourceFpsVerdict(_:) -> .ok | .warn (<30) | .reject (<24)`. `ThermalLevel` mirrors `ProcessInfo.ThermalState` (map it in the app).
+- `RateChooser(srcFps:segmentSec:)`; `recordVisionCall(milliseconds:)` (calls 1–5 are warm-up, 6–25 timed), `isComplete`, `msPerFrame`, `decide(thermal:) -> 30|60`; pure `RateChooser.choose(srcFps:msPerFrame:segmentSec:thermal:)`; `RateChooser.sourceFpsVerdict(_:) -> .ok | .warn (<30) | .reject (<24; 23.976 counts as 24)`. `ThermalLevel` mirrors `ProcessInfo.ThermalState` (map it in the app).
 - `Timebase.microseconds(value:timescale:) -> Int64?`, `Timebase.milliseconds(fromMicroseconds:)`.
 
 ### `Tracking/`
@@ -63,7 +63,7 @@ Platforms: iOS 17, macOS 14. Add it to the app as a local package (`project.yml`
 
 ### `Payload/`
 - `PoseV1` (+ nested `Client`, `Session`, `Source`, `Segment`, `Display`, `Video`, `Quality(stats:)`, `Track`): `encodedForUpload() throws -> Data` (sorted keys, throws `PoseBuildError.tooLarge` above 1.2 MB), `validate() -> [String]` (client mirror of the server checks), `makeEncoder(pretty:)`.
-- `PoseV1Builder(analysisId: UUID|String, client:session:video:)`; `append(tUs:step:candidates:)`, `append(tUs:target:box:flags:)`, `appendMissing(tUs:)`; `build(quality:) throws -> PoseV1`. Missing-target frames get `0,0,0` joints, the coasted flag and a back-filled box. Codable (checkpointable). Errors: `PoseBuildError`.
+- `PoseV1Builder(analysisId: UUID|String, client:session:video:)`; `append(tUs:step:candidates:)`, `append(tUs:target:box:flags:)`, `appendMissing(tUs:)`; `build(quality:) throws -> PoseV1`. Missing-target frames get `0,0,0` joints, the coasted flag and a back-filled box; a box that is empty inside the frame (e.g. a coasting prediction that drifted out) counts as missing, so the wire never carries `w = 0` or `h = 0`. Codable (checkpointable). Errors: `PoseBuildError`.
 - `Quantizer`: `coordinate`, `confidence`, `keypoint`, `frame`, `box`, `dequantize(x:y:c:)`, `joints(fromRow:)`, `rect(fromBox:)`.
 - `PrepareResponseV1` (+ `ViewGuess`, `PreparedStroke`, `FrameRequest`, `QuotaPreview`; top-level typealiases of the same names), `uploadRequests`, `stroke(id:)`. `PrepareWarning` is an open string type with constants (`.fpsLow`, `.viewLowConfidence`, `.viewMismatch`, `.viewNotRecommended`, `.skillMismatchSuspected`, `.fewStrokes`, `.playerSmall`, `.handednessMismatch`). `StrokePhasesUs.time(of:)`.
 - `ReprepareV1(analysisId:cameraView:excludedStrokeIds:handedness:)` (lowercases the id, sorts the ids).

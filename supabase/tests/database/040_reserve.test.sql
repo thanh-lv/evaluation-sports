@@ -2,7 +2,7 @@
 -- period keys (ICT month boundary, trial, premium windows). DESIGN.md §6.5, §9.3, D18. Concurrency: tests/sql.
 begin;
 \ir _helpers.psql
-select plan(48);
+select plan(51);
 
 create temp table ids (name text primary key, id uuid) on commit drop;
 create temp table r (name text primary key, v jsonb) on commit drop;
@@ -34,6 +34,17 @@ select is(
 select is(
   (select period_key from private.period_window('premium', '2026-01-01 00:00+07', 'tx', '2026-01-31 10:00+07')),
   'sub:tx:2026-01-31', 'premium: an anchor in the future clamps to the first window');
+select is(
+  (select string_agg(period_key || ' ' || private.ict_iso(resets_at), ', ')
+   from (values ('2026-03-01 00:00+07'::timestamptz), ('2026-03-20 12:00+07'), ('2026-03-31 23:59+07')) t(at),
+     private.period_window('premium', t.at, 'tx', null)),
+  'sub:tx:2026-03-01 2026-04-01T00:00:00+07:00, sub:tx:2026-03-01 2026-04-01T00:00:00+07:00, '
+    || 'sub:tx:2026-03-01 2026-04-01T00:00:00+07:00',
+  'premium without an anchor: stable ICT calendar-month windows (never a new window per call)');
+select is((select period_key from private.period_window('premium', '2026-03-31 17:00+00', 'tx', null)),
+  'sub:tx:2026-04-01', 'premium without an anchor: the window turns at ICT midnight');
+select is((select period_key from private.period_window('free', '2026-02-28 16:59:59.999+00')), '2026-02',
+  'free: the last millisecond of February (ICT) is still February');
 
 -- Free user without the DeviceCheck bonus ----------------------------------------------------------------------------
 insert into ids values ('f', tests.create_user('free@example.com'));

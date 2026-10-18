@@ -3,8 +3,10 @@
 #   anonymous sign-in → profile created by the auth trigger (as supabase_auth_admin), my_status, column-limited
 #   analyses select, get_result 404, private schema closed to clients, storage upsert in the own folder
 #   (INSERT + SELECT + UPDATE), refusals for another folder / analysis-derived / uppercase ids, service-role writes
-#   to analysis-derived readable by the owner only.
-# Users and objects it creates are removed at the end.
+#   to analysis-derived readable by the owner only, no move of a frame into analysis-derived; email ownership
+#   (confirmations on: a password sign-up gets no session, an anonymous user's email link stays pending until the
+#   OTP is verified, and only then does a reviewer-listed email set is_reviewer).
+# Users, objects and the reviewer_emails row it creates are removed at the end.
 set -euo pipefail
 # shellcheck source=supabase/tests/sql/_lib.sh
 source "$(dirname "${BASH_SOURCE[0]}")/_lib.sh"
@@ -14,11 +16,16 @@ ANON_KEY="${ANON_KEY:-$(sb_env PUBLISHABLE_KEY)}"
 SERVICE_KEY="${SERVICE_KEY:-$(sb_env SECRET_KEY)}"
 [[ -n "$API_URL" && -n "$ANON_KEY" && -n "$SERVICE_KEY" ]] || { echo "api_smoke.sh: stack not running"; exit 1; }
 
+MAILPIT_URL="${MAILPIT_URL:-$(sb_env MAILPIT_URL)}"
+MAILPIT_URL="${MAILPIT_URL:-http://127.0.0.1:54324}"
 WORK="$(mktemp -d)"
 USERS=()
 AID=""
+SMOKE_EMAIL="smoke-$(python3 -I -c 'import uuid; print(uuid.uuid4().hex[:12])')@racketcoach.test"
 cleanup() {
   local uid
+  psql_local -c "delete from auth.users where email in ('$SMOKE_EMAIL', 'pw-$SMOKE_EMAIL') or email_change = '$SMOKE_EMAIL';
+    delete from private.reviewer_emails where email = '$SMOKE_EMAIL'" >/dev/null 2>&1 || true
   for uid in ${USERS[@]+"${USERS[@]}"}; do # empty-array safe under set -u on bash 3.2 (macOS)
     for bucket in analysis-inputs analysis-derived; do
       curl -s -o /dev/null -X DELETE "$API_URL/storage/v1/object/$bucket" -H "apikey: $SERVICE_KEY" \
@@ -109,9 +116,49 @@ expect_eq "owner downloads the pose JSON" "200" \
 code="$(status GET "$API_URL/storage/v1/object/authenticated/analysis-derived/$U1/$AID/pose.clean.json" "$T2")"
 expect_eq "another user cannot download it" "refused" \
   "$([[ $code =~ ^(400|403|404)$ ]] && echo refused || echo "$code")"
+code="$(status POST "$API_URL/storage/v1/object/move" "$T1" -H 'Content-Type: application/json' \
+  -d "{\"bucketId\": \"analysis-inputs\", \"sourceKey\": \"$U1/$AID/frames/F1.jpg\",
+       \"destinationBucket\": \"analysis-derived\", \"destinationKey\": \"$U1/$AID/pose.raw.json\"}")"
+expect_eq "a client cannot move a frame into analysis-derived" "refused" \
+  "$([[ $code =~ ^(400|403|404)$ ]] && echo refused || echo "$code")"
+code="$(status POST "$API_URL/storage/v1/object/move" "$T1" -H 'Content-Type: application/json' \
+  -d "{\"bucketId\": \"analysis-inputs\", \"sourceKey\": \"$U1/$AID/frames/F1.jpg\",
+       \"destinationKey\": \"$U2/$AID/frames/F1.jpg\"}")"
+expect_eq "a client cannot move a frame into another user's folder" "refused" \
+  "$([[ $code =~ ^(400|403|404)$ ]] && echo refused || echo "$code")"
 expect_eq "owner deletes own key frame" "200" \
   "$(status DELETE "$API_URL/storage/v1/object/analysis-inputs" "$T1" -H 'Content-Type: application/json' \
     -d "{\"prefixes\": [\"$U1/$AID/frames/F1.jpg\"]}")"
+
+# Email ownership (config.toml [auth.email] enable_confirmations = true) ---------------------------------------------------
+psql_local -c "insert into private.reviewer_emails (email, note) values ('$SMOKE_EMAIL', 'api_smoke.sh')" >/dev/null
+code="$(curl -s -o "$WORK/body" -w '%{http_code}' -X POST "$API_URL/auth/v1/signup" -H "apikey: $ANON_KEY" \
+  -H 'Content-Type: application/json' -d "{\"email\": \"pw-$SMOKE_EMAIL\", \"password\": \"smoke-pass-123\"}")"
+expect_eq "a password sign-up gets no session until the email is confirmed" "200 False" \
+  "$code $(json "'access_token' in d" <"$WORK/body")"
+
+curl -s -o /dev/null -X DELETE "$MAILPIT_URL/api/v1/messages" || true
+status PUT "$API_URL/auth/v1/user" "$T2" -H 'Content-Type: application/json' -d "{\"email\": \"$SMOKE_EMAIL\"}" >/dev/null
+expect_eq "an anonymous user's email link stays pending (not reviewer yet)" "pending False" \
+  "$(psql_value -c "select case when u.email is null and u.email_change = '$SMOKE_EMAIL' then 'pending' else
+      coalesce(u.email, '-') end from auth.users u where u.id = '$U2'") \
+$(status POST "$API_URL/rest/v1/rpc/my_status" "$T2" -H 'Content-Type: application/json' -d '{}' >/dev/null
+  json "d['isReviewer']" <"$WORK/body")"
+otp=""
+for _ in 1 2 3 4 5; do
+  otp="$(curl -s "$MAILPIT_URL/api/v1/messages" | python3 -I -c "
+import json, re, sys
+for m in json.load(sys.stdin).get('messages') or []:
+    if any(t['Address'] == sys.argv[1] for t in m['To']):
+        print(re.search(r'([0-9]{6})\s*$', m['Subject']).group(1)); break" "$SMOKE_EMAIL" 2>/dev/null || true)"
+  [[ -n "$otp" ]] && break
+  sleep 1
+done
+expect_eq "verifying the OTP links the email and sets is_reviewer" "200 True" \
+  "$(curl -s -o "$WORK/body" -w '%{http_code}' -X POST "$API_URL/auth/v1/verify" -H "apikey: $ANON_KEY" \
+    -H "Authorization: Bearer $T2" -H 'Content-Type: application/json' \
+    -d "{\"type\": \"email_change\", \"email\": \"$SMOKE_EMAIL\", \"token\": \"${otp:-000000}\"}") \
+$(psql_value -c "select is_reviewer from public.profiles where id = '$U2'" | sed 's/^t$/True/; s/^f$/False/')"
 
 if [[ $FAILURES -ne 0 ]]; then
   echo "api_smoke.sh: $FAILURES failure(s)"

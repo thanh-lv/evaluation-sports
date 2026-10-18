@@ -7,8 +7,11 @@
  *   c = min(1, meanJointConf/0.6) × viewFactor × (velocityBased at 30 Hz ? 0.5 : 1).
  * - V checkpoint (after Claude): s = level/4, c = {low .4, medium .7, high 1} × viewFactor; level −1 excludes it.
  *   The V share of each sub-score's effective weight Σw·c is capped at 35 % by scaling the V items down.
- * - Sub-score: 100·Σ(w·c·s)/Σ(w·c), coverage = Σ(w·c)/Σw over its scorable checkpoints (M, M~, V; N never counts),
- *   shown when coverage ≥ 0.4.
+ * - Sub-score: 100·Σ(w·c·s)/Σ(w·c), coverage = Σ(w·c)/Σw, shown when coverage ≥ 0.4. Σw runs over the checkpoints
+ *   that were assessable: measured rows and `no_data` rows (measurable in this view, but tracking lost them: c = 0)
+ *   count; excluded checkpoints do not — view factor 0 ("a view factor of 0 excludes the checkpoint"), N, and V items
+ *   without a usable judgment (level −1 / not judged: "not_assessable items are excluded"; DESIGN-v1.0 §6.4,
+ *   research §3.3).
  * - Overall: skill-weighted over the shown sub-scores; coverage = skill-weighted mean of sub-score coverages.
  *   coverage < 0.5 → partial (no number); coverage < 0.8 → capped at 85. Display = round(x/5)·5. Level bands
  *   0–39 / 40–59 / 60–79 / 80–100 from the (capped) raw overall, no hysteresis.
@@ -153,9 +156,15 @@ export interface ComposedScores {
   overall: ComposedOverall;
 }
 
-/** Statuses that count in a sub-score's Σw (everything scorable; N never does). */
-function countsInCoverage(row: CheckpointRow): boolean {
-  return row.status !== 'not_assessable';
+/**
+ * Whether a (composed) row counts in its sub-score's Σw. Excluded checkpoints never do: N, view factor 0 and V items
+ * Claude did not judge (level −1 or missing, which includes every V item before Claude and in pose_only mode).
+ * Measured rows and `no_data` rows (assessable in this view but lost by tracking, c = 0) do.
+ */
+function countsInCoverage(row: ComposedCheckpoint): boolean {
+  if (row.status === 'measured' || row.status === 'no_data') return row.viewFactor > 0;
+  if (row.status === 'visual') return row.visualLevel !== null;
+  return false;
 }
 
 /**

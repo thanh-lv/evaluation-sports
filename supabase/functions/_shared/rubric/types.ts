@@ -67,11 +67,22 @@ export interface CheckpointDef {
   /** Required for V: anchors for levels 0..4 (English, sent to Claude in RUBRIC_TEXT). */
   vAnchors?: FiveAnchors;
   name: LocalizedText;
-  /** Plain-language evidence templates for a low / high reading, e.g. "khuỷu tay còn gập khi chạm cầu". */
-  plain: { vi: { low: string; high: string }; en: { low: string; high: string } };
+  /**
+   * Plain-language evidence templates, e.g. "khuỷu tay còn gập khi chạm cầu", picked by the checkpoint reading:
+   * `low` / `high` = below / above the band (a boolean or V item that failed reads `low`), `ok` = the target was met
+   * (strengths). For a one-sided band, boolean, V or N item, `ok` repeats the good side's template.
+   */
+  plain: { vi: PlainTemplates; en: PlainTemplates };
   faults: string[];
   /** Joints highlighted on the key-frame skeleton. */
   joints: Joint[];
+}
+
+/** One language's evidence templates (no digits: values are shown separately as valueText / targetText). */
+export interface PlainTemplates {
+  low: string;
+  high: string;
+  ok: string;
 }
 
 export interface FaultDef {

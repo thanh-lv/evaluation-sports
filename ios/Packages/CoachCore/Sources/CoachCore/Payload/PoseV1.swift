@@ -222,6 +222,7 @@ extension PoseV1 {
         var issues: [String] = []
         if schema != PoseV1.schemaId { issues.append("schema must be \(PoseV1.schemaId)") }
         if !IDs.isLowerCanonical(analysisId) { issues.append("analysisId must be a lowercase canonical uuid") }
+        if !PoseV1.isSkillId(session.skill) { issues.append("skill must look like bd.<skill> or pb.<skill>") }
         if Sport.of(skill: session.skill) != session.sport { issues.append("skill \(session.skill) is not a \(session.sport.rawValue) skill") }
         if session.subject == .other && !session.subjectConsent { issues.append("subject=other requires consent") }
         if session.subjectMinor && session.subject != .other { issues.append("subjectMinor requires subject=other") }
@@ -231,6 +232,12 @@ extension PoseV1 {
         if segMs < QualityGate.minSegmentMs || segMs > QualityGate.maxSegmentMs { issues.append("segment duration \(segMs) ms outside 3000..32000") }
         if video.segment.endMs > video.durationMs + 50 { issues.append("segment ends after the clip") }
         if video.display.w <= 0 || video.display.h <= 0 { issues.append("display must be positive") }
+        if video.durationMs < 0 || video.segment.startMs < 0 || video.segment.endMs < 0 { issues.append("durationMs and segment must be non-negative") }
+        let q = quality
+        if q.framesTotal < 0 || q.framesWithTarget < 0 || q.trackResets < 0 || q.ambiguousAtMs.contains(where: { $0 < 0 }) {
+            issues.append("quality counts must be non-negative")
+        }
+        if !(0...1).contains(q.meanLimbConf) || !(0...1).contains(q.playerHeightFrac) { issues.append("quality ratios must be in 0...1") }
 
         let t = track
         if t.jointOrder != Joint.allCases.map(\.rawValue) { issues.append("jointOrder must equal JOINT_ORDER") }
@@ -254,5 +261,14 @@ extension PoseV1 {
         }
         if t.flags.contains(where: { $0 < 0 || $0 > 3 }) { issues.append("flags must be in 0...3") }
         return issues
+    }
+
+    /// Contracts `SkillId`: `^(bd|pb)\.[a-z0-9_]+$`.
+    public static func isSkillId(_ s: String) -> Bool {
+        guard s.hasPrefix("bd.") || s.hasPrefix("pb.") else { return false }
+        let rest = s.utf8.dropFirst(3)
+        return !rest.isEmpty && rest.allSatisfy { c in
+            (c >= UInt8(ascii: "a") && c <= UInt8(ascii: "z")) || (c >= UInt8(ascii: "0") && c <= UInt8(ascii: "9")) || c == UInt8(ascii: "_")
+        }
     }
 }

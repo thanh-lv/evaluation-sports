@@ -5,8 +5,11 @@ weblab/dist/
 # Secrets and local env (keep the example)
 .env*
 !.env.example
-supabase/.temp/
 supabase/functions/.env.local
+
+# Supabase CLI local state
+supabase/.branches/
+supabase/.temp/
 
 # Xcode / iOS
 ios/*.xcodeproj
@@ -16,7 +19,9 @@ DerivedData/
 *.xcuserstate
 xcuserdata/
 
+# SwiftPM build output (any package)
+.build/
+.swiftpm/
+
 # OS
 .DS_Store
-supabase/.branches
-supabase/.temp

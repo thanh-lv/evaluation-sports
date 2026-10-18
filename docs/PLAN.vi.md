@@ -140,7 +140,7 @@ Dùng Workflow để code song song theo từng module; mỗi milestone đều c
 2. **M1 – Data contracts:** Zod cho `pose.v1`, `reprepare.v1`, `prepare.v1`, `coach.v1` (theo từng môn) và `coach-result.v1` → sinh `shared/schemas`. Có audit từ khoá không được structured output hỗ trợ.
 3. **M2 – Rubric:** 6 skill bật, 6 skill tắt sẵn, khoảng 30 drill, text song ngữ, test toàn vẹn.
 4. **M4a–d – Engine:** làm sạch, tách cú đánh, chỉ số, chấm điểm, kế hoạch khung hình, `prepare`. Test bằng pose tổng hợp (có VFR, tốc độ thật 20–30 T/s); bench dưới 300ms.
-5. **M5 – SQL:** migration 0100–0700 + seed. Test trên PG16 bằng shim mô phỏng `auth`/`storage`: RLS, cấp quyền theo cột, chạy đồng thời `reserve_for_submit`, fencing, hoàn quota.
+5. **M5 – SQL:** migration 0100–0900 + seed. Test trên stack Supabase local thật (Docker, `supabase/tests/sql/run.sh`: pgTAP + script shell): RLS, cấp quyền theo cột, chạy đồng thời `reserve_for_submit`, fencing, hoàn quota.
 6. **M6 – Claude:**
    - Nạp skill `claude-api` trước để **kiểm tra lại** model ID, giá, `output_config`/effort, prompt caching và các giới hạn schema.
    - Viết prompt, request builder, `runOnce`, postprocess, test với mock.
@@ -233,7 +233,7 @@ Bạn chạy `make dev` trên Mac để xác nhận lần cuối.
 - `gen-schemas --check`;
 - `replay.ts --mock-claude` chạy end-to-end từ pose đến kết quả;
 - `bench-engine`;
-- `supabase/tests/sql/run.sh` (PG16 tạm + shim, có test đồng thời);
+- `supabase/tests/sql/run.sh` (stack Supabase local qua Docker, có test đồng thời; `check.sh` bỏ qua kèm thông báo khi không có Docker);
 - `check_ios_resources.py`: kiểm tra xcstrings đủ vi/en, xcprivacy, Info keys, xcconfig, ID sản phẩm StoreKit.
 
 **Trên Mac/iPhone (bạn làm, có checklist trong README):**

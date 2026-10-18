@@ -40,7 +40,7 @@
         "ftStop": 6167999
       },
       "quality": 0.96,
-      "role": "worst",
+      "role": null,
       "thumbTUs": 6050176,
       "excluded": false
     },
@@ -57,7 +57,7 @@
         "ftStop": 9650601
       },
       "quality": 0.97,
-      "role": null,
+      "role": "worst",
       "thumbTUs": 9499314,
       "excluded": false
     }
@@ -130,11 +130,11 @@
     },
     {
       "frameId": "L1",
-      "strokeId": 2,
+      "strokeId": 3,
       "phase": "ready",
-      "tUs": 5082337,
+      "tUs": 8549417,
       "crop": {
-        "x": 0.3705,
+        "x": 0.4065,
         "y": 0,
         "w": 0.4219,
         "h": 1
@@ -143,11 +143,11 @@
     },
     {
       "frameId": "L2",
-      "strokeId": 2,
+      "strokeId": 3,
       "phase": "bsEnd",
-      "tUs": 5767126,
+      "tUs": 9283177,
       "crop": {
-        "x": 0.3705,
+        "x": 0.4065,
         "y": 0,
         "w": 0.4219,
         "h": 1
@@ -156,11 +156,11 @@
     },
     {
       "frameId": "L3",
-      "strokeId": 2,
+      "strokeId": 3,
       "phase": "contact",
-      "tUs": 6050176,
+      "tUs": 9499314,
       "crop": {
-        "x": 0.3705,
+        "x": 0.4065,
         "y": 0,
         "w": 0.4219,
         "h": 1
@@ -169,11 +169,11 @@
     },
     {
       "frameId": "L4",
-      "strokeId": 2,
+      "strokeId": 3,
       "phase": "ftStop",
-      "tUs": 6167999,
+      "tUs": 9650601,
       "crop": {
-        "x": 0.3705,
+        "x": 0.4065,
         "y": 0,
         "w": 0.4219,
         "h": 1

@@ -3,10 +3,14 @@ DENO_VERSION ?= 2.9.6
 D := npx -y deno@$(DENO_VERSION)
 CFG := --config supabase/functions/deno.json
 
-.PHONY: test fmt schemas fixtures dev stop reset logs
+.PHONY: test sql fmt schemas fixtures dev stop reset logs
 
 test:
 	bash scripts/check.sh
+
+# SQL suite only (local Supabase stack via Docker). WARNING: runs `supabase db reset` unless SKIP_RESET=1.
+sql:
+	bash supabase/tests/sql/run.sh
 
 fmt:
 	$(D) fmt $(CFG) supabase/functions supabase/tests scripts

@@ -22,6 +22,7 @@ import {
   localMaxima,
   lowerBound,
   median,
+  medianIntervalUs,
   parabolicPeak,
   present,
   prominence,
@@ -117,8 +118,10 @@ export function qualityRejection(
     if (raw.flags[k] & FLAG_REACQUIRED) return 'reacquired';
     if (isPresent(raw.joints[wrist], k)) observed++;
   }
-  // Expected raw samples in the window at the track's own nominal rate (VFR drops count as missing).
-  const expected = (2 * C.missingWindowUs * track.hz) / 1e6 + 1;
+  // Expected raw samples in the window at the source's nominal sampling rate (VFR drops count as missing). The rate
+  // is the analysis rate unless the raw samples are sparser (a 30 fps source sent with analysisHz 60 would otherwise
+  // read as half missing and lose every stroke).
+  const expected = (2 * C.missingWindowUs * nominalRawHz(track)) / 1e6 + 1;
   if (1 - observed / expected > C.maxMissingFrac) return 'wrist_missing';
 
   const range = gridRange(track, t - C.interpWindowUs, t + C.interpWindowUs);
@@ -129,4 +132,10 @@ export function qualityRejection(
     if (filled / (range[1] - range[0] + 1) > C.maxInterpFrac) return 'interpolated';
   }
   return null;
+}
+
+/** Sampling rate of the raw track: the analysis rate, or lower when the median raw interval is longer. */
+function nominalRawHz(track: SmoothTrack): number {
+  const dt = medianIntervalUs(track.raw.tUs);
+  return Number.isFinite(dt) && dt > 0 ? Math.min(track.hz, 1e6 / dt) : track.hz;
 }

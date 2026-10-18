@@ -38,7 +38,8 @@ Deno.test('every localized text has non-empty vi and en', () => {
     for (const s of r.skills) assert(s.name.vi && s.name.en && s.rulesTip.vi && s.rulesTip.en, s.id);
     for (const c of r.checkpoints) {
       for (const lang of ['vi', 'en'] as const) {
-        assert(c.plain[lang].low.trim() && c.plain[lang].high.trim(), `${c.id}.plain.${lang}`);
+        const t = c.plain[lang];
+        assert(t.low.trim() && t.high.trim() && t.ok.trim(), `${c.id}.plain.${lang}`);
       }
     }
   }
@@ -47,13 +48,33 @@ Deno.test('every localized text has non-empty vi and en', () => {
 Deno.test('plain evidence templates contain no digits; cues are at most 8 words', () => {
   for (const r of bundles()) {
     for (const c of r.checkpoints) {
-      for (const s of [c.plain.vi.low, c.plain.vi.high, c.plain.en.low, c.plain.en.high]) {
+      for (const s of [c.plain.vi, c.plain.en].flatMap((t) => [t.low, t.high, t.ok])) {
         assert(!/\d/.test(s), `${c.id}: digit in plain template "${s}"`);
       }
     }
     for (const f of r.faults) {
       assert(wordCount(f.cue.vi) <= 8, `${f.id}: vi cue "${f.cue.vi}"`);
       assert(wordCount(f.cue.en) <= 8, `${f.id}: en cue "${f.cue.en}"`);
+    }
+  }
+});
+
+Deno.test('plain.ok describes a met target: the good side for one-sided bands, booleans, V and N', () => {
+  for (const r of bundles()) {
+    for (const c of r.checkpoints) {
+      const t = c.metric?.target;
+      const twoSided = Array.isArray(t) && t[0] !== null && t[1] !== null;
+      for (const lang of ['vi', 'en'] as const) {
+        const p = c.plain[lang];
+        if (twoSided) {
+          // Both band sides are faults, so `ok` needs its own wording.
+          assert(p.ok !== p.low && p.ok !== p.high, `${c.id}.plain.${lang}.ok repeats a fault template`);
+        } else {
+          // Upper-bounded bands are good on the low side; everything else (lower bound, boolean, V, N) on the high.
+          const good = Array.isArray(t) && t[0] === null ? p.low : p.high;
+          assertEquals(p.ok, good, `${c.id}.plain.${lang}.ok`);
+        }
+      }
     }
   }
 });

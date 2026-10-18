@@ -1,7 +1,7 @@
 -- private.merge_anonymous_account (account-merge, DESIGN.md §6.1) and private.consent_current (submit step 2).
 begin;
 \ir _helpers.psql
-select plan(19);
+select plan(20);
 
 create temp table ids (name text primary key, id uuid) on commit drop;
 create temp table r (name text primary key, v jsonb) on commit drop;
@@ -55,6 +55,9 @@ select is(private.merge_anonymous_account((select id from ids where name = 'perm
   (select id from ids where name = 'anon')) ->> 'code', 'forbidden', 'only anonymous accounts can be merged away');
 select is(private.merge_anonymous_account(gen_random_uuid(), (select id from ids where name = 'perm')) ->> 'code',
   'not_found', 'unknown source');
+insert into ids values ('anon2', tests.create_user(null, true)), ('anon3', tests.create_user(null, true));
+select is(private.merge_anonymous_account((select id from ids where name = 'anon2'),
+  (select id from ids where name = 'anon3')) ->> 'code', 'forbidden', 'the target must be a permanent account');
 
 -- consent_current ---------------------------------------------------------------------------------------------------------
 select is(private.consent_current((select id from ids where name = 'perm')), false, 'no consent yet');

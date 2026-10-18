@@ -60,7 +60,13 @@ public struct PoseV1Builder: Codable, Sendable, Hashable {
     public mutating func append(tUs: Int64, target: PersonCandidate?, box: Rect?, flags: TrackFlags) -> Bool {
         guard tUs >= 0 else { return false }
         if let last = frames.last, tUs <= last.tUs { return false }
-        let observedBox = box.flatMap { $0.isFinite ? $0 : nil }
+        // A box that is non-finite or empty inside the frame counts as unknown (back-filled at build time), so the
+        // wire never carries a `w = 0` / `h = 0` box.
+        let observedBox = box.flatMap { b -> Rect? in
+            guard b.isFinite else { return nil }
+            let q = Quantizer.box(b)
+            return q[2] > 0 && q[3] > 0 ? b : nil
+        }
         var f = flags
         if target == nil { f.insert(.coasted) }
         frames.append(Frame(tUs: tUs, kp: Quantizer.frame(target?.joints), box: observedBox, flags: f))

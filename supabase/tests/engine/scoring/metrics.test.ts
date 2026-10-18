@@ -210,6 +210,14 @@ Deno.test('wShift: root between rear (0) and front (1) ankle along f; undefined 
 Deno.test('feetStill: max ankle displacement from ready to contact, in T', () => {
   const s = setup((t) => standing({ lAnk: [0.96 + 0.02 * t, 0.1] }));
   assertAlmostEquals(num(val(s, 'feetStill', {}, 'window')), 0.1, 1e-9); // ready 1.0 → contact 2.0
+  // The setup reference is the ready-window median, not the single ready frame: here the foot sat at 0.96 through
+  // the window and had already moved 0.1 (0.5 T) by the ready frame.
+  const moved = (t: number) => standing({ lAnk: [t < 0.8 ? 0.96 : 1.06, 0.1] });
+  const w = setup(moved, { phases: { ...STD_PHASES, readyWindow: [0.2, 0.6] } });
+  assertAlmostEquals(num(val(w, 'feetStill', {}, 'window')), 0.5, 1e-9);
+  // Without a ready window the ready frame is the reference.
+  const nw = setup(moved, { phases: { ...STD_PHASES, readyWindow: null } });
+  assertAlmostEquals(num(val(nw, 'feetStill', {}, 'window')), 0, 1e-9);
 });
 
 Deno.test('hop: both ankles ≥ 0.1 T and root ≥ 0.05 T, take-offs ≤ 70 ms apart, airtime 0.1–0.4 s', () => {
@@ -263,6 +271,15 @@ Deno.test('baseErr: distance from the ready-window median root, in T', () => {
   const r = val(nw, 'baseErr', {}, 'recovery');
   assertAlmostEquals(num(r), 0.5, 1e-9);
   assertAlmostEquals(r.conf, 0.45, EPS);
+});
+
+Deno.test('baseErr dir=forward: signed displacement along the hitting direction (backing off reads negative)', () => {
+  const frame = (t: number) => standing({ root: [1 + Math.min(Math.max(t - 2, 0), 0.5) * 0.2, 0.5] });
+  assertAlmostEquals(num(val(setup(frame), 'baseErr', { dir: 'forward' }, 'recovery')), 0.5, 1e-9);
+  // Same motion, hitting toward image-left: the player moved away from the net.
+  assertAlmostEquals(num(val(setup(frame, { f: -1 }), 'baseErr', { dir: 'forward' }, 'recovery')), -0.5, 1e-9);
+  // `any` keeps the unsigned distance either way.
+  assertAlmostEquals(num(val(setup(frame, { f: -1 }), 'baseErr', { dir: 'any' }, 'recovery')), 0.5, 1e-9);
 });
 
 Deno.test('headStill: nose displacement over [−0.2, +0.1] s around contact, in T', () => {

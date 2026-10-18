@@ -1,8 +1,8 @@
 /** Candidates (DESIGN.md §6.4) and stroke ranking (§6.2 step 12). */
 import { assertEquals } from '@std/assert';
-import { buildCandidates, faultFor } from '@shared/engine/candidates.ts';
+import { buildCandidates, faultFor, weakSide } from '@shared/engine/candidates.ts';
 import { rankStrokes, strokeScores } from '@shared/engine/rank.ts';
-import type { FaultDef } from '@shared/rubric/types.ts';
+import type { CheckpointDef, FaultDef } from '@shared/rubric/types.ts';
 import { EVEN_WEIGHTS, row } from './_rows.ts';
 
 const fault = (id: string, checkpoint: string, when: FaultDef['when']): FaultDef => ({
@@ -15,6 +15,17 @@ const fault = (id: string, checkpoint: string, when: FaultDef['when']): FaultDef
   drills: ['d'],
   defaultDrill: 'd',
 });
+
+/** Catalog plain templates for the given ids: "<id> <lang> <side>". */
+const plains = (ids: string[]): Pick<CheckpointDef, 'id' | 'plain'>[] =>
+  ids.map((id) => ({
+    id,
+    plain: {
+      vi: { low: `${id} vi low`, high: `${id} vi high`, ok: `${id} vi ok` },
+      en: { low: `${id} en low`, high: `${id} en high`, ok: `${id} en ok` },
+    },
+  }));
+const ids = (rows: { id: string }[]) => plains(rows.map((r) => r.id));
 
 Deno.test('weakness candidates: s < 0.7 ∧ c ≥ 0.4, by impact W_sub·w·(1−s)·c, top 6, fault by reading', () => {
   const weights = { ...EVEN_WEIGHTS, swing: 40, stance: 0 };
@@ -29,13 +40,13 @@ Deno.test('weakness candidates: s < 0.7 ∧ c ≥ 0.4, by impact W_sub·w·(1−
     row({ id: 'inj', subscore: 'follow', s: 0, c: 1, injuryFlag: true }),
   ];
   const faults = [fault('a.low', 'a', 'low'), fault('a.high', 'a', 'high'), fault('b.low', 'b', 'low')];
-  const out = buildCandidates(table, { weights }, faults);
+  const out = buildCandidates(table, { weights }, faults, ids(table));
   assertEquals(out.weaknesses.map((w) => w.checkpointId), ['a', 'b', 'c']);
   assertEquals(out.weaknesses.map((w) => w.faultId), ['a.low', null, null]);
   assertEquals(out.weaknesses[0].impact, 0.4);
   assertEquals(out.injury, [{ checkpointId: 'inj', s: 0, c: 1 }]);
   const many = Array.from({ length: 9 }, (_, i) => row({ id: `w${i}`, subscore: 'swing', s: i / 20, c: 1 }));
-  const top = buildCandidates(many, { weights }, []);
+  const top = buildCandidates(many, { weights }, [], ids(many));
   assertEquals(top.weaknesses.length, 6);
   assertEquals(top.weaknesses[0].checkpointId, 'w0');
 });
@@ -49,9 +60,53 @@ Deno.test('strength candidates: s ≥ 0.85 ∧ c ≥ 0.6, by W_sub·w·c, ties b
     row({ id: 'u', subscore: 'swing', weight: 2, s: 1, c: 0.59 }),
     row({ id: 'inj', subscore: 'swing', weight: 2, s: 1, c: 1, injuryFlag: true }),
   ];
-  const out = buildCandidates(table, { weights: EVEN_WEIGHTS }, []);
+  const out = buildCandidates(table, { weights: EVEN_WEIGHTS }, [], ids(table));
   assertEquals(out.strengths.map((s) => s.checkpointId), ['x', 'y', 'z']);
   assertEquals(out.strengths[0].rank, 0.4);
+});
+
+Deno.test('candidates carry the side they stand for and its catalog plain template', () => {
+  const ps = (strokeId: number, value: number) => ({ strokeId, value, s: 0, c: 1, used: true });
+  const table = [
+    row({ id: 'lo', subscore: 'swing', s: 0.2, c: 1, reading: 'low', target: [1, 2] }),
+    row({ id: 'hi', subscore: 'swing', s: 0.2, c: 1, reading: 'high', target: [1, 2] }),
+    // Boolean met by 2/4 strokes: majority reads `true`, but as a weakness it stands for the failed side.
+    row({ id: 'b', subscore: 'swing', s: 0.5, c: 1, reading: 'true', target: true, value: true }),
+    // Median inside a two-sided band while the strokes miss on both sides: the side most strokes missed.
+    row({
+      id: 'mix',
+      subscore: 'swing',
+      s: 0.3,
+      c: 1,
+      reading: 'ok',
+      target: [1, 2],
+      perStroke: [ps(1, 3), ps(2, 1.5), ps(3, 3.5), ps(4, 0.5)],
+    }),
+    row({ id: 'good', subscore: 'contact', s: 1, c: 1, reading: 'ok', target: [1, 2] }),
+  ];
+  const out = buildCandidates(table, { weights: EVEN_WEIGHTS }, [fault('mix.high', 'mix', 'high')], ids(table));
+  const w = new Map(out.weaknesses.map((x) => [x.checkpointId, x]));
+  assertEquals(w.get('lo')!.plain, { vi: 'lo vi low', en: 'lo en low' });
+  assertEquals(w.get('hi')!.plain, { vi: 'hi vi high', en: 'hi en high' });
+  assertEquals([w.get('b')!.reading, w.get('b')!.plain.en], ['false', 'b en low']);
+  assertEquals([w.get('mix')!.reading, w.get('mix')!.faultId, w.get('mix')!.plain.en], [
+    'high',
+    'mix.high',
+    'mix en high',
+  ]);
+  assertEquals(out.strengths.map((x) => [x.checkpointId, x.plain.vi]), [['good', 'good vi ok']]);
+  assertEquals(weakSide(row({ id: 'n', subscore: 'swing', reading: 'ok', target: [1, 2] })), 'low');
+});
+
+Deno.test('buildCandidates throws on a candidate checkpoint missing from the rubric', () => {
+  const table = [row({ id: 'missing', subscore: 'swing', s: 0, c: 1, reading: 'low' })];
+  let threw = false;
+  try {
+    buildCandidates(table, { weights: EVEN_WEIGHTS }, [], []);
+  } catch {
+    threw = true;
+  }
+  assertEquals(threw, true);
 });
 
 Deno.test('faultFor: booleans always map to the `false` fault', () => {

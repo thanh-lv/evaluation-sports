@@ -1,7 +1,7 @@
 -- Profile auto-creation (anonymous included), age gate (D21), server-set consent timestamps, reviewer flag.
 begin;
 \ir _helpers.psql
-select plan(14);
+select plan(17);
 
 create temp table ids (name text primary key, id uuid) on commit drop;
 grant all on ids to authenticated;
@@ -52,12 +52,23 @@ select tests.logout();
 insert into ids values ('rev', tests.create_user('reviewer@racketcoach.test'));
 select is((select is_reviewer from public.profiles where id = (select id from ids where name = 'rev')), true,
   'seeded reviewer email gets is_reviewer at sign-up');
-insert into ids values ('anon', tests.create_user(null, true));
+-- Unverified addresses never get the flag: GoTrue inserts the row before the OTP is checked, and a password sign-up
+-- or an email link can name any address.
 update auth.users set email = 'REVIEWER@racketcoach.test' where id = (select id from ids where name = 'rev');
-update auth.users set email = 'reviewer@racketcoach.test', is_anonymous = false
+insert into ids values ('unconfirmed', tests.create_user('reviewer@racketcoach.test', false, false));
+select is((select is_reviewer from public.profiles where id = (select id from ids where name = 'unconfirmed')), false,
+  'an unconfirmed sign-up with the reviewer email is not a reviewer');
+update auth.users set email_confirmed_at = now() where id = (select id from ids where name = 'unconfirmed');
+select is((select is_reviewer from public.profiles where id = (select id from ids where name = 'unconfirmed')), true,
+  'confirming the reviewer email (OTP verified) sets the flag');
+insert into ids values ('anon', tests.create_user(null, true));
+update auth.users set email = 'Reviewer@RacketCoach.test' where id = (select id from ids where name = 'anon');
+select is((select is_reviewer from public.profiles where id = (select id from ids where name = 'anon')), false,
+  'an anonymous user cannot become a reviewer by naming the email without confirming it');
+update auth.users set email_confirmed_at = now(), is_anonymous = false
 where id = (select id from ids where name = 'anon');
 select is((select is_reviewer from public.profiles where id = (select id from ids where name = 'anon')), true,
-  'an anonymous user who links the reviewer email becomes a reviewer');
+  'an anonymous user who links and confirms the reviewer email becomes a reviewer');
 select is((select is_reviewer from public.profiles where id = (select id from ids where name = 'u')), false,
   'ordinary users are not reviewers');
 

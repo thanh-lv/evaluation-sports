@@ -1,0 +1,730 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://racketcoach.app/schemas/prepared.v1.json",
+  "title": "prepared.v1",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "prepared.v1"
+    },
+    "analysisId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "algoVersion": {
+      "type": "string"
+    },
+    "rubricVersion": {
+      "type": "string"
+    },
+    "sport": {
+      "type": "string",
+      "enum": ["badminton", "pickleball"]
+    },
+    "skill": {
+      "type": "string",
+      "pattern": "^(bd|pb)\\.[a-z0-9_]+$"
+    },
+    "view": {
+      "type": "string",
+      "enum": ["side", "behind", "front", "diagonal"]
+    },
+    "viewSource": {
+      "type": "string",
+      "enum": ["user", "guess"]
+    },
+    "viewGuess": {
+      "type": "object",
+      "properties": {
+        "view": {
+          "type": "string",
+          "enum": ["side", "behind", "front", "diagonal"]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": ["view", "confidence"],
+      "additionalProperties": false
+    },
+    "handedness": {
+      "type": "string",
+      "enum": ["right", "left"]
+    },
+    "handednessSuggestion": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["right", "left"]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "direction": {
+      "type": "object",
+      "properties": {
+        "f": {
+          "anyOf": [
+            {
+              "type": "number",
+              "const": 1
+            },
+            {
+              "type": "number",
+              "const": -1
+            }
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": ["wrist", "face", "default"]
+        }
+      },
+      "required": ["f", "source"],
+      "additionalProperties": false
+    },
+    "analysisHz": {
+      "anyOf": [
+        {
+          "type": "number",
+          "const": 30
+        },
+        {
+          "type": "number",
+          "const": 60
+        }
+      ]
+    },
+    "srcFps": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "frameMode": {
+      "type": "string",
+      "enum": ["frames", "pose_only"]
+    },
+    "inputQuality": {
+      "$ref": "#/$defs/PoseQuality"
+    },
+    "strokes": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "tStartUs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "tContactUs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "contactIsEstimate": {
+            "type": "boolean"
+          },
+          "tEndUs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "vPeak": {
+            "type": "number",
+            "minimum": 0
+          },
+          "phases": {
+            "type": "object",
+            "properties": {
+              "swingStart": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ready": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "bsEnd": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "contact": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "ftStop": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "recovery": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": ["swingStart", "ready", "bsEnd", "contact", "ftStop", "recovery"],
+            "additionalProperties": false
+          },
+          "readyAssessable": {
+            "type": "boolean"
+          },
+          "quality": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "role": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": ["best", "worst"]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "excluded": {
+            "type": "boolean"
+          },
+          "strokeScore": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "metrics": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {
+              "type": ["number", "boolean", "null"]
+            }
+          }
+        },
+        "required": ["id", "tStartUs", "tContactUs", "contactIsEstimate", "tEndUs", "vPeak", "phases", "readyAssessable", "quality", "role", "excluded", "strokeScore", "metrics"],
+        "additionalProperties": false
+      }
+    },
+    "checkpointTable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subscore": {
+            "type": "string",
+            "enum": ["stance", "footwork", "swing", "contact", "follow", "recovery"]
+          },
+          "assess": {
+            "type": "string",
+            "enum": ["M", "M~", "V", "N"]
+          },
+          "weight": {
+            "anyOf": [
+              {
+                "type": "number",
+                "const": 1
+              },
+              {
+                "type": "number",
+                "const": 2
+              }
+            ]
+          },
+          "phase": {
+            "type": "string",
+            "enum": ["ready", "bsEnd", "contact", "contact+0.2", "ftStop", "recovery", "window"]
+          },
+          "metricKey": {
+            "type": ["string", "null"]
+          },
+          "unit": {
+            "type": ["string", "null"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["measured", "visual", "view_excluded", "no_data", "not_assessable"]
+          },
+          "s": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "c": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "value": {
+            "type": ["number", "boolean", "null"]
+          },
+          "target": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "prefixItems": [
+                      {
+                        "type": ["number", "null"]
+                      },
+                      {
+                        "type": ["number", "null"]
+                      }
+                    ],
+                    "items": false,
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tol": {
+            "type": ["number", "null"]
+          },
+          "reading": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": ["low", "high", "ok", "false", "true"]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "valueText": {
+            "type": "string"
+          },
+          "targetText": {
+            "type": "string"
+          },
+          "perStroke": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "strokeId": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "value": {
+                  "type": ["number", "boolean", "null"]
+                },
+                "s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "c": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "used": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["strokeId", "value", "s", "c", "used"],
+              "additionalProperties": false
+            }
+          },
+          "joints": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["nose", "lEye", "rEye", "lEar", "rEar", "neck", "lSho", "rSho", "lElb", "rElb", "lWri", "rWri", "root", "lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+            }
+          },
+          "viewFactor": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "velocityBased": {
+            "type": "boolean"
+          },
+          "injuryFlag": {
+            "type": "boolean"
+          },
+          "validStrokes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": ["id", "subscore", "assess", "weight", "phase", "metricKey", "unit", "status", "s", "c", "value", "target", "tol", "reading", "valueText", "targetText", "perStroke", "joints", "viewFactor", "velocityBased", "injuryFlag", "validStrokes"],
+        "additionalProperties": false
+      }
+    },
+    "visualToJudge": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "checkpointId": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string",
+            "enum": ["ready", "bsEnd", "contact", "contact+0.2", "ftStop", "recovery", "window"]
+          },
+          "anchors": {
+            "minItems": 5,
+            "maxItems": 5,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "frameIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["F1", "F2", "F3", "F4", "F5"]
+            }
+          },
+          "viewFactor": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": ["checkpointId", "phase", "anchors", "frameIds", "viewFactor"],
+        "additionalProperties": false
+      }
+    },
+    "candidates": {
+      "type": "object",
+      "properties": {
+        "weaknesses": {
+          "maxItems": 6,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "checkpointId": {
+                "type": "string"
+              },
+              "faultId": {
+                "type": ["string", "null"]
+              },
+              "reading": {
+                "type": "string",
+                "enum": ["low", "high", "false"]
+              },
+              "impact": {
+                "type": "number",
+                "minimum": 0
+              },
+              "s": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "c": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "plain": {
+                "$ref": "#/$defs/LocalizedText"
+              }
+            },
+            "required": ["checkpointId", "faultId", "reading", "impact", "s", "c", "plain"],
+            "additionalProperties": false
+          }
+        },
+        "strengths": {
+          "maxItems": 6,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "checkpointId": {
+                "type": "string"
+              },
+              "rank": {
+                "type": "number",
+                "minimum": 0
+              },
+              "s": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "c": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "plain": {
+                "$ref": "#/$defs/LocalizedText"
+              }
+            },
+            "required": ["checkpointId", "rank", "s", "c", "plain"],
+            "additionalProperties": false
+          }
+        },
+        "injury": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "checkpointId": {
+                "type": "string"
+              },
+              "s": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "c": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": ["checkpointId", "s", "c"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["weaknesses", "strengths", "injury"],
+      "additionalProperties": false
+    },
+    "subScoresPreview": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "enum": ["stance", "footwork", "swing", "contact", "follow", "recovery"]
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "coverage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "shown": {
+            "type": "boolean"
+          }
+        },
+        "required": ["key", "weight", "score", "coverage", "shown"],
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["fps_low", "view_low_confidence", "view_mismatch", "view_not_recommended", "skill_mismatch_suspected", "few_strokes", "player_small", "handedness_mismatch"]
+      }
+    },
+    "frameRequests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FrameRequest"
+      }
+    }
+  },
+  "required": ["schema", "analysisId", "algoVersion", "rubricVersion", "sport", "skill", "view", "viewSource", "viewGuess", "handedness", "handednessSuggestion", "direction", "analysisHz", "srcFps", "frameMode", "inputQuality", "strokes", "checkpointTable", "visualToJudge", "candidates", "subScoresPreview", "coverage", "warnings", "frameRequests"],
+  "additionalProperties": false,
+  "$defs": {
+    "PoseQuality": {
+      "type": "object",
+      "properties": {
+        "framesTotal": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "framesWithTarget": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "meanLimbConf": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "playerHeightFrac": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trackResets": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ambiguousAtMs": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      },
+      "required": ["framesTotal", "framesWithTarget", "meanLimbConf", "playerHeightFrac", "trackResets", "ambiguousAtMs"],
+      "additionalProperties": false
+    },
+    "LocalizedText": {
+      "type": "object",
+      "properties": {
+        "vi": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      },
+      "required": ["vi", "en"],
+      "additionalProperties": false
+    },
+    "FrameRequest": {
+      "type": "object",
+      "properties": {
+        "frameId": {
+          "type": "string",
+          "enum": ["F1", "F2", "F3", "F4", "F5", "L1", "L2", "L3", "L4"]
+        },
+        "strokeId": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["ready", "bsEnd", "contact", "ftStop", "overview"]
+        },
+        "tUs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "crop": {
+          "$ref": "#/$defs/NormRect"
+        },
+        "upload": {
+          "type": "boolean"
+        }
+      },
+      "required": ["frameId", "strokeId", "phase", "tUs", "crop", "upload"],
+      "additionalProperties": false
+    },
+    "NormRect": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "w": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "h": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": ["x", "y", "w", "h"],
+      "additionalProperties": false
+    }
+  }
+}

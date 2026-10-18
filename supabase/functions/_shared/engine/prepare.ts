@@ -37,7 +37,7 @@ import { exportCleanTrack } from './clean_track_export.ts';
 import { hittingDirection } from './direction.ts';
 import { planFrames } from './frameplan.ts';
 import { hampelFilter } from './hampel.ts';
-import { checkHandedness } from './handedness.ts';
+import { checkHandedness, racketWrist } from './handedness.ts';
 import { buildMetricContext, evaluateMetric } from './metrics.ts';
 import { normalizePose } from './normalize.ts';
 import { computePhases } from './phases.ts';
@@ -184,21 +184,25 @@ function run(pose: PoseV1, opts: PrepareOptions): PrepareOutcome {
   const track = smoothTrack(resampleTrack(cleaned, hz));
   lap('resample+sg');
   const hand = checkHandedness(track, declared);
+  const wristMissing = (h: Handedness) =>
+    track.joints[racketWrist(h)].x.filter((x) => x === null).length / track.tUs.length;
+  // The declared racket wrist must be visible; otherwise the other wrist's peaks would win the handedness vote and
+  // the off arm would be analysed as the racket arm.
+  const missing = wristMissing(declared);
+  if (missing > PREPARE_GATES.maxWristMissing) {
+    return reject('low_visibility', `racket wrist missing on ${Math.round(missing * 100)}% of the clip`);
+  }
   // When the declared hand yields no stroke but the speed peaks say the other hand swings, segment with that hand:
-  // the response carries handednessSuggestion, so the app asks instead of showing a misleading "no strokes".
+  // the response carries handednessSuggestion, so the app asks instead of showing a misleading "no strokes". Only on
+  // the first prepare: an explicit `opts.handedness` (reprepare) is the user's answer and is never overridden.
   let handedness = declared;
   let seg = segmentStrokes(track, handedness, skill);
-  if (!seg.ok && hand.suggestion !== null) {
+  if (!seg.ok && hand.suggestion !== null && opts.handedness === undefined) {
     const retry = segmentStrokes(track, hand.suggestion, skill);
-    if (retry.ok) {
+    if (retry.ok && wristMissing(hand.suggestion) <= PREPARE_GATES.maxWristMissing) {
       handedness = hand.suggestion;
       seg = retry;
     }
-  }
-  const wrist = handedness === 'left' ? 'lWri' : 'rWri';
-  const missing = track.joints[wrist].x.filter((x) => x === null).length / track.tUs.length;
-  if (missing > PREPARE_GATES.maxWristMissing) {
-    return reject('low_visibility', `racket wrist missing on ${Math.round(missing * 100)}% of the clip`);
   }
   if (!seg.ok) return reject('no_strokes_detected', `no wrist-speed peak ≥ ${seg.threshold.toFixed(2)} T/s`);
   const phases = computePhases(track, seg.strokes, handedness);
@@ -245,7 +249,7 @@ function run(pose: PoseV1, opts: PrepareOptions): PrepareOutcome {
     score: scores.get(s.id) ?? null,
   })));
   if (best === null) return reject('no_strokes_detected', 'no rankable stroke');
-  const candidates = buildCandidates(table, skill, rubric.faults);
+  const candidates = buildCandidates(table, skill, rubric.faults, rubric.checkpoints);
   const preview = previewSubScores(table, skill);
   const phaseById = new Map(phases.map((p) => [p.strokeId, p]));
   const frameRequests = planFrames({

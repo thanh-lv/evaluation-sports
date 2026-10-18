@@ -2,9 +2,10 @@
 -- (DESIGN.md D12, §6.1, §6.5, §8.3).
 begin;
 \ir _helpers.psql
-select plan(44);
+select plan(49);
 
 create temp table ids (name text primary key, id uuid) on commit drop;
+grant all on ids to authenticated;
 
 -- Fencing ---------------------------------------------------------------------------------------------------------------
 insert into ids values ('u', tests.create_user());
@@ -118,6 +119,41 @@ select is(private.refund_quota((select id from ids where name = 'b1'), 'internal
   'refund is idempotent');
 select is(private.fail_analysis((select id from ids where name = 'b1'), 1, 'internal'), false, 'fail applies once');
 select is(private.refund_quota(gen_random_uuid(), 'internal') ->> 'code', 'not_found', 'refund of an unknown id');
+
+-- A refund after the ICT month turned goes back to the month that was charged (and its retry allowance) ---------------
+insert into ids values ('m', tests.create_user());
+insert into ids select 'm1', tests.make_analysis((select id from ids where name = 'm'), 'processing');
+update public.analyses set attempt_count = 1, locked_at = now() where id = (select id from ids where name = 'm1');
+insert into public.usage_counters (user_id, period_key, used, retries_used)
+select id, '2026-09', 2, 3 from ids where name = 'm'
+union all select id, to_char(now() at time zone 'Asia/Ho_Chi_Minh', 'YYYY-MM'), 1, 0 from ids where name = 'm'
+union all select id, 'lifetime', 3, 0 from ids where name = 'm';
+insert into public.quota_ledger (analysis_id, user_id, period_key, kind)
+select a.id, u.id, '2026-09', 'basic' from ids a, ids u where a.name = 'm1' and u.name = 'm';
+select is(private.finalize_analysis((select id from ids where name = 'm1'), 1,
+  tests.sample_result((select id from ids where name = 'm1'), 'rejected')), true, 'late rejection finalized');
+select is((select state || ':' || refund_reason from public.quota_ledger
+  where analysis_id = (select id from ids where name = 'm1')), 'committed:rejected:retry_cap',
+  'the retry cap is the charged month''s (September had used all 3)');
+update public.quota_ledger set state = 'reserved', refund_reason = null
+where analysis_id = (select id from ids where name = 'm1');
+select is(private.refund_quota((select id from ids where name = 'm1'), 'upstream_unavailable') ->> 'refunded', 'true',
+  'an infrastructure refund after the month turned');
+select is((select string_agg(period_key || '=' || used, ' ' order by period_key) from public.usage_counters
+  where user_id = (select id from ids where name = 'm')),
+  '2026-09=1 ' || to_char(now() at time zone 'Asia/Ho_Chi_Minh', 'YYYY-MM') || '=1 lifetime=2',
+  'the charged month is credited back; the current month is untouched');
+
+-- A client deleting its own queued analysis frees the in-flight slot but gets no refund ----------------------------------
+insert into ids values ('d', tests.create_user());
+insert into ids select 'd1', tests.make_analysis((select id from ids where name = 'd'));
+select private.reserve_for_submit((select id from ids where name = 'd'), (select id from ids where name = 'd1'), false);
+select tests.login_as((select id from ids where name = 'd'));
+delete from public.analyses where id = (select id from ids where name = 'd1');
+select tests.logout();
+select is((select used from public.usage_counters where user_id = (select id from ids where name = 'd')
+  and period_key = to_char(now() at time zone 'Asia/Ho_Chi_Minh', 'YYYY-MM')), 1,
+  'deleting a queued analysis does not give the quota back');
 
 -- Ownership-safe prepare upsert ----------------------------------------------------------------------------------------
 insert into ids values ('o', tests.create_user()), ('x', gen_random_uuid());

@@ -74,10 +74,13 @@ public struct RateChooser: Codable, Sendable, Hashable {
         return projectedMs <= budgetMs && thermal <= .fair ? 60 : 30
     }
 
-    /// Below 30 fps warn, below 24 fps reject.
+    /// NTSC-style rates (24 × 1000/1001 = 23.976) count as 24 fps for the reject rule.
+    public static let rejectTolerance = 0.05
+
+    /// Below 30 fps warn (as the server's `fps_low`, so 29.97 warns), below 24 fps reject (23.976 is "24p": warn only).
     public static func sourceFpsVerdict(_ srcFps: Double) -> SourceFpsVerdict {
         guard srcFps.isFinite else { return .reject }
-        if srcFps < rejectBelowFps { return .reject }
+        if srcFps < rejectBelowFps - rejectTolerance { return .reject }
         if srcFps < warnBelowFps { return .warn }
         return .ok
     }

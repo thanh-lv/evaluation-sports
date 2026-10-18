@@ -122,7 +122,8 @@ struct RateChooserTests {
         #expect(RateChooser.sourceFpsVerdict(30) == .ok)
         #expect(RateChooser.sourceFpsVerdict(29.97) == .warn)
         #expect(RateChooser.sourceFpsVerdict(24) == .warn)
-        #expect(RateChooser.sourceFpsVerdict(23.976) == .reject)
+        #expect(RateChooser.sourceFpsVerdict(23.976) == .warn) // NTSC "24p" counts as 24
+        #expect(RateChooser.sourceFpsVerdict(23.5) == .reject)
         #expect(RateChooser.sourceFpsVerdict(.nan) == .reject)
     }
 }

@@ -5,7 +5,7 @@ Postgres schema, RLS, functions, Storage and cron for RacketCoach. The spec is D
 
 | Path | Contents |
 |---|---|
-| `supabase/config.toml` | Local stack: anonymous sign-ins, manual linking, 6-digit email OTP, `private` exposed to the API, `per_worker` edge runtime |
+| `supabase/config.toml` | Local stack: anonymous sign-ins, manual linking, 6-digit email OTP, email confirmations on, `private` exposed to the API, `per_worker` edge runtime |
 | `supabase/templates/*.html` | OTP email templates (`magic_link`, `email_change`, `confirmation`), each with `{{ .Token }}` |
 | `supabase/migrations/20261020000100_core.sql` | Schemas, default privileges, `profiles`, `analyses`, `analysis_results`, `feedback`, auth-user triggers |
 | `…0200_billing.sql` | `plan_limits`, `model_routes`, `entitlements`, `app_store_subscriptions`, `usage_counters`, `quota_ledger` |
@@ -23,7 +23,10 @@ Postgres schema, RLS, functions, Storage and cron for RacketCoach. The spec is D
 
 - Enum-like columns are `text` with a `CHECK`. Every table has RLS enabled; policies use `(select auth.uid())`.
 - Clients (`anon`, `authenticated`) get no access by default. Migration 0100 revokes Supabase's default grants, and
-  0500/0700 list every client grant.
+  0500/0700 list every client grant. 0100 also removes PostgreSQL's global EXECUTE-to-PUBLIC default for functions
+  (`alter default privileges revoke execute on functions from public`, with no `in schema`: a per-schema statement
+  cannot remove a global default). A function added by a later migration is therefore service-role only until it is
+  granted explicitly; `010_schema_seed` checks this.
 - All functions are `SECURITY DEFINER SET search_path = ''` with schema-qualified names. A pgTAP test enforces this.
 - Calendar periods use ICT (`Asia/Ho_Chi_Minh`, fixed `+07:00`). Timestamps returned as strings look like
   `2026-11-01T00:00:00+07:00`.
@@ -55,7 +58,8 @@ Postgres schema, RLS, functions, Storage and cron for RacketCoach. The spec is D
 
 Period keys: `YYYY-MM` is the ICT calendar month (free). `trial:<origTx>` covers the whole trial. Premium uses
 `sub:<origTx>:<YYYY-MM-DD>`, one window per month from `period_anchor`, computed as anchor + n months, so a
-Jan 31 anchor gives windows starting Feb 28 and Mar 31. `lifetime` tracks the first-ever bonus.
+Jan 31 anchor gives windows starting Feb 28 and Mar 31. Without an anchor (for example a manual entitlement), the
+premium windows are ICT calendar months. `lifetime` tracks the first-ever bonus.
 
 ### `private` (service role only)
 
@@ -97,9 +101,9 @@ client request gets 401 or 403.
 | `commit_quota(p_analysis_id)` | boolean | Idempotent |
 | `tier_of(p_user_id, p_at = now())` | text | `premium` or `trial` while `entitlements.expires_at > p_at`; otherwise `free` |
 | `period_window(p_tier, p_at, p_original_transaction_id, p_anchor)` | table | Pure; returns `period_key, period_start, resets_at` |
-| `recompute_entitlement(p_user_id)` | jsonb | `{tier, productId, expiresAt, willRenew, inGrace, billingIssue, isTrial}`. The best live subscription (status 1 or 4, not revoked, coalesced expiry in the future) wins |
+| `recompute_entitlement(p_user_id)` | jsonb | `{tier, productId, expiresAt, willRenew, inGrace, billingIssue, isTrial}`. The best live subscription (status 1 or 4, not revoked, effective expiry in the future) wins. The effective expiry is `greatest(grace_expires_at, expires_at)`: it equals the spec's coalesce during a grace period, and a stale grace date left from an earlier billing issue cannot cut a renewed subscription short |
 | `transfer_subscription(p_original_transaction_id, p_to_user_id)` | jsonb | `{ok:true, transferred, fromUserId, count30d}` or `{ok:false, code: not_found \| transfer_rate_limited}`. Limited to 3 per 30 days, audited; recomputes both users and re-points `app_account_token`. The caller then calls Apple's Set App Account Token |
-| `merge_anonymous_account(p_from_user_id, p_to_user_id)` | jsonb | `{merged, analyses, events, counters, subscriptions: [origTx…]}` or `{merged:false, code: not_found \| forbidden}`. Moves rows, sums counters (capped at the period limit; bonus OR-ed), rewrites pose paths, re-links subscriptions. Idempotent. Storage moves, Set App Account Token and deleting the anonymous user stay in the Edge Function |
+| `merge_anonymous_account(p_from_user_id, p_to_user_id)` | jsonb | `{merged, analyses, events, counters, subscriptions: [origTx…]}` or `{merged:false, code: not_found \| forbidden}` (`forbidden`: the source is not anonymous, or the target is). Moves rows, sums counters (capped at the period limit; bonus OR-ed), rewrites pose paths, re-links subscriptions. Idempotent. Storage moves, Set App Account Token and deleting the anonymous user stay in the Edge Function |
 | `record_llm_cost(p_user_id, p_cost_usd)` | jsonb | Adds to `daily_spend` and `user_monthly_cost`. Returns `{dayUsd, monthUsd, …}` |
 | `budget_status()` | jsonb | `{day, spentUsd, budgetUsd, ratio, alertRatio, hardCapMult}` |
 | `purge_expired_rows()` | jsonb | For the daily cron: deletes events older than 13 months, `llm_outputs` older than 90 days, and processed notifications |
@@ -111,7 +115,7 @@ client request gets 401 or 403.
 | RPC | Returns |
 |---|---|
 | `my_status()` | `{tier, periodType, periodKey, used:{total,standard,retries}, limits:{total,standard,retries,inFlight}, remaining, inFlight, nextKind, resets_at, bonusAvailable, features, copy:{free\|trial\|premium:{periodType,totalLimit,standardLimit}}, entitlement:{isTrial,productId,expiresAt,willRenew,inGrace,billingIssue}, consent:{pdpl:{current,accepted}, ai:{current,accepted}, upToDate}, isReviewer, isAnonymous}`. `resets_at` is null for the trial |
-| `get_result(p_analysis_id)` | `coach-result.v1`, redacted by the **current** tier. Free keeps hero, overall, subScores, at most 1 strength, safety, notAssessable, recordingTips, rulesTip and summary; it drops `checkpoints`, empties `weaknesses` and `plan`, and sets `access:"free"` with `locked` counts. Raises `PT404 analysis_not_found` when the result is missing or belongs to someone else |
+| `get_result(p_analysis_id)` | `coach-result.v1`, redacted by the **current** tier. Free keeps hero, overall, subScores, at most 1 strength, safety, notAssessable, recordingTips, rulesTip and summary; it drops `checkpoints`, empties `weaknesses` and `plan`, and sets `access:"free"` with `locked` counts. Raises `PT404 analysis_not_found` when the result is missing or belongs to someone else. For a free user, a result that `get_history` shows as a locked stub (older than the newest `history_full_limit` = 3 results) raises `PT403 forbidden`, so the stubs cannot be bypassed |
 | `get_history(p_limit = 20, p_before = null)` | Array, newest first, without drafts: `{id, sport, skill, status, subject, cameraView, failureCode, createdAt, completedAt, hasResult, locked, displayScore, level, partial, heroTitle}`. Free users see the newest 3 results in full; older ones are `locked:true` with null score, level and title |
 | `get_progress(p_sport, p_skill = null)` | Array, oldest first, of `subject='self'` succeeded results: `{analysisId, skill, createdAt, displayScore, level, partial, subScores:[{key, displayScore}]}`. Free → `PT403 forbidden`; an unknown sport → `PT422` |
 | `log_event(p_name, p_props = {})` | `true` when stored, `false` past 300 client events per ICT day. Raises `PT422 invalid_payload` for a name not on the allowlist or props that are not an object of at most 2 KB |
@@ -151,7 +155,11 @@ On the hosted project, `project_url` is `https://<ref>.supabase.co`.
 `UPDATE`.
 
 Reviewer flag: `private.reviewer_emails` lists emails whose accounts get `profiles.is_reviewer`, which exempts them
-from the daily budget guard. The flag is set at sign-up and when an anonymous user links that email. Locally the seed
+from the daily budget guard. The flag is set only once the email is **confirmed** (`auth.users.email_confirmed_at`):
+at OTP sign-up, or when an anonymous user links that email and verifies the code. GoTrue inserts the user row before
+the OTP is checked, so an unconfirmed address never counts. This relies on email confirmations being on
+(`[auth.email] enable_confirmations = true`). With confirmations off, GoTrue auto-confirms, so a password sign-up or
+an anonymous `updateUser({email})` could claim any address without proving the mailbox. Locally the seed
 adds `reviewer@racketcoach.test`: sign in with email OTP and read the code in Mailpit at http://127.0.0.1:54324. For
 App Review, an operator inserts the review account's email on the hosted project. No users are seeded.
 
@@ -165,7 +173,7 @@ The script runs these steps in order:
 1. Starts the local stack if needed. The default `-x` list skips studio, logflare, vector, imgproxy, realtime,
    postgres-meta and supavisor; override it with `SUPABASE_START_EXCLUDE`.
 2. `supabase db reset`, which **wipes the local database**. Set `SKIP_RESET=1` to skip it.
-3. `supabase test db supabase/tests/database` (pgTAP; 290 assertions).
+3. `supabase test db supabase/tests/database` (pgTAP; 313 assertions).
 4. `concurrency.sh`.
 5. `fixtures.sh`.
 6. `api_smoke.sh`.
@@ -175,20 +183,20 @@ container).
 
 | Script | What it proves |
 |---|---|
-| `tests/database/010_schema_seed` | Tables, RLS on every table, SECURITY DEFINER and `search_path`, the client privilege matrix, exact seed values |
+| `tests/database/010_schema_seed` | Tables, RLS on every table, SECURITY DEFINER and `search_path`, the client privilege matrix (DELETE only on `analyses`), default privileges for functions and tables added later, exact seed values |
 | `020_rls_grants` | Two-user isolation, column grants (`prepared`, `result`, pose paths unreadable), no client writes, feedback ownership, anon |
-| `030_profiles` | Profile auto-creation (anonymous too), age gate, consent timestamps, reviewer flag |
+| `030_profiles` | Profile auto-creation (anonymous too), age gate, consent timestamps, reviewer flag only for a confirmed email |
 | `040_reserve` | ICT period keys and the month boundary, premium windows, free/trial/premium limits and kinds, first-ever bonus once, in-flight, idempotency, ownership |
 | `050_jobs` | Claim/requeue/finalize/fail fencing, the 8-minute stale reclaim, retry cap (3), partial refunds, bonus returned on failure, ownership-safe prepare upsert |
-| `060_results` | `get_result` redaction by current tier (free/premium/trial/expired), history stubs and paging, progress gating |
-| `070_entitlements` | `tier_of` with grace, `recompute_entitlement` cases, transfer limit and audit |
+| `060_results` | `get_result` redaction by current tier (free/premium/trial/expired), `PT403` for results the free history locks, history stubs and paging, progress gating |
+| `070_entitlements` | `tier_of` with grace, `recompute_entitlement` cases (including a stale grace date after renewal), transfer limit and audit |
 | `080_storage` | Bucket settings, policy matrix, own-folder only, path pattern, no client writes to `analysis-derived` |
 | `090_events` | Allowlist, props limits, 300/day per user |
 | `100_cascade_cron` | Cascades on auth-user delete, subscription `SET NULL`, cron no-op without Vault, pg_net request with secrets |
 | `110_merge_consent` | Account merge and `consent_current` |
 | `tests/sql/concurrency.sh` | Two concurrent psql sessions (in-flight, quota, bonus and same-analysis races) never double-book. Removing the advisory lock makes the in-flight race fail, which was checked by hand |
 | `tests/sql/fixtures.sh` | `redact_result_free(example_full.json) == example_free.json` |
-| `tests/sql/api_smoke.sh` | Real GoTrue anonymous sign-in → profile, RPCs, column grants and Storage upsert/refusals over HTTP |
+| `tests/sql/api_smoke.sh` | Real GoTrue anonymous sign-in → profile, RPCs, column grants, Storage upsert/move refusals over HTTP, and email ownership: a password sign-up gets no session, an anonymous email link stays pending until the OTP (read from Mailpit) is verified, and only then is `is_reviewer` set |
 
 Running a single file: `npx -y supabase@2.119.0 test db supabase/tests/database/040_reserve.test.sql`. Do not put
 non-test `.sql` files under `supabase/tests`, because `supabase test db` runs every `.sql` it finds there.
@@ -197,6 +205,6 @@ non-test `.sql` files under `supabase/tests`, because `supabase test db` runs ev
 
 1. `supabase db push --include-seed`.
 2. API settings → Exposed schemas: add `private`.
-3. Auth: anonymous sign-ins, manual linking, OTP length 6, and the templates (`supabase config push` or the
-   dashboard).
+3. Auth: anonymous sign-ins, manual linking, OTP length 6, **Confirm email on**, and the templates
+   (`supabase config push` or the dashboard).
 4. Vault secrets `project_url`, `internal_secret` and `cron_secret`, matching the Edge Function secrets.

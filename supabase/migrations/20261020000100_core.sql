@@ -17,6 +17,10 @@ grant usage on schema private to service_role;
 
 -- Supabase's defaults grant ALL on new public tables/functions to anon and authenticated. Turn that off for objects
 -- created by this role so every client grant in later migrations is deliberate. service_role keeps its defaults.
+-- PostgreSQL's built-in EXECUTE-to-PUBLIC default for functions is global, and a per-schema ALTER DEFAULT PRIVILEGES
+-- can only add to the global defaults, never remove from them. Without this schema-less statement every function a
+-- later migration creates in `public` would be callable by anon through PUBLIC.
+alter default privileges revoke execute on functions from public;
 alter default privileges in schema public revoke all on tables from anon, authenticated;
 alter default privileges in schema public revoke all on sequences from anon, authenticated;
 alter default privileges in schema public revoke execute on functions from public, anon, authenticated;
@@ -236,7 +240,9 @@ alter table public.feedback enable row level security;
 create index feedback_user_idx on public.feedback (user_id);
 
 -- ---------------------------------------------------------------------------------------------------------------
--- New auth user → profile (anonymous sign-ins included). Reviewer flag from private.reviewer_emails (0300).
+-- New auth user → profile (anonymous sign-ins included). Reviewer flag from private.reviewer_emails (0300), only for
+-- a CONFIRMED email: GoTrue inserts the row before the OTP is verified (and a password sign-up can name any address),
+-- so the flag must wait for email_confirmed_at.
 
 create or replace function private.handle_new_user()
 returns trigger
@@ -248,7 +254,7 @@ begin
   insert into public.profiles (id, is_reviewer)
   values (
     new.id,
-    new.email is not null
+    new.email is not null and new.email_confirmed_at is not null
       and exists (select 1 from private.reviewer_emails r where r.email = lower(new.email))
   )
   on conflict (id) do nothing;
@@ -260,7 +266,8 @@ create trigger on_auth_user_created
 after insert on auth.users
 for each row execute function private.handle_new_user();
 
--- An anonymous user who links an email (email_change) becomes a reviewer if that email is on the list.
+-- A user whose reviewer email gets confirmed (OTP verified at sign-up, or an anonymous user linking the email)
+-- becomes a reviewer.
 create or replace function private.sync_reviewer_flag()
 returns trigger
 language plpgsql
@@ -268,7 +275,7 @@ security definer
 set search_path = ''
 as $$
 begin
-  if new.email is not null
+  if new.email is not null and new.email_confirmed_at is not null
      and exists (select 1 from private.reviewer_emails r where r.email = lower(new.email)) then
     update public.profiles set is_reviewer = true where id = new.id and not is_reviewer;
   end if;
@@ -277,7 +284,7 @@ end;
 $$;
 
 create trigger on_auth_user_email_changed
-after update of email on auth.users
+after update of email, email_confirmed_at on auth.users
 for each row
-when (new.email is distinct from old.email)
+when (new.email is distinct from old.email or new.email_confirmed_at is distinct from old.email_confirmed_at)
 execute function private.sync_reviewer_flag();

@@ -359,11 +359,13 @@
       "plain": {
         "vi": {
           "low": "hai chân đứng hẹp khi chờ cầu",
-          "high": "hai chân dang quá rộng khi chờ cầu"
+          "high": "hai chân dang quá rộng khi chờ cầu",
+          "ok": "hai chân rộng hơn vai một chút khi chờ cầu"
         },
         "en": {
           "low": "feet close together while waiting",
-          "high": "feet very wide apart while waiting"
+          "high": "feet very wide apart while waiting",
+          "ok": "feet a little wider than the shoulders while waiting"
         }
       },
       "faults": [
@@ -412,11 +414,13 @@
       "plain": {
         "vi": {
           "low": "đầu gối gần như thẳng khi chờ cầu",
-          "high": "đầu gối khuỵu quá sâu khi chờ cầu"
+          "high": "đầu gối khuỵu quá sâu khi chờ cầu",
+          "ok": "gối hơi chùng khi chờ cầu"
         },
         "en": {
           "low": "legs almost straight while waiting",
-          "high": "knees bent very deep while waiting"
+          "high": "knees bent very deep while waiting",
+          "ok": "knees softly bent while waiting"
         }
       },
       "faults": [
@@ -466,11 +470,13 @@
       "plain": {
         "vi": {
           "low": "thân người thẳng đứng hoặc ngả ra sau khi chờ cầu",
-          "high": "thân người cúi gập nhiều khi chờ cầu"
+          "high": "thân người cúi gập nhiều khi chờ cầu",
+          "ok": "thân người hơi đổ về trước khi chờ cầu"
         },
         "en": {
           "low": "upper body upright or leaning back while waiting",
-          "high": "upper body bent far forward while waiting"
+          "high": "upper body bent far forward while waiting",
+          "ok": "upper body leaning slightly forward while waiting"
         }
       },
       "faults": [
@@ -519,11 +525,13 @@
       "plain": {
         "vi": {
           "low": "vợt buông thấp khi chờ cầu",
-          "high": "tay cầm vợt giơ quá cao khi chờ cầu"
+          "high": "tay cầm vợt giơ quá cao khi chờ cầu",
+          "ok": "vợt giơ sẵn trước ngực khi chờ cầu"
         },
         "en": {
           "low": "racket hangs low while waiting",
-          "high": "racket hand held very high while waiting"
+          "high": "racket hand held very high while waiting",
+          "ok": "racket held up in front while waiting"
         }
       },
       "faults": [
@@ -561,11 +569,13 @@
       "plain": {
         "vi": {
           "low": "gót chân chạm sàn nặng",
-          "high": "trọng tâm nhẹ trên mũi bàn chân"
+          "high": "trọng tâm nhẹ trên mũi bàn chân",
+          "ok": "trọng tâm nhẹ trên mũi bàn chân"
         },
         "en": {
           "low": "heels planted heavily",
-          "high": "weight light on the balls of the feet"
+          "high": "weight light on the balls of the feet",
+          "ok": "weight light on the balls of the feet"
         }
       },
       "faults": [],
@@ -607,11 +617,13 @@
       "plain": {
         "vi": {
           "low": "đầu vợt chúc xuống khi chờ cầu",
-          "high": "đầu vợt luôn hướng lên"
+          "high": "đầu vợt luôn hướng lên",
+          "ok": "đầu vợt luôn hướng lên"
         },
         "en": {
           "low": "racket head drops while waiting",
-          "high": "racket head stays up"
+          "high": "racket head stays up",
+          "ok": "racket head stays up"
         }
       },
       "faults": [
@@ -654,11 +666,13 @@
       "plain": {
         "vi": {
           "low": "chưa thấy bật nhún trước khi di chuyển",
-          "high": "có bật nhún nhẹ trước khi di chuyển"
+          "high": "có bật nhún nhẹ trước khi di chuyển",
+          "ok": "có bật nhún nhẹ trước khi di chuyển"
         },
         "en": {
           "low": "no split step before moving",
-          "high": "small split step before moving"
+          "high": "small split step before moving",
+          "ok": "small split step before moving"
         }
       },
       "faults": [
@@ -708,11 +722,13 @@
       "plain": {
         "vi": {
           "low": "vai còn hướng về lưới khi kéo vợt",
-          "high": "vai xoay nghiêng rõ khi kéo vợt"
+          "high": "vai xoay nghiêng rõ khi kéo vợt",
+          "ok": "vai xoay nghiêng rõ khi kéo vợt"
         },
         "en": {
           "low": "shoulders still face the net",
-          "high": "shoulders clearly turned side-on"
+          "high": "shoulders clearly turned side-on",
+          "ok": "shoulders clearly turned side-on"
         }
       },
       "faults": [
@@ -761,11 +777,13 @@
       "plain": {
         "vi": {
           "low": "tay không cầm vợt còn buông thấp",
-          "high": "tay không cầm vợt giơ cao chỉ cầu"
+          "high": "tay không cầm vợt giơ cao chỉ cầu",
+          "ok": "tay không cầm vợt giơ cao chỉ cầu"
         },
         "en": {
           "low": "free arm stays low",
-          "high": "free arm up, pointing at the shuttle"
+          "high": "free arm up, pointing at the shuttle",
+          "ok": "free arm up, pointing at the shuttle"
         }
       },
       "faults": [
@@ -813,11 +831,13 @@
       "plain": {
         "vi": {
           "low": "khuỷu tay còn thấp khi kéo vợt",
-          "high": "khuỷu tay nâng cao như ném bóng"
+          "high": "khuỷu tay nâng cao như ném bóng",
+          "ok": "khuỷu tay nâng cao như ném bóng"
         },
         "en": {
           "low": "elbow stays low in the backswing",
-          "high": "elbow up like a throw"
+          "high": "elbow up like a throw",
+          "ok": "elbow up like a throw"
         }
       },
       "faults": [
@@ -861,11 +881,13 @@
       "plain": {
         "vi": {
           "low": "trọng tâm còn ở chân sau sau khi đánh",
-          "high": "trọng tâm dồn lên chân trước sau khi đánh"
+          "high": "trọng tâm dồn lên chân trước sau khi đánh",
+          "ok": "trọng tâm dồn lên chân trước sau khi đánh"
         },
         "en": {
           "low": "weight stays on the back foot after the hit",
-          "high": "weight moves onto the front foot"
+          "high": "weight moves onto the front foot",
+          "ok": "weight moves onto the front foot"
         }
       },
       "faults": [
@@ -912,11 +934,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu thấp, tay chưa vươn hết",
-          "high": "chạm cầu ở điểm cao"
+          "high": "chạm cầu ở điểm cao",
+          "ok": "chạm cầu ở điểm cao"
         },
         "en": {
           "low": "contact low, arm not reaching up",
-          "high": "contact at a high point"
+          "high": "contact at a high point",
+          "ok": "contact at a high point"
         }
       },
       "faults": [
@@ -960,11 +984,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu ngay trên hoặc sau đầu",
-          "high": "chạm cầu quá xa phía trước"
+          "high": "chạm cầu quá xa phía trước",
+          "ok": "chạm cầu hơi phía trước đầu"
         },
         "en": {
           "low": "contact above or behind the head",
-          "high": "contact far out in front"
+          "high": "contact far out in front",
+          "ok": "contact slightly in front of the head"
         }
       },
       "faults": [
@@ -1010,11 +1036,13 @@
       "plain": {
         "vi": {
           "low": "khuỷu tay còn gập khi chạm cầu",
-          "high": "tay duỗi gần thẳng khi chạm cầu"
+          "high": "tay duỗi gần thẳng khi chạm cầu",
+          "ok": "tay duỗi gần thẳng khi chạm cầu"
         },
         "en": {
           "low": "elbow still bent at contact",
-          "high": "arm nearly straight at contact"
+          "high": "arm nearly straight at contact",
+          "ok": "arm nearly straight at contact"
         }
       },
       "faults": [
@@ -1058,11 +1086,13 @@
       "plain": {
         "vi": {
           "low": "vợt dừng lại ngay sau khi chạm cầu",
-          "high": "vợt đi hết chéo qua người"
+          "high": "vợt đi hết chéo qua người",
+          "ok": "vợt đi hết chéo qua người"
         },
         "en": {
           "low": "swing stops right after contact",
-          "high": "racket finishes across the body"
+          "high": "racket finishes across the body",
+          "ok": "racket finishes across the body"
         }
       },
       "faults": [
@@ -1109,11 +1139,13 @@
       "plain": {
         "vi": {
           "low": "thân người đã xoay hết ra trước",
-          "high": "thân người còn đứng nghiêng sau khi đánh"
+          "high": "thân người còn đứng nghiêng sau khi đánh",
+          "ok": "thân người đã xoay hết ra trước"
         },
         "en": {
           "low": "chest turned to face forward",
-          "high": "body still side-on after the hit"
+          "high": "body still side-on after the hit",
+          "ok": "chest turned to face forward"
         }
       },
       "faults": [
@@ -1159,11 +1191,13 @@
       "plain": {
         "vi": {
           "low": "vợt kết thúc thấp dưới vai",
-          "high": "vợt dừng lại cao trên vai"
+          "high": "vợt dừng lại cao trên vai",
+          "ok": "vợt kết thúc thấp dưới vai"
         },
         "en": {
           "low": "racket finishes low, below the shoulder",
-          "high": "racket stops high, above the shoulder"
+          "high": "racket stops high, above the shoulder",
+          "ok": "racket finishes low, below the shoulder"
         }
       },
       "faults": [
@@ -1206,11 +1240,13 @@
       "plain": {
         "vi": {
           "low": "đã về gần vị trí giữa sân",
-          "high": "còn đứng xa vị trí giữa sân sau khi đánh"
+          "high": "còn đứng xa vị trí giữa sân sau khi đánh",
+          "ok": "đã về gần vị trí giữa sân"
         },
         "en": {
           "low": "back near the base position",
-          "high": "still far from base after the shot"
+          "high": "still far from base after the shot",
+          "ok": "back near the base position"
         }
       },
       "faults": [
@@ -1257,11 +1293,13 @@
       "plain": {
         "vi": {
           "low": "vợt còn buông thấp sau khi đánh",
-          "high": "vợt đã giơ lên lại, sẵn sàng"
+          "high": "vợt đã giơ lên lại, sẵn sàng",
+          "ok": "vợt đã giơ lên lại, sẵn sàng"
         },
         "en": {
           "low": "racket still low after the shot",
-          "high": "racket back up and ready"
+          "high": "racket back up and ready",
+          "ok": "racket back up and ready"
         }
       },
       "faults": [
@@ -1303,11 +1341,13 @@
       "plain": {
         "vi": {
           "low": "vào vị trí muộn, phải với tay ra sau đánh cầu",
-          "high": "vào sau cầu sớm và đứng vững"
+          "high": "vào sau cầu sớm và đứng vững",
+          "ok": "vào sau cầu sớm và đứng vững"
         },
         "en": {
           "low": "late into position, reaching back for the shuttle",
-          "high": "set behind the shuttle early"
+          "high": "set behind the shuttle early",
+          "ok": "set behind the shuttle early"
         }
       },
       "faults": [
@@ -1342,11 +1382,13 @@
       "plain": {
         "vi": {
           "low": "cầu bay thấp hoặc ngắn",
-          "high": "cầu bay cao, rơi sâu cuối sân"
+          "high": "cầu bay cao, rơi sâu cuối sân",
+          "ok": "cầu bay cao, rơi sâu cuối sân"
         },
         "en": {
           "low": "shuttle flies low or short",
-          "high": "shuttle flies high and lands deep"
+          "high": "shuttle flies high and lands deep",
+          "ok": "shuttle flies high and lands deep"
         }
       },
       "faults": [],
@@ -1387,11 +1429,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu thấp, tay chưa vươn hết",
-          "high": "chạm cầu ở điểm cao"
+          "high": "chạm cầu ở điểm cao",
+          "ok": "chạm cầu ở điểm cao"
         },
         "en": {
           "low": "contact low, arm not reaching up",
-          "high": "contact at a high point"
+          "high": "contact at a high point",
+          "ok": "contact at a high point"
         }
       },
       "faults": [
@@ -1435,11 +1479,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu ngay trên hoặc sau đầu",
-          "high": "chạm cầu quá xa phía trước"
+          "high": "chạm cầu quá xa phía trước",
+          "ok": "chạm cầu phía trước đầu"
         },
         "en": {
           "low": "contact above or behind the head",
-          "high": "contact very far in front"
+          "high": "contact very far in front",
+          "ok": "contact in front of the head"
         }
       },
       "faults": [
@@ -1485,11 +1531,13 @@
       "plain": {
         "vi": {
           "low": "khuỷu tay còn gập khi chạm cầu",
-          "high": "tay duỗi gần thẳng khi chạm cầu"
+          "high": "tay duỗi gần thẳng khi chạm cầu",
+          "ok": "tay duỗi gần thẳng khi chạm cầu"
         },
         "en": {
           "low": "elbow still bent at contact",
-          "high": "arm nearly straight at contact"
+          "high": "arm nearly straight at contact",
+          "ok": "arm nearly straight at contact"
         }
       },
       "faults": [
@@ -1533,11 +1581,13 @@
       "plain": {
         "vi": {
           "low": "thân người còn thẳng sau khi đập",
-          "high": "thân người đổ về trước theo cú đập"
+          "high": "thân người đổ về trước theo cú đập",
+          "ok": "thân người đổ về trước theo cú đập"
         },
         "en": {
           "low": "upper body stays upright after the smash",
-          "high": "body drives forward through the smash"
+          "high": "body drives forward through the smash",
+          "ok": "body drives forward through the smash"
         }
       },
       "faults": [
@@ -1582,11 +1632,13 @@
       "plain": {
         "vi": {
           "low": "vợt dừng lại ngay sau khi chạm cầu",
-          "high": "vợt đi hết chéo qua người"
+          "high": "vợt đi hết chéo qua người",
+          "ok": "vợt đi hết chéo qua người"
         },
         "en": {
           "low": "swing stops right after contact",
-          "high": "racket finishes down and across the body"
+          "high": "racket finishes down and across the body",
+          "ok": "racket finishes down and across the body"
         }
       },
       "faults": [
@@ -1638,11 +1690,13 @@
       "plain": {
         "vi": {
           "low": "gối gần như thẳng khi tiếp đất",
-          "high": "gối chùng mềm khi tiếp đất"
+          "high": "gối chùng mềm khi tiếp đất",
+          "ok": "gối chùng mềm khi tiếp đất"
         },
         "en": {
           "low": "legs nearly straight on landing",
-          "high": "knees soft on landing"
+          "high": "knees soft on landing",
+          "ok": "knees soft on landing"
         }
       },
       "faults": [
@@ -1692,11 +1746,13 @@
       "plain": {
         "vi": {
           "low": "vợt kết thúc thấp",
-          "high": "vợt dừng lại cao sau cú đập"
+          "high": "vợt dừng lại cao sau cú đập",
+          "ok": "vợt kết thúc thấp"
         },
         "en": {
           "low": "racket finishes low",
-          "high": "racket stops high after the smash"
+          "high": "racket stops high after the smash",
+          "ok": "racket finishes low"
         }
       },
       "faults": [
@@ -1742,11 +1798,13 @@
       "plain": {
         "vi": {
           "low": "vợt còn buông thấp sau cú đập",
-          "high": "vợt đã giơ lên lại sau cú đập"
+          "high": "vợt đã giơ lên lại sau cú đập",
+          "ok": "vợt đã giơ lên lại sau cú đập"
         },
         "en": {
           "low": "racket still low after the smash",
-          "high": "racket back up after the smash"
+          "high": "racket back up after the smash",
+          "ok": "racket back up after the smash"
         }
       },
       "faults": [
@@ -1787,11 +1845,13 @@
       "plain": {
         "vi": {
           "low": "mặt vợt còn ngửa lên khi chạm cầu",
-          "high": "mặt vợt úp xuống khi chạm cầu"
+          "high": "mặt vợt úp xuống khi chạm cầu",
+          "ok": "mặt vợt úp xuống khi chạm cầu"
         },
         "en": {
           "low": "racket face open at contact",
-          "high": "racket face angled down at contact"
+          "high": "racket face angled down at contact",
+          "ok": "racket face angled down at contact"
         }
       },
       "faults": [
@@ -1825,11 +1885,13 @@
       "plain": {
         "vi": {
           "low": "cầu bay ngang hoặc bổng",
-          "high": "cầu cắm dốc xuống sân"
+          "high": "cầu cắm dốc xuống sân",
+          "ok": "cầu cắm dốc xuống sân"
         },
         "en": {
           "low": "shuttle flies flat or rises",
-          "high": "shuttle travels steeply down"
+          "high": "shuttle travels steeply down",
+          "ok": "shuttle travels steeply down"
         }
       },
       "faults": [],
@@ -1868,11 +1930,13 @@
       "plain": {
         "vi": {
           "low": "hai chân đứng yên đến khi chạm cầu",
-          "high": "chân xê dịch trong lúc giao cầu"
+          "high": "chân xê dịch trong lúc giao cầu",
+          "ok": "hai chân đứng yên đến khi chạm cầu"
         },
         "en": {
           "low": "feet stay planted until contact",
-          "high": "feet shift during the serve"
+          "high": "feet shift during the serve",
+          "ok": "feet stay planted until contact"
         }
       },
       "faults": [
@@ -1915,11 +1979,13 @@
       "plain": {
         "vi": {
           "low": "hai chân đứng song song, sát nhau",
-          "high": "hai chân đứng cách nhau quá xa"
+          "high": "hai chân đứng cách nhau quá xa",
+          "ok": "đứng chân trước chân sau vững vàng"
         },
         "en": {
           "low": "feet side by side",
-          "high": "feet very far apart"
+          "high": "feet very far apart",
+          "ok": "balanced stance, one foot in front"
         }
       },
       "faults": [
@@ -1965,11 +2031,13 @@
       "plain": {
         "vi": {
           "low": "gối thẳng cứng khi giao cầu",
-          "high": "gối khuỵu quá sâu khi giao cầu"
+          "high": "gối khuỵu quá sâu khi giao cầu",
+          "ok": "gối hơi chùng khi giao cầu"
         },
         "en": {
           "low": "knees locked straight on the serve",
-          "high": "knees bent very deep on the serve"
+          "high": "knees bent very deep on the serve",
+          "ok": "knees slightly bent on the serve"
         }
       },
       "faults": [
@@ -2016,11 +2084,13 @@
       "plain": {
         "vi": {
           "low": "thân người thẳng đứng hoặc ngả ra sau",
-          "high": "thân người cúi gập nhiều"
+          "high": "thân người cúi gập nhiều",
+          "ok": "thân người hơi đổ về trước khi giao cầu"
         },
         "en": {
           "low": "upper body upright or leaning back",
-          "high": "upper body bent far forward"
+          "high": "upper body bent far forward",
+          "ok": "upper body leaning slightly forward on the serve"
         }
       },
       "faults": [
@@ -2063,11 +2133,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu sát người",
-          "high": "chạm cầu rõ ở phía trước"
+          "high": "chạm cầu rõ ở phía trước",
+          "ok": "chạm cầu rõ ở phía trước"
         },
         "en": {
           "low": "contact close to the body",
-          "high": "contact clearly in front"
+          "high": "contact clearly in front",
+          "ok": "contact clearly in front"
         }
       },
       "faults": [
@@ -2113,11 +2185,13 @@
       "plain": {
         "vi": {
           "low": "điểm chạm cầu thấp, gọn",
-          "high": "điểm chạm cầu khá cao"
+          "high": "điểm chạm cầu khá cao",
+          "ok": "điểm chạm cầu thấp, gọn"
         },
         "en": {
           "low": "contact low and compact",
-          "high": "contact rather high"
+          "high": "contact rather high",
+          "ok": "contact low and compact"
         }
       },
       "faults": [
@@ -2160,11 +2234,13 @@
       "plain": {
         "vi": {
           "low": "đưa vợt ra sau rất ngắn",
-          "high": "đưa vợt ra sau quá dài"
+          "high": "đưa vợt ra sau quá dài",
+          "ok": "đưa vợt ra sau rất ngắn"
         },
         "en": {
           "low": "very short backswing",
-          "high": "long backswing"
+          "high": "long backswing",
+          "ok": "very short backswing"
         }
       },
       "faults": [
@@ -2207,11 +2283,13 @@
       "plain": {
         "vi": {
           "low": "vợt đẩy theo ngắn, gọn",
-          "high": "vợt vung theo quá dài"
+          "high": "vợt vung theo quá dài",
+          "ok": "vợt đẩy theo ngắn, gọn"
         },
         "en": {
           "low": "short, tidy push",
-          "high": "long follow-through"
+          "high": "long follow-through",
+          "ok": "short, tidy push"
         }
       },
       "faults": [
@@ -2257,11 +2335,13 @@
       "plain": {
         "vi": {
           "low": "vợt còn thấp sau khi giao",
-          "high": "vợt đã giơ lên sau khi giao"
+          "high": "vợt đã giơ lên sau khi giao",
+          "ok": "vợt đã giơ lên sau khi giao"
         },
         "en": {
           "low": "racket still low after the serve",
-          "high": "racket up after the serve"
+          "high": "racket up after the serve",
+          "ok": "racket up after the serve"
         }
       },
       "faults": [
@@ -2302,11 +2382,13 @@
       "plain": {
         "vi": {
           "low": "cổ tay vẩy mạnh khi chạm cầu",
-          "high": "cổ tay chắc, đẩy cầu mượt"
+          "high": "cổ tay chắc, đẩy cầu mượt",
+          "ok": "cổ tay chắc, đẩy cầu mượt"
         },
         "en": {
           "low": "wrist flicks at contact",
-          "high": "firm wrist, smooth push"
+          "high": "firm wrist, smooth push",
+          "ok": "firm wrist, smooth push"
         }
       },
       "faults": [
@@ -2340,11 +2422,13 @@
       "plain": {
         "vi": {
           "low": "cầu bay cao qua lưới",
-          "high": "cầu bay sát mép lưới"
+          "high": "cầu bay sát mép lưới",
+          "ok": "cầu bay sát mép lưới"
         },
         "en": {
           "low": "shuttle rises over the net",
-          "high": "shuttle skims the tape"
+          "high": "shuttle skims the tape",
+          "ok": "shuttle skims the tape"
         }
       },
       "faults": [],
@@ -2386,11 +2470,13 @@
       "plain": {
         "vi": {
           "low": "vợt còn thấp khi lên lưới",
-          "high": "vợt giơ sớm khi lên lưới"
+          "high": "vợt giơ sớm khi lên lưới",
+          "ok": "vợt giơ sớm khi lên lưới"
         },
         "en": {
           "low": "racket low on the way to the net",
-          "high": "racket up early on the approach"
+          "high": "racket up early on the approach",
+          "ok": "racket up early on the approach"
         }
       },
       "faults": [
@@ -2433,11 +2519,13 @@
       "plain": {
         "vi": {
           "low": "chân không thuận bước lên trước khi lên lưới",
-          "high": "lunge bằng chân thuận khi lên lưới"
+          "high": "lunge bằng chân thuận khi lên lưới",
+          "ok": "lunge bằng chân thuận khi lên lưới"
         },
         "en": {
           "low": "wrong leg forward at the net",
-          "high": "lunges with the racket leg"
+          "high": "lunges with the racket leg",
+          "ok": "lunges with the racket leg"
         }
       },
       "faults": [
@@ -2483,11 +2571,13 @@
       "plain": {
         "vi": {
           "low": "bước lên lưới còn ngắn",
-          "high": "bước lunge dài, với tới cầu"
+          "high": "bước lunge dài, với tới cầu",
+          "ok": "bước lunge dài, với tới cầu"
         },
         "en": {
           "low": "short step to the net",
-          "high": "long lunge to the shuttle"
+          "high": "long lunge to the shuttle",
+          "ok": "long lunge to the shuttle"
         }
       },
       "faults": [
@@ -2534,11 +2624,13 @@
       "plain": {
         "vi": {
           "low": "gối trước còn thẳng khi lunge",
-          "high": "gối trước khuỵu quá sâu khi lunge"
+          "high": "gối trước khuỵu quá sâu khi lunge",
+          "ok": "gối trước khuỵu vừa đủ khi lunge"
         },
         "en": {
           "low": "front knee fairly straight in the lunge",
-          "high": "front knee very deep in the lunge"
+          "high": "front knee very deep in the lunge",
+          "ok": "front knee bent well into the lunge"
         }
       },
       "faults": [
@@ -2583,11 +2675,13 @@
       "plain": {
         "vi": {
           "low": "thân người giữ thẳng khi lunge",
-          "high": "cúi gập người khi lunge"
+          "high": "cúi gập người khi lunge",
+          "ok": "thân người giữ thẳng khi lunge"
         },
         "en": {
           "low": "chest stays up in the lunge",
-          "high": "bending at the waist in the lunge"
+          "high": "bending at the waist in the lunge",
+          "ok": "chest stays up in the lunge"
         }
       },
       "faults": [
@@ -2639,11 +2733,13 @@
       "plain": {
         "vi": {
           "low": "gối nằm trên bàn chân khi lunge",
-          "high": "gối vượt xa mũi chân khi lunge"
+          "high": "gối vượt xa mũi chân khi lunge",
+          "ok": "gối nằm trên bàn chân khi lunge"
         },
         "en": {
           "low": "knee stays over the foot in the lunge",
-          "high": "knee far past the toes in the lunge"
+          "high": "knee far past the toes in the lunge",
+          "ok": "knee stays over the foot in the lunge"
         }
       },
       "faults": [
@@ -2688,11 +2784,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu sát người",
-          "high": "vươn tay chạm cầu phía trước"
+          "high": "vươn tay chạm cầu phía trước",
+          "ok": "vươn tay chạm cầu phía trước"
         },
         "en": {
           "low": "contact close to the body",
-          "high": "reaching to contact out in front"
+          "high": "reaching to contact out in front",
+          "ok": "reaching to contact out in front"
         }
       },
       "faults": [
@@ -2739,11 +2837,13 @@
       "plain": {
         "vi": {
           "low": "khuỷu tay còn gập khi chạm cầu",
-          "high": "tay vươn dài khi chạm cầu"
+          "high": "tay vươn dài khi chạm cầu",
+          "ok": "tay vươn dài khi chạm cầu"
         },
         "en": {
           "low": "elbow bent at contact",
-          "high": "arm extended at contact"
+          "high": "arm extended at contact",
+          "ok": "arm extended at contact"
         }
       },
       "faults": [
@@ -2790,11 +2890,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu thấp, khi cầu đã rơi sâu",
-          "high": "chạm cầu cao, gần mép lưới"
+          "high": "chạm cầu cao, gần mép lưới",
+          "ok": "chạm cầu cao, gần mép lưới"
         },
         "en": {
           "low": "contact low, after the shuttle has dropped",
-          "high": "contact high, near the tape"
+          "high": "contact high, near the tape",
+          "ok": "contact high, near the tape"
         }
       },
       "faults": [
@@ -2837,11 +2939,13 @@
       "plain": {
         "vi": {
           "low": "gần như không lấy đà",
-          "high": "lấy đà quá lớn khi bỏ nhỏ"
+          "high": "lấy đà quá lớn khi bỏ nhỏ",
+          "ok": "gần như không lấy đà"
         },
         "en": {
           "low": "almost no backswing",
-          "high": "big backswing on the net shot"
+          "high": "big backswing on the net shot",
+          "ok": "almost no backswing"
         }
       },
       "faults": [
@@ -2884,11 +2988,13 @@
       "plain": {
         "vi": {
           "low": "vợt theo cầu nhẹ, ngắn",
-          "high": "vợt vung theo quá dài"
+          "high": "vợt vung theo quá dài",
+          "ok": "vợt theo cầu nhẹ, ngắn"
         },
         "en": {
           "low": "short, gentle follow-through",
-          "high": "long follow-through"
+          "high": "long follow-through",
+          "ok": "short, gentle follow-through"
         }
       },
       "faults": [
@@ -2932,11 +3038,13 @@
       "plain": {
         "vi": {
           "low": "đã đẩy về gần giữa sân",
-          "high": "còn ở lại lưới sau khi đánh"
+          "high": "còn ở lại lưới sau khi đánh",
+          "ok": "đã đẩy về gần giữa sân"
         },
         "en": {
           "low": "back near base",
-          "high": "still at the net after the shot"
+          "high": "still at the net after the shot",
+          "ok": "back near base"
         }
       },
       "faults": [
@@ -2971,11 +3079,13 @@
       "plain": {
         "vi": {
           "low": "cầu bay cao khỏi lưới",
-          "high": "cầu rơi sát mép lưới"
+          "high": "cầu rơi sát mép lưới",
+          "ok": "cầu rơi sát mép lưới"
         },
         "en": {
           "low": "shuttle rises off the net",
-          "high": "shuttle falls tight to the tape"
+          "high": "shuttle falls tight to the tape",
+          "ok": "shuttle falls tight to the tape"
         }
       },
       "faults": [],
@@ -3013,11 +3123,13 @@
       "plain": {
         "vi": {
           "low": "lấy đà quá ngắn, thiếu lực",
-          "high": "lấy đà quá dài"
+          "high": "lấy đà quá dài",
+          "ok": "lấy đà gọn, vừa đủ để cầu đi sâu"
         },
         "en": {
           "low": "backswing too short for depth",
-          "high": "backswing very long"
+          "high": "backswing very long",
+          "ok": "compact backswing with enough room for depth"
         }
       },
       "faults": [
@@ -3063,11 +3175,13 @@
       "plain": {
         "vi": {
           "low": "vợt chưa đi lên khi chạm cầu",
-          "high": "vợt đi lên rõ khi chạm cầu"
+          "high": "vợt đi lên rõ khi chạm cầu",
+          "ok": "vợt đi lên rõ khi chạm cầu"
         },
         "en": {
           "low": "racket not rising at contact",
-          "high": "racket clearly rising at contact"
+          "high": "racket clearly rising at contact",
+          "ok": "racket clearly rising at contact"
         }
       },
       "faults": [
@@ -3113,11 +3227,13 @@
       "plain": {
         "vi": {
           "low": "vợt kết thúc thấp",
-          "high": "vợt kết thúc trên cao"
+          "high": "vợt kết thúc trên cao",
+          "ok": "vợt kết thúc trên cao"
         },
         "en": {
           "low": "racket finishes low",
-          "high": "racket finishes high"
+          "high": "racket finishes high",
+          "ok": "racket finishes high"
         }
       },
       "faults": [
@@ -3160,11 +3276,13 @@
       "plain": {
         "vi": {
           "low": "hai chân đứng gần song song",
-          "high": "hai chân đứng cách nhau quá xa"
+          "high": "hai chân đứng cách nhau quá xa",
+          "ok": "đứng nghiêng, hai chân cách nhau vừa phải"
         },
         "en": {
           "low": "feet nearly side by side",
-          "high": "feet very far apart"
+          "high": "feet very far apart",
+          "ok": "side-on stance, feet a comfortable distance apart"
         }
       },
       "faults": [
@@ -3207,11 +3325,13 @@
       "plain": {
         "vi": {
           "low": "trọng tâm ở chân sau khi lấy đà",
-          "high": "trọng tâm dồn lên trước quá sớm"
+          "high": "trọng tâm dồn lên trước quá sớm",
+          "ok": "trọng tâm ở chân sau khi lấy đà"
         },
         "en": {
           "low": "weight on the back foot in the backswing",
-          "high": "weight forward too early"
+          "high": "weight forward too early",
+          "ok": "weight on the back foot in the backswing"
         }
       },
       "faults": [
@@ -3255,11 +3375,13 @@
       "plain": {
         "vi": {
           "low": "trọng tâm còn ở chân sau sau khi giao",
-          "high": "trọng tâm dồn lên chân trước"
+          "high": "trọng tâm dồn lên chân trước",
+          "ok": "trọng tâm dồn lên chân trước"
         },
         "en": {
           "low": "weight stays back after the serve",
-          "high": "weight moves onto the front foot"
+          "high": "weight moves onto the front foot",
+          "ok": "weight moves onto the front foot"
         }
       },
       "faults": [
@@ -3303,11 +3425,13 @@
       "plain": {
         "vi": {
           "low": "vung vợt ngắn, thiếu đà",
-          "high": "vung vợt dài, đủ đà"
+          "high": "vung vợt dài, đủ đà",
+          "ok": "vung vợt dài, đủ đà"
         },
         "en": {
           "low": "short swing, little momentum",
-          "high": "full, long swing"
+          "high": "full, long swing",
+          "ok": "full, long swing"
         }
       },
       "faults": [
@@ -3353,11 +3477,13 @@
       "plain": {
         "vi": {
           "low": "vợt chưa đi lên khi chạm cầu",
-          "high": "vợt đi lên rõ khi chạm cầu"
+          "high": "vợt đi lên rõ khi chạm cầu",
+          "ok": "vợt đi lên rõ khi chạm cầu"
         },
         "en": {
           "low": "racket not rising at contact",
-          "high": "racket clearly rising at contact"
+          "high": "racket clearly rising at contact",
+          "ok": "racket clearly rising at contact"
         }
       },
       "faults": [
@@ -3403,11 +3529,13 @@
       "plain": {
         "vi": {
           "low": "chạm cầu ở điểm thấp",
-          "high": "chạm cầu khá cao"
+          "high": "chạm cầu khá cao",
+          "ok": "chạm cầu ở điểm thấp"
         },
         "en": {
           "low": "contact low",
-          "high": "contact rather high"
+          "high": "contact rather high",
+          "ok": "contact low"
         }
       },
       "faults": [
@@ -3453,11 +3581,13 @@
       "plain": {
         "vi": {
           "low": "vợt kết thúc thấp",
-          "high": "vợt kết thúc cao trên vai"
+          "high": "vợt kết thúc cao trên vai",
+          "ok": "vợt kết thúc cao trên vai"
         },
         "en": {
           "low": "racket finishes low",
-          "high": "racket finishes high, over the shoulder"
+          "high": "racket finishes high, over the shoulder",
+          "ok": "racket finishes high, over the shoulder"
         }
       },
       "faults": [
@@ -3500,11 +3630,13 @@
       "plain": {
         "vi": {
           "low": "vợt dừng trước người",
-          "high": "vợt kết thúc chéo qua vai"
+          "high": "vợt kết thúc chéo qua vai",
+          "ok": "vợt kết thúc chéo qua vai"
         },
         "en": {
           "low": "racket stops in front of the body",
-          "high": "racket finishes over the opposite shoulder"
+          "high": "racket finishes over the opposite shoulder",
+          "ok": "racket finishes over the opposite shoulder"
         }
       },
       "faults": [
@@ -3551,11 +3683,13 @@
       "plain": {
         "vi": {
           "low": "vợt còn thấp sau khi giao",
-          "high": "vợt đã giơ lên sau khi giao"
+          "high": "vợt đã giơ lên sau khi giao",
+          "ok": "vợt đã giơ lên sau khi giao"
         },
         "en": {
           "low": "racket still low after the serve",
-          "high": "racket up after the serve"
+          "high": "racket up after the serve",
+          "ok": "racket up after the serve"
         }
       },
       "faults": [

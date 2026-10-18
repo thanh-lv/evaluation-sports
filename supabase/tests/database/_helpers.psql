@@ -5,7 +5,12 @@ create schema if not exists tests;
 grant usage on schema tests to anon, authenticated, service_role;
 
 -- New auth user (the 0100 trigger creates the profile). Returns its id.
-create or replace function tests.create_user(p_email text default null, p_anonymous boolean default false)
+-- An email user is created confirmed (as after a verified OTP) unless p_confirmed is false.
+create or replace function tests.create_user(
+  p_email text default null,
+  p_anonymous boolean default false,
+  p_confirmed boolean default true
+)
 returns uuid
 language plpgsql
 security definer
@@ -14,10 +19,10 @@ as $$
 declare
   v_id uuid := gen_random_uuid();
 begin
-  insert into auth.users (instance_id, id, aud, role, email, is_anonymous, raw_app_meta_data, raw_user_meta_data,
-    created_at, updated_at)
-  values ('00000000-0000-0000-0000-000000000000', v_id, 'authenticated', 'authenticated', p_email, p_anonymous,
-    '{}', '{}', now(), now());
+  insert into auth.users (instance_id, id, aud, role, email, email_confirmed_at, is_anonymous, raw_app_meta_data,
+    raw_user_meta_data, created_at, updated_at)
+  values ('00000000-0000-0000-0000-000000000000', v_id, 'authenticated', 'authenticated', p_email,
+    case when p_email is not null and p_confirmed then now() end, p_anonymous, '{}', '{}', now(), now());
   return v_id;
 end;
 $$;

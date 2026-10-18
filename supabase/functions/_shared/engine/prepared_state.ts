@@ -15,6 +15,7 @@ import {
   FrameMode,
   Handedness,
   Joint,
+  LocalizedText,
   LowerUuid,
   MicroSeconds,
   SkillId,
@@ -27,7 +28,7 @@ import { FrameRequest, PrepareWarning, StrokeRole } from '../contracts/prepare_v
 import { ASSESS_TAGS, CHECKPOINT_PHASES } from '../rubric/types.ts';
 
 /** Bumped whenever an engine change can move a number (stored as `analyses.algo_version`). */
-export const ALGO_VERSION = 'engine-1.0.0';
+export const ALGO_VERSION = 'engine-1.1.0';
 export const PREPARED_SCHEMA = 'prepared.v1';
 
 const Unit = z.number().min(0).max(1);
@@ -38,7 +39,8 @@ export type MetricTarget = z.infer<typeof MetricTarget>;
 
 /**
  * Where an aggregated reading sits relative to the target: below / above the band, inside it, or a boolean that
- * came out false / true. Picks the fault (`FaultDef.when`) and the plain template (`plain.low|high`).
+ * came out false / true. For bands it picks the fault (`FaultDef.when`) and the plain template (`plain.low|high`,
+ * `plain.ok` inside the band); weakness candidates carry their own resolved side (see candidates.ts).
  */
 export const READINGS = ['low', 'high', 'ok', 'false', 'true'] as const;
 export const Reading = z.enum(READINGS);
@@ -47,8 +49,8 @@ export type Reading = z.infer<typeof Reading>;
 /**
  * Row status:
  * - `measured`: M / M~ with at least one valid stroke and a non-zero view factor (s and c set);
- * - `visual`: V, awaiting Claude's judgment (s null, c 0 until composeScores);
- * - `view_excluded`: view factor 0 for the confirmed view (never scored, still counts in Σw);
+ * - `visual`: V, awaiting Claude's judgment (s null, c 0 until composeScores; counts in Σw only once judged 0..4);
+ * - `view_excluded`: view factor 0 for the confirmed view (excluded: never scored, not in Σw);
  * - `no_data`: measurable in this view but no valid stroke produced a value (counts in Σw with c = 0);
  * - `not_assessable`: assess N (never scored, never counted).
  */
@@ -143,13 +145,16 @@ export type VisualToJudge = z.infer<typeof VisualToJudge>;
 
 export const WeaknessCandidate = z.object({
   checkpointId: z.string(),
-  /** Fault whose `when` matches the reading; null when the rubric has none for that side. */
+  /** Fault whose `when` matches `reading`; null when the rubric has none for that side. */
   faultId: z.string().nullable(),
-  reading: Reading.nullable(),
+  /** The side the checkpoint missed on: low / high (bands) or false (booleans). */
+  reading: z.enum(['low', 'high', 'false']),
   /** W_sub · w · (1 − s) · c with W_sub the skill weight / 100. */
   impact: z.number().nonnegative(),
   s: Unit,
   c: Unit,
+  /** Catalog evidence template for that side (`plain.low|high`; `false` → `low`), no digits. */
+  plain: LocalizedText,
 });
 export type WeaknessCandidate = z.infer<typeof WeaknessCandidate>;
 
@@ -159,6 +164,8 @@ export const StrengthCandidate = z.object({
   rank: z.number().nonnegative(),
   s: Unit,
   c: Unit,
+  /** Catalog evidence template for a met target (`plain.ok`), no digits. */
+  plain: LocalizedText,
 });
 export type StrengthCandidate = z.infer<typeof StrengthCandidate>;
 
@@ -211,7 +218,7 @@ const PreparedObject = z.object({
   candidates: Candidates,
   /** Sub-scores from measured checkpoints only (V not yet judged). */
   subScoresPreview: z.array(SubScorePreview),
-  /** Skill-weighted measured coverage (same formula as the final overall coverage, without V). */
+  /** Skill-weighted measured coverage (same formula as the final overall coverage; V items not yet in Σw). */
   coverage: Unit,
   warnings: z.array(PrepareWarning),
   frameRequests: z.array(FrameRequest),

@@ -341,11 +341,19 @@ export const METRIC_CATALOG: Readonly<Record<MetricKey, MetricDef>> = {
     unit: 'T',
     kind: 'number',
     phases: ['recovery', 'ftStop'],
-    params: {},
+    params: {
+      dir: {
+        type: 'enum',
+        values: ['any', 'forward'],
+        default: 'any',
+        description: 'any = distance from base; forward = signed (root.x − base.x)·f, + toward the hitting direction',
+      },
+    },
     views: { S: 0.6, B: 1, D: 0.6 },
     velocityBased: false,
     lateral: false,
-    definition: '|root − base| / T; base = median root in ready frames',
+    definition:
+      '|root − base| / T (dir any) or (root.x − base.x)·f / T (dir forward; side-view only); base = median root in ready frames',
   },
   headStill: {
     key: 'headStill',

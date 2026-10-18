@@ -79,12 +79,13 @@ Deno.test('display rounding to 5 and level bands from the raw score (no hysteres
   assertEquals(levelFor(80), 'advanced');
 });
 
-Deno.test('composeScores: sub-score = 100·Σwcs/Σwc, coverage = Σwc/Σw (N rows never count)', () => {
+Deno.test('composeScores: sub-score = 100·Σwcs/Σwc, coverage = Σwc/Σw (excluded rows never count)', () => {
   const table = [
     row({ id: 'a', subscore: 'swing', weight: 2, s: 1, c: 1 }),
     row({ id: 'b', subscore: 'swing', weight: 1, s: 0.4, c: 0.5 }),
-    row({ id: 'c', subscore: 'swing', status: 'view_excluded', s: null, c: 0 }),
-    row({ id: 'd', subscore: 'swing', assess: 'N' }),
+    row({ id: 'nd', subscore: 'swing', status: 'no_data', s: null, c: 0 }), // lost by tracking: counts, c = 0
+    row({ id: 'c', subscore: 'swing', status: 'view_excluded', s: null, c: 0, viewFactor: 0 }), // excluded
+    row({ id: 'd', subscore: 'swing', assess: 'N' }), // excluded
   ];
   const out = composeScores(table, [], { weights: EVEN_WEIGHTS });
   const swing = out.subScores.find((s) => s.key === 'swing')!;
@@ -215,5 +216,53 @@ Deno.test('previewSubScores: measured only (V rows unjudged), rounded', () => {
   ];
   const p = previewSubScores(table, { weights: EVEN_WEIGHTS });
   const swing = p.subScores.find((s) => s.key === 'swing')!;
-  assertEquals([swing.score, swing.coverage, swing.shown], [12.3, 0.5, true]);
+  // The unjudged V item is not in Σw yet (it only counts once Claude gives it a level 0..4).
+  assertEquals([swing.score, swing.coverage, swing.shown], [12.3, 1, true]);
+});
+
+Deno.test('composeScores: V items count in Σw only when judged; −1, missing and view-0 V items are excluded', () => {
+  const table = [
+    row({ id: 'm', subscore: 'contact', weight: 2, s: 1, c: 1 }),
+    row({ id: 'v1', subscore: 'contact', assess: 'V' }),
+    row({ id: 'v2', subscore: 'contact', assess: 'V' }),
+    row({ id: 'v3', subscore: 'contact', assess: 'V' }),
+    row({ id: 'v4', subscore: 'contact', assess: 'V', viewFactor: 0 }),
+  ];
+  const out = composeScores(table, [
+    { checkpointId: 'v1', level: 4, confidence: 'low' },
+    { checkpointId: 'v2', level: -1, confidence: 'high' },
+    { checkpointId: 'v4', level: 4, confidence: 'high' },
+  ], { weights: EVEN_WEIGHTS });
+  const contact = out.subScores.find((s) => s.key === 'contact')!;
+  // Σw = 2 (m) + 1 (v1); eff = 2 + 0.4 (v1 low, under the 35 % cap).
+  assertEquals(contact.vScale, 1);
+  assertAlmostEquals(contact.coverage, 2.4 / 3, 1e-12);
+  // pose_only: every V forced to −1 → coverage from the measured rows alone.
+  const poseOnly = composeScores(
+    table,
+    table.filter((r) => r.assess === 'V').map((r) => ({
+      checkpointId: r.id,
+      level: -1,
+      confidence: 'high' as const,
+    })),
+    { weights: EVEN_WEIGHTS },
+  );
+  assertEquals(poseOnly.subScores.find((s) => s.key === 'contact')!.coverage, 1);
+});
+
+Deno.test('composeScores: a recommended-view clip with full confidence is not pushed under the 0.8 cap by view-0 rows', () => {
+  // Two measured rows (factor 1) and two rows the view cannot see (factor 0): coverage 1, not 0.5.
+  const table = (['stance', 'swing', 'contact', 'follow', 'recovery'] as const).flatMap((k) => [
+    row({ id: `${k}1`, subscore: k, s: 1, c: 1 }),
+    row({ id: `${k}2`, subscore: k, s: 1, c: 1 }),
+    row({ id: `${k}3`, subscore: k, status: 'view_excluded', s: null, c: 0, viewFactor: 0 }),
+    row({ id: `${k}4`, subscore: k, status: 'view_excluded', s: null, c: 0, viewFactor: 0 }),
+  ]);
+  const out = composeScores(table, [], { weights: EVEN_WEIGHTS });
+  assertEquals([out.overall.coverage, out.overall.partial, out.overall.capped, out.overall.displayScore], [
+    1,
+    false,
+    false,
+    100,
+  ]);
 });

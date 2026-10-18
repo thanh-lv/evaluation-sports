@@ -1,5 +1,5 @@
 /**
- * Exports every contract to shared/schemas/*.json and audits the Claude output schemas (DESIGN.md §7, M1).
+ * Exports every contract (plus the engine's prepared.v1 state) to shared/schemas/*.json and audits the Claude output schemas (DESIGN.md §7, M1).
  *
  *   deno run -A --config supabase/functions/deno.json scripts/gen-schemas.ts           # write
  *   deno run -A --config supabase/functions/deno.json scripts/gen-schemas.ts --check   # fail if out of sync
@@ -19,6 +19,7 @@ import {
   PrepareResponseV1Structure,
   ReprepareV1,
 } from '@shared/contracts/index.ts';
+import { PreparedAnalysisV1Structure } from '@shared/engine/prepared_state.ts';
 import { loadRubric } from '@shared/rubric/load.ts';
 import { prettyJson, repoPath } from './_lib/json.ts';
 
@@ -38,6 +39,8 @@ export function generateSchemas(): Map<string, JsonSchema> {
     fromZod('prepare-response.v1.json', 'prepare.v1', PrepareResponseV1Structure, 'output'),
     fromZod('clean-track.v1.json', 'clean-track.v1', CleanTrackV1Structure, 'output'),
     fromZod('coach-result.v1.json', 'coach-result.v1', CoachResultV1Structure, 'output'),
+    // Server-internal engine state (`analyses.prepared`): exported for the Web Lab / tools, never sent to the app.
+    fromZod('prepared.v1.json', 'prepared.v1', PreparedAnalysisV1Structure, 'output'),
   ]);
   for (const sport of ['badminton', 'pickleball'] as const) {
     // Exactly what is sent as output_config.format.schema: no $schema/$id/title wrapper.

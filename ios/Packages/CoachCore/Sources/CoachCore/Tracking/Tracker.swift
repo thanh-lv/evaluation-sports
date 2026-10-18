@@ -127,7 +127,11 @@ public struct Tracker: Codable, Sendable, Hashable {
         guard let best = scored.first else {
             state = .coasting
             roi = .unit
-            return TrackStep(index: nil, box: pred.clipped(to: .unit), coasted: true, reacquired: false, ambiguous: false, lost: false, roi: roi)
+            // A prediction that has drifted entirely out of the frame clips to an empty box, which would go on the wire
+            // as `w = h = 0`; keep the last observed box instead.
+            let predicted = pred.isFinite ? pred.clipped(to: .unit) : lastBox
+            let box = predicted.isEmpty ? lastBox.clipped(to: .unit) : predicted
+            return TrackStep(index: nil, box: box, coasted: true, reacquired: false, ambiguous: false, lost: false, roi: roi)
         }
         let ambiguous = scored.count > 1 && scored[1].cost <= best.cost * (1 + Tracker.ambiguityMargin)
         accept(candidates[best.index], tUs: tUs, keepVelocity: true)

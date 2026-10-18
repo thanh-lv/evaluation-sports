@@ -2,7 +2,7 @@
 -- (DESIGN.md §6.5, §9.4).
 begin;
 \ir _helpers.psql
-select plan(22);
+select plan(25);
 
 create temp table ids (name text primary key, id uuid) on commit drop;
 insert into ids values ('a', tests.create_user()), ('b', tests.create_user()), ('c', tests.create_user());
@@ -54,6 +54,22 @@ from ids where name = 'b';
 select is(private.recompute_entitlement((select id from ids where name = 'b')) ->> 'tier', 'trial',
   'an active trial subscription → trial');
 select is(private.recompute_entitlement(gen_random_uuid()), null, 'unknown user → null');
+
+-- A renewed subscription (status 1, Apple expiry in the future) that still carries the grace end of an earlier billing
+-- issue stays premium until the new expiry.
+insert into public.app_store_subscriptions (original_transaction_id, user_id, environment, product_id, status,
+  expires_at, grace_expires_at)
+select 'tx-renewed', id, 'Production', 'premium.monthly', 1, now() + interval '25 days', now() - interval '20 days'
+from ids where name = 'a';
+select is(private.recompute_entitlement((select id from ids where name = 'a')) ->> 'tier', 'premium',
+  'a stale grace end does not cut a renewed subscription short');
+select ok((select expires_at > now() + interval '24 days' and not in_grace from public.entitlements
+  where user_id = (select id from ids where name = 'a')), 'expires_at is the renewed expiry; not in grace');
+-- Grace with Apple status still 3 → no access (only 1 and 4 count)
+update public.app_store_subscriptions set status = 3, expires_at = now() - interval '1 day',
+  grace_expires_at = now() + interval '5 days' where original_transaction_id = 'tx-renewed';
+select is(private.recompute_entitlement((select id from ids where name = 'a')) ->> 'tier', 'free',
+  'billing retry (status 3) is not access even with a grace date');
 
 -- transfer_subscription ("last restore wins", 3 per 30 days) --------------------------------------------------------------
 select is(private.transfer_subscription('tx-trial', (select id from ids where name = 'c')) ->> 'transferred', 'true',

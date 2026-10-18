@@ -5,7 +5,12 @@
 # "lock": false). Code outside supabase/functions (scripts/, supabase/tests/) is checked/run with
 # `--config supabase/functions/deno.json` so it resolves the same import map.
 #
-# Optional steps are skipped with a notice until their files exist (SQL tests, iOS resources, Web Lab).
+# Optional steps are skipped with a notice when their tool or files are missing:
+# - SQL suite (supabase/tests/sql/run.sh): needs a running Docker daemon. It starts the local Supabase stack if needed
+#   and runs `supabase db reset`, which WIPES the local database; set SKIP_SQL=1 to skip it, or SKIP_RESET=1 to test
+#   the current database without a reset.
+# - CoachCore Swift tests: need `swift` on PATH (Xcode on a Mac, or a Linux Swift 6 toolchain).
+# - iOS resources, Web Lab: until their files exist.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -60,11 +65,26 @@ run_step "deno check" $D check "${CFG[@]}" $(ts_targets)
 run_step "deno test" $D test -A "${CFG[@]}" supabase/tests
 run_step "gen-schemas --check (sync + audit)" $D run -A "${CFG[@]}" scripts/gen-schemas.ts --check
 run_step "gen-minimal-fixture --check" $D run -A "${CFG[@]}" scripts/gen-minimal-fixture.ts --check
+run_step "gen-synthetic-pose --check" $D run -A "${CFG[@]}" scripts/gen-synthetic-pose.ts --check
+run_step "replay --golden --check" $D run -A "${CFG[@]}" scripts/replay.ts --golden --check
+run_step "fit-contact-offsets --check" $D run -A "${CFG[@]}" scripts/fit-contact-offsets.ts --check
 
-if [[ -f supabase/tests/sql/run.sh ]]; then
-  run_step "sql tests (PG16)" bash supabase/tests/sql/run.sh
+docker_ready() {
+  command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1
+}
+
+if [[ "${SKIP_SQL:-0}" == "1" ]]; then
+  skip_step "sql tests (local Supabase)" "SKIP_SQL=1"
+elif ! docker_ready; then
+  skip_step "sql tests (local Supabase)" "Docker is not available; start it to run supabase/tests/sql/run.sh"
 else
-  skip_step "sql tests (PG16)" "supabase/tests/sql/run.sh not present yet"
+  run_step "sql tests (local Supabase)" bash supabase/tests/sql/run.sh
+fi
+
+if command -v swift >/dev/null 2>&1; then
+  run_step "CoachCore swift test" swift test --package-path ios/Packages/CoachCore
+else
+  skip_step "CoachCore swift test" "swift not on PATH (build on a Mac or with a Swift 6 toolchain)"
 fi
 
 if [[ -f scripts/check_ios_resources.py ]]; then

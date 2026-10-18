@@ -3,8 +3,8 @@
  * and sensible strokes; plus pose-only mode, rejections and the wrong-hand fallback.
  */
 import { assert, assertEquals } from '@std/assert';
-import { PoseV1 } from '@shared/contracts/index.ts';
-import { composeScores, prepare } from '@shared/engine/index.ts';
+import { JOINT_ORDER, PoseV1 } from '@shared/contracts/index.ts';
+import { composeScores, prepare, reprepare } from '@shared/engine/index.ts';
 import { loadRubric } from '@shared/rubric/load.ts';
 import { generateSyntheticPose, SYNTHETIC_FIXTURES } from '../../../../scripts/gen-synthetic-pose.ts';
 import { loadPose, prepareOk } from './_prepare.ts';
@@ -115,4 +115,44 @@ Deno.test('wrong declared hand: suggestion + warning; slow skills fall back to t
   const out = prepareOk(PoseV1.parse(pose));
   assertEquals(out.prepared.handedness, 'left');
   assertEquals(out.response.strokes.length, 3);
+});
+
+Deno.test('wrong-hand fallback never overrides an explicit handedness (reprepare after the user answered)', () => {
+  const { pose } = generateSyntheticPose({
+    skill: 'pb.drop3',
+    hz: 30,
+    seed: 108,
+    playsWith: 'left',
+    declared: 'right',
+  });
+  const parsed = PoseV1.parse(pose);
+  const rubric = loadRubric('pickleball');
+  // The user confirmed "right": no silent switch to the left wrist.
+  const confirmed = reprepare(parsed, { cameraView: 'side', excludedStrokeIds: [], handedness: 'right' }, { rubric });
+  assertEquals(confirmed.ok ? confirmed.prepared.handedness : confirmed.code, 'no_strokes_detected');
+  // Answering "left" analyses the left wrist.
+  const left = reprepare(parsed, { cameraView: 'side', excludedStrokeIds: [], handedness: 'left' }, { rubric });
+  assert(left.ok);
+  assertEquals([left.prepared.handedness, left.response.handednessSuggestion], ['left', null]);
+});
+
+Deno.test('declared racket wrist invisible: low_visibility, never an analysis of the other arm', () => {
+  const { pose } = generateSyntheticPose({ skill: 'bd.clear_fh', hz: 60, seed: 1 });
+  const ri = JOINT_ORDER.indexOf('rWri') * 3;
+  const kp = (pose as { track: { kp: number[][] } }).track.kp.map((row) => {
+    const r = row.slice();
+    r[ri] = r[ri + 1] = r[ri + 2] = 0;
+    return r;
+  });
+  const parsed = PoseV1.parse({ ...pose, track: { ...(pose as { track: object }).track, kp } });
+  const out = prepare(parsed, { rubric: loadRubric('badminton') });
+  assertEquals(out.ok ? out.prepared.handedness : out.code, 'low_visibility');
+});
+
+Deno.test('a 30 fps source sent with analysisHz 60 still segments (missing-wrist check uses the raw rate)', () => {
+  const { pose, truth } = generateSyntheticPose({ skill: 'bd.clear_fh', hz: 30, seed: 2 });
+  const p = pose as { video: Record<string, unknown> };
+  const parsed = PoseV1.parse({ ...pose, video: { ...p.video, analysisHz: 60 } });
+  const out = prepareOk(parsed);
+  assertEquals(out.response.strokes.length, truth.contactsUs.length);
 });

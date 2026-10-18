@@ -38,7 +38,7 @@ export type {
   ComposedSubScore,
   VisualJudgmentInput,
 } from './score.ts';
-export { buildCandidates, CANDIDATE_CONSTANTS, faultFor } from './candidates.ts';
+export { buildCandidates, CANDIDATE_CONSTANTS, faultFor, weakSide } from './candidates.ts';
 export { evaluateCheckpoints, formatValue, MIN_STROKE_QUALITY, mirrorJoints, targetText } from './checkpoints.ts';
 export { buildMetricContext, evaluateMetric, METRIC_CONSTANTS } from './metrics.ts';
 export type { MetricContext, MetricValue } from './metrics.ts';

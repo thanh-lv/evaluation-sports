@@ -229,8 +229,8 @@
     "model": "claude-sonnet-5-5",
     "kind": "standard",
     "promptVersion": "base-system-v2.0",
-    "rubricVersion": "placeholder-0+drills-placeholder-0",
-    "algoVersion": "engine-0.1.0",
+    "rubricVersion": "f3b4ee9650a9d2d7ff02fbc4fe11f26b98502a66c1231532fac290ba0b9892fe",
+    "algoVersion": "engine-1.1.0",
     "schemaVersion": "coach.v1"
   }
 }

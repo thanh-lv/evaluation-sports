@@ -20,7 +20,7 @@ export const MetricSpecSchema = z.object({
   relativeTo: z.string().optional(),
 });
 
-const PlainPair = z.object({ low: z.string(), high: z.string() });
+const PlainPair = z.object({ low: z.string(), high: z.string(), ok: z.string() });
 
 export const CheckpointDefSchema = z.object({
   id: z.string(),
