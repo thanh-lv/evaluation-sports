@@ -94,3 +94,45 @@ Import everything from `@shared/contracts/index.ts`. Run Deno with `--config sup
 - Fixtures are in `shared/fixtures/{pose,prepare,results}`.
 
 **Rule for the next agents:** each schema `.meta({id})` registers a name in Zod's global registry. Don't reuse these names: `LocalizedText`, `NormRect`, `Pose*`, `StrokePhasesUs`, `PreparedStroke`, `FrameRequest`, `QuotaPreview`, `CleanStroke`, `Result*`, `CatalogSkill`, `CatalogPlan`.
+
+## Engine outputs
+
+Import from `@shared/engine/index.ts`. Everything is pure and deterministic; the handler parses the body with `PoseV1` first.
+
+**`prepare(pose, opts)` / `reprepare(rawPose, {cameraView, excludedStrokeIds, handedness}, opts)`**
+- `opts`: `{rubric, skill?, view?, excludedStrokeIds?, handedness?, frameMode?, userId?, rubricVersion?, timings?}`. `skill` defaults to `pose.session.skill`, `frameMode` to `frameModeForPose(pose)`, `view` to the pose's `cameraView` (and to `viewGuess` when that is `auto`).
+- Returns `{ok: true, response, prepared, cleanTrack}` or `{ok: false, code, tips, message}`; `code` is a `PrepareRejectionCode` (422) and `tips` its `REJECTION_TIPS`.
+- `response` is `PrepareResponseV1` without `quota`; add it with `withQuota(response, quota)`. Pass `userId` so that `cleanTrackPath` is `{uid}/{analysisId}/pose.clean.json`; `cleanTrackPath(uid, id)` is exported too.
+- `prepared` is `PreparedAnalysisV1` (store it in `analyses.prepared`). `cleanTrack` is `CleanTrackV1` (store it as `pose.clean.json`).
+- Stroke ids depend only on the pose and the handedness, so `excludedStrokeIds` survive view changes. Unknown ids are ignored. Excluding every stroke returns `no_strokes_detected`.
+- If the declared hand finds no stroke but the handedness check suggests the other hand, segmentation uses the suggested hand. `handednessSuggestion` and the `handedness_mismatch` warning are set, and `prepared.handedness` records the hand actually used.
+
+**`PreparedAnalysisV1`** (`prepared_state.ts`, schema `prepared.v1`, Zod `PreparedAnalysisV1`):
+- Header fields: `algoVersion` (`ALGO_VERSION`), `rubricVersion`, `sport`, `skill`, `view` and `viewSource` (`user` or `guess`), `viewGuess`, `handedness`, `handednessSuggestion`, `direction {f, source}`, `analysisHz`, `srcFps`, `frameMode`, `inputQuality` (pose.v1 `quality`), `warnings`, `frameRequests`.
+- `strokes[]`: `{id, tStartUs, tContactUs, contactIsEstimate, tEndUs, vPeak, phases {swingStart|null, ready, bsEnd, contact, ftStop, recovery|null}, readyAssessable, quality, role, excluded, strokeScore, metrics {checkpointId → value}}`.
+- `checkpointTable[]` (`CheckpointRow`), one row per skill checkpoint in rubric order:
+  - Fields: `{id, subscore, assess, weight, phase, metricKey, unit, status, s, c, value, target, tol, reading, valueText, targetText, perStroke[{strokeId, value, s, c, used}], joints, viewFactor, velocityBased, injuryFlag, validStrokes}`.
+  - `status` is one of `measured`, `visual` (V, waiting for Claude), `view_excluded`, `no_data` or `not_assessable` (N).
+  - `reading` is one of `low`, `high`, `ok`, `false` or `true`. It picks `FaultDef.when` and `plain.low|high`.
+  - `valueText` and `targetText` are language-neutral (`"142°"`, `"≥ 150°"`, `"0.45 T"`, `"3/4"`, `"✓"`).
+  - `joints` are already mirrored for left-handers.
+- `visualToJudge[]`: `{checkpointId, phase, anchors[5], frameIds (F#; empty when pose_only), viewFactor}`. These are the V checkpoints Claude must judge.
+- `candidates`: `{weaknesses[{checkpointId, faultId|null, reading, impact, s, c}] (≤ 6), strengths[{checkpointId, rank, s, c}] (≤ 6), injury[{checkpointId, s, c}]}`. Injury-flagged rows never enter the two lists; an `injury` hit becomes the fixed `CheckpointDef.safety` note.
+- `subScoresPreview[]`: `{key, weight, score|null, coverage, shown}` from measured checkpoints only. `coverage` is the skill-weighted measured coverage.
+
+**After Claude: `composeScores(checkpointTable, visualJudgments, skill)`** (`score.ts`)
+- `visualJudgments` is `[{checkpointId, level (−1..4), confidence: low|medium|high}]`, already normalised by postprocess.
+- Returns `{checkpoints (rows with V s/c filled, effectiveWeight, visualLevel), subScores[{key, weight, score, displayScore|null, coverage, confidence, shown, vScale}], overall {score|null, displayScore|null, level|null, coverage, partial, capped}}`.
+- Rules:
+  - V: `s = level/4`; `c` = 0.4 / 0.7 / 1 × view factor.
+  - The V share of each sub-score is capped at 35 %, so a sub-score with only V items is not scored.
+  - A sub-score is shown at coverage ≥ 0.4.
+  - Overall coverage < 0.5 → `partial` with no number; < 0.8 → capped at 85.
+  - Display values are `round(x/5)·5`; the level comes from the raw (capped) overall, with no hysteresis.
+- Helpers: `displayScore`, `levelFor`, `scoreMetric`, `readingOf`, `faultFor`, `VISUAL_CONFIDENCE`, `SCORE_CONSTANTS`.
+
+**Tools**
+- `scripts/replay.ts <pose.json> [--view …] [--exclude 1,2] [--handedness …] [--out dir] [--mock-claude f]` prints the engine state. `HOOK(M6)` in that file marks where the Claude step plugs in.
+- `scripts/replay.ts --golden [--check]` writes or checks `shared/fixtures/prepare/<synthetic>.json`.
+- `scripts/bench-engine.ts` measures a 30 s 60 Hz clip (budget 300 ms excluding parse).
+- `scripts/fit-contact-offsets.ts [--check]` fits offsets from `shared/fixtures/labels/*.csv`; the CSV format is in that folder's README.

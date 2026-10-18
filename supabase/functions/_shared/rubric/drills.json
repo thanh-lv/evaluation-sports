@@ -1,28 +1,944 @@
 {
-  "version": "placeholder-0",
+  "version": "2026.10.18",
   "drills": [
     {
-      "id": "bd.drill.towel_snap",
+      "id": "bd.drill.ready_hold",
       "sport": "badminton",
-      "dose": { "sets": 3, "reps": 10 },
-      "title": { "vi": "Vung khăn", "en": "Towel snap" },
+      "dose": {
+        "sets": 3,
+        "seconds": 30
+      },
+      "title": {
+        "vi": "Giữ tư thế chuẩn bị",
+        "en": "Ready-stance hold"
+      },
       "steps": {
-        "vi": ["Cầm một đầu khăn như cầm vợt.", "Nâng khuỷu ngang vai.", "Vung mạnh để khăn kêu tách phía trước."],
+        "vi": [
+          "Đứng hai chân rộng hơn vai, gối hơi chùng, ngực đổ nhẹ về trước.",
+          "Giơ vợt trước ngực, đầu vợt hướng lên.",
+          "Giữ yên tư thế, thở đều.",
+          "Sau mỗi lần giữ, bước nhanh một bước về bất kỳ hướng nào rồi quay lại."
+        ],
         "en": [
-          "Hold a towel like a racket.",
-          "Lift the elbow to shoulder height.",
-          "Swing so the towel snaps in front."
+          "Stand with feet a bit wider than your shoulders, knees soft, chest slightly forward.",
+          "Hold the racket up in front of your chest, racket head up.",
+          "Hold the position and breathe steadily.",
+          "After each hold, take one quick step in any direction and come back."
         ]
       }
     },
     {
-      "id": "pb.drill.low_toss",
-      "sport": "pickleball",
-      "dose": { "sets": 3, "reps": 10 },
-      "title": { "vi": "Giao bóng điểm chạm thấp", "en": "Low-contact serves" },
+      "id": "bd.drill.racket_up_bounce",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 20
+      },
+      "title": {
+        "vi": "Tâng cầu giữ vợt cao",
+        "en": "Racket-up shuttle bounces"
+      },
       "steps": {
-        "vi": ["Thả bóng ngang hông.", "Chạm bóng dưới thắt lưng.", "Vung vợt từ dưới lên."],
-        "en": ["Drop the ball at hip height.", "Contact it below the waist.", "Swing low to high."]
+        "vi": [
+          "Đứng ở tư thế chuẩn bị, vợt trước ngực.",
+          "Tâng cầu nhẹ trên mặt vợt, không để vợt hạ dưới ngực.",
+          "Sau mỗi lần tâng, đưa vợt về đúng vị trí trước ngực."
+        ],
+        "en": [
+          "Stand in the ready stance, racket in front of your chest.",
+          "Bounce a shuttle gently on the racket face without letting the racket drop below chest height.",
+          "After each bounce, bring the racket back in front of your chest."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.split_on_cue",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Bật nhún theo tín hiệu",
+        "en": "Split step on a cue"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở tư thế chuẩn bị.",
+          "Nhờ bạn vỗ tay bất chợt, hoặc tự đặt nhịp bằng ứng dụng đếm nhịp.",
+          "Khi nghe tín hiệu, bật nhún thấp và nhẹ, tiếp đất hai chân rộng hơn lúc đầu.",
+          "Bước nhanh một bước về một góc rồi về lại giữa."
+        ],
+        "en": [
+          "Stand in the ready stance.",
+          "Have a friend clap at random, or use a metronome app.",
+          "On the cue, make a small, light hop and land with feet wider than where you started.",
+          "Take one quick step toward a corner, then come back to the middle."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.shadow_turn_point",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Xoay người và chỉ tay",
+        "en": "Shadow turn-and-point"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở tư thế chuẩn bị.",
+          "Xoay vai, tay không cầm vợt chỉ lên cầu tưởng tượng.",
+          "Vung vợt chậm rồi về tư thế chuẩn bị."
+        ],
+        "en": [
+          "Start in the ready stance.",
+          "Turn your shoulders and point the free hand at an imaginary shuttle.",
+          "Swing slowly, then return to ready."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.point_pull",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Chỉ lên – kéo xuống",
+        "en": "Point and pull"
+      },
+      "steps": {
+        "vi": [
+          "Giơ tay không cầm vợt chỉ lên cao.",
+          "Khi vung vợt, kéo tay đó xuống sát người.",
+          "Đếm nhịp \"chỉ – kéo\" thành tiếng."
+        ],
+        "en": [
+          "Raise the free hand and point up.",
+          "As you swing, pull that hand down to your body.",
+          "Count \"point – pull\" out loud."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.towel_snap",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Vung khăn",
+        "en": "Towel snap"
+      },
+      "steps": {
+        "vi": [
+          "Cầm một đầu khăn như cầm vợt.",
+          "Nâng khuỷu tay ngang vai, khăn ra sau lưng.",
+          "Vung mạnh lên trên và ra trước để khăn kêu tách."
+        ],
+        "en": [
+          "Hold one end of a towel like a racket.",
+          "Lift the elbow to shoulder height, towel behind your back.",
+          "Swing up and forward so the towel snaps."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.overhead_throw",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 15
+      },
+      "title": {
+        "vi": "Ném cầu qua đầu",
+        "en": "Overhead shuttle throw"
+      },
+      "steps": {
+        "vi": [
+          "Đứng nghiêng, chân thuận phía sau.",
+          "Kéo khuỷu tay lên cao ngang vai.",
+          "Ném quả cầu đi xa nhất có thể."
+        ],
+        "en": [
+          "Stand side-on, racket-side foot back.",
+          "Pull the elbow up to shoulder height.",
+          "Throw a shuttle as far as you can."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.hanging_shuttle",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 15
+      },
+      "title": {
+        "vi": "Đánh bóng quả cầu treo",
+        "en": "Shadow swings at a hanging shuttle"
+      },
+      "steps": {
+        "vi": [
+          "Treo một quả cầu bằng dây ở độ cao vợt chạm khi bạn vươn hết tay.",
+          "Đứng hơi lùi sau quả cầu, xoay người nghiêng.",
+          "Vung chậm để mặt vợt chạm nhẹ quả cầu ở điểm cao nhất, hơi phía trước trán.",
+          "Về tư thế chuẩn bị sau mỗi lần."
+        ],
+        "en": [
+          "Hang a shuttle on a string at the height your racket reaches with your arm fully up.",
+          "Stand slightly behind it, turned side-on.",
+          "Swing slowly so the racket face touches the shuttle at the top, just in front of your forehead.",
+          "Return to ready after each swing."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.scissor_shadow",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 8
+      },
+      "title": {
+        "vi": "Lùi cuối sân và đổi chân",
+        "en": "Rear-court shadow with scissor kick"
+      },
+      "steps": {
+        "vi": [
+          "Bắt đầu ở giữa sân, tư thế chuẩn bị.",
+          "Xoay người nghiêng, bước đệm lùi về góc cuối sân.",
+          "Dồn trọng tâm vào chân sau, vung vợt tưởng tượng và đổi chân trên không để chân sau ra trước.",
+          "Đẩy chân về lại giữa sân."
+        ],
+        "en": [
+          "Start in the middle of the court in the ready stance.",
+          "Turn side-on and chassé back to a rear corner.",
+          "Load your back leg, swing at an imaginary shuttle, and scissor your legs so the back foot lands in front.",
+          "Push back to the middle."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.opposite_hip_finish",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Kết thúc vợt bên hông đối diện",
+        "en": "Finish at the opposite hip"
+      },
+      "steps": {
+        "vi": [
+          "Vung vợt tưởng tượng như phông cầu.",
+          "Sau điểm chạm, để vợt đi tiếp xuống và chéo qua người.",
+          "Chạm nhẹ vợt vào hông bên tay không cầm vợt rồi về tư thế chuẩn bị."
+        ],
+        "en": [
+          "Shadow a clear swing.",
+          "After the contact point, let the racket keep going down and across your body.",
+          "Lightly touch your non-racket hip with the racket, then return to ready."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.hit_and_recover",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 8
+      },
+      "title": {
+        "vi": "Đánh xong về giữa sân",
+        "en": "Hit and recover to base"
+      },
+      "steps": {
+        "vi": [
+          "Đánh một cú phông cầu (thật hoặc tưởng tượng) từ cuối sân.",
+          "Ngay sau đó giơ vợt lên trước ngực.",
+          "Bước về giữa sân, bật nhún nhẹ khi đến nơi."
+        ],
+        "en": [
+          "Play a clear from the back court, real or shadow.",
+          "Immediately bring the racket up in front of your chest.",
+          "Move back to the middle and make a small split step when you arrive."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.kneeling_smash",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Đập cầu tư thế quỳ",
+        "en": "Kneeling smash swings"
+      },
+      "steps": {
+        "vi": [
+          "Quỳ một gối trên thảm mềm, gối bên tay không cầm vợt chạm sàn.",
+          "Xoay vai nghiêng, khuỷu tay cao.",
+          "Xoay ngực ra trước và vung vợt xuống, mặt vợt úp xuống ở điểm chạm.",
+          "Tập chậm, tập trung vào xoay thân trên."
+        ],
+        "en": [
+          "Kneel on one knee on a soft mat, non-racket knee down.",
+          "Turn your shoulders side-on with the elbow high.",
+          "Rotate your chest forward and swing down, racket face angled down at contact.",
+          "Go slowly and focus on the upper-body rotation."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.jump_land_hold",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 8
+      },
+      "title": {
+        "vi": "Bật nhảy và tiếp đất giữ yên",
+        "en": "Jump, land and hold"
+      },
+      "steps": {
+        "vi": [
+          "Đứng hai chân rộng bằng vai.",
+          "Bật nhảy thấp lên tại chỗ.",
+          "Tiếp đất bằng hai gối hơi chùng, ngay dưới thân người.",
+          "Giữ yên hai giây rồi lặp lại."
+        ],
+        "en": [
+          "Stand with feet shoulder-width apart.",
+          "Make a low jump on the spot.",
+          "Land with soft knees, right under your body.",
+          "Hold still for two seconds, then repeat."
+        ]
+      },
+      "safety": {
+        "vi": "Bắt đầu với bật nhảy thấp trên mặt sàn không trơn; dừng lại nếu thấy đau.",
+        "en": "Start with low jumps on a non-slip floor; stop if anything hurts."
+      }
+    },
+    {
+      "id": "bd.drill.smash_step_in",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 8
+      },
+      "title": {
+        "vi": "Đập cầu rồi bước lên",
+        "en": "Smash and step in"
+      },
+      "steps": {
+        "vi": [
+          "Đứng giữa sân, vung đập cầu tưởng tượng với điểm chạm phía trước trán.",
+          "Kết thúc vợt xuống chéo qua người.",
+          "Bước ngay một đến hai bước về phía lưới, giơ vợt trước ngực."
+        ],
+        "en": [
+          "From mid-court, shadow a smash with contact in front of your forehead.",
+          "Finish the racket down and across your body.",
+          "Immediately take one or two steps toward the net with the racket up."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.mirror_serve",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Giao cầu trước gương",
+        "en": "Mirror serves"
+      },
+      "steps": {
+        "vi": [
+          "Đứng nghiêng trước gương hoặc tự quay video bằng điện thoại.",
+          "Chân thuận hơi lên trước, gối hơi chùng, người đổ nhẹ về trước.",
+          "Giao cầu thấp chậm rãi, giữ hai chân đứng yên đến khi giao xong.",
+          "Kiểm tra tư thế sau mỗi lần."
+        ],
+        "en": [
+          "Stand side-on to a mirror, or film yourself with your phone.",
+          "Racket foot slightly forward, knees soft, leaning a little forward.",
+          "Make slow low serves, keeping both feet still until the serve is done.",
+          "Check your position after each one."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.serve_string",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Giao cầu dưới dây căng",
+        "en": "Serve under a string"
+      },
+      "steps": {
+        "vi": [
+          "Căng một sợi dây cao hơn mép lưới khoảng một gang tay.",
+          "Giao cầu thấp sao cho cầu bay giữa lưới và sợi dây.",
+          "Đẩy cầu bằng ngón cái, lấy đà ngắn, giữ chắc cổ tay.",
+          "Không có dây: chọn một điểm mốc ngay trên mép lưới để nhắm."
+        ],
+        "en": [
+          "Stretch a string about a hand-span above the net tape.",
+          "Serve low so the shuttle passes between the tape and the string.",
+          "Push with the thumb, short backswing, firm wrist.",
+          "No string: pick a mark just above the tape to aim under."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.serve_racket_up",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Giao xong giơ vợt",
+        "en": "Serve, then racket up"
+      },
+      "steps": {
+        "vi": [
+          "Giao một quả cầu thấp.",
+          "Ngay sau khi giao, giơ vợt lên trước ngực và bước nhẹ lên.",
+          "Nếu có bạn tập, nhờ bạn đẩy cầu trả về để bạn chặn lại."
+        ],
+        "en": [
+          "Make one low serve.",
+          "Right after the serve, lift the racket in front of your chest and step in slightly.",
+          "With a partner, have them push the return so you can block it."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.net_touch",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 15
+      },
+      "title": {
+        "vi": "Bỏ nhỏ không lấy đà",
+        "en": "Net shots from the contact position"
+      },
+      "steps": {
+        "vi": [
+          "Đứng gần lưới, đưa vợt sẵn ở điểm chạm ngang mép lưới.",
+          "Tự tung cầu hoặc nhờ bạn ném cầu nhẹ qua lưới.",
+          "Chạm và dẫn cầu qua lưới, không lấy đà, theo vợt rất ngắn."
+        ],
+        "en": [
+          "Stand near the net with the racket already at the contact point, at tape height.",
+          "Toss the shuttle yourself, or have a partner throw it gently over the net.",
+          "Touch and guide it over with no backswing and a very short follow-through."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.lunge_push_back",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 8
+      },
+      "title": {
+        "vi": "Lunge chậm và đẩy về",
+        "en": "Slow lunge and push back"
+      },
+      "steps": {
+        "vi": [
+          "Từ giữa sân, bước lunge bằng chân thuận về một góc lưới.",
+          "Giữ ngực thẳng, gối trước nằm trên bàn chân.",
+          "Chạm vợt vào quả cầu đặt trên sàn.",
+          "Đẩy bằng gót chân trước để lùi về giữa sân."
+        ],
+        "en": [
+          "From mid-court, lunge with your racket leg toward a front corner.",
+          "Keep your chest up and the front knee over your foot.",
+          "Touch a shuttle placed on the floor with the racket.",
+          "Push off through the front heel back to the middle."
+        ]
+      },
+      "safety": {
+        "vi": "Tập chậm và lunge vừa sức; dừng lại nếu thấy đau gối.",
+        "en": "Go slowly and lunge within your comfort range; stop if your knee hurts."
+      }
+    },
+    {
+      "id": "bd.drill.lift_target",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Vẩy cầu vào mục tiêu cuối sân",
+        "en": "Lifts to a back-court target"
+      },
+      "steps": {
+        "vi": [
+          "Đặt một mục tiêu (khăn hoặc vợt cũ) gần vạch cuối sân.",
+          "Nhờ bạn ném cầu xuống gần lưới.",
+          "Lunge lên, lấy đà gọn và vẩy cầu từ dưới lên, kết thúc vợt cao.",
+          "Đẩy về giữa sân sau mỗi cú."
+        ],
+        "en": [
+          "Place a target, such as a towel, near the back line.",
+          "Have a partner throw shuttles to the net.",
+          "Lunge in, use a compact backswing, lift from low to high and finish high.",
+          "Push back to the middle after each lift."
+        ]
+      }
+    },
+    {
+      "id": "bd.drill.high_serve_freeze",
+      "sport": "badminton",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Giao cầu cao và giữ dáng kết thúc",
+        "en": "High serve, finish and freeze"
+      },
+      "steps": {
+        "vi": [
+          "Đứng nghiêng, chân không thuận lên trước, trọng tâm ở chân sau.",
+          "Thả cầu và vung vợt dài từ dưới lên, chạm cầu ở khoảng ngang gối.",
+          "Chuyển trọng tâm ra chân trước, kết thúc vợt cao qua vai đối diện.",
+          "Giữ yên dáng kết thúc hai giây."
+        ],
+        "en": [
+          "Stand side-on, non-racket foot forward, weight on the back foot.",
+          "Drop the shuttle and swing long from low to high, contacting around knee height.",
+          "Shift onto your front foot and finish high over the opposite shoulder.",
+          "Hold the finish for two seconds."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.ready_hold",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "seconds": 30
+      },
+      "title": {
+        "vi": "Giữ tư thế chuẩn bị",
+        "en": "Ready-position hold"
+      },
+      "steps": {
+        "vi": [
+          "Đứng hai chân rộng bằng hoặc hơn vai, gối chùng, trọng tâm hơi về trước.",
+          "Giơ vợt trước ngực, đầu vợt hướng lên.",
+          "Giữ yên tư thế, thở đều.",
+          "Sau mỗi lần giữ, bước trượt ngang hai bước rồi quay lại."
+        ],
+        "en": [
+          "Stand with feet shoulder-width or wider, knees bent, weight slightly forward.",
+          "Hold the paddle up in front of your chest, tip up.",
+          "Hold the position and breathe steadily.",
+          "After each hold, shuffle two steps sideways and back."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.paddle_up_reaction",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 15
+      },
+      "title": {
+        "vi": "Phản xạ vợt cao",
+        "en": "Paddle-up reaction volleys"
+      },
+      "steps": {
+        "vi": [
+          "Đứng cách tường khoảng hai đến ba mét, vợt trước ngực.",
+          "Đánh bóng nhẹ vào tường và chặn bóng bật lại trước khi bóng chạm đất.",
+          "Sau mỗi cú, đưa vợt về ngay trước ngực.",
+          "Có bạn tập: đứng ở kitchen, đánh vô lê qua lại chậm."
+        ],
+        "en": [
+          "Stand two to three meters from a wall, paddle in front of your chest.",
+          "Hit the ball gently at the wall and block the rebound before it bounces.",
+          "After each hit, bring the paddle straight back in front of your chest.",
+          "With a partner: stand at the kitchen and trade slow volleys."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.split_on_cue",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Bật nhún theo tín hiệu",
+        "en": "Split step on a cue"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở tư thế chuẩn bị, vợt trước ngực.",
+          "Nhờ bạn vỗ tay hoặc đánh bóng; tập một mình thì dùng ứng dụng đếm nhịp.",
+          "Khi nghe tín hiệu, bật nhún thấp và nhẹ, tiếp đất hai chân rộng.",
+          "Bước trượt một bước về phía bạn chỉ rồi về lại."
+        ],
+        "en": [
+          "Stand in the ready position, paddle in front.",
+          "Have a partner clap or hit a ball; alone, use a metronome app.",
+          "On the cue, make a small, light hop and land with feet wide.",
+          "Shuffle one step in the pointed direction, then come back."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.pendulum_swing",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Vung vợt con lắc",
+        "en": "Slow pendulum swings"
+      },
+      "steps": {
+        "vi": [
+          "Đứng chân không thuận lên trước, trọng tâm ở chân sau.",
+          "Vung vợt chậm từ vai như con lắc, giữ chắc cổ tay.",
+          "Chạm bóng tưởng tượng thấp hơn rốn, phía trước chân trước.",
+          "Chuyển trọng tâm ra trước, kết thúc vợt ngang tầm mắt."
+        ],
+        "en": [
+          "Stand with your non-paddle foot forward and your weight on the back foot.",
+          "Swing slowly from the shoulder like a pendulum, wrist firm.",
+          "Contact an imaginary ball below your belly button, in front of the front foot.",
+          "Shift your weight forward and finish at eye level."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.deep_serve_target",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Giao bóng vào mục tiêu sâu",
+        "en": "Deep serves to a target"
+      },
+      "steps": {
+        "vi": [
+          "Đặt một chiếc khăn cách vạch cuối sân bên kia khoảng một mét.",
+          "Giao bóng nhắm vào khăn, vung theo hướng mục tiêu.",
+          "Sau mỗi cú giao, đứng lại cuối sân và bật nhún nhẹ."
+        ],
+        "en": [
+          "Place a towel about one meter inside the far baseline.",
+          "Serve at the towel and swing through toward it.",
+          "After each serve, stay back at the baseline and make a small split step."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.no_backswing_dink",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 20
+      },
+      "title": {
+        "vi": "Dink không lấy đà",
+        "en": "No-backswing dinks"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở vạch kitchen, gối chùng.",
+          "Đặt vợt sẵn ở điểm chạm phía trước người.",
+          "Nâng bóng nhẹ qua lưới bằng vai, không đưa vợt ra sau.",
+          "Tập một mình: dink vào tường thấp hoặc tự thả bóng."
+        ],
+        "en": [
+          "Stand at the kitchen line with your knees bent.",
+          "Set the paddle at the contact point in front of you.",
+          "Lift the ball gently over the net from the shoulder, with no backswing.",
+          "Alone: dink against a low wall or drop the ball yourself."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.knee_bend_dink",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "seconds": 60
+      },
+      "title": {
+        "vi": "Dink hạ gối",
+        "en": "Knee-bend dinks"
+      },
+      "steps": {
+        "vi": [
+          "Dink chéo sân với bạn tập hoặc vào tường.",
+          "Mỗi cú, hạ thấp người bằng gối như ngồi xuống ghế, lưng giữ thẳng.",
+          "Nâng bóng nhẹ từ dưới lên."
+        ],
+        "en": [
+          "Dink cross-court with a partner or against a wall.",
+          "On every shot, lower yourself with your knees as if sitting on a chair, back straight.",
+          "Lift the ball gently from low to high."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.shuffle_dink",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "seconds": 60
+      },
+      "title": {
+        "vi": "Dink kết hợp bước trượt",
+        "en": "Shuffle dinks"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở vạch kitchen, đối diện lưới.",
+          "Nhờ bạn dink sang trái và phải.",
+          "Bước trượt ngang đến bóng, không bắt chéo chân, rồi mới dink.",
+          "Về giữa sau mỗi cú."
+        ],
+        "en": [
+          "Stand at the kitchen line facing the net.",
+          "Have a partner dink to your left and right.",
+          "Shuffle sideways to the ball without crossing your feet, then dink.",
+          "Return to the middle after each shot."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.dink_rally",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 30
+      },
+      "title": {
+        "vi": "Chuỗi dink liên tục",
+        "en": "Dink rally"
+      },
+      "steps": {
+        "vi": [
+          "Dink qua lại với bạn tập, cố gắng đạt chuỗi ba mươi cú.",
+          "Giữ đầu yên khi chạm bóng.",
+          "Sau mỗi cú, đưa vợt về trước ngực."
+        ],
+        "en": [
+          "Dink back and forth with a partner, aiming for thirty in a row.",
+          "Keep your head still at contact.",
+          "After every shot, bring the paddle back in front of your chest."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.drop_ladder",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Drop từ gần ra xa",
+        "en": "Drop ladder"
+      },
+      "steps": {
+        "vi": [
+          "Bắt đầu đứng giữa sân, đánh drop nhẹ vào kitchen.",
+          "Lấy đà nhỏ, cổ tay chắc, nâng bóng từ vai.",
+          "Khi đạt bảy trên mười cú vào kitchen, lùi xa hơn một chút.",
+          "Kết thúc ở vạch cuối sân."
+        ],
+        "en": [
+          "Start at mid-court and hit soft drops into the kitchen.",
+          "Small backswing, firm wrist, lift from the shoulder.",
+          "When seven of ten land in the kitchen, move a little further back.",
+          "Finish at the baseline."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.drop_and_split",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 8
+      },
+      "title": {
+        "vi": "Drop, tiến lên và bật nhún",
+        "en": "Drop, move up and split"
+      },
+      "steps": {
+        "vi": [
+          "Đứng vững ở cuối sân rồi mới đánh drop.",
+          "Ngay sau khi đánh, bước lên hai đến ba bước.",
+          "Bật nhún khi bạn tập chạm bóng, hoặc sau bước thứ ba nếu tập một mình."
+        ],
+        "en": [
+          "Get settled at the baseline before you hit the drop.",
+          "Right after the hit, take two or three steps forward.",
+          "Split step as your partner hits, or after the third step if you are alone."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.return_and_run",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Trả giao rồi lên kitchen",
+        "en": "Return and run to the kitchen"
+      },
+      "steps": {
+        "vi": [
+          "Nhờ bạn giao bóng; tập một mình thì tự thả bóng.",
+          "Trả bóng cao và sâu.",
+          "Ngay sau đó tiến lên vạch kitchen và bật nhún khi đến nơi."
+        ],
+        "en": [
+          "Have a partner serve; alone, drop the ball yourself.",
+          "Hit the return high and deep.",
+          "Immediately move up to the kitchen line and split step when you arrive."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.unit_turn_shadow",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Xoay vai cùng vợt",
+        "en": "Unit-turn shadow swings"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở tư thế chuẩn bị.",
+          "Xoay vai và vợt cùng lúc về phía thuận tay, lấy đà gọn.",
+          "Bước vào bóng tưởng tượng, chạm phía trước người.",
+          "Vung theo rồi về tư thế chuẩn bị."
+        ],
+        "en": [
+          "Start in the ready position.",
+          "Turn your shoulders and paddle together to the forehand side with a compact backswing.",
+          "Step into an imaginary ball and make contact in front.",
+          "Follow through, then return to ready."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.brush_up",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 10
+      },
+      "title": {
+        "vi": "Chải bóng từ dưới lên",
+        "en": "Low-to-high brush"
+      },
+      "steps": {
+        "vi": [
+          "Vung vợt tưởng tượng từ dưới lên, như chải mặt sau quả bóng.",
+          "Kết thúc vợt ngang vai hoặc cao hơn.",
+          "Sau đó đánh thật mười quả với cùng đường vung."
+        ],
+        "en": [
+          "Shadow swing from low to high, as if brushing up the back of the ball.",
+          "Finish at shoulder height or above.",
+          "Then hit ten real balls with the same swing path."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.wall_punch_volley",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 30
+      },
+      "title": {
+        "vi": "Vô lê đẩy vào tường",
+        "en": "Wall punch volleys"
+      },
+      "steps": {
+        "vi": [
+          "Đứng cách tường khoảng hai mét, vợt trước ngực.",
+          "Đẩy bóng vào tường bằng cú vô lê ngắn, không vung.",
+          "Giữ cổ tay chắc, khuỷu tay trước người, trọng tâm hơi về trước."
+        ],
+        "en": [
+          "Stand about two meters from a wall, paddle in front of your chest.",
+          "Punch the ball into the wall with short volleys and no swing.",
+          "Keep the wrist firm, elbow in front, weight slightly forward."
+        ]
+      }
+    },
+    {
+      "id": "pb.drill.turn_and_step_back",
+      "sport": "pickleball",
+      "dose": {
+        "sets": 3,
+        "reps": 6
+      },
+      "title": {
+        "vi": "Xoay người và bước chéo lùi",
+        "en": "Turn and crossover back"
+      },
+      "steps": {
+        "vi": [
+          "Đứng ở vạch kitchen, tư thế chuẩn bị.",
+          "Khi bạn tập chỉ lên cao, xoay nghiêng người.",
+          "Bước chéo lùi ba bước, mắt nhìn lên như theo bóng lốp.",
+          "Đi chậm, không chạy lùi thẳng."
+        ],
+        "en": [
+          "Stand at the kitchen line in the ready position.",
+          "When your partner points up, turn sideways.",
+          "Take three crossover steps back, eyes up as if tracking a lob.",
+          "Go slowly and never backpedal straight back."
+        ]
+      },
+      "safety": {
+        "vi": "Tập chậm trên mặt sân khô, không có vật cản phía sau.",
+        "en": "Practice slowly on a dry court with nothing behind you."
       }
     }
   ]

@@ -1,0 +1,209 @@
+{
+  "schema": "prepare.v1",
+  "analysisId": "0704ac13-84e7-4f22-93a6-2734dec48192",
+  "status": "prepared",
+  "frameMode": "frames",
+  "warnings": ["fps_low", "view_not_recommended"],
+  "viewGuess": {
+    "view": "side",
+    "confidence": 0.95
+  },
+  "handednessSuggestion": null,
+  "strokes": [
+    {
+      "id": 1,
+      "tStartUs": 1599850,
+      "tContactUs": 2771058,
+      "contactIsEstimate": true,
+      "tEndUs": 3767226,
+      "phases": {
+        "ready": 1835546,
+        "bsEnd": 2569125,
+        "contact": 2768700,
+        "ftStop": 2899376
+      },
+      "quality": 0.98,
+      "role": null,
+      "thumbTUs": 2768700,
+      "excluded": false
+    },
+    {
+      "id": 2,
+      "tStartUs": 3868528,
+      "tContactUs": 5047445,
+      "contactIsEstimate": true,
+      "tEndUs": 6033208,
+      "phases": {
+        "ready": 4101099,
+        "bsEnd": 4833779,
+        "contact": 5032998,
+        "ftStop": 5164914
+      },
+      "quality": 0.96,
+      "role": "best",
+      "thumbTUs": 5032998,
+      "excluded": false
+    },
+    {
+      "id": 3,
+      "tStartUs": 6268727,
+      "tContactUs": 7465564,
+      "contactIsEstimate": true,
+      "tEndUs": 8465003,
+      "phases": {
+        "ready": 6497676,
+        "bsEnd": 7232076,
+        "contact": 7467477,
+        "ftStop": 7602474
+      },
+      "quality": 0.98,
+      "role": "worst",
+      "thumbTUs": 7467477,
+      "excluded": false
+    },
+    {
+      "id": 4,
+      "tStartUs": 8767928,
+      "tContactUs": 9944678,
+      "contactIsEstimate": true,
+      "tEndUs": 10935813,
+      "phases": {
+        "ready": 9001503,
+        "bsEnd": 9698720,
+        "contact": 9935058,
+        "ftStop": 10066691
+      },
+      "quality": 0.94,
+      "role": null,
+      "thumbTUs": 9935058,
+      "excluded": false
+    }
+  ],
+  "frameRequests": [
+    {
+      "frameId": "F1",
+      "strokeId": 2,
+      "phase": "ready",
+      "tUs": 4101099,
+      "crop": {
+        "x": 0.2486,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F2",
+      "strokeId": 2,
+      "phase": "bsEnd",
+      "tUs": 4833779,
+      "crop": {
+        "x": 0.2486,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F3",
+      "strokeId": 2,
+      "phase": "contact",
+      "tUs": 5032998,
+      "crop": {
+        "x": 0.2486,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F4",
+      "strokeId": 2,
+      "phase": "ftStop",
+      "tUs": 5164914,
+      "crop": {
+        "x": 0.2486,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F5",
+      "strokeId": 2,
+      "phase": "overview",
+      "tUs": 5032998,
+      "crop": {
+        "x": 0.2526,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "L1",
+      "strokeId": 3,
+      "phase": "ready",
+      "tUs": 6497676,
+      "crop": {
+        "x": 0.2521,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    },
+    {
+      "frameId": "L2",
+      "strokeId": 3,
+      "phase": "bsEnd",
+      "tUs": 7232076,
+      "crop": {
+        "x": 0.2521,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    },
+    {
+      "frameId": "L3",
+      "strokeId": 3,
+      "phase": "contact",
+      "tUs": 7467477,
+      "crop": {
+        "x": 0.2521,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    },
+    {
+      "frameId": "L4",
+      "strokeId": 3,
+      "phase": "ftStop",
+      "tUs": 7602474,
+      "crop": {
+        "x": 0.2521,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    }
+  ],
+  "maxLongEdge": 768,
+  "cleanTrackPath": "5f8e2c1a-9b7d-4e3f-8a6c-2d1e0f9b8a7c/0704ac13-84e7-4f22-93a6-2734dec48192/pose.clean.json",
+  "quota": {
+    "tier": "free",
+    "remaining": 1,
+    "nextKind": "standard",
+    "resetsAt": "2026-11-01T00:00:00+07:00"
+  }
+}

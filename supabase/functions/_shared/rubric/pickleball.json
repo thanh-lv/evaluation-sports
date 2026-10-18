@@ -1,81 +1,4856 @@
 {
-  "version": "placeholder-0",
+  "version": "pb-2026.10.18",
   "sport": "pickleball",
   "skills": [
     {
       "id": "pb.serve",
       "sport": "pickleball",
-      "name": { "vi": "Giao bóng", "en": "Serve" },
-      "weights": { "stance": 20, "footwork": 5, "swing": 30, "contact": 25, "follow": 15, "recovery": 5 },
+      "name": {
+        "vi": "Giao bóng",
+        "en": "Serve"
+      },
+      "weights": {
+        "stance": 15,
+        "footwork": 0,
+        "swing": 30,
+        "contact": 25,
+        "follow": 20,
+        "recovery": 10
+      },
       "vmin": 2,
       "nms": 2,
       "family": "underarm",
       "contactOffsetMs": 0,
-      "views": { "recommended": ["S"], "allowed": ["S", "D"] },
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
       "solo": true,
       "rulesTip": {
-        "vi": "Giao bóng từ dưới lên, điểm chạm thấp hơn thắt lưng, chéo sân.",
-        "en": "Serve underhand, contact below the waist, diagonally cross-court."
+        "vi": "Giao bóng tay dưới: chạm bóng thấp hơn thắt lưng (rốn), tay vung theo đường cong đi lên, đầu vợt thấp hơn cổ tay. Ít nhất một chân ở sau vạch cuối sân và không chạm vạch. Bóng phải rơi vào ô giao bóng chéo, qua khỏi kitchen.",
+        "en": "Serve underhand: contact below the waist (navel), arm moving in an upward arc, paddle head below the wrist. Keep at least one foot behind the baseline and off the line. The ball must land in the diagonal service court, past the kitchen."
       },
-      "checkpoints": ["pb.serve.SV2", "pb.ready.PR6"]
+      "checkpoints": [
+        "pb.serve.SV1",
+        "pb.serve.SV2",
+        "pb.serve.SV3",
+        "pb.serve.SV4",
+        "pb.serve.SV5",
+        "pb.serve.SV6",
+        "pb.serve.SV7",
+        "pb.serve.SV8",
+        "pb.serve.SV9",
+        "pb.serve.SV10",
+        "pb.serve.SV11",
+        "pb.serve.SV12"
+      ]
+    },
+    {
+      "id": "pb.dink",
+      "sport": "pickleball",
+      "name": {
+        "vi": "Dink",
+        "en": "Dink"
+      },
+      "weights": {
+        "stance": 25,
+        "footwork": 10,
+        "swing": 20,
+        "contact": 25,
+        "follow": 10,
+        "recovery": 10
+      },
+      "vmin": 1.2,
+      "nms": 0.8,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Kitchen (vùng cấm vô lê) là vùng sát lưới: khi đứng trong đó hoặc chạm vạch, bạn chỉ được đánh bóng sau khi bóng đã nảy. Dink tốt rơi vào kitchen bên đối thủ.",
+        "en": "The kitchen (non-volley zone) is the area next to the net: while you are in it or on its line, you may only hit the ball after it bounces. A good dink lands in your opponent's kitchen."
+      },
+      "checkpoints": [
+        "pb.ready.PR1",
+        "pb.ready.PR2",
+        "pb.ready.PR3",
+        "pb.ready.PR4",
+        "pb.ready.PR5",
+        "pb.ready.PR6",
+        "pb.ready.PR7",
+        "pb.split.S1",
+        "pb.dink.DK1",
+        "pb.dink.DK2",
+        "pb.dink.DK3",
+        "pb.dink.DK4",
+        "pb.dink.DK5",
+        "pb.dink.DK6",
+        "pb.dink.DK7",
+        "pb.dink.DK8",
+        "pb.dink.DK9",
+        "pb.dink.DK10",
+        "pb.dink.DK11",
+        "pb.dink.DK12"
+      ]
+    },
+    {
+      "id": "pb.drop3",
+      "sport": "pickleball",
+      "name": {
+        "vi": "Drop cú thứ ba",
+        "en": "Third-shot drop"
+      },
+      "weights": {
+        "stance": 20,
+        "footwork": 10,
+        "swing": 25,
+        "contact": 20,
+        "follow": 15,
+        "recovery": 10
+      },
+      "vmin": 1.5,
+      "nms": 1,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D",
+          "B"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Luật hai lần nảy: cú giao và cú trả giao đều phải nảy trước khi được đánh, nên cú thứ ba thường là drop nhẹ vào kitchen để bạn kịp lên lưới.",
+        "en": "Two-bounce rule: the serve and the return must each bounce before they are hit, so the third shot is often a soft drop into the kitchen that lets you move up."
+      },
+      "checkpoints": [
+        "pb.ready.PR1",
+        "pb.ready.PR2",
+        "pb.ready.PR3",
+        "pb.ready.PR4",
+        "pb.ready.PR5",
+        "pb.ready.PR6",
+        "pb.split.S1",
+        "pb.drop3.TD1",
+        "pb.drop3.TD2",
+        "pb.drop3.TD3",
+        "pb.drop3.TD4",
+        "pb.drop3.TD5",
+        "pb.drop3.TD6",
+        "pb.drop3.TD7",
+        "pb.drop3.TD8",
+        "pb.drop3.TD9"
+      ]
+    },
+    {
+      "id": "pb.return",
+      "sport": "pickleball",
+      "name": {
+        "vi": "Trả giao bóng",
+        "en": "Return of serve"
+      },
+      "weights": {
+        "stance": 10,
+        "footwork": 20,
+        "swing": 25,
+        "contact": 20,
+        "follow": 10,
+        "recovery": 15
+      },
+      "vmin": 2,
+      "nms": 1,
+      "family": "side",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Luật hai lần nảy: bạn phải để bóng giao nảy rồi mới đánh trả.",
+        "en": "Two-bounce rule: let the serve bounce before you return it."
+      },
+      "checkpoints": [
+        "pb.ready.PR1",
+        "pb.ready.PR2",
+        "pb.ready.PR3",
+        "pb.ready.PR4",
+        "pb.ready.PR5",
+        "pb.ready.PR6",
+        "pb.split.S1",
+        "pb.return.RT2",
+        "pb.return.RT3",
+        "pb.return.RT4",
+        "pb.return.RT5",
+        "pb.return.RT6",
+        "pb.return.RT7",
+        "pb.return.RT8"
+      ]
+    },
+    {
+      "id": "pb.drive",
+      "sport": "pickleball",
+      "name": {
+        "vi": "Drive",
+        "en": "Drive"
+      },
+      "weights": {
+        "stance": 15,
+        "footwork": 10,
+        "swing": 30,
+        "contact": 20,
+        "follow": 15,
+        "recovery": 10
+      },
+      "vmin": 3,
+      "nms": 1,
+      "family": "side",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "B",
+          "D"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Bóng chạm vạch là bóng trong, trừ cú giao chạm vạch kitchen.",
+        "en": "A ball that lands on a line is in, except a serve that lands on the kitchen line."
+      },
+      "checkpoints": [
+        "pb.ready.PR1",
+        "pb.ready.PR2",
+        "pb.ready.PR3",
+        "pb.ready.PR4",
+        "pb.ready.PR5",
+        "pb.ready.PR6",
+        "pb.split.S1",
+        "pb.drive.DV1",
+        "pb.drive.DV2",
+        "pb.drive.DV3",
+        "pb.drive.DV4",
+        "pb.drive.DV5",
+        "pb.drive.DV6",
+        "pb.drive.DV7",
+        "pb.drive.DV8"
+      ]
+    },
+    {
+      "id": "pb.volley",
+      "sport": "pickleball",
+      "name": {
+        "vi": "Vô lê",
+        "en": "Volley"
+      },
+      "weights": {
+        "stance": 20,
+        "footwork": 10,
+        "swing": 20,
+        "contact": 30,
+        "follow": 10,
+        "recovery": 10
+      },
+      "vmin": 1.5,
+      "nms": 0.8,
+      "family": "side",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Không được vô lê khi đang đứng trong kitchen hoặc chạm vạch kitchen, kể cả khi đà người sau cú vô lê đưa bạn vào kitchen.",
+        "en": "You may not volley while standing in the kitchen or on its line, including when your momentum after the volley carries you in."
+      },
+      "checkpoints": [
+        "pb.ready.PR1",
+        "pb.ready.PR2",
+        "pb.ready.PR3",
+        "pb.ready.PR4",
+        "pb.ready.PR5",
+        "pb.ready.PR6",
+        "pb.ready.PR7",
+        "pb.split.S1",
+        "pb.volley.VO1",
+        "pb.volley.VO2",
+        "pb.volley.VO3",
+        "pb.volley.VO4",
+        "pb.volley.VO5",
+        "pb.volley.VO6",
+        "pb.volley.VO7",
+        "pb.volley.VO8",
+        "pb.volley.VO9"
+      ]
     }
   ],
   "checkpoints": [
     {
-      "id": "pb.serve.SV2",
+      "id": "pb.ready.PR1",
       "sport": "pickleball",
-      "skills": ["pb.serve"],
-      "phase": "contact",
-      "subscore": "contact",
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
       "weight": 1,
       "assess": "M",
-      "metric": { "fn": "wristH", "params": { "arm": "racket" }, "target": [null, 0.6], "tol": 0.3, "unit": "T" },
-      "views": { "S": 1, "B": 1, "D": 1 },
-      "velocityBased": false,
-      "name": { "vi": "Điểm chạm thấp", "en": "Low contact point" },
-      "plain": {
-        "vi": { "low": "điểm chạm thấp, đúng luật", "high": "điểm chạm còn cao" },
-        "en": { "low": "contact is low, as required", "high": "contact is too high" }
+      "metric": {
+        "fn": "stanceW",
+        "target": [
+          1,
+          1.6
+        ],
+        "tol": 0.3,
+        "unit": "ratio"
       },
-      "faults": ["pb.serve.high_contact"],
-      "joints": ["rWri", "root"]
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Hai chân rộng bằng hoặc hơn vai",
+        "en": "Feet shoulder-width or wider"
+      },
+      "plain": {
+        "vi": {
+          "low": "hai chân đứng hẹp khi chờ bóng",
+          "high": "hai chân dang quá rộng khi chờ bóng"
+        },
+        "en": {
+          "low": "feet close together while waiting",
+          "high": "feet very wide apart while waiting"
+        }
+      },
+      "faults": [
+        "pb.ready.narrow_feet"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.ready.PR2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          15,
+          45
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối chùng",
+        "en": "Knees bent"
+      },
+      "plain": {
+        "vi": {
+          "low": "đầu gối gần như thẳng khi chờ bóng",
+          "high": "đầu gối khuỵu quá sâu khi chờ bóng"
+        },
+        "en": {
+          "low": "legs almost straight while waiting",
+          "high": "knees bent very deep while waiting"
+        }
+      },
+      "faults": [
+        "pb.ready.straight_legs"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.ready.PR3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          10,
+          30
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Trọng tâm hơi dồn về trước",
+        "en": "Weight slightly forward"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người thẳng đứng hoặc ngả ra sau khi chờ bóng",
+          "high": "thân người cúi gập nhiều khi chờ bóng"
+        },
+        "en": {
+          "low": "upper body upright or leaning back while waiting",
+          "high": "upper body bent far forward while waiting"
+        }
+      },
+      "faults": [
+        "pb.ready.weight_back"
+      ],
+      "joints": [
+        "neck",
+        "root"
+      ]
+    },
+    {
+      "id": "pb.ready.PR4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 2,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          1.2
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt giơ trước ngực",
+        "en": "Paddle up in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt buông thấp ngang gối khi chờ bóng",
+          "high": "tay cầm vợt giơ quá cao khi chờ bóng"
+        },
+        "en": {
+          "low": "paddle hangs low while waiting",
+          "high": "paddle hand held very high while waiting"
+        }
+      },
+      "faults": [
+        "pb.ready.paddle_down"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.ready.PR5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.3,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt đưa ra trước người",
+        "en": "Paddle out in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt sát người khi chờ bóng",
+          "high": "vợt đưa ra trước người"
+        },
+        "en": {
+          "low": "paddle tucked against the body",
+          "high": "paddle out in front"
+        }
+      },
+      "faults": [
+        "pb.ready.paddle_close"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
     },
     {
       "id": "pb.ready.PR6",
       "sport": "pickleball",
-      "skills": ["pb.serve"],
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
       "phase": "ready",
       "subscore": "stance",
       "weight": 1,
       "assess": "V",
-      "views": { "S": 1, "B": 1, "D": 1 },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
       "velocityBased": false,
       "vAnchors": [
-        "paddle hanging at the side",
-        "paddle low, below the waist",
-        "paddle at waist height",
-        "paddle up, slightly in front",
-        "paddle up in front, ready"
+        "Paddle tip points at the ground; paddle hangs by the leg.",
+        "Paddle low near the waist, tip pointing down or sideways.",
+        "Paddle at waist height, tip roughly horizontal.",
+        "Paddle in front at chest level, tip slightly up.",
+        "Paddle in front of the chest, tip up, face neutral, ready for either side."
       ],
-      "name": { "vi": "Vợt ở phía trước", "en": "Paddle up in front" },
+      "name": {
+        "vi": "Đầu vợt hướng lên",
+        "en": "Paddle tip up"
+      },
       "plain": {
-        "vi": { "low": "vợt buông thấp khi chờ bóng", "high": "vợt luôn ở phía trước" },
-        "en": { "low": "paddle drops while waiting", "high": "paddle stays up in front" }
+        "vi": {
+          "low": "đầu vợt chúc xuống khi chờ bóng",
+          "high": "đầu vợt hướng lên, mặt vợt trung tính"
+        },
+        "en": {
+          "low": "paddle tip drops while waiting",
+          "high": "paddle tip up, face neutral"
+        }
+      },
+      "faults": [
+        "pb.ready.tip_down"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.ready.PR7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink",
+        "pb.volley"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "turn",
+        "params": {
+          "line": "shoulder"
+        },
+        "target": [
+          null,
+          25
+        ],
+        "tol": 15,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đứng đối diện lưới",
+        "en": "Square to the net"
+      },
+      "plain": {
+        "vi": {
+          "low": "người đứng đối diện lưới",
+          "high": "người xoay lệch khỏi lưới khi chờ bóng"
+        },
+        "en": {
+          "low": "square to the net",
+          "high": "turned away from the net while waiting"
+        }
+      },
+      "faults": [
+        "pb.ready.turned"
+      ],
+      "joints": [
+        "lSho",
+        "rSho",
+        "lHip",
+        "rHip"
+      ]
+    },
+    {
+      "id": "pb.split.S1",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink",
+        "pb.drop3",
+        "pb.return",
+        "pb.drive",
+        "pb.volley"
+      ],
+      "phase": "window",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "hop",
+        "target": true,
+        "tol": 0,
+        "unit": "event"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Bật nhún (split step) trước khi di chuyển",
+        "en": "Split step before moving"
+      },
+      "plain": {
+        "vi": {
+          "low": "chưa thấy bật nhún trước khi di chuyển",
+          "high": "có bật nhún nhẹ trước khi di chuyển"
+        },
+        "en": {
+          "low": "no split step before moving",
+          "high": "small split step before moving"
+        }
+      },
+      "faults": [
+        "pb.split.no_split"
+      ],
+      "joints": [
+        "root",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.serve.SV1",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "stagger",
+        "target": [
+          0.3,
+          1.2
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đứng chân trước chân sau",
+        "en": "Staggered stance"
+      },
+      "plain": {
+        "vi": {
+          "low": "hai chân đứng song song",
+          "high": "hai chân cách nhau quá xa"
+        },
+        "en": {
+          "low": "feet side by side",
+          "high": "feet very far apart"
+        }
+      },
+      "faults": [
+        "pb.serve.square_stance"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.serve.SV2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          10,
+          40
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối hơi chùng",
+        "en": "Knees relaxed"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối thẳng cứng khi giao",
+          "high": "gối khuỵu quá sâu khi giao"
+        },
+        "en": {
+          "low": "knees locked straight on the serve",
+          "high": "knees bent very deep on the serve"
+        }
+      },
+      "faults": [
+        "pb.serve.stiff_legs"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.serve.SV3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wShift",
+        "target": [
+          null,
+          0.45
+        ],
+        "tol": 0.15,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Trọng tâm ở chân sau khi lấy đà",
+        "en": "Weight back at the backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "trọng tâm ở chân sau khi lấy đà",
+          "high": "trọng tâm dồn lên trước quá sớm"
+        },
+        "en": {
+          "low": "weight on the back foot in the backswing",
+          "high": "weight forward too early"
+        }
+      },
+      "faults": [
+        "pb.serve.early_weight"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.serve.SV4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "elbowAng",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          130,
+          null
+        ],
+        "tol": 20,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tay vung dài như con lắc",
+        "en": "Long pendulum arm"
+      },
+      "plain": {
+        "vi": {
+          "low": "khuỷu tay gập nhiều khi chạm bóng",
+          "high": "tay duỗi dài, vung như con lắc"
+        },
+        "en": {
+          "low": "elbow bent a lot at contact",
+          "high": "long arm, pendulum swing"
+        }
+      },
+      "faults": [
+        "pb.serve.bent_elbow"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.serve.SV5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.2,
+          null
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng phía trước người",
+        "en": "Contact in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng sát hoặc sau người",
+          "high": "chạm bóng rõ ở phía trước"
+        },
+        "en": {
+          "low": "contact beside or behind the body",
+          "high": "contact clearly in front"
+        }
+      },
+      "faults": [
+        "pb.serve.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.serve.SV6",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          null,
+          0.1
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng thấp dưới thắt lưng",
+        "en": "Contact below the waist"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng thấp, dưới thắt lưng",
+          "high": "chạm bóng khá cao, gần thắt lưng"
+        },
+        "en": {
+          "low": "contact low, below the waist",
+          "high": "contact rather high, near the waist"
+        }
+      },
+      "faults": [
+        "pb.serve.high_contact"
+      ],
+      "joints": [
+        "rWri",
+        "root"
+      ]
+    },
+    {
+      "id": "pb.serve.SV7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.3,
+          null
+        ],
+        "tol": 0.5,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Vợt đi lên khi chạm bóng",
+        "en": "Paddle moving up at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt chưa đi lên khi chạm bóng",
+          "high": "vợt đi lên rõ khi chạm bóng"
+        },
+        "en": {
+          "low": "paddle not rising at contact",
+          "high": "paddle clearly rising at contact"
+        }
+      },
+      "faults": [
+        "pb.serve.flat_swing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.serve.SV8",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact+0.2",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wShift",
+        "target": [
+          0.6,
+          null
+        ],
+        "tol": 0.15,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chuyển trọng tâm ra trước",
+        "en": "Weight transfers forward"
+      },
+      "plain": {
+        "vi": {
+          "low": "trọng tâm còn ở chân sau sau khi giao",
+          "high": "trọng tâm dồn lên chân trước"
+        },
+        "en": {
+          "low": "weight stays back after the serve",
+          "high": "weight moves onto the front foot"
+        }
+      },
+      "faults": [
+        "pb.serve.no_transfer"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.serve.SV9",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.8,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vung theo hướng mục tiêu",
+        "en": "Follows through to the target"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt dừng thấp sau khi giao",
+          "high": "vợt vung theo lên cao về phía mục tiêu"
+        },
+        "en": {
+          "low": "paddle stops low after the serve",
+          "high": "paddle follows through high toward the target"
+        }
+      },
+      "faults": [
+        "pb.serve.short_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.serve.SV10",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "baseErr",
+        "target": [
+          null,
+          1
+        ],
+        "tol": 0.5,
+        "unit": "T"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Giao xong ở lại cuối sân",
+        "en": "Stays back after serving"
+      },
+      "plain": {
+        "vi": {
+          "low": "ở lại cuối sân sau khi giao",
+          "high": "chạy lên sau khi giao"
+        },
+        "en": {
+          "low": "stays back after the serve",
+          "high": "runs in after the serve"
+        }
+      },
+      "faults": [
+        "pb.serve.runs_in"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.serve.SV11",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Wristy slap or flick; the paddle whips past the hand.",
+        "Jerky swing with a noticeable wrist flick.",
+        "Mostly an arm swing with some wrist movement.",
+        "Smooth pendulum swing with a small wrist movement.",
+        "Smooth pendulum from the shoulder; wrist firm, paddle and forearm move as one."
+      ],
+      "name": {
+        "vi": "Cổ tay chắc, vung mượt",
+        "en": "Firm wrist, smooth swing"
+      },
+      "plain": {
+        "vi": {
+          "low": "cổ tay vẩy khi chạm bóng",
+          "high": "cổ tay chắc, vung mượt"
+        },
+        "en": {
+          "low": "wrist flicks at contact",
+          "high": "firm wrist, smooth swing"
+        }
+      },
+      "faults": [
+        "pb.serve.wrist_flick"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.serve.SV12",
+      "sport": "pickleball",
+      "skills": [
+        "pb.serve"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Độ sâu và vị trí bóng giao",
+        "en": "Serve depth and placement"
+      },
+      "plain": {
+        "vi": {
+          "low": "bóng giao ngắn hoặc lệch",
+          "high": "bóng giao sâu, đúng hướng"
+        },
+        "en": {
+          "low": "serve short or off target",
+          "high": "serve deep and on target"
+        }
       },
       "faults": [],
-      "joints": ["rWri"]
+      "joints": []
+    },
+    {
+      "id": "pb.dink.DK1",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          20,
+          50
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Hạ thấp trọng tâm",
+        "en": "Low base"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối còn thẳng khi dink",
+          "high": "gối khuỵu quá sâu khi dink"
+        },
+        "en": {
+          "low": "legs fairly straight on the dink",
+          "high": "knees bent very deep on the dink"
+        }
+      },
+      "faults": [
+        "pb.dink.standing_tall"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.dink.DK2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 2,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          null,
+          35
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chùng gối, không cúi lưng",
+        "en": "Bend the knees, not the waist"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người giữ thẳng khi dink",
+          "high": "cúi gập lưng khi dink"
+        },
+        "en": {
+          "low": "chest stays up on the dink",
+          "high": "bending at the waist on the dink"
+        }
+      },
+      "faults": [
+        "pb.dink.waist_bend"
+      ],
+      "joints": [
+        "neck",
+        "root",
+        "lKne",
+        "rKne"
+      ]
+    },
+    {
+      "id": "pb.dink.DK3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 2,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          null,
+          0.4
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà ngắn",
+        "en": "Compact backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "gần như không lấy đà",
+          "high": "lấy đà quá lớn khi dink"
+        },
+        "en": {
+          "low": "almost no backswing",
+          "high": "big backswing on the dink"
+        }
+      },
+      "faults": [
+        "pb.dink.big_backswing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.dink.DK4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Wrist flick drives the shot; the paddle face changes sharply.",
+        "Clear wrist movement; the arm bends and snaps.",
+        "A mix of shoulder lift and wrist movement.",
+        "Mostly a shoulder lift with a small wrist movement.",
+        "Smooth lift from the shoulder; wrist and elbow firm, paddle face steady."
+      ],
+      "name": {
+        "vi": "Nâng bóng bằng vai, cổ tay chắc",
+        "en": "Shoulder lift, firm wrist"
+      },
+      "plain": {
+        "vi": {
+          "low": "cổ tay vẩy khi dink",
+          "high": "nâng bóng bằng vai, cổ tay chắc"
+        },
+        "en": {
+          "low": "wrist flicks on the dink",
+          "high": "lifts from the shoulder, wrist firm"
+        }
+      },
+      "faults": [
+        "pb.dink.wristy"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.dink.DK5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.2,
+          0.7
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng phía trước",
+        "en": "Contact in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng sát hoặc sau người",
+          "high": "với tay chạm bóng quá xa phía trước"
+        },
+        "en": {
+          "low": "contact beside or behind the body",
+          "high": "reaching far in front to contact"
+        }
+      },
+      "faults": [
+        "pb.dink.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.dink.DK6",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.2,
+          null
+        ],
+        "tol": 0.5,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Nâng bóng nhẹ từ dưới lên",
+        "en": "Gentle low-to-high lift"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt đẩy ngang hoặc chặt xuống",
+          "high": "vợt nâng bóng nhẹ từ dưới lên"
+        },
+        "en": {
+          "low": "paddle pushes flat or chops down",
+          "high": "paddle lifts the ball gently"
+        }
+      },
+      "faults": [
+        "pb.dink.no_lift"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.dink.DK7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "ftLen",
+        "target": [
+          null,
+          0.8
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Theo vợt ngắn",
+        "en": "Short follow-through"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt theo bóng ngắn, gọn",
+          "high": "vợt vung theo quá dài"
+        },
+        "en": {
+          "low": "short, tidy follow-through",
+          "high": "long follow-through"
+        }
+      },
+      "faults": [
+        "pb.dink.long_follow"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.dink.DK8",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "window",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "headStill",
+        "target": [
+          null,
+          0.15
+        ],
+        "tol": 0.15,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Giữ đầu yên khi chạm bóng",
+        "en": "Head still at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "đầu giữ yên khi chạm bóng",
+          "high": "đầu chuyển động khi chạm bóng"
+        },
+        "en": {
+          "low": "head stays still at contact",
+          "high": "head moves through contact"
+        }
+      },
+      "faults": [
+        "pb.dink.head_moves"
+      ],
+      "joints": [
+        "nose",
+        "neck"
+      ]
+    },
+    {
+      "id": "pb.dink.DK9",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vRoot",
+        "target": [
+          null,
+          0.5
+        ],
+        "tol": 0.3,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Người đứng vững khi chạm bóng",
+        "en": "Body settled at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "người đứng vững khi chạm bóng",
+          "high": "người còn di chuyển khi chạm bóng"
+        },
+        "en": {
+          "low": "body settled at contact",
+          "high": "body still moving at contact"
+        }
+      },
+      "faults": [
+        "pb.dink.moving_at_contact"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.dink.DK10",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristLat",
+        "target": [
+          -1.2,
+          1.2
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Bước chân thay vì với tay",
+        "en": "Moves the feet instead of reaching"
+      },
+      "plain": {
+        "vi": {
+          "low": "với tay xa sang phía trái tay",
+          "high": "với tay xa sang phía thuận tay"
+        },
+        "en": {
+          "low": "reaching far to the backhand side",
+          "high": "reaching far to the forehand side"
+        }
+      },
+      "faults": [
+        "pb.dink.reaching_fh",
+        "pb.dink.reaching_bh"
+      ],
+      "joints": [
+        "rSho",
+        "rWri",
+        "root"
+      ]
+    },
+    {
+      "id": "pb.dink.DK11",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đưa vợt về tư thế chuẩn bị",
+        "en": "Paddle back to ready"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt buông thấp sau khi dink",
+          "high": "vợt đã về trước ngực"
+        },
+        "en": {
+          "low": "paddle drops after the dink",
+          "high": "paddle back up in front of the chest"
+        }
+      },
+      "faults": [
+        "pb.dink.paddle_drops"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.dink.DK12",
+      "sport": "pickleball",
+      "skills": [
+        "pb.dink"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Bóng rơi vào kitchen",
+        "en": "Ball lands in the kitchen"
+      },
+      "plain": {
+        "vi": {
+          "low": "bóng bay cao hoặc ra khỏi kitchen",
+          "high": "bóng rơi nhẹ vào kitchen"
+        },
+        "en": {
+          "low": "ball floats or lands past the kitchen",
+          "high": "ball drops softly into the kitchen"
+        }
+      },
+      "faults": [],
+      "joints": []
+    },
+    {
+      "id": "pb.drop3.TD1",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vRoot",
+        "target": [
+          null,
+          0.6
+        ],
+        "tol": 0.3,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Đứng vững khi chạm bóng",
+        "en": "Settled at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "người đứng vững khi chạm bóng",
+          "high": "vừa chạy vừa đánh"
+        },
+        "en": {
+          "low": "body settled at contact",
+          "high": "hitting on the run"
+        }
+      },
+      "faults": [
+        "pb.drop3.on_the_run"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          20,
+          45
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối chùng khi chạm bóng",
+        "en": "Knees bent at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối còn thẳng khi đánh drop",
+          "high": "gối khuỵu quá sâu khi đánh drop"
+        },
+        "en": {
+          "low": "legs fairly straight on the drop",
+          "high": "knees bent very deep on the drop"
+        }
+      },
+      "faults": [
+        "pb.drop3.standing_tall"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.2,
+          null
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng phía trước",
+        "en": "Contact in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng sát hoặc sau người",
+          "high": "chạm bóng rõ ở phía trước"
+        },
+        "en": {
+          "low": "contact beside or behind the body",
+          "high": "contact clearly in front"
+        }
+      },
+      "faults": [
+        "pb.drop3.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.7,
+          1.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Kết thúc vợt vừa tầm",
+        "en": "Controlled lift finish"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp, bóng thiếu độ nâng",
+          "high": "vợt kết thúc quá cao, bóng dễ bay bổng"
+        },
+        "en": {
+          "low": "low finish, not enough lift",
+          "high": "very high finish, the ball may float"
+        }
+      },
+      "faults": [
+        "pb.drop3.low_finish",
+        "pb.drop3.high_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          0.4,
+          1
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà vừa phải",
+        "en": "Moderate backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "lấy đà quá ngắn",
+          "high": "lấy đà quá lớn"
+        },
+        "en": {
+          "low": "backswing very short",
+          "high": "backswing too big"
+        }
+      },
+      "faults": [
+        "pb.drop3.big_backswing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD6",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "contact",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Wrist snaps or slaps; paddle face closed or changing sharply.",
+        "Noticeable wrist action; the face angle is unstable.",
+        "Some wrist movement; face roughly neutral.",
+        "Quiet wrist; face slightly open.",
+        "Wrist firm and quiet, face slightly open, paddle lifts with the shoulder."
+      ],
+      "name": {
+        "vi": "Cổ tay yên, mặt vợt hơi mở",
+        "en": "Quiet wrist, slightly open face"
+      },
+      "plain": {
+        "vi": {
+          "low": "cổ tay vẩy khi chạm bóng",
+          "high": "cổ tay yên, mặt vợt hơi mở"
+        },
+        "en": {
+          "low": "wrist flicks at contact",
+          "high": "quiet wrist, face slightly open"
+        }
+      },
+      "faults": [
+        "pb.drop3.wristy"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "baseErr",
+        "target": [
+          0.6,
+          null
+        ],
+        "tol": 0.5,
+        "unit": "T"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tiến lên sau khi drop",
+        "en": "Moves up after the drop"
+      },
+      "plain": {
+        "vi": {
+          "low": "đứng lại cuối sân sau khi drop",
+          "high": "tiến lên sau khi drop"
+        },
+        "en": {
+          "low": "stays at the baseline after the drop",
+          "high": "moves forward after the drop"
+        }
+      },
+      "faults": [
+        "pb.drop3.stays_back"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD8",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.3,
+          null
+        ],
+        "tol": 0.5,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Vợt đi lên khi chạm bóng",
+        "en": "Paddle rising at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt chưa đi lên khi chạm bóng",
+          "high": "vợt đi lên rõ khi chạm bóng"
+        },
+        "en": {
+          "low": "paddle not rising at contact",
+          "high": "paddle clearly rising at contact"
+        }
+      },
+      "faults": [
+        "pb.drop3.flat_swing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drop3.TD9",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drop3"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Bóng rơi vào kitchen",
+        "en": "Ball lands in the kitchen"
+      },
+      "plain": {
+        "vi": {
+          "low": "bóng bay cao hoặc dài",
+          "high": "bóng vồng trên sân mình rồi rơi vào kitchen"
+        },
+        "en": {
+          "low": "ball floats high or long",
+          "high": "ball peaks on your side and drops into the kitchen"
+        }
+      },
+      "faults": [],
+      "joints": []
+    },
+    {
+      "id": "pb.return.RT2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "contact",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Still running or lunging at contact, off balance.",
+        "Moving at contact; upper body leaning to reach.",
+        "Feet mostly set, slightly off balance.",
+        "Feet set and balanced, with a small late adjustment.",
+        "Feet set early, balanced, weight moving into the ball."
+      ],
+      "name": {
+        "vi": "Đặt chân vững trước khi đánh",
+        "en": "Feet set before the hit"
+      },
+      "plain": {
+        "vi": {
+          "low": "còn di chuyển khi chạm bóng",
+          "high": "chân đặt vững trước khi chạm bóng"
+        },
+        "en": {
+          "low": "still moving at contact",
+          "high": "feet set before contact"
+        }
+      },
+      "faults": [
+        "pb.return.not_set"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.return.RT3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "turn",
+        "params": {
+          "line": "shoulder"
+        },
+        "target": [
+          30,
+          null
+        ],
+        "tol": 15,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Xoay vai khi lấy đà",
+        "en": "Shoulder turn"
+      },
+      "plain": {
+        "vi": {
+          "low": "vai chưa xoay khi lấy đà",
+          "high": "vai xoay rõ khi lấy đà"
+        },
+        "en": {
+          "low": "shoulders not turned in the backswing",
+          "high": "shoulders clearly turned in the backswing"
+        }
+      },
+      "faults": [
+        "pb.return.no_turn"
+      ],
+      "joints": [
+        "lSho",
+        "rSho",
+        "lHip",
+        "rHip"
+      ]
+    },
+    {
+      "id": "pb.return.RT4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          0.5,
+          1.5
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà gọn",
+        "en": "Compact backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "lấy đà quá ngắn",
+          "high": "lấy đà quá dài"
+        },
+        "en": {
+          "low": "backswing very short",
+          "high": "backswing very long"
+        }
+      },
+      "faults": [
+        "pb.return.big_backswing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.return.RT5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.2,
+          null
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng phía trước",
+        "en": "Contact in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng sát hoặc sau người",
+          "high": "chạm bóng rõ ở phía trước"
+        },
+        "en": {
+          "low": "contact beside or behind the body",
+          "high": "contact clearly in front"
+        }
+      },
+      "faults": [
+        "pb.return.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.return.RT6",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 2,
+      "assess": "M~",
+      "metric": {
+        "fn": "baseErr",
+        "target": [
+          1,
+          null
+        ],
+        "tol": 0.6,
+        "unit": "T"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tiến lên kitchen sau khi trả giao",
+        "en": "Moves to the kitchen after the return"
+      },
+      "plain": {
+        "vi": {
+          "low": "đứng lại cuối sân sau khi trả giao",
+          "high": "tiến lên sau khi trả giao"
+        },
+        "en": {
+          "low": "stays at the baseline after the return",
+          "high": "moves forward after the return"
+        }
+      },
+      "faults": [
+        "pb.return.stays_back"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.return.RT7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.3,
+          null
+        ],
+        "tol": 0.5,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Vung từ dưới lên",
+        "en": "Low-to-high swing"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt chưa đi lên khi chạm bóng",
+          "high": "vợt đi lên rõ khi chạm bóng"
+        },
+        "en": {
+          "low": "paddle not rising at contact",
+          "high": "paddle clearly rising at contact"
+        }
+      },
+      "faults": [
+        "pb.return.flat_swing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.return.RT8",
+      "sport": "pickleball",
+      "skills": [
+        "pb.return"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.9,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Kết thúc vợt cao",
+        "en": "Full, high finish"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp",
+          "high": "vợt kết thúc cao"
+        },
+        "en": {
+          "low": "paddle finishes low",
+          "high": "paddle finishes high"
+        }
+      },
+      "faults": [
+        "pb.return.low_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drive.DV1",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "turn",
+        "params": {
+          "line": "shoulder"
+        },
+        "target": [
+          45,
+          null
+        ],
+        "tol": 15,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Xoay vai khi lấy đà",
+        "en": "Unit turn"
+      },
+      "plain": {
+        "vi": {
+          "low": "vai chưa xoay khi lấy đà",
+          "high": "vai xoay rõ khi lấy đà"
+        },
+        "en": {
+          "low": "shoulders not turned in the backswing",
+          "high": "shoulders clearly turned in the backswing"
+        }
+      },
+      "faults": [
+        "pb.drive.arm_only"
+      ],
+      "joints": [
+        "lSho",
+        "rSho",
+        "lHip",
+        "rHip"
+      ]
+    },
+    {
+      "id": "pb.drive.DV2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          0.8,
+          1.8
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà vừa đủ",
+        "en": "Medium backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "lấy đà quá ngắn",
+          "high": "lấy đà quá dài"
+        },
+        "en": {
+          "low": "backswing too short",
+          "high": "backswing too long"
+        }
+      },
+      "faults": [
+        "pb.drive.short_backswing",
+        "pb.drive.big_backswing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drive.DV3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.2,
+          0.8
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng phía trước",
+        "en": "Contact in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng sát hoặc sau người",
+          "high": "với tay chạm bóng quá xa phía trước"
+        },
+        "en": {
+          "low": "contact beside or behind the body",
+          "high": "reaching far in front to contact"
+        }
+      },
+      "faults": [
+        "pb.drive.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drive.DV4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "contact+0.2",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wShift",
+        "target": [
+          0.6,
+          null
+        ],
+        "tol": 0.15,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chuyển trọng tâm ra trước",
+        "en": "Weight transfers forward"
+      },
+      "plain": {
+        "vi": {
+          "low": "trọng tâm còn ở chân sau sau khi đánh",
+          "high": "trọng tâm dồn lên chân trước"
+        },
+        "en": {
+          "low": "weight stays back after the hit",
+          "high": "weight moves onto the front foot"
+        }
+      },
+      "faults": [
+        "pb.drive.weight_back"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.drive.DV5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          null
+        ],
+        "tol": 1,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Vung từ dưới lên",
+        "en": "Low-to-high swing"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt chưa đi lên khi chạm bóng",
+          "high": "vợt đi lên rõ khi chạm bóng"
+        },
+        "en": {
+          "low": "paddle not rising at contact",
+          "high": "paddle clearly rising at contact"
+        }
+      },
+      "faults": [
+        "pb.drive.hits_down"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drive.DV6",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "ftCross",
+        "params": {
+          "withinS": 0.6
+        },
+        "target": true,
+        "tol": 0,
+        "unit": "bool"
+      },
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Kết thúc vợt chéo qua người",
+        "en": "Finish across the body"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt dừng trước người",
+          "high": "vợt kết thúc chéo qua người"
+        },
+        "en": {
+          "low": "paddle stops in front of the body",
+          "high": "paddle finishes across the body"
+        }
+      },
+      "faults": [
+        "pb.drive.short_finish"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drive.DV7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.9,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Kết thúc vợt ngang vai",
+        "en": "Finish at shoulder height"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp",
+          "high": "vợt kết thúc ngang vai trở lên"
+        },
+        "en": {
+          "low": "paddle finishes low",
+          "high": "paddle finishes at shoulder height or above"
+        }
+      },
+      "faults": [
+        "pb.drive.low_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.drive.DV8",
+      "sport": "pickleball",
+      "skills": [
+        "pb.drive"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          1.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt về trước ngực",
+        "en": "Paddle back to ready"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt buông thấp sau cú drive",
+          "high": "tay cầm vợt còn giơ quá cao sau cú drive"
+        },
+        "en": {
+          "low": "paddle low after the drive",
+          "high": "paddle hand still very high after the drive"
+        }
+      },
+      "faults": [
+        "pb.drive.slow_reset"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.volley.VO1",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 2,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.6,
+          1.4
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt giơ sẵn phía trước",
+        "en": "Paddle up and ready"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt còn thấp ngay trước khi vô lê",
+          "high": "tay cầm vợt giơ quá cao trước khi vô lê"
+        },
+        "en": {
+          "low": "paddle low just before the volley",
+          "high": "paddle hand very high before the volley"
+        }
+      },
+      "faults": [
+        "pb.volley.paddle_down"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.volley.VO2",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          null,
+          0.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gần như không lấy đà",
+        "en": "Little or no backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "gần như không lấy đà",
+          "high": "vung vợt lớn khi vô lê"
+        },
+        "en": {
+          "low": "almost no backswing",
+          "high": "big swing on the volley"
+        }
+      },
+      "faults": [
+        "pb.volley.big_swing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.volley.VO3",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.4,
+          null
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm bóng xa phía trước",
+        "en": "Contact well in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm bóng sát người",
+          "high": "chạm bóng xa phía trước"
+        },
+        "en": {
+          "low": "contact close to the body",
+          "high": "contact well in front"
+        }
+      },
+      "faults": [
+        "pb.volley.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.volley.VO4",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "ftLen",
+        "target": [
+          null,
+          0.6
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đẩy ngắn",
+        "en": "Short punch"
+      },
+      "plain": {
+        "vi": {
+          "low": "đẩy bóng ngắn, gọn",
+          "high": "vung theo quá dài"
+        },
+        "en": {
+          "low": "short, tidy punch",
+          "high": "long follow-through"
+        }
+      },
+      "faults": [
+        "pb.volley.long_follow"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.volley.VO5",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          15,
+          45
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối chùng, đứng vững",
+        "en": "Stable, bent knees"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối còn thẳng khi vô lê",
+          "high": "gối khuỵu quá sâu khi vô lê"
+        },
+        "en": {
+          "low": "legs fairly straight on the volley",
+          "high": "knees bent very deep on the volley"
+        }
+      },
+      "faults": [
+        "pb.volley.standing_tall"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.volley.VO6",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vRoot",
+        "target": [
+          null,
+          0.6
+        ],
+        "tol": 0.3,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Người đứng vững khi chạm bóng",
+        "en": "Settled at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "người đứng vững khi chạm bóng",
+          "high": "người còn di chuyển khi chạm bóng"
+        },
+        "en": {
+          "low": "body settled at contact",
+          "high": "body still moving at contact"
+        }
+      },
+      "faults": [
+        "pb.volley.moving"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "pb.volley.VO7",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          0,
+          null
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "injuryFlag": true,
+      "safety": {
+        "vi": "Ngả người hoặc chạy lùi khi đánh dễ làm bạn mất thăng bằng và ngã. Khi cần lùi, hãy xoay nghiêng người và bước chéo; nếu đau, hãy hỏi HLV/chuyên gia.",
+        "en": "Leaning or backpedaling while you hit can make you lose balance and fall. When you need to go back, turn sideways and use crossover steps; if it hurts, ask a coach or professional."
+      },
+      "name": {
+        "vi": "Không ngả người ra sau",
+        "en": "Not leaning back"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người ngả ra sau khi vô lê",
+          "high": "thân người hơi đổ về trước"
+        },
+        "en": {
+          "low": "leaning back on the volley",
+          "high": "body slightly forward"
+        }
+      },
+      "faults": [
+        "pb.volley.leaning_back"
+      ],
+      "joints": [
+        "neck",
+        "root"
+      ]
+    },
+    {
+      "id": "pb.volley.VO8",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Wrist floppy; elbow flared high and out (chicken wing); paddle face unstable.",
+        "Wrist bends at contact; elbow pulled away from the body.",
+        "Wrist mostly firm; elbow slightly flared.",
+        "Firm wrist, elbow in front of the body, small flaws.",
+        "Firm wrist, elbow relaxed in front, paddle face stable through contact."
+      ],
+      "name": {
+        "vi": "Cổ tay chắc, khuỷu tay gọn",
+        "en": "Firm wrist, compact elbow"
+      },
+      "plain": {
+        "vi": {
+          "low": "cổ tay lỏng, khuỷu tay bung ra khi vô lê",
+          "high": "cổ tay chắc, khuỷu tay gọn phía trước"
+        },
+        "en": {
+          "low": "loose wrist, elbow flared on the volley",
+          "high": "firm wrist, compact elbow in front"
+        }
+      },
+      "faults": [
+        "pb.volley.chicken_wing"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "pb.volley.VO9",
+      "sport": "pickleball",
+      "skills": [
+        "pb.volley"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          1.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt về trước ngực",
+        "en": "Paddle back to ready"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt buông thấp sau cú vô lê",
+          "high": "tay cầm vợt còn giơ quá cao sau cú vô lê"
+        },
+        "en": {
+          "low": "paddle low after the volley",
+          "high": "paddle hand still very high after the volley"
+        }
+      },
+      "faults": [
+        "pb.volley.paddle_drops"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
     }
   ],
   "faults": [
     {
-      "id": "pb.serve.high_contact",
-      "checkpoint": "pb.serve.SV2",
+      "id": "pb.ready.narrow_feet",
+      "checkpoint": "pb.ready.PR1",
+      "when": "low",
+      "title": {
+        "vi": "Hai chân đứng quá hẹp",
+        "en": "Feet too close together"
+      },
+      "cue": {
+        "vi": "Đứng rộng bằng hoặc hơn vai",
+        "en": "Feet at least shoulder-width"
+      },
+      "why": {
+        "vi": "Chân rộng giúp bạn vững và bước sang hai bên nhanh hơn.",
+        "en": "A wider base keeps you stable and quicker side to side."
+      },
+      "drills": [
+        "pb.drill.ready_hold",
+        "pb.drill.split_on_cue"
+      ],
+      "defaultDrill": "pb.drill.ready_hold"
+    },
+    {
+      "id": "pb.ready.straight_legs",
+      "checkpoint": "pb.ready.PR2",
+      "when": "low",
+      "title": {
+        "vi": "Đứng thẳng chân",
+        "en": "Standing tall"
+      },
+      "cue": {
+        "vi": "Gối chùng, tư thế thể thao",
+        "en": "Athletic stance, knees soft"
+      },
+      "why": {
+        "vi": "Gối chùng giúp bạn phản ứng nhanh với bóng thấp và nhanh.",
+        "en": "Soft knees help you react to low, fast balls."
+      },
+      "drills": [
+        "pb.drill.ready_hold",
+        "pb.drill.split_on_cue"
+      ],
+      "defaultDrill": "pb.drill.ready_hold"
+    },
+    {
+      "id": "pb.ready.weight_back",
+      "checkpoint": "pb.ready.PR3",
+      "when": "low",
+      "title": {
+        "vi": "Trọng tâm dồn về gót",
+        "en": "Weight back on the heels"
+      },
+      "cue": {
+        "vi": "Dồn trọng tâm về trước",
+        "en": "Weight forward, nose over toes"
+      },
+      "why": {
+        "vi": "Trọng tâm phía trước giúp bạn đánh bóng chủ động, không bị đẩy lùi.",
+        "en": "Weight forward keeps you hitting into the ball instead of getting pushed back."
+      },
+      "drills": [
+        "pb.drill.ready_hold"
+      ],
+      "defaultDrill": "pb.drill.ready_hold"
+    },
+    {
+      "id": "pb.ready.paddle_down",
+      "checkpoint": "pb.ready.PR4",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp ngang gối",
+        "en": "Paddle hanging low"
+      },
+      "cue": {
+        "vi": "Vợt trước ngực, sẵn sàng",
+        "en": "Paddle up, chest height, in front"
+      },
+      "why": {
+        "vi": "Đây là thói quen phổ biến nhất: vợt thấp làm bạn chậm với bóng nhanh lao vào người.",
+        "en": "This is the most common habit: a low paddle is too slow for fast balls at your body."
+      },
+      "drills": [
+        "pb.drill.paddle_up_reaction",
+        "pb.drill.ready_hold"
+      ],
+      "defaultDrill": "pb.drill.paddle_up_reaction"
+    },
+    {
+      "id": "pb.ready.paddle_close",
+      "checkpoint": "pb.ready.PR5",
+      "when": "low",
+      "title": {
+        "vi": "Vợt sát người",
+        "en": "Paddle tucked against the body"
+      },
+      "cue": {
+        "vi": "Đưa vợt ra trước người",
+        "en": "Paddle out in front"
+      },
+      "why": {
+        "vi": "Vợt phía trước giúp bạn chạm bóng sớm hơn.",
+        "en": "A paddle out front lets you meet the ball earlier."
+      },
+      "drills": [
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.paddle_up_reaction"
+    },
+    {
+      "id": "pb.ready.tip_down",
+      "checkpoint": "pb.ready.PR6",
+      "when": "low",
+      "title": {
+        "vi": "Đầu vợt chúc xuống",
+        "en": "Paddle tip down"
+      },
+      "cue": {
+        "vi": "Dựng đầu vợt lên",
+        "en": "Paddle tip up"
+      },
+      "why": {
+        "vi": "Đầu vợt hướng lên giúp bạn chặn bóng cả hai bên nhanh hơn.",
+        "en": "A tip-up paddle covers both sides faster."
+      },
+      "drills": [
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.paddle_up_reaction"
+    },
+    {
+      "id": "pb.ready.turned",
+      "checkpoint": "pb.ready.PR7",
       "when": "high",
-      "title": { "vi": "Điểm chạm quá cao", "en": "Contact too high" },
-      "cue": { "vi": "Chạm bóng dưới thắt lưng", "en": "Contact below your waist" },
-      "why": { "vi": "Giao bóng phải chạm dưới thắt lưng.", "en": "The serve must be struck below the waist." },
-      "drills": ["pb.drill.low_toss"],
-      "defaultDrill": "pb.drill.low_toss"
+      "title": {
+        "vi": "Người xoay lệch khỏi lưới",
+        "en": "Turned away from the net"
+      },
+      "cue": {
+        "vi": "Hai mũi chân hướng về lưới",
+        "en": "Both toes to the net"
+      },
+      "why": {
+        "vi": "Đứng đối diện lưới giúp bạn đánh được cả thuận tay và trái tay.",
+        "en": "Facing the net lets you cover both forehand and backhand."
+      },
+      "drills": [
+        "pb.drill.shuffle_dink"
+      ],
+      "defaultDrill": "pb.drill.shuffle_dink"
+    },
+    {
+      "id": "pb.split.no_split",
+      "checkpoint": "pb.split.S1",
+      "when": "false",
+      "title": {
+        "vi": "Chưa bật nhún (split step)",
+        "en": "No split step"
+      },
+      "cue": {
+        "vi": "Bật nhún nhẹ khi đối thủ chạm bóng",
+        "en": "Small hop as they hit"
+      },
+      "why": {
+        "vi": "Bật nhún đúng lúc giúp bạn sẵn sàng đi mọi hướng.",
+        "en": "A well-timed split step gets you ready to move in any direction."
+      },
+      "drills": [
+        "pb.drill.split_on_cue"
+      ],
+      "defaultDrill": "pb.drill.split_on_cue"
+    },
+    {
+      "id": "pb.serve.square_stance",
+      "checkpoint": "pb.serve.SV1",
+      "when": "low",
+      "title": {
+        "vi": "Hai chân đứng song song",
+        "en": "Feet side by side"
+      },
+      "cue": {
+        "vi": "Chân không thuận bước lên trước",
+        "en": "Non-paddle foot forward"
+      },
+      "why": {
+        "vi": "Đứng chân trước chân sau giúp bạn chuyển trọng tâm khi giao.",
+        "en": "A staggered stance lets you shift your weight into the serve."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.stiff_legs",
+      "checkpoint": "pb.serve.SV2",
+      "when": "low",
+      "title": {
+        "vi": "Đứng thẳng cứng chân",
+        "en": "Stiff legs"
+      },
+      "cue": {
+        "vi": "Thả lỏng gối trước khi giao",
+        "en": "Soften your knees first"
+      },
+      "why": {
+        "vi": "Gối mềm giúp cú giao nhịp nhàng, ổn định hơn.",
+        "en": "Soft knees make the serve smooth and steady."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.early_weight",
+      "checkpoint": "pb.serve.SV3",
+      "when": "high",
+      "title": {
+        "vi": "Dồn trọng tâm lên trước quá sớm",
+        "en": "Weight forward too early"
+      },
+      "cue": {
+        "vi": "Ngả về sau, rồi giao ra trước",
+        "en": "Rock back, then swing forward"
+      },
+      "why": {
+        "vi": "Ngả về sau tạo đà để bạn giao sâu mà không cần dùng sức tay.",
+        "en": "Rocking back builds momentum for a deep serve without arm effort."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.bent_elbow",
+      "checkpoint": "pb.serve.SV4",
+      "when": "low",
+      "title": {
+        "vi": "Gập khuỷu tay khi giao",
+        "en": "Elbow bending through the serve"
+      },
+      "cue": {
+        "vi": "Vung từ vai như con lắc",
+        "en": "Swing from the shoulder, like a pendulum"
+      },
+      "why": {
+        "vi": "Vung từ vai giúp cú giao đều và dễ lặp lại.",
+        "en": "Swinging from the shoulder makes the serve consistent."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.late_contact",
+      "checkpoint": "pb.serve.SV5",
+      "when": "low",
+      "title": {
+        "vi": "Chạm bóng muộn",
+        "en": "Late contact"
+      },
+      "cue": {
+        "vi": "Thả bóng phía trước chân trước",
+        "en": "Drop the ball in front"
+      },
+      "why": {
+        "vi": "Chạm bóng phía trước giúp bạn điều khiển hướng giao.",
+        "en": "Contact in front gives you control of direction."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing",
+        "pb.drill.deep_serve_target"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.high_contact",
+      "checkpoint": "pb.serve.SV6",
+      "when": "high",
+      "title": {
+        "vi": "Chạm bóng quá cao",
+        "en": "Contact too high"
+      },
+      "cue": {
+        "vi": "Từ dưới lên, thấp hơn rốn",
+        "en": "Low to high, below the belly button"
+      },
+      "why": {
+        "vi": "Luật yêu cầu chạm bóng dưới thắt lưng; chạm thấp cũng giúp đường bóng đi lên ổn định.",
+        "en": "The rules require contact below the waist, and a low contact gives a steady upward path."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.flat_swing",
+      "checkpoint": "pb.serve.SV7",
+      "when": "low",
+      "title": {
+        "vi": "Vung ngang thay vì từ dưới lên",
+        "en": "Sidearm swing, not low to high"
+      },
+      "cue": {
+        "vi": "Vung từ dưới lên, kết thúc ngang mắt",
+        "en": "Low to high, finish at eye level"
+      },
+      "why": {
+        "vi": "Đường vung đi lên giúp bóng qua lưới an toàn; luật cũng yêu cầu tay vung theo đường cong đi lên.",
+        "en": "An upward swing clears the net safely, and the rules require an upward arc."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.no_transfer",
+      "checkpoint": "pb.serve.SV8",
+      "when": "low",
+      "title": {
+        "vi": "Chưa chuyển trọng tâm",
+        "en": "No weight transfer"
+      },
+      "cue": {
+        "vi": "Bước theo cú giao",
+        "en": "Step into the serve"
+      },
+      "why": {
+        "vi": "Chuyển trọng tâm giúp giao sâu mà không cần vung mạnh.",
+        "en": "Moving your weight forward gives depth without swinging hard."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing",
+        "pb.drill.deep_serve_target"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.serve.short_finish",
+      "checkpoint": "pb.serve.SV9",
+      "when": "low",
+      "title": {
+        "vi": "Đẩy bóng, vung theo ngắn",
+        "en": "Pushing the serve short"
+      },
+      "cue": {
+        "vi": "Vung theo về phía mục tiêu",
+        "en": "Swing through to the target"
+      },
+      "why": {
+        "vi": "Vung theo trọn vẹn giúp bóng giao sâu, giữ đối thủ ở cuối sân.",
+        "en": "A full follow-through sends the serve deep and keeps the returner back."
+      },
+      "drills": [
+        "pb.drill.deep_serve_target"
+      ],
+      "defaultDrill": "pb.drill.deep_serve_target"
+    },
+    {
+      "id": "pb.serve.runs_in",
+      "checkpoint": "pb.serve.SV10",
+      "when": "high",
+      "title": {
+        "vi": "Chạy lên lưới sau khi giao",
+        "en": "Running in after the serve"
+      },
+      "cue": {
+        "vi": "Giao xong, đứng lại, bật nhún",
+        "en": "Serve, stay back, split"
+      },
+      "why": {
+        "vi": "Luật hai lần nảy buộc bạn để bóng trả về nảy, nên ở lại cuối sân giúp cú thứ ba dễ hơn.",
+        "en": "The two-bounce rule means you must let the return bounce, so staying back sets up your third shot."
+      },
+      "drills": [
+        "pb.drill.deep_serve_target"
+      ],
+      "defaultDrill": "pb.drill.deep_serve_target"
+    },
+    {
+      "id": "pb.serve.wrist_flick",
+      "checkpoint": "pb.serve.SV11",
+      "when": "low",
+      "title": {
+        "vi": "Vẩy cổ tay khi giao",
+        "en": "Wrist flick on the serve"
+      },
+      "cue": {
+        "vi": "Giữ chắc cổ tay, vung từ vai",
+        "en": "Firm wrist, swing from the shoulder"
+      },
+      "why": {
+        "vi": "Cổ tay chắc giúp các cú giao giống nhau hơn.",
+        "en": "A firm wrist makes every serve more alike."
+      },
+      "drills": [
+        "pb.drill.pendulum_swing"
+      ],
+      "defaultDrill": "pb.drill.pendulum_swing"
+    },
+    {
+      "id": "pb.dink.standing_tall",
+      "checkpoint": "pb.dink.DK1",
+      "when": "low",
+      "title": {
+        "vi": "Đứng cao khi dink",
+        "en": "Standing tall on the dink"
+      },
+      "cue": {
+        "vi": "Hạ thấp người bằng gối",
+        "en": "Get low with your legs"
+      },
+      "why": {
+        "vi": "Hạ thấp giúp mắt bạn gần tầm bóng và nâng bóng nhẹ nhàng hơn.",
+        "en": "Getting low puts your eyes near the ball and helps a soft lift."
+      },
+      "drills": [
+        "pb.drill.knee_bend_dink"
+      ],
+      "defaultDrill": "pb.drill.knee_bend_dink"
+    },
+    {
+      "id": "pb.dink.waist_bend",
+      "checkpoint": "pb.dink.DK2",
+      "when": "high",
+      "title": {
+        "vi": "Cúi gập người khi dink",
+        "en": "Bending at the waist"
+      },
+      "cue": {
+        "vi": "Ngồi xuống, đừng cúi gập",
+        "en": "Sit down, don't bow"
+      },
+      "why": {
+        "vi": "Cúi gập lưng làm bạn mất thăng bằng và khó điều khiển vợt.",
+        "en": "Bending at the waist costs balance and paddle control."
+      },
+      "drills": [
+        "pb.drill.knee_bend_dink"
+      ],
+      "defaultDrill": "pb.drill.knee_bend_dink"
+    },
+    {
+      "id": "pb.dink.big_backswing",
+      "checkpoint": "pb.dink.DK3",
+      "when": "high",
+      "title": {
+        "vi": "Lấy đà lớn, bóng nảy cao",
+        "en": "Big backswing, ball pops up"
+      },
+      "cue": {
+        "vi": "Bắt đầu vợt ở điểm chạm bóng",
+        "en": "Start the paddle at contact"
+      },
+      "why": {
+        "vi": "Lấy đà lớn làm bóng bay cao, đối thủ dễ tấn công.",
+        "en": "A big backswing pops the ball up for an attack."
+      },
+      "drills": [
+        "pb.drill.no_backswing_dink"
+      ],
+      "defaultDrill": "pb.drill.no_backswing_dink"
+    },
+    {
+      "id": "pb.dink.wristy",
+      "checkpoint": "pb.dink.DK4",
+      "when": "low",
+      "title": {
+        "vi": "Vẩy cổ tay khi dink",
+        "en": "Wristy flick"
+      },
+      "cue": {
+        "vi": "Nâng bằng vai, giữ cổ tay chắc",
+        "en": "Lift with the shoulder, wrist firm"
+      },
+      "why": {
+        "vi": "Cổ tay chắc giúp dink đều và ít lỗi.",
+        "en": "A firm wrist makes dinks consistent."
+      },
+      "drills": [
+        "pb.drill.no_backswing_dink",
+        "pb.drill.dink_rally"
+      ],
+      "defaultDrill": "pb.drill.no_backswing_dink"
+    },
+    {
+      "id": "pb.dink.late_contact",
+      "checkpoint": "pb.dink.DK5",
+      "when": "low",
+      "title": {
+        "vi": "Chạm bóng muộn",
+        "en": "Late contact"
+      },
+      "cue": {
+        "vi": "Đón bóng trước người",
+        "en": "Meet it in front"
+      },
+      "why": {
+        "vi": "Chạm bóng phía trước giúp bạn điều khiển hướng dink.",
+        "en": "Contact in front gives you control of the dink direction."
+      },
+      "drills": [
+        "pb.drill.no_backswing_dink",
+        "pb.drill.shuffle_dink"
+      ],
+      "defaultDrill": "pb.drill.no_backswing_dink"
+    },
+    {
+      "id": "pb.dink.no_lift",
+      "checkpoint": "pb.dink.DK6",
+      "when": "low",
+      "title": {
+        "vi": "Đẩy ngang, thiếu độ nâng",
+        "en": "Flat push, no lift"
+      },
+      "cue": {
+        "vi": "Nâng nhẹ từ dưới lên",
+        "en": "Lift gently, low to high"
+      },
+      "why": {
+        "vi": "Nâng bóng giúp bóng qua lưới an toàn rồi rơi vào kitchen.",
+        "en": "A gentle lift clears the net and drops into the kitchen."
+      },
+      "drills": [
+        "pb.drill.knee_bend_dink",
+        "pb.drill.dink_rally"
+      ],
+      "defaultDrill": "pb.drill.knee_bend_dink"
+    },
+    {
+      "id": "pb.dink.long_follow",
+      "checkpoint": "pb.dink.DK7",
+      "when": "high",
+      "title": {
+        "vi": "Vung theo quá dài",
+        "en": "Follow-through too long"
+      },
+      "cue": {
+        "vi": "Theo vợt ngắn về phía mục tiêu",
+        "en": "Short finish toward the target"
+      },
+      "why": {
+        "vi": "Vung theo dài làm dink bay xa và cao.",
+        "en": "A long follow-through sends dinks long and high."
+      },
+      "drills": [
+        "pb.drill.no_backswing_dink"
+      ],
+      "defaultDrill": "pb.drill.no_backswing_dink"
+    },
+    {
+      "id": "pb.dink.head_moves",
+      "checkpoint": "pb.dink.DK8",
+      "when": "high",
+      "title": {
+        "vi": "Đầu chuyển động khi dink",
+        "en": "Head moving through contact"
+      },
+      "cue": {
+        "vi": "Giữ đầu yên, nhìn bóng chạm vợt",
+        "en": "Head still, watch the ball onto the paddle"
+      },
+      "why": {
+        "vi": "Đầu yên giúp bạn nhìn rõ bóng và chạm bóng chính xác.",
+        "en": "A still head helps you see the ball and hit cleanly."
+      },
+      "drills": [
+        "pb.drill.dink_rally"
+      ],
+      "defaultDrill": "pb.drill.dink_rally"
+    },
+    {
+      "id": "pb.dink.moving_at_contact",
+      "checkpoint": "pb.dink.DK9",
+      "when": "high",
+      "title": {
+        "vi": "Vừa di chuyển vừa dink",
+        "en": "Moving through contact"
+      },
+      "cue": {
+        "vi": "Đến nơi, đứng vững, rồi dink",
+        "en": "Get there, settle, then dink"
+      },
+      "why": {
+        "vi": "Đứng vững khi chạm bóng giúp dink đều tay.",
+        "en": "Being settled at contact makes dinks consistent."
+      },
+      "drills": [
+        "pb.drill.shuffle_dink"
+      ],
+      "defaultDrill": "pb.drill.shuffle_dink"
+    },
+    {
+      "id": "pb.dink.reaching_fh",
+      "checkpoint": "pb.dink.DK10",
+      "when": "high",
+      "title": {
+        "vi": "Với tay thay vì bước chân (thuận tay)",
+        "en": "Reaching on the forehand"
+      },
+      "cue": {
+        "vi": "Bước chân trước, rồi mới dink",
+        "en": "Move your feet first"
+      },
+      "why": {
+        "vi": "Với tay xa làm bạn mất thăng bằng và dink thiếu kiểm soát.",
+        "en": "Reaching pulls you off balance and costs control."
+      },
+      "drills": [
+        "pb.drill.shuffle_dink"
+      ],
+      "defaultDrill": "pb.drill.shuffle_dink"
+    },
+    {
+      "id": "pb.dink.reaching_bh",
+      "checkpoint": "pb.dink.DK10",
+      "when": "low",
+      "title": {
+        "vi": "Với tay thay vì bước chân (trái tay)",
+        "en": "Reaching on the backhand"
+      },
+      "cue": {
+        "vi": "Bước chân trước, rồi mới dink",
+        "en": "Move your feet first"
+      },
+      "why": {
+        "vi": "Với tay xa làm bạn mất thăng bằng và dink thiếu kiểm soát.",
+        "en": "Reaching pulls you off balance and costs control."
+      },
+      "drills": [
+        "pb.drill.shuffle_dink"
+      ],
+      "defaultDrill": "pb.drill.shuffle_dink"
+    },
+    {
+      "id": "pb.dink.paddle_drops",
+      "checkpoint": "pb.dink.DK11",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp sau mỗi cú dink",
+        "en": "Paddle drops after each dink"
+      },
+      "cue": {
+        "vi": "Dink xong, vợt về trước ngực",
+        "en": "Back to paddle up"
+      },
+      "why": {
+        "vi": "Đối thủ có thể đánh nhanh bất ngờ, vợt giơ sẵn giúp bạn kịp chặn.",
+        "en": "Opponents can speed up suddenly, and a raised paddle lets you block."
+      },
+      "drills": [
+        "pb.drill.dink_rally",
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.dink_rally"
+    },
+    {
+      "id": "pb.drop3.on_the_run",
+      "checkpoint": "pb.drop3.TD1",
+      "when": "high",
+      "title": {
+        "vi": "Vừa chạy vừa đánh",
+        "en": "Hitting on the run"
+      },
+      "cue": {
+        "vi": "Dừng, đánh, rồi mới tiến lên",
+        "en": "Stop, hit, then go"
+      },
+      "why": {
+        "vi": "Đứng vững khi chạm bóng giúp drop đều và ít bay cao.",
+        "en": "Being settled at contact keeps drops consistent and low."
+      },
+      "drills": [
+        "pb.drill.drop_and_split"
+      ],
+      "defaultDrill": "pb.drill.drop_and_split"
+    },
+    {
+      "id": "pb.drop3.standing_tall",
+      "checkpoint": "pb.drop3.TD2",
+      "when": "low",
+      "title": {
+        "vi": "Đứng cao khi đánh drop",
+        "en": "Standing tall on the drop"
+      },
+      "cue": {
+        "vi": "Hạ thấp người xuống bóng",
+        "en": "Get low to the ball"
+      },
+      "why": {
+        "vi": "Hạ thấp giúp bạn nâng bóng nhẹ thay vì đánh xuống.",
+        "en": "Getting low lets you lift the ball softly instead of hitting down."
+      },
+      "drills": [
+        "pb.drill.knee_bend_dink",
+        "pb.drill.drop_ladder"
+      ],
+      "defaultDrill": "pb.drill.knee_bend_dink"
+    },
+    {
+      "id": "pb.drop3.late_contact",
+      "checkpoint": "pb.drop3.TD3",
+      "when": "low",
+      "title": {
+        "vi": "Chạm bóng muộn",
+        "en": "Late contact"
+      },
+      "cue": {
+        "vi": "Đón bóng trước người",
+        "en": "Meet it in front"
+      },
+      "why": {
+        "vi": "Chạm bóng phía trước giúp bạn kiểm soát độ cao của drop.",
+        "en": "Contact in front lets you control the height of the drop."
+      },
+      "drills": [
+        "pb.drill.drop_ladder"
+      ],
+      "defaultDrill": "pb.drill.drop_ladder"
+    },
+    {
+      "id": "pb.drop3.low_finish",
+      "checkpoint": "pb.drop3.TD4",
+      "when": "low",
+      "title": {
+        "vi": "Kết thúc thấp, bóng vào lưới",
+        "en": "Low finish, ball into the net"
+      },
+      "cue": {
+        "vi": "Nâng bóng từ vai",
+        "en": "Lift from the shoulder"
+      },
+      "why": {
+        "vi": "Nâng bóng đủ giúp bóng qua lưới rồi rơi nhẹ vào kitchen.",
+        "en": "Enough lift clears the net and lets the ball fall softly into the kitchen."
+      },
+      "drills": [
+        "pb.drill.drop_ladder"
+      ],
+      "defaultDrill": "pb.drill.drop_ladder"
+    },
+    {
+      "id": "pb.drop3.high_finish",
+      "checkpoint": "pb.drop3.TD4",
+      "when": "high",
+      "title": {
+        "vi": "Vung quá mạnh, bóng bay bổng",
+        "en": "Too much swing, ball floats"
+      },
+      "cue": {
+        "vi": "Nâng bóng, đừng đánh mạnh",
+        "en": "Lift, don't hit"
+      },
+      "why": {
+        "vi": "Bóng bay cao cho đối thủ cơ hội đập bóng.",
+        "en": "A floating ball gives your opponent an easy attack."
+      },
+      "drills": [
+        "pb.drill.drop_ladder"
+      ],
+      "defaultDrill": "pb.drill.drop_ladder"
+    },
+    {
+      "id": "pb.drop3.big_backswing",
+      "checkpoint": "pb.drop3.TD5",
+      "when": "high",
+      "title": {
+        "vi": "Lấy đà quá lớn",
+        "en": "Backswing too big"
+      },
+      "cue": {
+        "vi": "Lấy đà nhỏ, nâng nhẹ",
+        "en": "Small backswing, soft lift"
+      },
+      "why": {
+        "vi": "Lấy đà lớn làm bóng đi nhanh và cao, khó rơi vào kitchen.",
+        "en": "A big backswing makes the ball fast and high, so it rarely lands in the kitchen."
+      },
+      "drills": [
+        "pb.drill.drop_ladder"
+      ],
+      "defaultDrill": "pb.drill.drop_ladder"
+    },
+    {
+      "id": "pb.drop3.wristy",
+      "checkpoint": "pb.drop3.TD6",
+      "when": "low",
+      "title": {
+        "vi": "Dùng cổ tay quá nhiều",
+        "en": "Too much wrist"
+      },
+      "cue": {
+        "vi": "Cổ tay chắc, nâng từ vai",
+        "en": "Firm wrist, lift from the shoulder"
+      },
+      "why": {
+        "vi": "Cổ tay yên giúp drop có độ cao đều.",
+        "en": "A quiet wrist keeps the drop height consistent."
+      },
+      "drills": [
+        "pb.drill.drop_ladder"
+      ],
+      "defaultDrill": "pb.drill.drop_ladder"
+    },
+    {
+      "id": "pb.drop3.stays_back",
+      "checkpoint": "pb.drop3.TD7",
+      "when": "low",
+      "title": {
+        "vi": "Ở lại cuối sân sau cú drop",
+        "en": "Staying back after the drop"
+      },
+      "cue": {
+        "vi": "Drop tốt thì tiến lên",
+        "en": "Good drop, move up"
+      },
+      "why": {
+        "vi": "Tiến lên kitchen sau cú drop giúp bạn giành thế chủ động.",
+        "en": "Moving up to the kitchen after a drop puts you in control."
+      },
+      "drills": [
+        "pb.drill.drop_and_split"
+      ],
+      "defaultDrill": "pb.drill.drop_and_split"
+    },
+    {
+      "id": "pb.drop3.flat_swing",
+      "checkpoint": "pb.drop3.TD8",
+      "when": "low",
+      "title": {
+        "vi": "Vung ngang, bóng bay thẳng",
+        "en": "Flat swing, ball goes straight"
+      },
+      "cue": {
+        "vi": "Nâng bóng từ dưới lên",
+        "en": "Lift up under the ball"
+      },
+      "why": {
+        "vi": "Đường vung đi lên tạo đường cong để bóng rơi vào kitchen.",
+        "en": "An upward swing creates the arc that drops into the kitchen."
+      },
+      "drills": [
+        "pb.drill.drop_ladder",
+        "pb.drill.knee_bend_dink"
+      ],
+      "defaultDrill": "pb.drill.drop_ladder"
+    },
+    {
+      "id": "pb.return.not_set",
+      "checkpoint": "pb.return.RT2",
+      "when": "low",
+      "title": {
+        "vi": "Chưa đặt chân khi đánh",
+        "en": "Feet not set at contact"
+      },
+      "cue": {
+        "vi": "Đến sớm, đứng vững, rồi đánh",
+        "en": "Arrive early, set, then hit"
+      },
+      "why": {
+        "vi": "Đặt chân vững giúp cú trả giao sâu và chắc.",
+        "en": "Set feet make the return deep and solid."
+      },
+      "drills": [
+        "pb.drill.split_on_cue"
+      ],
+      "defaultDrill": "pb.drill.split_on_cue"
+    },
+    {
+      "id": "pb.return.no_turn",
+      "checkpoint": "pb.return.RT3",
+      "when": "low",
+      "title": {
+        "vi": "Chưa xoay vai",
+        "en": "No shoulder turn"
+      },
+      "cue": {
+        "vi": "Xoay vai cùng vợt",
+        "en": "Turn the shoulders as one unit"
+      },
+      "why": {
+        "vi": "Xoay vai giúp bạn đánh sâu mà không cần dùng sức tay.",
+        "en": "Turning the shoulders gives depth without arm effort."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.return.big_backswing",
+      "checkpoint": "pb.return.RT4",
+      "when": "high",
+      "title": {
+        "vi": "Lấy đà quá dài",
+        "en": "Backswing too long"
+      },
+      "cue": {
+        "vi": "Lấy đà gọn, trả bóng sâu",
+        "en": "Short backswing, deep return"
+      },
+      "why": {
+        "vi": "Lấy đà dài dễ làm bạn chạm bóng muộn.",
+        "en": "A long backswing often makes you late."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.return.late_contact",
+      "checkpoint": "pb.return.RT5",
+      "when": "low",
+      "title": {
+        "vi": "Chạm bóng muộn",
+        "en": "Late contact"
+      },
+      "cue": {
+        "vi": "Đón bóng trước người",
+        "en": "Meet it in front"
+      },
+      "why": {
+        "vi": "Chạm bóng phía trước giúp cú trả giao chắc và sâu.",
+        "en": "Contact in front makes the return solid and deep."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.return.stays_back",
+      "checkpoint": "pb.return.RT6",
+      "when": "low",
+      "title": {
+        "vi": "Đứng lại cuối sân sau khi trả giao",
+        "en": "Staying back after the return"
+      },
+      "cue": {
+        "vi": "Trả sâu, rồi chạy lên kitchen",
+        "en": "Return deep, then run to the kitchen"
+      },
+      "why": {
+        "vi": "Thói quen phổ biến nhất của người mới: đứng lại cuối sân làm bạn mất lợi thế của bên trả giao.",
+        "en": "The most common beginner habit: staying back gives away the returning team's advantage."
+      },
+      "drills": [
+        "pb.drill.return_and_run"
+      ],
+      "defaultDrill": "pb.drill.return_and_run"
+    },
+    {
+      "id": "pb.return.flat_swing",
+      "checkpoint": "pb.return.RT7",
+      "when": "low",
+      "title": {
+        "vi": "Đánh mạnh, thấp vào lưới",
+        "en": "Hard and low into the net"
+      },
+      "cue": {
+        "vi": "Cao, sâu, chậm cũng được",
+        "en": "High, deep, slow is fine"
+      },
+      "why": {
+        "vi": "Đường bóng cao và sâu cho bạn thời gian lên lưới.",
+        "en": "A high, deep return buys time to get to the net."
+      },
+      "drills": [
+        "pb.drill.brush_up"
+      ],
+      "defaultDrill": "pb.drill.brush_up"
+    },
+    {
+      "id": "pb.return.low_finish",
+      "checkpoint": "pb.return.RT8",
+      "when": "low",
+      "title": {
+        "vi": "Kết thúc vợt thấp",
+        "en": "Low finish"
+      },
+      "cue": {
+        "vi": "Vung theo, kết thúc cao",
+        "en": "Swing through, finish high"
+      },
+      "why": {
+        "vi": "Kết thúc cao giúp bóng đi sâu.",
+        "en": "A high finish sends the ball deep."
+      },
+      "drills": [
+        "pb.drill.brush_up"
+      ],
+      "defaultDrill": "pb.drill.brush_up"
+    },
+    {
+      "id": "pb.drive.arm_only",
+      "checkpoint": "pb.drive.DV1",
+      "when": "low",
+      "title": {
+        "vi": "Chỉ đánh bằng tay",
+        "en": "Arm-only drive"
+      },
+      "cue": {
+        "vi": "Xoay vai và vợt cùng lúc",
+        "en": "Turn shoulders and paddle together"
+      },
+      "why": {
+        "vi": "Xoay vai giúp drive mạnh mà tay không phải gồng.",
+        "en": "A unit turn adds power without forcing the arm."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.drive.short_backswing",
+      "checkpoint": "pb.drive.DV2",
+      "when": "low",
+      "title": {
+        "vi": "Lấy đà quá ngắn",
+        "en": "Backswing too short"
+      },
+      "cue": {
+        "vi": "Kéo vợt về sau cùng vai",
+        "en": "Take the paddle back with the shoulders"
+      },
+      "why": {
+        "vi": "Lấy đà đủ giúp drive có lực mà vẫn kiểm soát.",
+        "en": "Enough backswing gives power with control."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.drive.big_backswing",
+      "checkpoint": "pb.drive.DV2",
+      "when": "high",
+      "title": {
+        "vi": "Lấy đà quá dài",
+        "en": "Backswing too long"
+      },
+      "cue": {
+        "vi": "Lấy đà gọn, đánh trước người",
+        "en": "Compact backswing, hit in front"
+      },
+      "why": {
+        "vi": "Lấy đà dài làm bạn chạm bóng muộn.",
+        "en": "A long backswing makes you late."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.drive.late_contact",
+      "checkpoint": "pb.drive.DV3",
+      "when": "low",
+      "title": {
+        "vi": "Chạm bóng muộn",
+        "en": "Late contact"
+      },
+      "cue": {
+        "vi": "Đón bóng trước người",
+        "en": "Meet it in front"
+      },
+      "why": {
+        "vi": "Chạm bóng muộn làm drive bay lệch hướng.",
+        "en": "Late contact sends drives off line."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow",
+        "pb.drill.brush_up"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.drive.weight_back",
+      "checkpoint": "pb.drive.DV4",
+      "when": "low",
+      "title": {
+        "vi": "Trọng tâm còn ở chân sau",
+        "en": "Weight stays back"
+      },
+      "cue": {
+        "vi": "Bước vào bóng",
+        "en": "Step into the ball"
+      },
+      "why": {
+        "vi": "Dồn trọng tâm về trước giúp drive nặng và sâu.",
+        "en": "Moving your weight forward makes the drive heavy and deep."
+      },
+      "drills": [
+        "pb.drill.unit_turn_shadow"
+      ],
+      "defaultDrill": "pb.drill.unit_turn_shadow"
+    },
+    {
+      "id": "pb.drive.hits_down",
+      "checkpoint": "pb.drive.DV5",
+      "when": "low",
+      "title": {
+        "vi": "Đánh xuống, bóng vào lưới",
+        "en": "Hitting down into the net"
+      },
+      "cue": {
+        "vi": "Chải bóng từ dưới lên",
+        "en": "Brush up the back of the ball"
+      },
+      "why": {
+        "vi": "Vung từ dưới lên tạo xoáy lên giúp bóng qua lưới rồi cắm xuống.",
+        "en": "A low-to-high swing adds topspin so the ball clears the net and dips."
+      },
+      "drills": [
+        "pb.drill.brush_up"
+      ],
+      "defaultDrill": "pb.drill.brush_up"
+    },
+    {
+      "id": "pb.drive.short_finish",
+      "checkpoint": "pb.drive.DV6",
+      "when": "false",
+      "title": {
+        "vi": "Vung theo dừng sớm",
+        "en": "Short finish"
+      },
+      "cue": {
+        "vi": "Kết thúc vợt qua vai đối diện",
+        "en": "Finish over the opposite shoulder"
+      },
+      "why": {
+        "vi": "Vung theo trọn vẹn giúp drive mượt và đều.",
+        "en": "A full finish keeps the drive smooth and consistent."
+      },
+      "drills": [
+        "pb.drill.brush_up"
+      ],
+      "defaultDrill": "pb.drill.brush_up"
+    },
+    {
+      "id": "pb.drive.low_finish",
+      "checkpoint": "pb.drive.DV7",
+      "when": "low",
+      "title": {
+        "vi": "Kết thúc vợt thấp",
+        "en": "Low finish"
+      },
+      "cue": {
+        "vi": "Kết thúc vợt ngang vai",
+        "en": "Finish at shoulder height"
+      },
+      "why": {
+        "vi": "Kết thúc thấp thường do đánh ngang, bóng dễ vào lưới.",
+        "en": "A low finish usually means a flat swing that finds the net."
+      },
+      "drills": [
+        "pb.drill.brush_up"
+      ],
+      "defaultDrill": "pb.drill.brush_up"
+    },
+    {
+      "id": "pb.drive.slow_reset",
+      "checkpoint": "pb.drive.DV8",
+      "when": "low",
+      "title": {
+        "vi": "Về tư thế chậm sau cú drive",
+        "en": "Slow to reset after the drive"
+      },
+      "cue": {
+        "vi": "Drive xong, vợt về trước ngực",
+        "en": "Hit, then paddle up"
+      },
+      "why": {
+        "vi": "Drive thường bị chặn trả lại rất nhanh, bạn cần sẵn sàng ngay.",
+        "en": "Drives often come back fast, so be ready at once."
+      },
+      "drills": [
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.paddle_up_reaction"
+    },
+    {
+      "id": "pb.volley.paddle_down",
+      "checkpoint": "pb.volley.VO1",
+      "when": "low",
+      "title": {
+        "vi": "Vợt thấp, vô lê muộn",
+        "en": "Paddle down, late volley"
+      },
+      "cue": {
+        "vi": "Giơ vợt trước khi đối thủ đánh",
+        "en": "Paddle up before they hit"
+      },
+      "why": {
+        "vi": "Bóng vô lê đến rất nhanh, vợt giơ sẵn giúp bạn kịp chặn.",
+        "en": "Volleys arrive fast, and a ready paddle lets you meet them."
+      },
+      "drills": [
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.paddle_up_reaction"
+    },
+    {
+      "id": "pb.volley.big_swing",
+      "checkpoint": "pb.volley.VO2",
+      "when": "high",
+      "title": {
+        "vi": "Vung vợt khi vô lê",
+        "en": "Swinging at volleys"
+      },
+      "cue": {
+        "vi": "Đẩy bóng, đừng vung",
+        "en": "Punch, don't swing"
+      },
+      "why": {
+        "vi": "Vung lớn làm bạn chậm và bóng dễ bay ra ngoài.",
+        "en": "A big swing makes you late and sends balls long."
+      },
+      "drills": [
+        "pb.drill.wall_punch_volley"
+      ],
+      "defaultDrill": "pb.drill.wall_punch_volley"
+    },
+    {
+      "id": "pb.volley.late_contact",
+      "checkpoint": "pb.volley.VO3",
+      "when": "low",
+      "title": {
+        "vi": "Chạm bóng sát người",
+        "en": "Contact too close to the body"
+      },
+      "cue": {
+        "vi": "Đón bóng xa trước người",
+        "en": "Meet it well in front"
+      },
+      "why": {
+        "vi": "Chạm bóng phía trước giúp bạn chặn bóng chắc và đổi hướng dễ hơn.",
+        "en": "Contact in front makes volleys firm and easier to direct."
+      },
+      "drills": [
+        "pb.drill.wall_punch_volley",
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.wall_punch_volley"
+    },
+    {
+      "id": "pb.volley.long_follow",
+      "checkpoint": "pb.volley.VO4",
+      "when": "high",
+      "title": {
+        "vi": "Vung theo quá dài",
+        "en": "Follow-through too long"
+      },
+      "cue": {
+        "vi": "Đẩy ngắn rồi dừng",
+        "en": "Short punch, then stop"
+      },
+      "why": {
+        "vi": "Đẩy ngắn giúp bạn về tư thế kịp cho cú tiếp theo.",
+        "en": "A short punch gets you ready for the next ball."
+      },
+      "drills": [
+        "pb.drill.wall_punch_volley"
+      ],
+      "defaultDrill": "pb.drill.wall_punch_volley"
+    },
+    {
+      "id": "pb.volley.standing_tall",
+      "checkpoint": "pb.volley.VO5",
+      "when": "low",
+      "title": {
+        "vi": "Đứng thẳng chân khi vô lê",
+        "en": "Straight legs on the volley"
+      },
+      "cue": {
+        "vi": "Gối chùng, người vững",
+        "en": "Knees soft, stay solid"
+      },
+      "why": {
+        "vi": "Gối chùng giúp bạn chặn bóng thấp và giữ thăng bằng.",
+        "en": "Bent knees help with low balls and balance."
+      },
+      "drills": [
+        "pb.drill.ready_hold"
+      ],
+      "defaultDrill": "pb.drill.ready_hold"
+    },
+    {
+      "id": "pb.volley.moving",
+      "checkpoint": "pb.volley.VO6",
+      "when": "high",
+      "title": {
+        "vi": "Còn di chuyển khi vô lê",
+        "en": "Moving through the volley"
+      },
+      "cue": {
+        "vi": "Bật nhún, đứng vững, rồi vô lê",
+        "en": "Split, settle, then volley"
+      },
+      "why": {
+        "vi": "Đứng vững giúp vô lê chắc tay.",
+        "en": "Being settled makes volleys solid."
+      },
+      "drills": [
+        "pb.drill.split_on_cue"
+      ],
+      "defaultDrill": "pb.drill.split_on_cue"
+    },
+    {
+      "id": "pb.volley.leaning_back",
+      "checkpoint": "pb.volley.VO7",
+      "when": "low",
+      "title": {
+        "vi": "Ngả người ra sau",
+        "en": "Leaning back"
+      },
+      "cue": {
+        "vi": "Dồn trọng tâm về trước",
+        "en": "Weight forward"
+      },
+      "why": {
+        "vi": "Ngả người làm vô lê yếu và dễ mất thăng bằng.",
+        "en": "Leaning back weakens the volley and costs balance."
+      },
+      "drills": [
+        "pb.drill.wall_punch_volley",
+        "pb.drill.turn_and_step_back"
+      ],
+      "defaultDrill": "pb.drill.wall_punch_volley"
+    },
+    {
+      "id": "pb.volley.chicken_wing",
+      "checkpoint": "pb.volley.VO8",
+      "when": "low",
+      "title": {
+        "vi": "Khuỷu tay bung ra, cổ tay lỏng",
+        "en": "Chicken-wing elbow, loose wrist"
+      },
+      "cue": {
+        "vi": "Khuỷu tay trước người, cổ tay chắc",
+        "en": "Elbow in front, wrist firm"
+      },
+      "why": {
+        "vi": "Cổ tay chắc và khuỷu tay gọn giúp mặt vợt ổn định.",
+        "en": "A firm wrist and compact elbow keep the face steady."
+      },
+      "drills": [
+        "pb.drill.wall_punch_volley"
+      ],
+      "defaultDrill": "pb.drill.wall_punch_volley"
+    },
+    {
+      "id": "pb.volley.paddle_drops",
+      "checkpoint": "pb.volley.VO9",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp sau cú vô lê",
+        "en": "Paddle drops after the volley"
+      },
+      "cue": {
+        "vi": "Vô lê xong, vợt về trước ngực",
+        "en": "Volley, then paddle up"
+      },
+      "why": {
+        "vi": "Ở gần kitchen bóng đến liên tục, vợt cần luôn sẵn sàng.",
+        "en": "Near the kitchen, balls come back quickly, so keep the paddle ready."
+      },
+      "drills": [
+        "pb.drill.paddle_up_reaction"
+      ],
+      "defaultDrill": "pb.drill.paddle_up_reaction"
     }
   ]
 }

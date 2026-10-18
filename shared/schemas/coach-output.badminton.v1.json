@@ -73,15 +73,15 @@
     },
     "CheckpointId": {
       "type": "string",
-      "enum": ["bd.clear_fh.C3", "bd.ready.R7"]
+      "enum": ["bd.ready.R1", "bd.ready.R2", "bd.ready.R3", "bd.ready.R4", "bd.ready.R7", "bd.split.S1", "bd.clear_fh.C1", "bd.clear_fh.C2", "bd.clear_fh.C3", "bd.clear_fh.C4", "bd.clear_fh.C5", "bd.clear_fh.C6", "bd.clear_fh.C7", "bd.clear_fh.C8", "bd.clear_fh.C9", "bd.clear_fh.C10", "bd.clear_fh.C11", "bd.clear_fh.C12", "bd.clear_fh.C13", "bd.smash.SM2", "bd.smash.SM3", "bd.smash.SM4", "bd.smash.SM5", "bd.smash.SM6", "bd.smash.SM7", "bd.smash.SM8", "bd.smash.SM9", "bd.smash.SM10", "bd.serve_low.LS1", "bd.serve_low.LS2", "bd.serve_low.LS3", "bd.serve_low.LS4", "bd.serve_low.LS5", "bd.serve_low.LS6", "bd.serve_low.LS7", "bd.serve_low.LS8", "bd.serve_low.LS9", "bd.serve_low.LS10", "bd.net_shot.NS1", "bd.net_shot.NS2", "bd.net_shot.NS3", "bd.net_shot.NS4", "bd.net_shot.NS5", "bd.net_shot.NS6", "bd.net_shot.NS7", "bd.net_shot.NS8", "bd.net_shot.NS9", "bd.net_shot.NS10", "bd.net_shot.NS11", "bd.net_shot.NS12", "bd.lift.NL1", "bd.lift.NL2", "bd.lift.NL3", "bd.serve_high.HS1", "bd.serve_high.HS2", "bd.serve_high.HS3", "bd.serve_high.HS4", "bd.serve_high.HS5", "bd.serve_high.HS6", "bd.serve_high.HS7", "bd.serve_high.HS8", "bd.serve_high.HS9"]
     },
     "VisualCheckpointId": {
       "type": "string",
-      "enum": ["bd.ready.R7"]
+      "enum": ["bd.ready.R7", "bd.clear_fh.C13", "bd.smash.SM10", "bd.serve_low.LS10", "bd.net_shot.NS2"]
     },
     "FaultId": {
       "type": "string",
-      "enum": ["bd.clear_fh.low_elbow", "none"]
+      "enum": ["bd.ready.narrow_feet", "bd.ready.straight_legs", "bd.ready.weight_back", "bd.ready.racket_down", "bd.ready.head_down", "bd.split.no_split", "bd.clear_fh.no_turn", "bd.clear_fh.limp_arm", "bd.clear_fh.low_elbow", "bd.clear_fh.no_weight_transfer", "bd.clear_fh.low_contact", "bd.clear_fh.late_contact", "bd.clear_fh.bent_arm", "bd.clear_fh.short_finish", "bd.clear_fh.no_rotation", "bd.clear_fh.high_finish", "bd.clear_fh.no_recovery", "bd.clear_fh.racket_stays_down", "bd.clear_fh.late_footwork", "bd.smash.low_contact", "bd.smash.behind_head", "bd.smash.bent_arm", "bd.smash.arm_only", "bd.smash.short_finish", "bd.smash.stiff_landing", "bd.smash.high_finish", "bd.smash.slow_recovery", "bd.smash.open_face", "bd.serve_low.feet_move", "bd.serve_low.square_stance", "bd.serve_low.stiff_legs", "bd.serve_low.leaning_back", "bd.serve_low.cramped", "bd.serve_low.high_contact", "bd.serve_low.big_backswing", "bd.serve_low.long_push", "bd.serve_low.racket_down", "bd.serve_low.wrist_flick", "bd.net_shot.racket_low", "bd.net_shot.wrong_leg", "bd.net_shot.short_lunge", "bd.net_shot.shallow_lunge", "bd.net_shot.waist_bend", "bd.net_shot.knee_past_toes", "bd.net_shot.late_contact", "bd.net_shot.bent_arm", "bd.net_shot.low_contact", "bd.net_shot.big_swing", "bd.net_shot.long_follow", "bd.net_shot.stays_at_net", "bd.lift.big_backswing", "bd.lift.flat_lift", "bd.lift.low_finish", "bd.serve_high.square_stance", "bd.serve_high.early_weight", "bd.serve_high.arm_only", "bd.serve_high.short_swing", "bd.serve_high.flat_contact", "bd.serve_high.high_contact", "bd.serve_high.low_finish", "bd.serve_high.short_finish", "bd.serve_high.racket_down", "none"]
     },
     "Severity": {
       "type": "string",

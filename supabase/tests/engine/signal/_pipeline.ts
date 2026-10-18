@@ -42,3 +42,13 @@ export async function loadSynthetic(name: string): Promise<{ pose: unknown; trut
     truth: await loadFixture<SynthTruth>(`pose/${name}.truth.json`),
   };
 }
+
+/** Segmentation parameters of the launch skills (DESIGN.md §6.2 step 7 table; contact offsets start at 0). */
+export const LAUNCH_SEGMENT_PARAMS: Record<string, { vmin: number; nms: number; contactOffsetMs: number }> = {
+  'bd.clear_fh': { vmin: 4, nms: 0.8, contactOffsetMs: 0 },
+  'bd.smash': { vmin: 4, nms: 0.8, contactOffsetMs: 0 },
+  'bd.serve_low': { vmin: 1.2, nms: 2.0, contactOffsetMs: 0 },
+  'pb.serve': { vmin: 2, nms: 2.0, contactOffsetMs: 0 },
+  'pb.dink': { vmin: 1.2, nms: 0.8, contactOffsetMs: 0 },
+  'pb.drop3': { vmin: 1.5, nms: 1.0, contactOffsetMs: 0 },
+};

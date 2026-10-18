@@ -41,7 +41,7 @@ export interface SynthOptions {
   mirrored?: boolean;
   /** Timestamp jitter and dropped frames (default true). */
   vfr?: boolean;
-  /** Position noise σ in CFS units (default 2.5; wrists ×1.5). 0 disables noise and confidence jitter. */
+  /** Position noise σ in CFS-y units, isotropic in pixels (default 2.5 ≈ 2.7 px; wrists ×1.5). 0 disables noise. */
   noiseCfs?: number;
   /** Short/long joint dropouts (default true). */
   dropouts?: boolean;
@@ -345,8 +345,13 @@ function wristSpeed(m: SkillModel, tS: number, contactsS: readonly number[], swi
   return Math.hypot(b[0] - a[0], b[1] - a[1]) / (2 * h);
 }
 
+const swingDurationCache = new Map<string, number>();
+
 /** Forward-swing duration (s) whose isolated racket-wrist peak equals `target` T/s (bisection; speed ∝ 1/D). */
 function solveSwingDuration(m: SkillModel, target: number): number {
+  const key = `${JSON.stringify(m)}|${target}`;
+  const cached = swingDurationCache.get(key);
+  if (cached !== undefined) return cached;
   const peakFor = (d: number) => {
     let best = 0;
     for (let t = -0.4; t <= 0.4; t += 0.001) best = Math.max(best, wristSpeed(m, t, [0], d));
@@ -358,6 +363,7 @@ function solveSwingDuration(m: SkillModel, target: number): number {
     if (peakFor(mid) > target) lo = mid;
     else hi = mid;
   }
+  swingDurationCache.set(key, 0.5 * (lo + hi));
   return 0.5 * (lo + hi);
 }
 
@@ -490,9 +496,10 @@ export function generateSyntheticPose(opts: SynthOptions): { pose: Record<string
     let minX = 1000, minY = 1000, maxX = 0, maxY = 0;
     JOINT_ORDER.forEach((j, ji) => {
       const [fx, fy] = frames[i][j];
-      const sx = noise * (j.endsWith('Wri') ? 1.5 : 1);
-      const x = clampInt(fx + (noise ? gauss(randNoise) * sx : 0));
-      const y = clampInt(fy + (noise ? gauss(randNoise) * sx : 0));
+      // Isotropic in pixels: σ is given in CFS-y units, so x (a longer pixel axis) gets σ / aspect.
+      const sy = noise * (j.endsWith('Wri') ? 1.5 : 1);
+      const x = clampInt(fx + (noise ? (gauss(randNoise) * sy) / ASPECT : 0));
+      const y = clampInt(fy + (noise ? gauss(randNoise) * sy : 0));
       minX = Math.min(minX, x);
       maxX = Math.max(maxX, x);
       minY = Math.min(minY, y);
@@ -591,7 +598,9 @@ function clampInt(v: number): number {
 
 /** Deterministic lowercase v4-shaped uuid for a fixture. */
 function uuidFromSeed(seed: number, skill: string, hz: number, flip: boolean): string {
-  const r = rng([...`${seed}|${skill}|${hz}|${flip}`].reduce((a, c) => Math.imul(a ^ c.charCodeAt(0), 16777619), 2166136261));
+  const r = rng(
+    [...`${seed}|${skill}|${hz}|${flip}`].reduce((a, c) => Math.imul(a ^ c.charCodeAt(0), 16777619), 2166136261),
+  );
   const hex = Array.from({ length: 32 }, () => Math.floor(r() * 16).toString(16));
   hex[12] = '4';
   hex[16] = '89ab'[Math.floor(r() * 4)];
@@ -619,10 +628,12 @@ async function main(): Promise<number> {
   for (const { name, opts } of SYNTHETIC_FIXTURES) {
     const { pose, truth } = generateSyntheticPose(opts);
     PoseV1.parse(pose); // never write an invalid fixture
-    for (const [rel, text] of [
-      [`shared/fixtures/pose/${name}.json`, prettyJson(pose)],
-      [`shared/fixtures/pose/${name}.truth.json`, prettyJson(truth)],
-    ] as const) {
+    for (
+      const [rel, text] of [
+        [`shared/fixtures/pose/${name}.json`, prettyJson(pose)],
+        [`shared/fixtures/pose/${name}.truth.json`, prettyJson(truth)],
+      ] as const
+    ) {
       if (text.length > MAX_FIXTURE_BYTES) {
         console.error(`${rel} is ${text.length} bytes (> ${MAX_FIXTURE_BYTES})`);
         failed++;

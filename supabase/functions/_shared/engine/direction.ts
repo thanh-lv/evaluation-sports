@@ -7,7 +7,7 @@
 import type { ConfirmedCameraView, Handedness } from '../contracts/common.ts';
 import { racketWrist } from './handedness.ts';
 import { gridRange, median } from './signal_util.ts';
-import type { DirectionResult, DetectedStroke, GridWindow, SmoothTrack } from './types.ts';
+import type { DetectedStroke, DirectionResult, GridWindow, SmoothTrack } from './types.ts';
 
 /** Direction-vote constants. */
 export const DIRECTION_CONSTANTS = {

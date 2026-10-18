@@ -1,0 +1,169 @@
+-- Shared helpers for the pgTAP files in this folder. Each *.test.sql includes this file (\ir) right after BEGIN,
+-- so everything here is rolled back with the test. The .psql extension keeps pg_prove from running it as a test.
+
+create schema if not exists tests;
+grant usage on schema tests to anon, authenticated, service_role;
+
+-- New auth user (the 0100 trigger creates the profile). Returns its id.
+create or replace function tests.create_user(p_email text default null, p_anonymous boolean default false)
+returns uuid
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_id uuid := gen_random_uuid();
+begin
+  insert into auth.users (instance_id, id, aud, role, email, is_anonymous, raw_app_meta_data, raw_user_meta_data,
+    created_at, updated_at)
+  values ('00000000-0000-0000-0000-000000000000', v_id, 'authenticated', 'authenticated', p_email, p_anonymous,
+    '{}', '{}', now(), now());
+  return v_id;
+end;
+$$;
+
+-- Act as a signed-in user for the rest of the transaction (auth.uid() reads request.jwt.claims).
+create or replace function tests.login_as(p_user_id uuid, p_anonymous boolean default false)
+returns void
+language plpgsql
+as $$
+begin
+  perform set_config('request.jwt.claims', json_build_object(
+    'sub', p_user_id, 'role', 'authenticated', 'is_anonymous', p_anonymous)::text, true);
+  perform set_config('role', 'authenticated', true);
+end;
+$$;
+
+create or replace function tests.login_anon()
+returns void
+language plpgsql
+as $$
+begin
+  perform set_config('request.jwt.claims', '{"role":"anon"}', true);
+  perform set_config('role', 'anon', true);
+end;
+$$;
+
+create or replace function tests.logout()
+returns void
+language plpgsql
+as $$
+begin
+  perform set_config('role', 'postgres', true);
+  perform set_config('request.jwt.claims', '', true);
+end;
+$$;
+
+-- Analysis row as the prepare step would write it.
+create or replace function tests.make_analysis(
+  p_user_id uuid,
+  p_status text default 'prepared',
+  p_skill text default 'bd.clear_fh',
+  p_created_at timestamptz default now(),
+  p_subject text default 'self'
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_id uuid := gen_random_uuid();
+begin
+  insert into public.analyses (id, user_id, sport, skill, status, subject, subject_consent, created_at, prepared,
+    pose_raw_path, pose_clean_path, quality)
+  values (v_id, p_user_id, case when p_skill like 'bd.%' then 'badminton' else 'pickleball' end, p_skill, p_status,
+    p_subject, p_subject = 'other', p_created_at, '{"strokes": [], "candidates": []}',
+    p_user_id || '/' || v_id || '/pose.raw.json', p_user_id || '/' || v_id || '/pose.clean.json', '{}');
+  return v_id;
+end;
+$$;
+
+-- Premium/trial entitlement row (expires_at already coalesced with grace).
+create or replace function tests.set_entitlement(
+  p_user_id uuid,
+  p_tier text,
+  p_expires_at timestamptz,
+  p_original_transaction_id text default 'tx-test',
+  p_anchor timestamptz default null
+)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  insert into public.entitlements (user_id, tier, is_trial, product_id, original_transaction_id, expires_at,
+    period_anchor, source)
+  values (p_user_id, p_tier, p_tier = 'trial', 'com.example.racketcoach.premium.yearly', p_original_transaction_id,
+    p_expires_at, p_anchor, 'app_store')
+  on conflict (user_id) do update set tier = excluded.tier, is_trial = excluded.is_trial,
+    original_transaction_id = excluded.original_transaction_id, expires_at = excluded.expires_at,
+    period_anchor = excluded.period_anchor;
+end;
+$$;
+
+-- Minimal full coach-result.v1 with 2 strengths, 2 other weaknesses, 3 plan items and checkpoints.
+create or replace function tests.sample_result(
+  p_analysis_id uuid,
+  p_status text default 'succeeded',
+  p_partial boolean default false
+)
+returns jsonb
+language sql
+as $$
+  select jsonb_build_object(
+    'schema', 'coach-result.v1', 'analysisId', p_analysis_id, 'sport', 'badminton', 'skill', 'bd.clear_fh',
+    'narrativeLanguage', 'vi', 'createdAt', '2026-10-18T00:00:00Z', 'status', p_status,
+    'rejection', case when p_status = 'rejected'
+      then jsonb_build_object('code', 'not_assessable', 'tips', jsonb_build_array('camera.tip.full_body')) end,
+    'access', 'full', 'locked', jsonb_build_object('strengths', 0, 'weaknesses', 0, 'plan', 0),
+    'aiGenerated', true,
+    'hero', case when p_status = 'rejected' then null else jsonb_build_object('checkpointId', 'bd.clear_fh.C3',
+      'faultId', 'late_contact', 'title', 'Hero fix', 'observation', 'obs', 'cue', jsonb_build_object('vi', 'v',
+      'en', 'e'), 'drill', null, 'frameId', 'F3', 'joints', jsonb_build_array('rElb')) end,
+    'overall', jsonb_build_object('displayScore', case when p_partial then null else 65 end,
+      'level', case when p_partial then null else 'intermediate' end, 'coverage', case when p_partial then 0.4
+      else 0.9 end, 'partial', p_partial, 'beta', true),
+    'subScores', jsonb_build_array(
+      jsonb_build_object('key', 'stance', 'displayScore', 70, 'coverage', 0.9, 'confidence', 'high'),
+      jsonb_build_object('key', 'swing', 'displayScore', 55, 'coverage', 0.8, 'confidence', 'medium')),
+    'checkpoints', jsonb_build_array(jsonb_build_object('id', 'bd.clear_fh.C1'), jsonb_build_object('id', 'x')),
+    'strengths', jsonb_build_array(jsonb_build_object('checkpointId', 'S1', 'title', 'Strength one'),
+      jsonb_build_object('checkpointId', 'S2', 'title', 'Strength two')),
+    'weaknesses', jsonb_build_array(jsonb_build_object('checkpointId', 'W1'), jsonb_build_object('checkpointId', 'W2')),
+    'plan', jsonb_build_array(jsonb_build_object('priority', 1), jsonb_build_object('priority', 2),
+      jsonb_build_object('priority', 3)),
+    'strokes', '[]'::jsonb, 'safety', jsonb_build_array(jsonb_build_object('kind', 'general', 'message', 'm')),
+    'notAssessable', '[]'::jsonb, 'recordingTips', jsonb_build_array('tip'),
+    'rulesTip', jsonb_build_object('vi', 'r', 'en', 'r'), 'summary', 'Summary text',
+    'meta', jsonb_build_object('model', 'claude-sonnet-5-5', 'kind', 'standard'));
+$$;
+
+-- Store a finished result directly (bypassing the job path) for read-side tests.
+create or replace function tests.add_result(
+  p_user_id uuid,
+  p_skill text default 'bd.clear_fh',
+  p_created_at timestamptz default now(),
+  p_subject text default 'self',
+  p_display_score int default 65
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_id uuid := tests.make_analysis(p_user_id, 'succeeded', p_skill, p_created_at, p_subject);
+  v_result jsonb := tests.sample_result(v_id);
+begin
+  insert into public.analysis_results (analysis_id, user_id, sport, skill, subject, status, overall_score,
+    display_score, level, coverage, partial, sub_scores, result, created_at)
+  values (v_id, p_user_id, case when p_skill like 'bd.%' then 'badminton' else 'pickleball' end, p_skill, p_subject,
+    'succeeded', p_display_score + 1.3, p_display_score, 'intermediate', 0.9, false, v_result -> 'subScores',
+    v_result, p_created_at);
+  return v_id;
+end;
+$$;
+
+grant execute on all functions in schema tests to anon, authenticated, service_role;

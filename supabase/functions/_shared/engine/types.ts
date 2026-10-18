@@ -168,7 +168,7 @@ export interface StrokePhases {
   ftStop: PhasePoint;
   /** null when contact + 1 s is past the end of the track. */
   recovery: PhasePoint | null;
-  /** Stroke span (snapped PTS): swingStart ?? readyWindow start ?? bsEnd … recovery ?? ftStop. */
+  /** Stroke span (snapped PTS): earliest of ready window / swingStart / phase frames … recovery ?? ftStop. */
   tStartUs: number;
   tEndUs: number;
 }

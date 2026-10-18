@@ -1,0 +1,234 @@
+{
+  "version": "2026.10.18",
+  "source": "DESIGN.md §10.2 (every row needs native-coach review before launch)",
+  "terms": [
+    {
+      "id": "overall_score",
+      "en": "Overall score",
+      "vi": "Điểm tổng",
+      "reviewed": false
+    },
+    {
+      "id": "stance",
+      "en": "Stance & Balance",
+      "vi": "Tư thế & Thăng bằng",
+      "reviewed": false
+    },
+    {
+      "id": "footwork",
+      "en": "Footwork",
+      "vi": "Di chuyển (bộ pháp)",
+      "reviewed": false
+    },
+    {
+      "id": "swing",
+      "en": "Swing mechanics",
+      "vi": "Kỹ thuật vung vợt",
+      "reviewed": false
+    },
+    {
+      "id": "contact_badminton",
+      "en": "Contact point (badminton)",
+      "vi": "Điểm chạm cầu",
+      "reviewed": false
+    },
+    {
+      "id": "contact_pickleball",
+      "en": "Contact point (pickleball)",
+      "vi": "Điểm chạm bóng",
+      "reviewed": false
+    },
+    {
+      "id": "follow",
+      "en": "Follow-through",
+      "vi": "Kết thúc động tác",
+      "reviewed": false
+    },
+    {
+      "id": "recovery",
+      "en": "Recovery",
+      "vi": "Về vị trí (hồi vị)",
+      "reviewed": false
+    },
+    {
+      "id": "strengths",
+      "en": "Strengths",
+      "vi": "Điểm mạnh",
+      "reviewed": false
+    },
+    {
+      "id": "weaknesses",
+      "en": "Weaknesses",
+      "vi": "Cần cải thiện",
+      "reviewed": false
+    },
+    {
+      "id": "fix_first",
+      "en": "Fix this first",
+      "vi": "Sửa điều này trước",
+      "reviewed": false
+    },
+    {
+      "id": "drill",
+      "en": "Drill",
+      "vi": "Bài tập",
+      "reviewed": false
+    },
+    {
+      "id": "clear",
+      "en": "Clear",
+      "vi": "Phông cầu",
+      "reviewed": false
+    },
+    {
+      "id": "smash",
+      "en": "Smash",
+      "vi": "Đập cầu",
+      "reviewed": false
+    },
+    {
+      "id": "low_serve",
+      "en": "Low serve",
+      "vi": "Giao cầu thấp",
+      "reviewed": false
+    },
+    {
+      "id": "high_serve",
+      "en": "High serve",
+      "vi": "Giao cầu cao sâu",
+      "reviewed": false
+    },
+    {
+      "id": "net_shot",
+      "en": "Net shot",
+      "vi": "Bỏ nhỏ trên lưới",
+      "reviewed": false
+    },
+    {
+      "id": "lift",
+      "en": "Lift",
+      "vi": "Vẩy cầu",
+      "reviewed": false
+    },
+    {
+      "id": "split_step",
+      "en": "Split step",
+      "vi": "Bật nhún (split step)",
+      "reviewed": false
+    },
+    {
+      "id": "ready_stance",
+      "en": "Ready stance",
+      "vi": "Tư thế chuẩn bị",
+      "reviewed": false
+    },
+    {
+      "id": "lunge",
+      "en": "Lunge",
+      "vi": "Bước lunge",
+      "reviewed": false
+    },
+    {
+      "id": "kitchen",
+      "en": "Kitchen (NVZ)",
+      "vi": "Kitchen (vùng cấm vô lê)",
+      "reviewed": false
+    },
+    {
+      "id": "volley",
+      "en": "Volley",
+      "vi": "Vô lê",
+      "reviewed": false
+    },
+    {
+      "id": "serve_pb",
+      "en": "Serve (pickleball)",
+      "vi": "Giao bóng",
+      "reviewed": false
+    },
+    {
+      "id": "return",
+      "en": "Return of serve",
+      "vi": "Trả giao bóng",
+      "reviewed": false
+    },
+    {
+      "id": "third_shot_drop",
+      "en": "Third-shot drop",
+      "vi": "Drop cú thứ ba",
+      "reviewed": false
+    },
+    {
+      "id": "dink",
+      "en": "Dink",
+      "vi": "Dink",
+      "reviewed": false
+    },
+    {
+      "id": "drive",
+      "en": "Drive",
+      "vi": "Drive",
+      "reviewed": false
+    },
+    {
+      "id": "reset",
+      "en": "Reset",
+      "vi": "Reset",
+      "reviewed": false
+    },
+    {
+      "id": "two_bounce",
+      "en": "Two-bounce rule",
+      "vi": "Luật hai lần nảy",
+      "reviewed": false
+    },
+    {
+      "id": "weight_transfer",
+      "en": "Weight transfer",
+      "vi": "Chuyển trọng tâm",
+      "reviewed": false
+    },
+    {
+      "id": "backswing",
+      "en": "Backswing",
+      "vi": "Lấy đà",
+      "reviewed": false
+    },
+    {
+      "id": "not_enough_data",
+      "en": "Not enough data",
+      "vi": "Chưa đủ dữ liệu",
+      "reviewed": false
+    },
+    {
+      "id": "level_beginner",
+      "en": "Beginner",
+      "vi": "Mới bắt đầu",
+      "reviewed": false
+    },
+    {
+      "id": "level_improving",
+      "en": "Improving",
+      "vi": "Đang tiến bộ",
+      "reviewed": false
+    },
+    {
+      "id": "level_intermediate",
+      "en": "Intermediate",
+      "vi": "Trung cấp",
+      "reviewed": false
+    },
+    {
+      "id": "level_advanced",
+      "en": "Advanced",
+      "vi": "Nâng cao",
+      "reviewed": false
+    },
+    {
+      "id": "ai_generated",
+      "en": "AI-generated",
+      "vi": "Nhận xét do AI tạo, có thể chưa chính xác",
+      "reviewed": false
+    }
+  ]
+}

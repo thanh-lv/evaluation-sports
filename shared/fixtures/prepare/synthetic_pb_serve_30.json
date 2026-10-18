@@ -1,0 +1,192 @@
+{
+  "schema": "prepare.v1",
+  "analysisId": "b00ff182-dd97-4cbe-aaba-8f4cc13351fb",
+  "status": "prepared",
+  "frameMode": "frames",
+  "warnings": ["fps_low"],
+  "viewGuess": {
+    "view": "side",
+    "confidence": 0.94
+  },
+  "handednessSuggestion": null,
+  "strokes": [
+    {
+      "id": 1,
+      "tStartUs": 1266438,
+      "tContactUs": 2463466,
+      "contactIsEstimate": true,
+      "tEndUs": 3465661,
+      "phases": {
+        "ready": 1499121,
+        "bsEnd": 2198056,
+        "contact": 2469267,
+        "ftStop": 2731703
+      },
+      "quality": 0.96,
+      "role": "worst",
+      "thumbTUs": 2469267,
+      "excluded": false
+    },
+    {
+      "id": 2,
+      "tStartUs": 4735232,
+      "tContactUs": 5909040,
+      "contactIsEstimate": true,
+      "tEndUs": 6898199,
+      "phases": {
+        "ready": 4965779,
+        "bsEnd": 5667815,
+        "contact": 5897434,
+        "ftStop": 6166290
+      },
+      "quality": 0.99,
+      "role": null,
+      "thumbTUs": 5897434,
+      "excluded": false
+    },
+    {
+      "id": 3,
+      "tStartUs": 8164583,
+      "tContactUs": 9324626,
+      "contactIsEstimate": true,
+      "tEndUs": 10334259,
+      "phases": {
+        "ready": 8366071,
+        "bsEnd": 9066514,
+        "contact": 9331455,
+        "ftStop": 9568334
+      },
+      "quality": 0.95,
+      "role": "best",
+      "thumbTUs": 9331455,
+      "excluded": false
+    }
+  ],
+  "frameRequests": [
+    {
+      "frameId": "F1",
+      "strokeId": 3,
+      "phase": "ready",
+      "tUs": 8366071,
+      "crop": {
+        "x": 0.3371,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F2",
+      "strokeId": 3,
+      "phase": "bsEnd",
+      "tUs": 9066514,
+      "crop": {
+        "x": 0.3371,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F3",
+      "strokeId": 3,
+      "phase": "contact",
+      "tUs": 9331455,
+      "crop": {
+        "x": 0.3371,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F4",
+      "strokeId": 3,
+      "phase": "ftStop",
+      "tUs": 9568334,
+      "crop": {
+        "x": 0.3371,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "F5",
+      "strokeId": 3,
+      "phase": "overview",
+      "tUs": 9331455,
+      "crop": {
+        "x": 0.3441,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": true
+    },
+    {
+      "frameId": "L1",
+      "strokeId": 1,
+      "phase": "ready",
+      "tUs": 1499121,
+      "crop": {
+        "x": 0.3381,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    },
+    {
+      "frameId": "L2",
+      "strokeId": 1,
+      "phase": "bsEnd",
+      "tUs": 2198056,
+      "crop": {
+        "x": 0.3381,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    },
+    {
+      "frameId": "L3",
+      "strokeId": 1,
+      "phase": "contact",
+      "tUs": 2469267,
+      "crop": {
+        "x": 0.3381,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    },
+    {
+      "frameId": "L4",
+      "strokeId": 1,
+      "phase": "ftStop",
+      "tUs": 2731703,
+      "crop": {
+        "x": 0.3381,
+        "y": 0,
+        "w": 0.4219,
+        "h": 1
+      },
+      "upload": false
+    }
+  ],
+  "maxLongEdge": 768,
+  "cleanTrackPath": "5f8e2c1a-9b7d-4e3f-8a6c-2d1e0f9b8a7c/b00ff182-dd97-4cbe-aaba-8f4cc13351fb/pose.clean.json",
+  "quota": {
+    "tier": "free",
+    "remaining": 1,
+    "nextKind": "standard",
+    "resetsAt": "2026-11-01T00:00:00+07:00"
+  }
+}

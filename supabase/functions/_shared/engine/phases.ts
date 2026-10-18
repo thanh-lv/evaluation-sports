@@ -138,8 +138,11 @@ export function computePhases(
       ready = point(clamp(tc + s2us(P.readyToS), lo, bsEnd.tUs));
     }
 
-    const tStartUs = swingStart?.snappedUs ?? readyWindow?.startUs ?? bsEnd.snappedUs;
-    const tEndUs = recovery?.snappedUs ?? ftStop.snappedUs;
+    // Span: earliest of the ready window, swingStart and the phase frames … recovery (or ftStop).
+    const starts = [ready.snappedUs, bsEnd.snappedUs, contact.snappedUs];
+    if (swingStart) starts.push(swingStart.snappedUs);
+    if (readyWindow) starts.push(snapToSampled(track.raw, readyWindow.startUs, [wrist]));
+    const tEndUs = Math.max(recovery?.snappedUs ?? ftStop.snappedUs, ftStop.snappedUs, contact.snappedUs);
     out.push({
       strokeId: s.id,
       swingStart,
@@ -150,8 +153,8 @@ export function computePhases(
       contact,
       ftStop,
       recovery,
-      tStartUs: Math.min(tStartUs, ready.snappedUs, contact.snappedUs),
-      tEndUs: Math.max(tEndUs, contact.snappedUs),
+      tStartUs: Math.min(...starts),
+      tEndUs,
     });
     prevFtStopUs = ftStop.tUs;
   }

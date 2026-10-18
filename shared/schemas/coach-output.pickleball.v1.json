@@ -73,15 +73,15 @@
     },
     "CheckpointId": {
       "type": "string",
-      "enum": ["pb.serve.SV2", "pb.ready.PR6"]
+      "enum": ["pb.ready.PR1", "pb.ready.PR2", "pb.ready.PR3", "pb.ready.PR4", "pb.ready.PR5", "pb.ready.PR6", "pb.ready.PR7", "pb.split.S1", "pb.serve.SV1", "pb.serve.SV2", "pb.serve.SV3", "pb.serve.SV4", "pb.serve.SV5", "pb.serve.SV6", "pb.serve.SV7", "pb.serve.SV8", "pb.serve.SV9", "pb.serve.SV10", "pb.serve.SV11", "pb.dink.DK1", "pb.dink.DK2", "pb.dink.DK3", "pb.dink.DK4", "pb.dink.DK5", "pb.dink.DK6", "pb.dink.DK7", "pb.dink.DK8", "pb.dink.DK9", "pb.dink.DK10", "pb.dink.DK11", "pb.drop3.TD1", "pb.drop3.TD2", "pb.drop3.TD3", "pb.drop3.TD4", "pb.drop3.TD5", "pb.drop3.TD6", "pb.drop3.TD7", "pb.drop3.TD8", "pb.return.RT2", "pb.return.RT3", "pb.return.RT4", "pb.return.RT5", "pb.return.RT6", "pb.return.RT7", "pb.return.RT8", "pb.drive.DV1", "pb.drive.DV2", "pb.drive.DV3", "pb.drive.DV4", "pb.drive.DV5", "pb.drive.DV6", "pb.drive.DV7", "pb.drive.DV8", "pb.volley.VO1", "pb.volley.VO2", "pb.volley.VO3", "pb.volley.VO4", "pb.volley.VO5", "pb.volley.VO6", "pb.volley.VO7", "pb.volley.VO8", "pb.volley.VO9"]
     },
     "VisualCheckpointId": {
       "type": "string",
-      "enum": ["pb.ready.PR6"]
+      "enum": ["pb.ready.PR6", "pb.serve.SV11", "pb.dink.DK4", "pb.drop3.TD6", "pb.return.RT2", "pb.volley.VO8"]
     },
     "FaultId": {
       "type": "string",
-      "enum": ["pb.serve.high_contact", "none"]
+      "enum": ["pb.ready.narrow_feet", "pb.ready.straight_legs", "pb.ready.weight_back", "pb.ready.paddle_down", "pb.ready.paddle_close", "pb.ready.tip_down", "pb.ready.turned", "pb.split.no_split", "pb.serve.square_stance", "pb.serve.stiff_legs", "pb.serve.early_weight", "pb.serve.bent_elbow", "pb.serve.late_contact", "pb.serve.high_contact", "pb.serve.flat_swing", "pb.serve.no_transfer", "pb.serve.short_finish", "pb.serve.runs_in", "pb.serve.wrist_flick", "pb.dink.standing_tall", "pb.dink.waist_bend", "pb.dink.big_backswing", "pb.dink.wristy", "pb.dink.late_contact", "pb.dink.no_lift", "pb.dink.long_follow", "pb.dink.head_moves", "pb.dink.moving_at_contact", "pb.dink.reaching_fh", "pb.dink.reaching_bh", "pb.dink.paddle_drops", "pb.drop3.on_the_run", "pb.drop3.standing_tall", "pb.drop3.late_contact", "pb.drop3.low_finish", "pb.drop3.high_finish", "pb.drop3.big_backswing", "pb.drop3.wristy", "pb.drop3.stays_back", "pb.drop3.flat_swing", "pb.return.not_set", "pb.return.no_turn", "pb.return.big_backswing", "pb.return.late_contact", "pb.return.stays_back", "pb.return.flat_swing", "pb.return.low_finish", "pb.drive.arm_only", "pb.drive.short_backswing", "pb.drive.big_backswing", "pb.drive.late_contact", "pb.drive.weight_back", "pb.drive.hits_down", "pb.drive.short_finish", "pb.drive.low_finish", "pb.drive.slow_reset", "pb.volley.paddle_down", "pb.volley.big_swing", "pb.volley.late_contact", "pb.volley.long_follow", "pb.volley.standing_tall", "pb.volley.moving", "pb.volley.leaning_back", "pb.volley.chicken_wing", "pb.volley.paddle_drops", "none"]
     },
     "Severity": {
       "type": "string",

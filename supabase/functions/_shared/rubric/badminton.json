@@ -1,84 +1,4897 @@
 {
-  "version": "placeholder-0",
+  "version": "bd-2026.10.18",
   "sport": "badminton",
   "skills": [
     {
       "id": "bd.clear_fh",
       "sport": "badminton",
-      "name": { "vi": "Phông cầu thuận tay", "en": "Forehand overhead clear" },
-      "weights": { "stance": 15, "footwork": 10, "swing": 30, "contact": 25, "follow": 10, "recovery": 10 },
+      "name": {
+        "vi": "Phông cầu thuận tay",
+        "en": "Forehand overhead clear"
+      },
+      "weights": {
+        "stance": 10,
+        "footwork": 15,
+        "swing": 30,
+        "contact": 20,
+        "follow": 10,
+        "recovery": 15
+      },
       "vmin": 4,
       "nms": 0.8,
       "family": "overhead",
       "contactOffsetMs": 0,
-      "views": { "recommended": ["D"], "allowed": ["D", "B", "S", "F"] },
+      "views": {
+        "recommended": [
+          "D"
+        ],
+        "allowed": [
+          "D",
+          "B",
+          "S"
+        ]
+      },
       "solo": false,
       "rulesTip": {
-        "vi": "Cầu chạm vạch là cầu trong. Phông cầu tốt rơi sát vạch cuối sân.",
-        "en": "A shuttle landing on the line is in. A good clear lands near the back line."
+        "vi": "Cầu rơi trúng vạch là cầu trong. Phông cầu tốt bay cao và rơi sát vạch cuối sân.",
+        "en": "A shuttle that lands on the line is in. A good clear goes high and lands near the back line."
       },
-      "checkpoints": ["bd.clear_fh.C3", "bd.ready.R7"]
+      "checkpoints": [
+        "bd.ready.R1",
+        "bd.ready.R2",
+        "bd.ready.R3",
+        "bd.ready.R4",
+        "bd.ready.R6",
+        "bd.ready.R7",
+        "bd.split.S1",
+        "bd.clear_fh.C1",
+        "bd.clear_fh.C2",
+        "bd.clear_fh.C3",
+        "bd.clear_fh.C4",
+        "bd.clear_fh.C5",
+        "bd.clear_fh.C6",
+        "bd.clear_fh.C7",
+        "bd.clear_fh.C8",
+        "bd.clear_fh.C9",
+        "bd.clear_fh.C10",
+        "bd.clear_fh.C11",
+        "bd.clear_fh.C12",
+        "bd.clear_fh.C13",
+        "bd.clear_fh.C14"
+      ]
+    },
+    {
+      "id": "bd.smash",
+      "sport": "badminton",
+      "name": {
+        "vi": "Đập cầu",
+        "en": "Smash"
+      },
+      "weights": {
+        "stance": 10,
+        "footwork": 10,
+        "swing": 30,
+        "contact": 25,
+        "follow": 10,
+        "recovery": 15
+      },
+      "vmin": 4,
+      "nms": 0.8,
+      "family": "overhead",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "D"
+        ],
+        "allowed": [
+          "D",
+          "B",
+          "S"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Cầu rơi trúng vạch là cầu trong. Vợt và người bạn không được chạm lưới khi cầu đang trong cuộc.",
+        "en": "A shuttle that lands on the line is in. Your racket and body must not touch the net while the shuttle is in play."
+      },
+      "checkpoints": [
+        "bd.ready.R1",
+        "bd.ready.R2",
+        "bd.ready.R3",
+        "bd.ready.R4",
+        "bd.ready.R6",
+        "bd.ready.R7",
+        "bd.split.S1",
+        "bd.clear_fh.C1",
+        "bd.clear_fh.C2",
+        "bd.clear_fh.C3",
+        "bd.clear_fh.C13",
+        "bd.smash.SM2",
+        "bd.smash.SM3",
+        "bd.smash.SM4",
+        "bd.smash.SM5",
+        "bd.smash.SM6",
+        "bd.smash.SM7",
+        "bd.smash.SM8",
+        "bd.smash.SM9",
+        "bd.smash.SM10",
+        "bd.smash.SM11"
+      ]
+    },
+    {
+      "id": "bd.serve_low",
+      "sport": "badminton",
+      "name": {
+        "vi": "Giao cầu thấp trái tay",
+        "en": "Low backhand serve"
+      },
+      "weights": {
+        "stance": 30,
+        "footwork": 0,
+        "swing": 25,
+        "contact": 25,
+        "follow": 15,
+        "recovery": 5
+      },
+      "vmin": 1.2,
+      "nms": 2,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": true,
+      "rulesTip": {
+        "vi": "Khi giao cầu, toàn bộ quả cầu phải thấp hơn 1,15 m lúc chạm vợt, và hai chân phải đứng yên, chạm sàn cho đến khi giao xong. Một số giải phong trào vẫn dùng luật chạm cầu dưới thắt lưng.",
+        "en": "At contact, the whole shuttle must be below 1.15 m, and both feet must stay still and touch the floor until the serve is made. Some club events still use a below-the-waist rule."
+      },
+      "checkpoints": [
+        "bd.serve_low.LS1",
+        "bd.serve_low.LS2",
+        "bd.serve_low.LS3",
+        "bd.serve_low.LS4",
+        "bd.serve_low.LS5",
+        "bd.serve_low.LS6",
+        "bd.serve_low.LS7",
+        "bd.serve_low.LS8",
+        "bd.serve_low.LS9",
+        "bd.serve_low.LS10",
+        "bd.serve_low.LS11"
+      ]
+    },
+    {
+      "id": "bd.net_shot",
+      "sport": "badminton",
+      "name": {
+        "vi": "Bỏ nhỏ trên lưới",
+        "en": "Net shot"
+      },
+      "weights": {
+        "stance": 15,
+        "footwork": 30,
+        "swing": 10,
+        "contact": 30,
+        "follow": 5,
+        "recovery": 10
+      },
+      "vmin": 1.2,
+      "nms": 0.8,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Vợt và người bạn không được chạm lưới. Cầu chạm lưới rồi rơi sang sân đối thủ vẫn được tính.",
+        "en": "Your racket and body must not touch the net. A shuttle that clips the net and falls on the other side still counts."
+      },
+      "checkpoints": [
+        "bd.ready.R1",
+        "bd.ready.R2",
+        "bd.ready.R3",
+        "bd.ready.R4",
+        "bd.ready.R6",
+        "bd.ready.R7",
+        "bd.split.S1",
+        "bd.net_shot.NS1",
+        "bd.net_shot.NS2",
+        "bd.net_shot.NS3",
+        "bd.net_shot.NS4",
+        "bd.net_shot.NS5",
+        "bd.net_shot.NS6",
+        "bd.net_shot.NS7",
+        "bd.net_shot.NS8",
+        "bd.net_shot.NS9",
+        "bd.net_shot.NS10",
+        "bd.net_shot.NS11",
+        "bd.net_shot.NS12",
+        "bd.net_shot.NS13"
+      ]
+    },
+    {
+      "id": "bd.lift",
+      "sport": "badminton",
+      "name": {
+        "vi": "Vẩy cầu",
+        "en": "Net lift"
+      },
+      "weights": {
+        "stance": 15,
+        "footwork": 25,
+        "swing": 20,
+        "contact": 20,
+        "follow": 10,
+        "recovery": 10
+      },
+      "vmin": 2,
+      "nms": 0.8,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": false,
+      "rulesTip": {
+        "vi": "Cầu rơi trúng vạch là cầu trong. Vẩy cầu tốt bay cao qua tầm vợt đối thủ và rơi sâu cuối sân.",
+        "en": "A shuttle that lands on the line is in. A good lift goes over the opponent's reach and lands deep."
+      },
+      "checkpoints": [
+        "bd.ready.R1",
+        "bd.ready.R2",
+        "bd.ready.R3",
+        "bd.ready.R4",
+        "bd.ready.R6",
+        "bd.ready.R7",
+        "bd.split.S1",
+        "bd.net_shot.NS1",
+        "bd.net_shot.NS2",
+        "bd.net_shot.NS3",
+        "bd.net_shot.NS4",
+        "bd.net_shot.NS5",
+        "bd.net_shot.NS6",
+        "bd.net_shot.NS7",
+        "bd.net_shot.NS8",
+        "bd.net_shot.NS12",
+        "bd.lift.NL1",
+        "bd.lift.NL2",
+        "bd.lift.NL3"
+      ]
+    },
+    {
+      "id": "bd.serve_high",
+      "sport": "badminton",
+      "name": {
+        "vi": "Giao cầu cao sâu thuận tay",
+        "en": "High forehand serve"
+      },
+      "weights": {
+        "stance": 20,
+        "footwork": 0,
+        "swing": 30,
+        "contact": 20,
+        "follow": 20,
+        "recovery": 10
+      },
+      "vmin": 3,
+      "nms": 2,
+      "family": "underarm",
+      "contactOffsetMs": 0,
+      "views": {
+        "recommended": [
+          "S"
+        ],
+        "allowed": [
+          "S",
+          "D"
+        ]
+      },
+      "solo": true,
+      "rulesTip": {
+        "vi": "Khi giao cầu, toàn bộ quả cầu phải thấp hơn 1,15 m lúc chạm vợt, và hai chân phải đứng yên, chạm sàn cho đến khi giao xong. Một số giải phong trào vẫn dùng luật chạm cầu dưới thắt lưng.",
+        "en": "At contact, the whole shuttle must be below 1.15 m, and both feet must stay still and touch the floor until the serve is made. Some club events still use a below-the-waist rule."
+      },
+      "checkpoints": [
+        "bd.serve_low.LS1",
+        "bd.serve_high.HS1",
+        "bd.serve_high.HS2",
+        "bd.serve_high.HS3",
+        "bd.serve_high.HS4",
+        "bd.serve_high.HS5",
+        "bd.serve_high.HS6",
+        "bd.serve_high.HS7",
+        "bd.serve_high.HS8",
+        "bd.serve_high.HS9"
+      ]
     }
   ],
   "checkpoints": [
     {
-      "id": "bd.clear_fh.C3",
+      "id": "bd.ready.R1",
       "sport": "badminton",
-      "skills": ["bd.clear_fh"],
-      "phase": "bsEnd",
-      "subscore": "swing",
-      "weight": 2,
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
       "assess": "M",
-      "metric": { "fn": "elbowRel", "params": { "arm": "racket" }, "target": [-0.15, null], "tol": 0.2, "unit": "T" },
-      "views": { "S": 1, "B": 1, "D": 1 },
-      "velocityBased": false,
-      "name": { "vi": "Khuỷu tay cao khi vung", "en": "Racket elbow up" },
-      "plain": {
-        "vi": { "low": "khuỷu tay còn thấp khi kéo vợt", "high": "khuỷu tay nâng cao như ném bóng" },
-        "en": { "low": "elbow stays low in the backswing", "high": "elbow up like a throw" }
+      "metric": {
+        "fn": "stanceW",
+        "target": [
+          1,
+          1.6
+        ],
+        "tol": 0.3,
+        "unit": "ratio"
       },
-      "faults": ["bd.clear_fh.low_elbow"],
-      "joints": ["rSho", "rElb", "rWri"]
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Hai chân rộng hơn vai",
+        "en": "Feet slightly wider than shoulders"
+      },
+      "plain": {
+        "vi": {
+          "low": "hai chân đứng hẹp khi chờ cầu",
+          "high": "hai chân dang quá rộng khi chờ cầu"
+        },
+        "en": {
+          "low": "feet close together while waiting",
+          "high": "feet very wide apart while waiting"
+        }
+      },
+      "faults": [
+        "bd.ready.narrow_feet"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.ready.R2",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          15,
+          45
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối hơi chùng",
+        "en": "Knees softly bent"
+      },
+      "plain": {
+        "vi": {
+          "low": "đầu gối gần như thẳng khi chờ cầu",
+          "high": "đầu gối khuỵu quá sâu khi chờ cầu"
+        },
+        "en": {
+          "low": "legs almost straight while waiting",
+          "high": "knees bent very deep while waiting"
+        }
+      },
+      "faults": [
+        "bd.ready.straight_legs"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.ready.R3",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          10,
+          30
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Thân người hơi đổ về trước",
+        "en": "Slight forward lean"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người thẳng đứng hoặc ngả ra sau khi chờ cầu",
+          "high": "thân người cúi gập nhiều khi chờ cầu"
+        },
+        "en": {
+          "low": "upper body upright or leaning back while waiting",
+          "high": "upper body bent far forward while waiting"
+        }
+      },
+      "faults": [
+        "bd.ready.weight_back"
+      ],
+      "joints": [
+        "neck",
+        "root"
+      ]
+    },
+    {
+      "id": "bd.ready.R4",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          1.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt giơ trước ngực",
+        "en": "Racket up in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt buông thấp khi chờ cầu",
+          "high": "tay cầm vợt giơ quá cao khi chờ cầu"
+        },
+        "en": {
+          "low": "racket hangs low while waiting",
+          "high": "racket hand held very high while waiting"
+        }
+      },
+      "faults": [
+        "bd.ready.racket_down"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.ready.R6",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Trọng tâm trên mũi bàn chân",
+        "en": "On the balls of the feet"
+      },
+      "plain": {
+        "vi": {
+          "low": "gót chân chạm sàn nặng",
+          "high": "trọng tâm nhẹ trên mũi bàn chân"
+        },
+        "en": {
+          "low": "heels planted heavily",
+          "high": "weight light on the balls of the feet"
+        }
+      },
+      "faults": [],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
     },
     {
       "id": "bd.ready.R7",
       "sport": "badminton",
-      "skills": ["bd.clear_fh"],
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
       "phase": "ready",
       "subscore": "stance",
       "weight": 1,
       "assess": "V",
-      "views": { "S": 1, "B": 1, "D": 1 },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
       "velocityBased": false,
       "vAnchors": [
-        "racket head pointing at the floor",
-        "racket head below the hand",
-        "racket head level with the hand",
-        "racket head slightly up",
-        "racket head clearly up, in front"
+        "Racket head points at the floor; racket hangs by the leg.",
+        "Racket head below the hand; racket held low near the waist.",
+        "Racket head roughly level with the hand, between waist and chest height.",
+        "Racket head slightly above the hand, in front of the body.",
+        "Racket head clearly up, in front of the chest, ready to hit."
       ],
-      "name": { "vi": "Đầu vợt hướng lên", "en": "Racket head up" },
+      "name": {
+        "vi": "Đầu vợt hướng lên",
+        "en": "Racket head up"
+      },
       "plain": {
-        "vi": { "low": "đầu vợt chúc xuống khi chờ cầu", "high": "đầu vợt luôn hướng lên" },
-        "en": { "low": "racket head drops while waiting", "high": "racket head stays up" }
+        "vi": {
+          "low": "đầu vợt chúc xuống khi chờ cầu",
+          "high": "đầu vợt luôn hướng lên"
+        },
+        "en": {
+          "low": "racket head drops while waiting",
+          "high": "racket head stays up"
+        }
+      },
+      "faults": [
+        "bd.ready.head_down"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.split.S1",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash",
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "window",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "hop",
+        "target": true,
+        "tol": 0,
+        "unit": "event"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Bật nhún (split step) trước khi di chuyển",
+        "en": "Split step before moving"
+      },
+      "plain": {
+        "vi": {
+          "low": "chưa thấy bật nhún trước khi di chuyển",
+          "high": "có bật nhún nhẹ trước khi di chuyển"
+        },
+        "en": {
+          "low": "no split step before moving",
+          "high": "small split step before moving"
+        }
+      },
+      "faults": [
+        "bd.split.no_split"
+      ],
+      "joints": [
+        "root",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C1",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 2,
+      "assess": "M~",
+      "metric": {
+        "fn": "turn",
+        "params": {
+          "line": "shoulder"
+        },
+        "target": [
+          60,
+          null
+        ],
+        "tol": 20,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Xoay người nghiêng",
+        "en": "Side-on turn"
+      },
+      "plain": {
+        "vi": {
+          "low": "vai còn hướng về lưới khi kéo vợt",
+          "high": "vai xoay nghiêng rõ khi kéo vợt"
+        },
+        "en": {
+          "low": "shoulders still face the net",
+          "high": "shoulders clearly turned side-on"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.no_turn"
+      ],
+      "joints": [
+        "lSho",
+        "rSho",
+        "lHip",
+        "rHip"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C2",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "nonRacket"
+        },
+        "target": [
+          1.1,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tay không cầm vợt giơ cao",
+        "en": "Non-racket arm up"
+      },
+      "plain": {
+        "vi": {
+          "low": "tay không cầm vợt còn buông thấp",
+          "high": "tay không cầm vợt giơ cao chỉ cầu"
+        },
+        "en": {
+          "low": "free arm stays low",
+          "high": "free arm up, pointing at the shuttle"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.limp_arm"
+      ],
+      "joints": [
+        "lSho",
+        "lElb",
+        "lWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C3",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 2,
+      "assess": "M",
+      "metric": {
+        "fn": "elbowRel",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          -0.15,
+          null
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Khuỷu tay cao khi vung",
+        "en": "Racket elbow up"
+      },
+      "plain": {
+        "vi": {
+          "low": "khuỷu tay còn thấp khi kéo vợt",
+          "high": "khuỷu tay nâng cao như ném bóng"
+        },
+        "en": {
+          "low": "elbow stays low in the backswing",
+          "high": "elbow up like a throw"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.low_elbow"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C4",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "contact+0.2",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wShift",
+        "target": [
+          0.55,
+          null
+        ],
+        "tol": 0.15,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chuyển trọng tâm từ sau ra trước",
+        "en": "Weight transfer, back to front"
+      },
+      "plain": {
+        "vi": {
+          "low": "trọng tâm còn ở chân sau sau khi đánh",
+          "high": "trọng tâm dồn lên chân trước sau khi đánh"
+        },
+        "en": {
+          "low": "weight stays on the back foot after the hit",
+          "high": "weight moves onto the front foot"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.no_weight_transfer"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C5",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 2,
+      "assess": "M",
+      "metric": {
+        "fn": "reach",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.85,
+          null
+        ],
+        "tol": 0.25,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu ở điểm cao",
+        "en": "Hits at a high point"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu thấp, tay chưa vươn hết",
+          "high": "chạm cầu ở điểm cao"
+        },
+        "en": {
+          "low": "contact low, arm not reaching up",
+          "high": "contact at a high point"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.low_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C6",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0,
+          0.6
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu hơi phía trước",
+        "en": "Contact slightly in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu ngay trên hoặc sau đầu",
+          "high": "chạm cầu quá xa phía trước"
+        },
+        "en": {
+          "low": "contact above or behind the head",
+          "high": "contact far out in front"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C7",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "elbowAng",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          150,
+          null
+        ],
+        "tol": 20,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tay gần duỗi thẳng khi chạm cầu",
+        "en": "Arm nearly straight at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "khuỷu tay còn gập khi chạm cầu",
+          "high": "tay duỗi gần thẳng khi chạm cầu"
+        },
+        "en": {
+          "low": "elbow still bent at contact",
+          "high": "arm nearly straight at contact"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.bent_arm"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C8",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "ftCross",
+        "params": {
+          "withinS": 0.6
+        },
+        "target": true,
+        "tol": 0,
+        "unit": "bool"
+      },
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt kết thúc chéo qua người",
+        "en": "Racket finishes across the body"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt dừng lại ngay sau khi chạm cầu",
+          "high": "vợt đi hết chéo qua người"
+        },
+        "en": {
+          "low": "swing stops right after contact",
+          "high": "racket finishes across the body"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.short_finish"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C9",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "contact+0.2",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "turn",
+        "params": {
+          "line": "shoulder"
+        },
+        "target": [
+          null,
+          25
+        ],
+        "tol": 15,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Thân người xoay theo",
+        "en": "Trunk rotates through"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người đã xoay hết ra trước",
+          "high": "thân người còn đứng nghiêng sau khi đánh"
+        },
+        "en": {
+          "low": "chest turned to face forward",
+          "high": "body still side-on after the hit"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.no_rotation"
+      ],
+      "joints": [
+        "lSho",
+        "rSho"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C10",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          null,
+          1
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt kết thúc thấp",
+        "en": "Racket finishes low"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp dưới vai",
+          "high": "vợt dừng lại cao trên vai"
+        },
+        "en": {
+          "low": "racket finishes low, below the shoulder",
+          "high": "racket stops high, above the shoulder"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.high_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C11",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "baseErr",
+        "target": [
+          null,
+          1
+        ],
+        "tol": 0.6,
+        "unit": "T"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Về vị trí sau khi đánh",
+        "en": "Moves back to base"
+      },
+      "plain": {
+        "vi": {
+          "low": "đã về gần vị trí giữa sân",
+          "high": "còn đứng xa vị trí giữa sân sau khi đánh"
+        },
+        "en": {
+          "low": "back near the base position",
+          "high": "still far from base after the shot"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.no_recovery"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C12",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.8,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Giơ vợt lên lại sau khi đánh",
+        "en": "Racket back up after the shot"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt còn buông thấp sau khi đánh",
+          "high": "vợt đã giơ lên lại, sẵn sàng"
+        },
+        "en": {
+          "low": "racket still low after the shot",
+          "high": "racket back up and ready"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.racket_stays_down"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C13",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh",
+        "bd.smash"
+      ],
+      "phase": "bsEnd",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Player is under or in front of the shuttle and has to reach back for it.",
+        "Player arrives late: body still moving backward at the hitting moment.",
+        "Player reaches the spot but is square to the net or off balance.",
+        "Player is behind the shuttle and mostly set, slightly rushed.",
+        "Player is set early behind the shuttle, side-on and balanced, ready to throw."
+      ],
+      "name": {
+        "vi": "Vào sau cầu sớm",
+        "en": "Gets behind the shuttle early"
+      },
+      "plain": {
+        "vi": {
+          "low": "vào vị trí muộn, phải với tay ra sau đánh cầu",
+          "high": "vào sau cầu sớm và đứng vững"
+        },
+        "en": {
+          "low": "late into position, reaching back for the shuttle",
+          "high": "set behind the shuttle early"
+        }
+      },
+      "faults": [
+        "bd.clear_fh.late_footwork"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.clear_fh.C14",
+      "sport": "badminton",
+      "skills": [
+        "bd.clear_fh"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Cầu bay cao và sâu",
+        "en": "Shuttle goes high and deep"
+      },
+      "plain": {
+        "vi": {
+          "low": "cầu bay thấp hoặc ngắn",
+          "high": "cầu bay cao, rơi sâu cuối sân"
+        },
+        "en": {
+          "low": "shuttle flies low or short",
+          "high": "shuttle flies high and lands deep"
+        }
       },
       "faults": [],
-      "joints": ["rWri"]
+      "joints": []
+    },
+    {
+      "id": "bd.smash.SM2",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "reach",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.75,
+          null
+        ],
+        "tol": 0.25,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu cao",
+        "en": "High contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu thấp, tay chưa vươn hết",
+          "high": "chạm cầu ở điểm cao"
+        },
+        "en": {
+          "low": "contact low, arm not reaching up",
+          "high": "contact at a high point"
+        }
+      },
+      "faults": [
+        "bd.smash.low_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM3",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.2,
+          0.9
+        ],
+        "tol": 0.25,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu phía trước đầu",
+        "en": "Contact in front of the head"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu ngay trên hoặc sau đầu",
+          "high": "chạm cầu quá xa phía trước"
+        },
+        "en": {
+          "low": "contact above or behind the head",
+          "high": "contact very far in front"
+        }
+      },
+      "faults": [
+        "bd.smash.behind_head"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM4",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "elbowAng",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          145,
+          null
+        ],
+        "tol": 20,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tay duỗi khi chạm cầu",
+        "en": "Arm extends at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "khuỷu tay còn gập khi chạm cầu",
+          "high": "tay duỗi gần thẳng khi chạm cầu"
+        },
+        "en": {
+          "low": "elbow still bent at contact",
+          "high": "arm nearly straight at contact"
+        }
+      },
+      "faults": [
+        "bd.smash.bent_arm"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM5",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "contact+0.2",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          15,
+          null
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Thân người đổ về trước khi đập",
+        "en": "Body drives forward and down"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người còn thẳng sau khi đập",
+          "high": "thân người đổ về trước theo cú đập"
+        },
+        "en": {
+          "low": "upper body stays upright after the smash",
+          "high": "body drives forward through the smash"
+        }
+      },
+      "faults": [
+        "bd.smash.arm_only"
+      ],
+      "joints": [
+        "neck",
+        "root",
+        "lHip",
+        "rHip"
+      ]
+    },
+    {
+      "id": "bd.smash.SM6",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "ftCross",
+        "params": {
+          "withinS": 0.6
+        },
+        "target": true,
+        "tol": 0,
+        "unit": "bool"
+      },
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt kết thúc chéo qua người",
+        "en": "Finishes down and across"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt dừng lại ngay sau khi chạm cầu",
+          "high": "vợt đi hết chéo qua người"
+        },
+        "en": {
+          "low": "swing stops right after contact",
+          "high": "racket finishes down and across the body"
+        }
+      },
+      "faults": [
+        "bd.smash.short_finish"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM7",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "ftStop",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          20,
+          null
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "injuryFlag": true,
+      "safety": {
+        "vi": "Tiếp đất bằng hai gối hơi chùng, ngay dưới thân người, và tăng số lần bật nhảy từ từ; nếu đau, hãy hỏi HLV/chuyên gia.",
+        "en": "Land with soft knees, right under your body, and build up the number of jumps gradually; if it hurts, ask a coach or professional."
+      },
+      "name": {
+        "vi": "Tiếp đất mềm, gối chùng",
+        "en": "Soft landing, knees bent"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối gần như thẳng khi tiếp đất",
+          "high": "gối chùng mềm khi tiếp đất"
+        },
+        "en": {
+          "low": "legs nearly straight on landing",
+          "high": "knees soft on landing"
+        }
+      },
+      "faults": [
+        "bd.smash.stiff_landing"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.smash.SM8",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          null,
+          0.6
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt kết thúc thấp",
+        "en": "Racket finishes low"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp",
+          "high": "vợt dừng lại cao sau cú đập"
+        },
+        "en": {
+          "low": "racket finishes low",
+          "high": "racket stops high after the smash"
+        }
+      },
+      "faults": [
+        "bd.smash.high_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM9",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.8,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đập xong giơ vợt lên lại",
+        "en": "Racket back up after the smash"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt còn buông thấp sau cú đập",
+          "high": "vợt đã giơ lên lại sau cú đập"
+        },
+        "en": {
+          "low": "racket still low after the smash",
+          "high": "racket back up after the smash"
+        }
+      },
+      "faults": [
+        "bd.smash.slow_recovery"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM10",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Racket face open or facing up at contact; the shuttle is pushed upward.",
+        "Racket roughly vertical at contact; a flat hit.",
+        "Racket slightly over the shuttle, but contact is level with or behind the head.",
+        "Racket angled down over the shuttle, contact slightly in front of the head.",
+        "Racket clearly angled down over the shuttle, well in front of the head, at full reach."
+      ],
+      "name": {
+        "vi": "Mặt vợt úp xuống khi đập",
+        "en": "Racket face angled down"
+      },
+      "plain": {
+        "vi": {
+          "low": "mặt vợt còn ngửa lên khi chạm cầu",
+          "high": "mặt vợt úp xuống khi chạm cầu"
+        },
+        "en": {
+          "low": "racket face open at contact",
+          "high": "racket face angled down at contact"
+        }
+      },
+      "faults": [
+        "bd.smash.open_face"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.smash.SM11",
+      "sport": "badminton",
+      "skills": [
+        "bd.smash"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đường cầu cắm dốc",
+        "en": "Steep shuttle path"
+      },
+      "plain": {
+        "vi": {
+          "low": "cầu bay ngang hoặc bổng",
+          "high": "cầu cắm dốc xuống sân"
+        },
+        "en": {
+          "low": "shuttle flies flat or rises",
+          "high": "shuttle travels steeply down"
+        }
+      },
+      "faults": [],
+      "joints": []
+    },
+    {
+      "id": "bd.serve_low.LS1",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low",
+        "bd.serve_high"
+      ],
+      "phase": "window",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "feetStill",
+        "target": [
+          null,
+          0.08
+        ],
+        "tol": 0.08,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chân đứng yên khi giao cầu",
+        "en": "Feet planted through the serve"
+      },
+      "plain": {
+        "vi": {
+          "low": "hai chân đứng yên đến khi chạm cầu",
+          "high": "chân xê dịch trong lúc giao cầu"
+        },
+        "en": {
+          "low": "feet stay planted until contact",
+          "high": "feet shift during the serve"
+        }
+      },
+      "faults": [
+        "bd.serve_low.feet_move"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS2",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "stagger",
+        "target": [
+          0.3,
+          1.2
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chân trước chân sau vững vàng",
+        "en": "Balanced split stance"
+      },
+      "plain": {
+        "vi": {
+          "low": "hai chân đứng song song, sát nhau",
+          "high": "hai chân đứng cách nhau quá xa"
+        },
+        "en": {
+          "low": "feet side by side",
+          "high": "feet very far apart"
+        }
+      },
+      "faults": [
+        "bd.serve_low.square_stance"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS3",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "both"
+        },
+        "target": [
+          10,
+          35
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối hơi chùng khi giao",
+        "en": "Knees slightly bent"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối thẳng cứng khi giao cầu",
+          "high": "gối khuỵu quá sâu khi giao cầu"
+        },
+        "en": {
+          "low": "knees locked straight on the serve",
+          "high": "knees bent very deep on the serve"
+        }
+      },
+      "faults": [
+        "bd.serve_low.stiff_legs"
+      ],
+      "joints": [
+        "lHip",
+        "rHip",
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS4",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          5,
+          25
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Thân người hơi đổ về trước",
+        "en": "Slight forward lean"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người thẳng đứng hoặc ngả ra sau",
+          "high": "thân người cúi gập nhiều"
+        },
+        "en": {
+          "low": "upper body upright or leaning back",
+          "high": "upper body bent far forward"
+        }
+      },
+      "faults": [
+        "bd.serve_low.leaning_back"
+      ],
+      "joints": [
+        "neck",
+        "root"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS5",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.3,
+          null
+        ],
+        "tol": 0.2,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu phía trước người",
+        "en": "Contact in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu sát người",
+          "high": "chạm cầu rõ ở phía trước"
+        },
+        "en": {
+          "low": "contact close to the body",
+          "high": "contact clearly in front"
+        }
+      },
+      "faults": [
+        "bd.serve_low.cramped"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS6",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          null,
+          0.7
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Điểm chạm cầu thấp, gọn",
+        "en": "Low, compact contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "điểm chạm cầu thấp, gọn",
+          "high": "điểm chạm cầu khá cao"
+        },
+        "en": {
+          "low": "contact low and compact",
+          "high": "contact rather high"
+        }
+      },
+      "faults": [
+        "bd.serve_low.high_contact"
+      ],
+      "joints": [
+        "rWri",
+        "root"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS7",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          null,
+          0.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà ngắn",
+        "en": "Short backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "đưa vợt ra sau rất ngắn",
+          "high": "đưa vợt ra sau quá dài"
+        },
+        "en": {
+          "low": "very short backswing",
+          "high": "long backswing"
+        }
+      },
+      "faults": [
+        "bd.serve_low.big_backswing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS8",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "ftLen",
+        "target": [
+          null,
+          0.5
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đẩy vợt theo ngắn",
+        "en": "Short push through"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt đẩy theo ngắn, gọn",
+          "high": "vợt vung theo quá dài"
+        },
+        "en": {
+          "low": "short, tidy push",
+          "high": "long follow-through"
+        }
+      },
+      "faults": [
+        "bd.serve_low.long_push"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS9",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.9,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Giao xong giơ vợt lên",
+        "en": "Racket up after serving"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt còn thấp sau khi giao",
+          "high": "vợt đã giơ lên sau khi giao"
+        },
+        "en": {
+          "low": "racket still low after the serve",
+          "high": "racket up after the serve"
+        }
+      },
+      "faults": [
+        "bd.serve_low.racket_down"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS10",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "contact",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Big wrist flick or slap at contact; the racket head whips through.",
+        "Noticeable wrist flick; the racket head passes the hand quickly.",
+        "Some wrist movement; the push comes mostly from the forearm.",
+        "Mostly a firm-wrist push with a small wrist movement.",
+        "Firm wrist; smooth push from the forearm and thumb, racket head steady."
+      ],
+      "name": {
+        "vi": "Cổ tay chắc, đẩy bằng ngón cái",
+        "en": "Firm wrist, thumb push"
+      },
+      "plain": {
+        "vi": {
+          "low": "cổ tay vẩy mạnh khi chạm cầu",
+          "high": "cổ tay chắc, đẩy cầu mượt"
+        },
+        "en": {
+          "low": "wrist flicks at contact",
+          "high": "firm wrist, smooth push"
+        }
+      },
+      "faults": [
+        "bd.serve_low.wrist_flick"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_low.LS11",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_low"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Cầu bay sát mép lưới",
+        "en": "Shuttle skims the net"
+      },
+      "plain": {
+        "vi": {
+          "low": "cầu bay cao qua lưới",
+          "high": "cầu bay sát mép lưới"
+        },
+        "en": {
+          "low": "shuttle rises over the net",
+          "high": "shuttle skims the tape"
+        }
+      },
+      "faults": [],
+      "joints": []
+    },
+    {
+      "id": "bd.net_shot.NS1",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.7,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Giơ vợt sớm khi lên lưới",
+        "en": "Racket up early"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt còn thấp khi lên lưới",
+          "high": "vợt giơ sớm khi lên lưới"
+        },
+        "en": {
+          "low": "racket low on the way to the net",
+          "high": "racket up early on the approach"
+        }
+      },
+      "faults": [
+        "bd.net_shot.racket_low"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS2",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "footwork",
+      "weight": 2,
+      "assess": "V",
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 1
+      },
+      "velocityBased": false,
+      "vAnchors": [
+        "Non-racket leg forward at contact, or no lunge at all.",
+        "Feet square to the net; reaching with the arm only.",
+        "Racket leg forward but a short step; body leaning to reach.",
+        "Racket-leg lunge, mostly balanced.",
+        "Clear racket-leg lunge, front foot pointing at the shuttle, back leg extended, balanced."
+      ],
+      "name": {
+        "vi": "Bước lunge bằng chân thuận",
+        "en": "Racket-leg lunge"
+      },
+      "plain": {
+        "vi": {
+          "low": "chân không thuận bước lên trước khi lên lưới",
+          "high": "lunge bằng chân thuận khi lên lưới"
+        },
+        "en": {
+          "low": "wrong leg forward at the net",
+          "high": "lunges with the racket leg"
+        }
+      },
+      "faults": [
+        "bd.net_shot.wrong_leg"
+      ],
+      "joints": [
+        "lKne",
+        "rKne",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS3",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "stagger",
+        "target": [
+          0.8,
+          null
+        ],
+        "tol": 0.4,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Bước lunge đủ dài",
+        "en": "Long enough lunge"
+      },
+      "plain": {
+        "vi": {
+          "low": "bước lên lưới còn ngắn",
+          "high": "bước lunge dài, với tới cầu"
+        },
+        "en": {
+          "low": "short step to the net",
+          "high": "long lunge to the shuttle"
+        }
+      },
+      "faults": [
+        "bd.net_shot.short_lunge"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS4",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "kneeFlex",
+        "params": {
+          "side": "lead"
+        },
+        "target": [
+          50,
+          100
+        ],
+        "tol": 15,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Gối trước khuỵu đủ sâu",
+        "en": "Front knee bends into the lunge"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối trước còn thẳng khi lunge",
+          "high": "gối trước khuỵu quá sâu khi lunge"
+        },
+        "en": {
+          "low": "front knee fairly straight in the lunge",
+          "high": "front knee very deep in the lunge"
+        }
+      },
+      "faults": [
+        "bd.net_shot.shallow_lunge"
+      ],
+      "joints": [
+        "rHip",
+        "rKne",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS5",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "trunkLean",
+        "target": [
+          null,
+          35
+        ],
+        "tol": 10,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Ngực thẳng khi lunge",
+        "en": "Chest up in the lunge"
+      },
+      "plain": {
+        "vi": {
+          "low": "thân người giữ thẳng khi lunge",
+          "high": "cúi gập người khi lunge"
+        },
+        "en": {
+          "low": "chest stays up in the lunge",
+          "high": "bending at the waist in the lunge"
+        }
+      },
+      "faults": [
+        "bd.net_shot.waist_bend"
+      ],
+      "joints": [
+        "neck",
+        "root"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS6",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "footwork",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "shinAngle",
+        "params": {
+          "side": "lead"
+        },
+        "target": [
+          null,
+          30
+        ],
+        "tol": 15,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "injuryFlag": true,
+      "safety": {
+        "vi": "Khi lunge, giữ gối thẳng hướng mũi chân, không vượt quá xa mũi chân, và tập chậm trước khi tăng tốc; nếu đau, hãy hỏi HLV/chuyên gia.",
+        "en": "In a lunge, keep the knee in line with your toes and not far past them, and practice slowly before adding speed; if it hurts, ask a coach or professional."
+      },
+      "name": {
+        "vi": "Gối không vượt quá mũi chân",
+        "en": "Knee stays over the foot"
+      },
+      "plain": {
+        "vi": {
+          "low": "gối nằm trên bàn chân khi lunge",
+          "high": "gối vượt xa mũi chân khi lunge"
+        },
+        "en": {
+          "low": "knee stays over the foot in the lunge",
+          "high": "knee far past the toes in the lunge"
+        }
+      },
+      "faults": [
+        "bd.net_shot.knee_past_toes"
+      ],
+      "joints": [
+        "rHip",
+        "rKne",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS7",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristFwd",
+        "target": [
+          0.6,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu phía trước",
+        "en": "Contact out in front"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu sát người",
+          "high": "vươn tay chạm cầu phía trước"
+        },
+        "en": {
+          "low": "contact close to the body",
+          "high": "reaching to contact out in front"
+        }
+      },
+      "faults": [
+        "bd.net_shot.late_contact"
+      ],
+      "joints": [
+        "rSho",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS8",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "elbowAng",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          130,
+          null
+        ],
+        "tol": 20,
+        "unit": "deg"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Tay vươn dài khi chạm cầu",
+        "en": "Arm extended at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "khuỷu tay còn gập khi chạm cầu",
+          "high": "tay vươn dài khi chạm cầu"
+        },
+        "en": {
+          "low": "elbow bent at contact",
+          "high": "arm extended at contact"
+        }
+      },
+      "faults": [
+        "bd.net_shot.bent_arm"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS9",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.6,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu ở điểm cao",
+        "en": "High contact at the net"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu thấp, khi cầu đã rơi sâu",
+          "high": "chạm cầu cao, gần mép lưới"
+        },
+        "en": {
+          "low": "contact low, after the shuttle has dropped",
+          "high": "contact high, near the tape"
+        }
+      },
+      "faults": [
+        "bd.net_shot.low_contact"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS10",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          null,
+          0.4
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà rất ngắn",
+        "en": "Tiny backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "gần như không lấy đà",
+          "high": "lấy đà quá lớn khi bỏ nhỏ"
+        },
+        "en": {
+          "low": "almost no backswing",
+          "high": "big backswing on the net shot"
+        }
+      },
+      "faults": [
+        "bd.net_shot.big_swing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS11",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "ftLen",
+        "target": [
+          null,
+          0.5
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Theo vợt nhẹ nhàng",
+        "en": "Gentle follow-through"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt theo cầu nhẹ, ngắn",
+          "high": "vợt vung theo quá dài"
+        },
+        "en": {
+          "low": "short, gentle follow-through",
+          "high": "long follow-through"
+        }
+      },
+      "faults": [
+        "bd.net_shot.long_follow"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS12",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot",
+        "bd.lift"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "baseErr",
+        "target": [
+          null,
+          1
+        ],
+        "tol": 0.6,
+        "unit": "T"
+      },
+      "views": {
+        "S": 0.6,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đẩy về giữa sân",
+        "en": "Pushes back to base"
+      },
+      "plain": {
+        "vi": {
+          "low": "đã đẩy về gần giữa sân",
+          "high": "còn ở lại lưới sau khi đánh"
+        },
+        "en": {
+          "low": "back near base",
+          "high": "still at the net after the shot"
+        }
+      },
+      "faults": [
+        "bd.net_shot.stays_at_net"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.net_shot.NS13",
+      "sport": "badminton",
+      "skills": [
+        "bd.net_shot"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "N",
+      "views": {
+        "S": 0,
+        "B": 0,
+        "D": 0
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Cầu sát mép lưới",
+        "en": "Shuttle tight to the net"
+      },
+      "plain": {
+        "vi": {
+          "low": "cầu bay cao khỏi lưới",
+          "high": "cầu rơi sát mép lưới"
+        },
+        "en": {
+          "low": "shuttle rises off the net",
+          "high": "shuttle falls tight to the tape"
+        }
+      },
+      "faults": [],
+      "joints": []
+    },
+    {
+      "id": "bd.lift.NL1",
+      "sport": "badminton",
+      "skills": [
+        "bd.lift"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          0.3,
+          1.2
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Lấy đà gọn",
+        "en": "Compact backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "lấy đà quá ngắn, thiếu lực",
+          "high": "lấy đà quá dài"
+        },
+        "en": {
+          "low": "backswing too short for depth",
+          "high": "backswing very long"
+        }
+      },
+      "faults": [
+        "bd.lift.big_backswing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.lift.NL2",
+      "sport": "badminton",
+      "skills": [
+        "bd.lift"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          1,
+          null
+        ],
+        "tol": 1,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Vợt đi lên khi chạm cầu",
+        "en": "Racket moving up at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt chưa đi lên khi chạm cầu",
+          "high": "vợt đi lên rõ khi chạm cầu"
+        },
+        "en": {
+          "low": "racket not rising at contact",
+          "high": "racket clearly rising at contact"
+        }
+      },
+      "faults": [
+        "bd.lift.flat_lift"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.lift.NL3",
+      "sport": "badminton",
+      "skills": [
+        "bd.lift"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          1,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Kết thúc vợt trên cao",
+        "en": "High finish"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp",
+          "high": "vợt kết thúc trên cao"
+        },
+        "en": {
+          "low": "racket finishes low",
+          "high": "racket finishes high"
+        }
+      },
+      "faults": [
+        "bd.lift.low_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS1",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "ready",
+      "subscore": "stance",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "stagger",
+        "target": [
+          0.5,
+          1.5
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Đứng nghiêng, chân không thuận trước",
+        "en": "Side-on, non-racket foot forward"
+      },
+      "plain": {
+        "vi": {
+          "low": "hai chân đứng gần song song",
+          "high": "hai chân đứng cách nhau quá xa"
+        },
+        "en": {
+          "low": "feet nearly side by side",
+          "high": "feet very far apart"
+        }
+      },
+      "faults": [
+        "bd.serve_high.square_stance"
+      ],
+      "joints": [
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS2",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "bsEnd",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wShift",
+        "target": [
+          null,
+          0.4
+        ],
+        "tol": 0.15,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Trọng tâm ở chân sau khi lấy đà",
+        "en": "Weight back in the backswing"
+      },
+      "plain": {
+        "vi": {
+          "low": "trọng tâm ở chân sau khi lấy đà",
+          "high": "trọng tâm dồn lên trước quá sớm"
+        },
+        "en": {
+          "low": "weight on the back foot in the backswing",
+          "high": "weight forward too early"
+        }
+      },
+      "faults": [
+        "bd.serve_high.early_weight"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS3",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "contact+0.2",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wShift",
+        "target": [
+          0.6,
+          null
+        ],
+        "tol": 0.15,
+        "unit": "ratio"
+      },
+      "views": {
+        "S": 1,
+        "B": 0,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chuyển trọng tâm ra trước",
+        "en": "Weight moves forward"
+      },
+      "plain": {
+        "vi": {
+          "low": "trọng tâm còn ở chân sau sau khi giao",
+          "high": "trọng tâm dồn lên chân trước"
+        },
+        "en": {
+          "low": "weight stays back after the serve",
+          "high": "weight moves onto the front foot"
+        }
+      },
+      "faults": [
+        "bd.serve_high.arm_only"
+      ],
+      "joints": [
+        "root",
+        "lAnk",
+        "rAnk"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS4",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "window",
+      "subscore": "swing",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "bsLen",
+        "target": [
+          1,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 0.6,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vung vợt trọn vẹn",
+        "en": "Full swing"
+      },
+      "plain": {
+        "vi": {
+          "low": "vung vợt ngắn, thiếu đà",
+          "high": "vung vợt dài, đủ đà"
+        },
+        "en": {
+          "low": "short swing, little momentum",
+          "high": "full, long swing"
+        }
+      },
+      "faults": [
+        "bd.serve_high.short_swing"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS5",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "vyWrist",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.5,
+          null
+        ],
+        "tol": 1,
+        "unit": "T/s"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": true,
+      "name": {
+        "vi": "Vợt đi lên khi chạm cầu",
+        "en": "Racket rising at contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt chưa đi lên khi chạm cầu",
+          "high": "vợt đi lên rõ khi chạm cầu"
+        },
+        "en": {
+          "low": "racket not rising at contact",
+          "high": "racket clearly rising at contact"
+        }
+      },
+      "faults": [
+        "bd.serve_high.flat_contact"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS6",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "contact",
+      "subscore": "contact",
+      "weight": 1,
+      "assess": "M~",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          null,
+          0.3
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Chạm cầu thấp",
+        "en": "Low contact"
+      },
+      "plain": {
+        "vi": {
+          "low": "chạm cầu ở điểm thấp",
+          "high": "chạm cầu khá cao"
+        },
+        "en": {
+          "low": "contact low",
+          "high": "contact rather high"
+        }
+      },
+      "faults": [
+        "bd.serve_high.high_contact"
+      ],
+      "joints": [
+        "rWri",
+        "root"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS7",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "ftStop",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          1.1,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Kết thúc vợt cao",
+        "en": "High finish"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt kết thúc thấp",
+          "high": "vợt kết thúc cao trên vai"
+        },
+        "en": {
+          "low": "racket finishes low",
+          "high": "racket finishes high, over the shoulder"
+        }
+      },
+      "faults": [
+        "bd.serve_high.low_finish"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS8",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "window",
+      "subscore": "follow",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "ftCross",
+        "params": {
+          "withinS": 0.6
+        },
+        "target": true,
+        "tol": 0,
+        "unit": "bool"
+      },
+      "views": {
+        "S": 0,
+        "B": 1,
+        "D": 0.6
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Vợt kết thúc chéo qua vai",
+        "en": "Finish over the opposite shoulder"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt dừng trước người",
+          "high": "vợt kết thúc chéo qua vai"
+        },
+        "en": {
+          "low": "racket stops in front of the body",
+          "high": "racket finishes over the opposite shoulder"
+        }
+      },
+      "faults": [
+        "bd.serve_high.short_finish"
+      ],
+      "joints": [
+        "rSho",
+        "rElb",
+        "rWri"
+      ]
+    },
+    {
+      "id": "bd.serve_high.HS9",
+      "sport": "badminton",
+      "skills": [
+        "bd.serve_high"
+      ],
+      "phase": "recovery",
+      "subscore": "recovery",
+      "weight": 1,
+      "assess": "M",
+      "metric": {
+        "fn": "wristH",
+        "params": {
+          "arm": "racket"
+        },
+        "target": [
+          0.8,
+          null
+        ],
+        "tol": 0.3,
+        "unit": "T"
+      },
+      "views": {
+        "S": 1,
+        "B": 1,
+        "D": 1
+      },
+      "velocityBased": false,
+      "name": {
+        "vi": "Giao xong giơ vợt lên",
+        "en": "Racket up after serving"
+      },
+      "plain": {
+        "vi": {
+          "low": "vợt còn thấp sau khi giao",
+          "high": "vợt đã giơ lên sau khi giao"
+        },
+        "en": {
+          "low": "racket still low after the serve",
+          "high": "racket up after the serve"
+        }
+      },
+      "faults": [
+        "bd.serve_high.racket_down"
+      ],
+      "joints": [
+        "rElb",
+        "rWri"
+      ]
     }
   ],
   "faults": [
     {
+      "id": "bd.ready.narrow_feet",
+      "checkpoint": "bd.ready.R1",
+      "when": "low",
+      "title": {
+        "vi": "Hai chân đứng quá hẹp",
+        "en": "Feet too close together"
+      },
+      "cue": {
+        "vi": "Đứng rộng hơn vai một chút",
+        "en": "Feet just wider than shoulders"
+      },
+      "why": {
+        "vi": "Chân hẹp làm bạn khó bật đi nhanh và dễ mất thăng bằng khi đổi hướng.",
+        "en": "A narrow base makes it hard to push off quickly and to stay balanced when you change direction."
+      },
+      "drills": [
+        "bd.drill.split_on_cue",
+        "bd.drill.ready_hold"
+      ],
+      "defaultDrill": "bd.drill.split_on_cue"
+    },
+    {
+      "id": "bd.ready.straight_legs",
+      "checkpoint": "bd.ready.R2",
+      "when": "low",
+      "title": {
+        "vi": "Đứng thẳng chân",
+        "en": "Standing tall with straight legs"
+      },
+      "cue": {
+        "vi": "Hơi ngồi xuống, ngực trên gối",
+        "en": "Sit slightly, chest over knees"
+      },
+      "why": {
+        "vi": "Gối hơi chùng giúp bạn bật đi nhanh hơn ở bước đầu tiên.",
+        "en": "Soft knees let you push off faster on the first step."
+      },
+      "drills": [
+        "bd.drill.ready_hold",
+        "bd.drill.split_on_cue"
+      ],
+      "defaultDrill": "bd.drill.ready_hold"
+    },
+    {
+      "id": "bd.ready.weight_back",
+      "checkpoint": "bd.ready.R3",
+      "when": "low",
+      "title": {
+        "vi": "Trọng tâm dồn về gót",
+        "en": "Weight back on the heels"
+      },
+      "cue": {
+        "vi": "Mũi ở trên mũi chân",
+        "en": "Nose over toes"
+      },
+      "why": {
+        "vi": "Khi trọng tâm ở gót, bước đầu tiên của bạn sẽ chậm.",
+        "en": "With your weight on your heels, your first step is slow."
+      },
+      "drills": [
+        "bd.drill.ready_hold"
+      ],
+      "defaultDrill": "bd.drill.ready_hold"
+    },
+    {
+      "id": "bd.ready.racket_down",
+      "checkpoint": "bd.ready.R4",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp khi chờ cầu",
+        "en": "Racket dropped while waiting"
+      },
+      "cue": {
+        "vi": "Giơ vợt lên trước ngực",
+        "en": "Racket up, like about to catch"
+      },
+      "why": {
+        "vi": "Vợt giơ sẵn giúp bạn đánh cầu sớm hơn và ít bị động.",
+        "en": "A raised racket lets you hit earlier and stay out of trouble."
+      },
+      "drills": [
+        "bd.drill.racket_up_bounce",
+        "bd.drill.ready_hold"
+      ],
+      "defaultDrill": "bd.drill.racket_up_bounce"
+    },
+    {
+      "id": "bd.ready.head_down",
+      "checkpoint": "bd.ready.R7",
+      "when": "low",
+      "title": {
+        "vi": "Đầu vợt chúc xuống",
+        "en": "Racket head pointing down"
+      },
+      "cue": {
+        "vi": "Dựng đầu vợt lên trước mặt",
+        "en": "Racket head up in front"
+      },
+      "why": {
+        "vi": "Đầu vợt hướng lên giúp bạn vào tư thế đánh nhanh hơn.",
+        "en": "A racket head that stays up gets you into hitting position sooner."
+      },
+      "drills": [
+        "bd.drill.racket_up_bounce"
+      ],
+      "defaultDrill": "bd.drill.racket_up_bounce"
+    },
+    {
+      "id": "bd.split.no_split",
+      "checkpoint": "bd.split.S1",
+      "when": "false",
+      "title": {
+        "vi": "Chưa bật nhún (split step)",
+        "en": "No split step"
+      },
+      "cue": {
+        "vi": "Bật nhún nhẹ khi đối thủ đánh",
+        "en": "Small hop as they hit"
+      },
+      "why": {
+        "vi": "Bật nhún giúp chân bạn sẵn sàng và phản ứng nhanh theo hướng cầu.",
+        "en": "A split step gets your feet ready so you react faster to the shuttle."
+      },
+      "drills": [
+        "bd.drill.split_on_cue"
+      ],
+      "defaultDrill": "bd.drill.split_on_cue"
+    },
+    {
+      "id": "bd.clear_fh.no_turn",
+      "checkpoint": "bd.clear_fh.C1",
+      "when": "low",
+      "title": {
+        "vi": "Chưa xoay người nghiêng",
+        "en": "Facing the net, no turn"
+      },
+      "cue": {
+        "vi": "Chĩa vai không cầm vợt về phía cầu",
+        "en": "Point your non-racket shoulder at the shuttle"
+      },
+      "why": {
+        "vi": "Xoay người giúp dùng lực cả thân, cầu đi sâu hơn mà tay đỡ mỏi.",
+        "en": "Turning lets your whole body add power, so the shuttle goes deeper with less arm effort."
+      },
+      "drills": [
+        "bd.drill.shadow_turn_point",
+        "bd.drill.scissor_shadow"
+      ],
+      "defaultDrill": "bd.drill.shadow_turn_point"
+    },
+    {
+      "id": "bd.clear_fh.limp_arm",
+      "checkpoint": "bd.clear_fh.C2",
+      "when": "low",
+      "title": {
+        "vi": "Tay không cầm vợt buông thấp",
+        "en": "Non-racket arm hanging"
+      },
+      "cue": {
+        "vi": "Chỉ lên, rồi kéo xuống khi vung",
+        "en": "Point up, then pull down as you swing"
+      },
+      "why": {
+        "vi": "Tay chỉ cầu giúp giữ thăng bằng và canh điểm rơi chính xác hơn.",
+        "en": "Pointing at the shuttle helps your balance and timing."
+      },
+      "drills": [
+        "bd.drill.point_pull",
+        "bd.drill.shadow_turn_point"
+      ],
+      "defaultDrill": "bd.drill.point_pull"
+    },
+    {
       "id": "bd.clear_fh.low_elbow",
       "checkpoint": "bd.clear_fh.C3",
       "when": "low",
-      "title": { "vi": "Khuỷu tay thấp, đẩy cầu", "en": "Low elbow, pushing the shuttle" },
-      "cue": { "vi": "Khuỷu tay ngang vai, như ném bóng", "en": "Elbow at shoulder height, like a throw" },
+      "title": {
+        "vi": "Khuỷu tay thấp, đẩy cầu",
+        "en": "Low elbow, pushing the shuttle"
+      },
+      "cue": {
+        "vi": "Khuỷu tay ngang vai, như ném bóng",
+        "en": "Elbow at shoulder height, like a throw"
+      },
       "why": {
         "vi": "Khuỷu thấp làm mất lực và cầu không đi sâu.",
         "en": "A low elbow costs power, so the shuttle falls short."
       },
-      "drills": ["bd.drill.towel_snap"],
+      "drills": [
+        "bd.drill.towel_snap",
+        "bd.drill.overhead_throw"
+      ],
       "defaultDrill": "bd.drill.towel_snap"
+    },
+    {
+      "id": "bd.clear_fh.no_weight_transfer",
+      "checkpoint": "bd.clear_fh.C4",
+      "when": "low",
+      "title": {
+        "vi": "Chưa chuyển trọng tâm",
+        "en": "Flat-footed, no weight transfer"
+      },
+      "cue": {
+        "vi": "Dồn chân sau, rồi đổi chân ra trước",
+        "en": "Load the back leg, scissor through"
+      },
+      "why": {
+        "vi": "Chuyển trọng tâm đưa lực từ chân lên vợt, cầu đi xa hơn mà không cần gồng tay.",
+        "en": "Shifting your weight carries power from your legs to the racket, so you don't have to force it with the arm."
+      },
+      "drills": [
+        "bd.drill.scissor_shadow"
+      ],
+      "defaultDrill": "bd.drill.scissor_shadow"
+    },
+    {
+      "id": "bd.clear_fh.low_contact",
+      "checkpoint": "bd.clear_fh.C5",
+      "when": "low",
+      "title": {
+        "vi": "Chạm cầu thấp",
+        "en": "Contact too low"
+      },
+      "cue": {
+        "vi": "Vào sau cầu sớm, đánh ở điểm cao",
+        "en": "Get behind it early, hit at the top"
+      },
+      "why": {
+        "vi": "Chạm cầu cao giúp cầu đi xa và đối thủ có ít thời gian hơn.",
+        "en": "A high contact sends the shuttle further and gives your opponent less time."
+      },
+      "drills": [
+        "bd.drill.hanging_shuttle",
+        "bd.drill.overhead_throw"
+      ],
+      "defaultDrill": "bd.drill.hanging_shuttle"
+    },
+    {
+      "id": "bd.clear_fh.late_contact",
+      "checkpoint": "bd.clear_fh.C6",
+      "when": "low",
+      "title": {
+        "vi": "Chạm cầu muộn, sau đầu",
+        "en": "Late contact behind the head"
+      },
+      "cue": {
+        "vi": "Đón cầu phía trước trán",
+        "en": "Meet it just in front"
+      },
+      "why": {
+        "vi": "Chạm cầu sau đầu làm cầu bay thấp, ngắn và vai phải làm việc nhiều hơn.",
+        "en": "Hitting behind your head makes the shuttle fly flat and short, and the shoulder has to work harder."
+      },
+      "drills": [
+        "bd.drill.hanging_shuttle",
+        "bd.drill.shadow_turn_point"
+      ],
+      "defaultDrill": "bd.drill.hanging_shuttle"
+    },
+    {
+      "id": "bd.clear_fh.bent_arm",
+      "checkpoint": "bd.clear_fh.C7",
+      "when": "low",
+      "title": {
+        "vi": "Khuỷu tay còn gập khi chạm cầu",
+        "en": "Bent arm at contact"
+      },
+      "cue": {
+        "vi": "Vươn thẳng tay lên đón cầu",
+        "en": "Reach up, straighten through the hit"
+      },
+      "why": {
+        "vi": "Duỗi tay khi chạm cầu giúp tăng tầm với và lực đánh.",
+        "en": "Straightening the arm at contact adds reach and power."
+      },
+      "drills": [
+        "bd.drill.overhead_throw",
+        "bd.drill.towel_snap"
+      ],
+      "defaultDrill": "bd.drill.overhead_throw"
+    },
+    {
+      "id": "bd.clear_fh.short_finish",
+      "checkpoint": "bd.clear_fh.C8",
+      "when": "false",
+      "title": {
+        "vi": "Vung vợt dừng ngay khi chạm cầu",
+        "en": "Swing stops at contact"
+      },
+      "cue": {
+        "vi": "Kết thúc vợt bên hông đối diện",
+        "en": "Finish by your opposite hip"
+      },
+      "why": {
+        "vi": "Kết thúc động tác trọn vẹn giúp cú đánh mượt, đủ lực và giữ thăng bằng.",
+        "en": "A full finish keeps the swing smooth and powerful and keeps you balanced."
+      },
+      "drills": [
+        "bd.drill.opposite_hip_finish"
+      ],
+      "defaultDrill": "bd.drill.opposite_hip_finish"
+    },
+    {
+      "id": "bd.clear_fh.no_rotation",
+      "checkpoint": "bd.clear_fh.C9",
+      "when": "high",
+      "title": {
+        "vi": "Thân người chưa xoay theo",
+        "en": "Body doesn't rotate through"
+      },
+      "cue": {
+        "vi": "Xoay ngực ra trước sau khi đánh",
+        "en": "Turn your chest through the shot"
+      },
+      "why": {
+        "vi": "Thân người xoay theo giúp truyền lực từ hông lên vợt và về vị trí nhanh hơn.",
+        "en": "Rotating through passes power from the hips to the racket and sets up your recovery."
+      },
+      "drills": [
+        "bd.drill.opposite_hip_finish",
+        "bd.drill.scissor_shadow"
+      ],
+      "defaultDrill": "bd.drill.opposite_hip_finish"
+    },
+    {
+      "id": "bd.clear_fh.high_finish",
+      "checkpoint": "bd.clear_fh.C10",
+      "when": "high",
+      "title": {
+        "vi": "Vợt dừng lại trên cao",
+        "en": "Racket stops high"
+      },
+      "cue": {
+        "vi": "Kéo vợt xuống hết về hông",
+        "en": "Swing all the way down"
+      },
+      "why": {
+        "vi": "Dừng vợt trên cao thường làm cú đánh bị cụt lực.",
+        "en": "Stopping the racket high usually cuts the shot short of power."
+      },
+      "drills": [
+        "bd.drill.opposite_hip_finish"
+      ],
+      "defaultDrill": "bd.drill.opposite_hip_finish"
+    },
+    {
+      "id": "bd.clear_fh.no_recovery",
+      "checkpoint": "bd.clear_fh.C11",
+      "when": "high",
+      "title": {
+        "vi": "Đứng nhìn cầu, chưa về vị trí",
+        "en": "Watching the shot, no recovery"
+      },
+      "cue": {
+        "vi": "Đánh xong, về ngay giữa sân",
+        "en": "Hit, then back to center"
+      },
+      "why": {
+        "vi": "Về vị trí nhanh giúp bạn kịp đón cú tiếp theo.",
+        "en": "Getting back quickly gives you time for the next shot."
+      },
+      "drills": [
+        "bd.drill.hit_and_recover"
+      ],
+      "defaultDrill": "bd.drill.hit_and_recover"
+    },
+    {
+      "id": "bd.clear_fh.racket_stays_down",
+      "checkpoint": "bd.clear_fh.C12",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp sau khi đánh",
+        "en": "Racket stays down after the shot"
+      },
+      "cue": {
+        "vi": "Đánh xong, giơ vợt lên ngay",
+        "en": "After the hit, racket up"
+      },
+      "why": {
+        "vi": "Giơ vợt sớm giúp bạn sẵn sàng cho cú cầu trả về.",
+        "en": "Raising the racket early has you ready for the reply."
+      },
+      "drills": [
+        "bd.drill.hit_and_recover",
+        "bd.drill.racket_up_bounce"
+      ],
+      "defaultDrill": "bd.drill.hit_and_recover"
+    },
+    {
+      "id": "bd.clear_fh.late_footwork",
+      "checkpoint": "bd.clear_fh.C13",
+      "when": "low",
+      "title": {
+        "vi": "Vào vị trí muộn",
+        "en": "Late getting behind the shuttle"
+      },
+      "cue": {
+        "vi": "Lùi sớm, đứng sau cầu",
+        "en": "Move early, get behind it"
+      },
+      "why": {
+        "vi": "Đứng sau cầu sớm cho bạn thời gian vung vợt trọn vẹn.",
+        "en": "Being behind the shuttle early gives you time for a full swing."
+      },
+      "drills": [
+        "bd.drill.scissor_shadow",
+        "bd.drill.hanging_shuttle"
+      ],
+      "defaultDrill": "bd.drill.scissor_shadow"
+    },
+    {
+      "id": "bd.smash.low_contact",
+      "checkpoint": "bd.smash.SM2",
+      "when": "low",
+      "title": {
+        "vi": "Chạm cầu thấp khi đập",
+        "en": "Smashing from a low contact"
+      },
+      "cue": {
+        "vi": "Vươn cao, đập ở điểm cao nhất",
+        "en": "Reach up, hit at the top"
+      },
+      "why": {
+        "vi": "Chạm cầu càng cao, góc đập càng dốc.",
+        "en": "The higher the contact, the steeper the smash."
+      },
+      "drills": [
+        "bd.drill.hanging_shuttle",
+        "bd.drill.kneeling_smash"
+      ],
+      "defaultDrill": "bd.drill.hanging_shuttle"
+    },
+    {
+      "id": "bd.smash.behind_head",
+      "checkpoint": "bd.smash.SM3",
+      "when": "low",
+      "title": {
+        "vi": "Đập cầu sau đầu",
+        "en": "Hitting behind the head"
+      },
+      "cue": {
+        "vi": "Đập cầu phía trước trán",
+        "en": "Hit in front of your head"
+      },
+      "why": {
+        "vi": "Chạm cầu sau đầu làm cú đập bay ngang hoặc ra ngoài sân.",
+        "en": "Contact behind the head sends the smash flat or long."
+      },
+      "drills": [
+        "bd.drill.smash_step_in",
+        "bd.drill.hanging_shuttle"
+      ],
+      "defaultDrill": "bd.drill.smash_step_in"
+    },
+    {
+      "id": "bd.smash.bent_arm",
+      "checkpoint": "bd.smash.SM4",
+      "when": "low",
+      "title": {
+        "vi": "Khuỷu tay gập khi đập",
+        "en": "Bent arm on the smash"
+      },
+      "cue": {
+        "vi": "Vươn thẳng tay, đập cầu xuống",
+        "en": "Reach tall, then hit down"
+      },
+      "why": {
+        "vi": "Duỗi tay giúp bạn chạm cầu cao hơn và đập dốc hơn.",
+        "en": "A long arm lets you hit higher and steeper."
+      },
+      "drills": [
+        "bd.drill.overhead_throw",
+        "bd.drill.towel_snap"
+      ],
+      "defaultDrill": "bd.drill.overhead_throw"
+    },
+    {
+      "id": "bd.smash.arm_only",
+      "checkpoint": "bd.smash.SM5",
+      "when": "low",
+      "title": {
+        "vi": "Chỉ dùng tay, thiếu lực thân",
+        "en": "All arm, no body"
+      },
+      "cue": {
+        "vi": "Xoay người, rồi gập ngực xuống",
+        "en": "Turn, then drive the chest down"
+      },
+      "why": {
+        "vi": "Dùng thân người giúp cú đập mạnh hơn mà tay không phải gồng.",
+        "en": "Using your body makes the smash stronger without forcing the arm."
+      },
+      "drills": [
+        "bd.drill.kneeling_smash",
+        "bd.drill.scissor_shadow"
+      ],
+      "defaultDrill": "bd.drill.kneeling_smash"
+    },
+    {
+      "id": "bd.smash.short_finish",
+      "checkpoint": "bd.smash.SM6",
+      "when": "false",
+      "title": {
+        "vi": "Vung vợt dừng sớm",
+        "en": "Swing stops early"
+      },
+      "cue": {
+        "vi": "Kéo vợt hết xuống hông đối diện",
+        "en": "Finish down by your opposite hip"
+      },
+      "why": {
+        "vi": "Kết thúc trọn vẹn giữ cho cú đập đủ lực và hướng xuống.",
+        "en": "A full finish keeps the smash powerful and pointed down."
+      },
+      "drills": [
+        "bd.drill.opposite_hip_finish"
+      ],
+      "defaultDrill": "bd.drill.opposite_hip_finish"
+    },
+    {
+      "id": "bd.smash.stiff_landing",
+      "checkpoint": "bd.smash.SM7",
+      "when": "low",
+      "title": {
+        "vi": "Tiếp đất cứng chân",
+        "en": "Stiff landing"
+      },
+      "cue": {
+        "vi": "Tiếp đất gối chùng, dưới thân người",
+        "en": "Land on bent knees, under you"
+      },
+      "why": {
+        "vi": "Tiếp đất mềm giúp bạn giữ thăng bằng và bước tiếp nhanh hơn.",
+        "en": "A soft landing keeps you balanced and ready for the next step."
+      },
+      "drills": [
+        "bd.drill.jump_land_hold"
+      ],
+      "defaultDrill": "bd.drill.jump_land_hold"
+    },
+    {
+      "id": "bd.smash.high_finish",
+      "checkpoint": "bd.smash.SM8",
+      "when": "high",
+      "title": {
+        "vi": "Vợt dừng lại trên cao",
+        "en": "Racket stops high"
+      },
+      "cue": {
+        "vi": "Đập xuống, vợt theo xuống",
+        "en": "Hit down, follow down"
+      },
+      "why": {
+        "vi": "Vợt đi xuống theo cú đập giúp cầu cắm dốc hơn.",
+        "en": "Following down helps the shuttle travel steeply."
+      },
+      "drills": [
+        "bd.drill.opposite_hip_finish",
+        "bd.drill.kneeling_smash"
+      ],
+      "defaultDrill": "bd.drill.opposite_hip_finish"
+    },
+    {
+      "id": "bd.smash.slow_recovery",
+      "checkpoint": "bd.smash.SM9",
+      "when": "low",
+      "title": {
+        "vi": "Về tư thế chậm sau cú đập",
+        "en": "Slow recovery after the smash"
+      },
+      "cue": {
+        "vi": "Đập xong, bước lên, giơ vợt",
+        "en": "Smash, step in, racket up"
+      },
+      "why": {
+        "vi": "Cú đập hay thường bị trả về sát lưới, bạn cần sẵn sàng ngay.",
+        "en": "A good smash often comes back short, so be ready at once."
+      },
+      "drills": [
+        "bd.drill.smash_step_in",
+        "bd.drill.hit_and_recover"
+      ],
+      "defaultDrill": "bd.drill.smash_step_in"
+    },
+    {
+      "id": "bd.smash.open_face",
+      "checkpoint": "bd.smash.SM10",
+      "when": "low",
+      "title": {
+        "vi": "Mặt vợt ngửa khi đập",
+        "en": "Open racket face on the smash"
+      },
+      "cue": {
+        "vi": "Úp mặt vợt xuống khi chạm cầu",
+        "en": "Close the face over the shuttle"
+      },
+      "why": {
+        "vi": "Mặt vợt ngửa làm cú đập bay ngang thay vì cắm xuống.",
+        "en": "An open face sends the smash flat instead of down."
+      },
+      "drills": [
+        "bd.drill.kneeling_smash",
+        "bd.drill.towel_snap"
+      ],
+      "defaultDrill": "bd.drill.kneeling_smash"
+    },
+    {
+      "id": "bd.serve_low.feet_move",
+      "checkpoint": "bd.serve_low.LS1",
+      "when": "high",
+      "title": {
+        "vi": "Chân xê dịch khi giao cầu",
+        "en": "Feet moving during the serve"
+      },
+      "cue": {
+        "vi": "Đặt chắc hai chân rồi mới giao",
+        "en": "Plant both feet, then serve"
+      },
+      "why": {
+        "vi": "Chân đứng yên giúp cú giao ổn định; luật cũng yêu cầu hai chân chạm sàn đến khi giao xong.",
+        "en": "Still feet make the serve repeatable, and the rules require both feet on the floor until the serve is made."
+      },
+      "drills": [
+        "bd.drill.mirror_serve"
+      ],
+      "defaultDrill": "bd.drill.mirror_serve"
+    },
+    {
+      "id": "bd.serve_low.square_stance",
+      "checkpoint": "bd.serve_low.LS2",
+      "when": "low",
+      "title": {
+        "vi": "Hai chân đứng song song",
+        "en": "Feet side by side"
+      },
+      "cue": {
+        "vi": "Bước chân thuận lên trước một chút",
+        "en": "Racket foot a little forward"
+      },
+      "why": {
+        "vi": "Chân trước chân sau giúp bạn đứng vững và đẩy cầu đều tay.",
+        "en": "A slight split stance keeps you stable for a smooth push."
+      },
+      "drills": [
+        "bd.drill.mirror_serve"
+      ],
+      "defaultDrill": "bd.drill.mirror_serve"
+    },
+    {
+      "id": "bd.serve_low.stiff_legs",
+      "checkpoint": "bd.serve_low.LS3",
+      "when": "low",
+      "title": {
+        "vi": "Đứng thẳng cứng chân",
+        "en": "Stiff, straight legs"
+      },
+      "cue": {
+        "vi": "Thả lỏng gối, hơi chùng xuống",
+        "en": "Soften your knees"
+      },
+      "why": {
+        "vi": "Gối hơi chùng giúp bạn thả lỏng và lên lưới đón cầu trả về nhanh hơn.",
+        "en": "Soft knees keep you relaxed and quick to move in after the serve."
+      },
+      "drills": [
+        "bd.drill.mirror_serve",
+        "bd.drill.serve_racket_up"
+      ],
+      "defaultDrill": "bd.drill.mirror_serve"
+    },
+    {
+      "id": "bd.serve_low.leaning_back",
+      "checkpoint": "bd.serve_low.LS4",
+      "when": "low",
+      "title": {
+        "vi": "Thân người ngả ra sau",
+        "en": "Leaning back"
+      },
+      "cue": {
+        "vi": "Hơi đổ người về phía lưới",
+        "en": "Lean slightly toward the net"
+      },
+      "why": {
+        "vi": "Hơi đổ người giúp bạn kiểm soát cú giao và sẵn sàng lên lưới.",
+        "en": "A slight forward lean gives you control and gets you ready to move in."
+      },
+      "drills": [
+        "bd.drill.mirror_serve"
+      ],
+      "defaultDrill": "bd.drill.mirror_serve"
+    },
+    {
+      "id": "bd.serve_low.cramped",
+      "checkpoint": "bd.serve_low.LS5",
+      "when": "low",
+      "title": {
+        "vi": "Chạm cầu sát người",
+        "en": "Contact too close to the body"
+      },
+      "cue": {
+        "vi": "Đưa vợt ra trước rồi mới đẩy",
+        "en": "Racket out in front, then push"
+      },
+      "why": {
+        "vi": "Chạm cầu phía trước giúp bạn nhìn rõ và kiểm soát đường cầu.",
+        "en": "Contact in front lets you see and control the shuttle path."
+      },
+      "drills": [
+        "bd.drill.serve_string",
+        "bd.drill.mirror_serve"
+      ],
+      "defaultDrill": "bd.drill.serve_string"
+    },
+    {
+      "id": "bd.serve_low.high_contact",
+      "checkpoint": "bd.serve_low.LS6",
+      "when": "high",
+      "title": {
+        "vi": "Chạm cầu quá cao",
+        "en": "Contact too high"
+      },
+      "cue": {
+        "vi": "Cầm cầu thấp hơn, trước người",
+        "en": "Hold the shuttle lower, in front"
+      },
+      "why": {
+        "vi": "Chạm cầu cao dễ làm cầu bay bổng; luật cũng giới hạn độ cao khi chạm cầu.",
+        "en": "A high contact makes the serve float, and the rules also limit contact height."
+      },
+      "drills": [
+        "bd.drill.serve_string"
+      ],
+      "defaultDrill": "bd.drill.serve_string"
+    },
+    {
+      "id": "bd.serve_low.big_backswing",
+      "checkpoint": "bd.serve_low.LS7",
+      "when": "high",
+      "title": {
+        "vi": "Lấy đà quá dài",
+        "en": "Backswing too big"
+      },
+      "cue": {
+        "vi": "Đẩy cầu bằng ngón cái, ngắn và mượt",
+        "en": "Thumb push, short and smooth"
+      },
+      "why": {
+        "vi": "Lấy đà dài khó kiểm soát lực, cầu dễ bay cao hoặc chạm lưới.",
+        "en": "A long backswing is hard to control, so the serve rises or hits the net."
+      },
+      "drills": [
+        "bd.drill.serve_string"
+      ],
+      "defaultDrill": "bd.drill.serve_string"
+    },
+    {
+      "id": "bd.serve_low.long_push",
+      "checkpoint": "bd.serve_low.LS8",
+      "when": "high",
+      "title": {
+        "vi": "Vung theo quá dài",
+        "en": "Follow-through too long"
+      },
+      "cue": {
+        "vi": "Đẩy ngắn, dừng vợt sớm",
+        "en": "Short push, then stop"
+      },
+      "why": {
+        "vi": "Vung theo dài làm cầu đi cao và dễ bị đối thủ tấn công.",
+        "en": "A long follow-through lifts the serve and invites an attack."
+      },
+      "drills": [
+        "bd.drill.serve_string"
+      ],
+      "defaultDrill": "bd.drill.serve_string"
+    },
+    {
+      "id": "bd.serve_low.racket_down",
+      "checkpoint": "bd.serve_low.LS9",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp sau khi giao",
+        "en": "Racket down after the serve"
+      },
+      "cue": {
+        "vi": "Giao xong, giơ vợt trước lưới",
+        "en": "Serve, then racket up"
+      },
+      "why": {
+        "vi": "Cầu trả về thường rất nhanh, vợt giơ sẵn giúp bạn kịp chặn.",
+        "en": "Returns come back fast, and a raised racket lets you meet them."
+      },
+      "drills": [
+        "bd.drill.serve_racket_up"
+      ],
+      "defaultDrill": "bd.drill.serve_racket_up"
+    },
+    {
+      "id": "bd.serve_low.wrist_flick",
+      "checkpoint": "bd.serve_low.LS10",
+      "when": "low",
+      "title": {
+        "vi": "Vẩy cổ tay khi giao",
+        "en": "Wrist flick on the serve"
+      },
+      "cue": {
+        "vi": "Giữ chắc cổ tay, đẩy bằng ngón cái",
+        "en": "Firm wrist, push with the thumb"
+      },
+      "why": {
+        "vi": "Vẩy cổ tay làm lực không đều, cầu dễ bay cao.",
+        "en": "A wrist flick makes the power uneven, so the serve floats."
+      },
+      "drills": [
+        "bd.drill.serve_string",
+        "bd.drill.mirror_serve"
+      ],
+      "defaultDrill": "bd.drill.serve_string"
+    },
+    {
+      "id": "bd.net_shot.racket_low",
+      "checkpoint": "bd.net_shot.NS1",
+      "when": "low",
+      "title": {
+        "vi": "Vợt thấp, chạm cầu muộn",
+        "en": "Racket low, late contact"
+      },
+      "cue": {
+        "vi": "Đón cầu sớm ở ngang mép lưới",
+        "en": "Meet it early, at tape height"
+      },
+      "why": {
+        "vi": "Chạm cầu cao và sớm giúp cú đánh trên lưới sát lưới hơn.",
+        "en": "Meeting the shuttle high and early keeps your net play tight."
+      },
+      "drills": [
+        "bd.drill.net_touch",
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.net_touch"
+    },
+    {
+      "id": "bd.net_shot.wrong_leg",
+      "checkpoint": "bd.net_shot.NS2",
+      "when": "low",
+      "title": {
+        "vi": "Lunge sai chân",
+        "en": "Wrong lunge leg"
+      },
+      "cue": {
+        "vi": "Chân thuận bước lên trước",
+        "en": "Racket foot forward"
+      },
+      "why": {
+        "vi": "Lunge bằng chân thuận giúp bạn với xa hơn và đẩy về giữa sân nhanh hơn.",
+        "en": "Lunging on the racket leg gives more reach and a faster push back."
+      },
+      "drills": [
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.lunge_push_back"
+    },
+    {
+      "id": "bd.net_shot.short_lunge",
+      "checkpoint": "bd.net_shot.NS3",
+      "when": "low",
+      "title": {
+        "vi": "Bước lunge quá ngắn",
+        "en": "Lunge too short"
+      },
+      "cue": {
+        "vi": "Bước dài, để chân với tới cầu",
+        "en": "Long step, let your legs reach"
+      },
+      "why": {
+        "vi": "Bước đủ dài giúp bạn chạm cầu sớm mà không phải cúi người.",
+        "en": "A long step lets you reach early without bending over."
+      },
+      "drills": [
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.lunge_push_back"
+    },
+    {
+      "id": "bd.net_shot.shallow_lunge",
+      "checkpoint": "bd.net_shot.NS4",
+      "when": "low",
+      "title": {
+        "vi": "Lunge nông, gối thẳng",
+        "en": "Shallow lunge"
+      },
+      "cue": {
+        "vi": "Hạ hông, gối trước khuỵu xuống",
+        "en": "Sink the hips, bend the front knee"
+      },
+      "why": {
+        "vi": "Hạ thấp trọng tâm giúp bạn với cầu ổn định và giữ thăng bằng.",
+        "en": "Getting low lets you reach the shuttle while staying balanced."
+      },
+      "drills": [
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.lunge_push_back"
+    },
+    {
+      "id": "bd.net_shot.waist_bend",
+      "checkpoint": "bd.net_shot.NS5",
+      "when": "high",
+      "title": {
+        "vi": "Cúi gập người khi lên lưới",
+        "en": "Bending at the waist"
+      },
+      "cue": {
+        "vi": "Ngực thẳng, để chân với tới cầu",
+        "en": "Chest up, legs do the reaching"
+      },
+      "why": {
+        "vi": "Cúi gập người làm bạn mất thăng bằng và về vị trí chậm.",
+        "en": "Bending over costs balance and slows your recovery."
+      },
+      "drills": [
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.lunge_push_back"
+    },
+    {
+      "id": "bd.net_shot.knee_past_toes",
+      "checkpoint": "bd.net_shot.NS6",
+      "when": "high",
+      "title": {
+        "vi": "Gối vượt quá mũi chân",
+        "en": "Knee far past the toes"
+      },
+      "cue": {
+        "vi": "Gối trên bàn chân, đẩy về bằng gót",
+        "en": "Knee over foot, push back through the heel"
+      },
+      "why": {
+        "vi": "Gối nằm trên bàn chân giúp lunge vững và đẩy về dễ hơn.",
+        "en": "A knee over the foot makes the lunge stable and the push back easier."
+      },
+      "drills": [
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.lunge_push_back"
+    },
+    {
+      "id": "bd.net_shot.late_contact",
+      "checkpoint": "bd.net_shot.NS7",
+      "when": "low",
+      "title": {
+        "vi": "Chạm cầu muộn, sát người",
+        "en": "Late contact near the body"
+      },
+      "cue": {
+        "vi": "Vươn vợt ra đón cầu sớm",
+        "en": "Reach out and take it early"
+      },
+      "why": {
+        "vi": "Chạm cầu sớm phía trước cho bạn nhiều lựa chọn đánh hơn.",
+        "en": "Early contact out in front gives you more shot options."
+      },
+      "drills": [
+        "bd.drill.net_touch"
+      ],
+      "defaultDrill": "bd.drill.net_touch"
+    },
+    {
+      "id": "bd.net_shot.bent_arm",
+      "checkpoint": "bd.net_shot.NS8",
+      "when": "low",
+      "title": {
+        "vi": "Tay co khi chạm cầu",
+        "en": "Arm cramped at contact"
+      },
+      "cue": {
+        "vi": "Duỗi tay ra đón cầu",
+        "en": "Extend the arm to the shuttle"
+      },
+      "why": {
+        "vi": "Tay vươn dài giúp bạn chạm cầu sớm hơn và kiểm soát tốt hơn.",
+        "en": "An extended arm reaches the shuttle sooner and with more control."
+      },
+      "drills": [
+        "bd.drill.net_touch"
+      ],
+      "defaultDrill": "bd.drill.net_touch"
+    },
+    {
+      "id": "bd.net_shot.low_contact",
+      "checkpoint": "bd.net_shot.NS9",
+      "when": "low",
+      "title": {
+        "vi": "Chạm cầu thấp",
+        "en": "Low contact"
+      },
+      "cue": {
+        "vi": "Đón cầu ngay khi qua lưới",
+        "en": "Take it just after it crosses"
+      },
+      "why": {
+        "vi": "Cầu càng rơi thấp, bỏ nhỏ càng khó sát lưới.",
+        "en": "The lower the shuttle drops, the harder a tight net shot gets."
+      },
+      "drills": [
+        "bd.drill.net_touch"
+      ],
+      "defaultDrill": "bd.drill.net_touch"
+    },
+    {
+      "id": "bd.net_shot.big_swing",
+      "checkpoint": "bd.net_shot.NS10",
+      "when": "high",
+      "title": {
+        "vi": "Vung vợt lớn khi bỏ nhỏ",
+        "en": "Big swing on the net shot"
+      },
+      "cue": {
+        "vi": "Chạm và dẫn cầu, không lấy đà",
+        "en": "Touch and guide, no backswing"
+      },
+      "why": {
+        "vi": "Vung lớn làm cầu nảy cao, đối thủ dễ chụp lưới.",
+        "en": "A big swing pops the shuttle up for an easy kill."
+      },
+      "drills": [
+        "bd.drill.net_touch"
+      ],
+      "defaultDrill": "bd.drill.net_touch"
+    },
+    {
+      "id": "bd.net_shot.long_follow",
+      "checkpoint": "bd.net_shot.NS11",
+      "when": "high",
+      "title": {
+        "vi": "Vung theo quá dài",
+        "en": "Follow-through too long"
+      },
+      "cue": {
+        "vi": "Chạm nhẹ rồi dừng",
+        "en": "Soft touch, then stop"
+      },
+      "why": {
+        "vi": "Vung theo dài làm cầu bay cao khỏi lưới.",
+        "en": "A long follow-through lifts the shuttle away from the tape."
+      },
+      "drills": [
+        "bd.drill.net_touch"
+      ],
+      "defaultDrill": "bd.drill.net_touch"
+    },
+    {
+      "id": "bd.net_shot.stays_at_net",
+      "checkpoint": "bd.net_shot.NS12",
+      "when": "high",
+      "title": {
+        "vi": "Ở lại lưới sau khi đánh",
+        "en": "Staying at the net"
+      },
+      "cue": {
+        "vi": "Đẩy chân trước, lùi về giữa sân",
+        "en": "Push off the front foot, back to base"
+      },
+      "why": {
+        "vi": "Về giữa sân giúp bạn kịp đón cú cầu tiếp theo ở mọi góc.",
+        "en": "Getting back to base covers the next shot to any corner."
+      },
+      "drills": [
+        "bd.drill.lunge_push_back"
+      ],
+      "defaultDrill": "bd.drill.lunge_push_back"
+    },
+    {
+      "id": "bd.lift.big_backswing",
+      "checkpoint": "bd.lift.NL1",
+      "when": "high",
+      "title": {
+        "vi": "Lấy đà quá dài",
+        "en": "Backswing too long"
+      },
+      "cue": {
+        "vi": "Lấy đà gọn, vẩy lên dứt khoát",
+        "en": "Compact backswing, crisp lift"
+      },
+      "why": {
+        "vi": "Lấy đà dài làm bạn chạm cầu muộn.",
+        "en": "A long backswing makes you late."
+      },
+      "drills": [
+        "bd.drill.lift_target"
+      ],
+      "defaultDrill": "bd.drill.lift_target"
+    },
+    {
+      "id": "bd.lift.flat_lift",
+      "checkpoint": "bd.lift.NL2",
+      "when": "low",
+      "title": {
+        "vi": "Vẩy cầu đi ngang",
+        "en": "Flat lift"
+      },
+      "cue": {
+        "vi": "Vẩy từ dưới lên, qua đầu đối thủ",
+        "en": "Lift up and over them"
+      },
+      "why": {
+        "vi": "Vẩy cầu cao giúp bạn có thời gian về vị trí.",
+        "en": "A high lift buys you time to recover."
+      },
+      "drills": [
+        "bd.drill.lift_target"
+      ],
+      "defaultDrill": "bd.drill.lift_target"
+    },
+    {
+      "id": "bd.lift.low_finish",
+      "checkpoint": "bd.lift.NL3",
+      "when": "low",
+      "title": {
+        "vi": "Kết thúc vợt thấp, cầu ngắn",
+        "en": "Low finish, short lift"
+      },
+      "cue": {
+        "vi": "Vẩy lên, kết thúc vợt cao",
+        "en": "Lift through, finish high"
+      },
+      "why": {
+        "vi": "Kết thúc cao giúp cầu bay sâu đến cuối sân.",
+        "en": "A high finish sends the lift deep."
+      },
+      "drills": [
+        "bd.drill.lift_target"
+      ],
+      "defaultDrill": "bd.drill.lift_target"
+    },
+    {
+      "id": "bd.serve_high.square_stance",
+      "checkpoint": "bd.serve_high.HS1",
+      "when": "low",
+      "title": {
+        "vi": "Đứng thẳng mặt lưới",
+        "en": "Square to the net"
+      },
+      "cue": {
+        "vi": "Đứng nghiêng, chân không thuận lên trước",
+        "en": "Side-on, non-racket foot forward"
+      },
+      "why": {
+        "vi": "Đứng nghiêng giúp bạn chuyển trọng tâm và vung vợt trọn vẹn.",
+        "en": "Standing side-on lets you shift weight and make a full swing."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.early_weight",
+      "checkpoint": "bd.serve_high.HS2",
+      "when": "high",
+      "title": {
+        "vi": "Dồn trọng tâm lên trước quá sớm",
+        "en": "Weight forward too early"
+      },
+      "cue": {
+        "vi": "Ngả về sau, rồi mới ra trước",
+        "en": "Rock back, then forward"
+      },
+      "why": {
+        "vi": "Dồn chân sau trước giúp bạn có đà để giao cầu cao sâu.",
+        "en": "Loading the back foot first gives you drive for a deep serve."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.arm_only",
+      "checkpoint": "bd.serve_high.HS3",
+      "when": "low",
+      "title": {
+        "vi": "Chỉ giao bằng tay",
+        "en": "Arm-only serve"
+      },
+      "cue": {
+        "vi": "Đưa người theo cú giao",
+        "en": "Let your body move into the serve"
+      },
+      "why": {
+        "vi": "Chuyển trọng tâm giúp cầu đi sâu mà tay không phải gồng.",
+        "en": "Shifting your weight sends the shuttle deep without forcing the arm."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.short_swing",
+      "checkpoint": "bd.serve_high.HS4",
+      "when": "low",
+      "title": {
+        "vi": "Vung vợt quá ngắn",
+        "en": "Swing too short"
+      },
+      "cue": {
+        "vi": "Vung dài từ dưới lên",
+        "en": "Long swing, low to high"
+      },
+      "why": {
+        "vi": "Vung trọn vẹn giúp cầu bay cao và sâu.",
+        "en": "A full swing sends the shuttle high and deep."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.flat_contact",
+      "checkpoint": "bd.serve_high.HS5",
+      "when": "low",
+      "title": {
+        "vi": "Vợt đi ngang khi chạm cầu",
+        "en": "Flat swing at contact"
+      },
+      "cue": {
+        "vi": "Vung từ dưới lên qua cầu",
+        "en": "Swing up through the shuttle"
+      },
+      "why": {
+        "vi": "Vợt đi lên khi chạm cầu giúp cầu bay cao.",
+        "en": "An upward swing at contact sends the serve high."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.high_contact",
+      "checkpoint": "bd.serve_high.HS6",
+      "when": "high",
+      "title": {
+        "vi": "Chạm cầu quá cao",
+        "en": "Contact too high"
+      },
+      "cue": {
+        "vi": "Thả cầu, đánh ở ngang gối",
+        "en": "Drop it, hit around knee height"
+      },
+      "why": {
+        "vi": "Chạm cầu thấp cho bạn đường vung dài hơn; luật cũng giới hạn độ cao khi chạm cầu.",
+        "en": "A low contact gives a longer swing path, and the rules also limit contact height."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.low_finish",
+      "checkpoint": "bd.serve_high.HS7",
+      "when": "low",
+      "title": {
+        "vi": "Kết thúc vợt thấp",
+        "en": "Low finish"
+      },
+      "cue": {
+        "vi": "Kết thúc cao, giữ yên",
+        "en": "Finish high and freeze"
+      },
+      "why": {
+        "vi": "Kết thúc thấp thường làm cầu giao ngắn.",
+        "en": "A low finish usually means a short serve."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.short_finish",
+      "checkpoint": "bd.serve_high.HS8",
+      "when": "false",
+      "title": {
+        "vi": "Vung theo dừng sớm",
+        "en": "Follow-through stops early"
+      },
+      "cue": {
+        "vi": "Kết thúc vợt qua vai đối diện",
+        "en": "Finish over the opposite shoulder"
+      },
+      "why": {
+        "vi": "Kết thúc trọn vẹn giúp cú giao đều và sâu.",
+        "en": "A full finish makes the serve consistent and deep."
+      },
+      "drills": [
+        "bd.drill.high_serve_freeze"
+      ],
+      "defaultDrill": "bd.drill.high_serve_freeze"
+    },
+    {
+      "id": "bd.serve_high.racket_down",
+      "checkpoint": "bd.serve_high.HS9",
+      "when": "low",
+      "title": {
+        "vi": "Vợt buông thấp sau khi giao",
+        "en": "Racket down after the serve"
+      },
+      "cue": {
+        "vi": "Giao xong, về giữa, giơ vợt",
+        "en": "Serve, back to base, racket up"
+      },
+      "why": {
+        "vi": "Cầu giao cao thường bị tấn công ngay, bạn cần sẵn sàng.",
+        "en": "High serves are often attacked straight away, so be ready."
+      },
+      "drills": [
+        "bd.drill.serve_racket_up"
+      ],
+      "defaultDrill": "bd.drill.serve_racket_up"
     }
   ]
 }

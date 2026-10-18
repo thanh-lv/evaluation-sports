@@ -15,8 +15,25 @@ import { type Handedness, JOINT_INDEX } from '../contracts/common.ts';
 import { FLAG_REACQUIRED } from '../contracts/pose_v1.ts';
 import { MAX_STROKES } from '../contracts/prepare_v1.ts';
 import { racketWrist } from './handedness.ts';
-import { clamp, gridRange, isPresent, localMaxima, lowerBound, median, parabolicPeak, present, prominence } from './signal_util.ts';
-import type { CandidateRejection, DetectedStroke, SegmentParams, SegmentResult, SmoothTrack, StrokeCandidate } from './types.ts';
+import {
+  clamp,
+  gridRange,
+  isPresent,
+  localMaxima,
+  lowerBound,
+  median,
+  parabolicPeak,
+  present,
+  prominence,
+} from './signal_util.ts';
+import type {
+  CandidateRejection,
+  DetectedStroke,
+  SegmentParams,
+  SegmentResult,
+  SmoothTrack,
+  StrokeCandidate,
+} from './types.ts';
 
 /** Fixed segmentation constants (the per-skill ones live in the rubric). */
 export const SEGMENT_CONSTANTS = {

@@ -4,7 +4,7 @@
  */
 import { CFS_MAX, CONF_MAX, JOINT_ORDER, KP_STRIDE } from '../contracts/common.ts';
 import type { PoseV1 } from '../contracts/pose_v1.ts';
-import { median, mapJoints } from './signal_util.ts';
+import { mapJoints, median } from './signal_util.ts';
 import { type BoxCfs, EngineRejection, type JointMap, type JointSeries, type RawTrack } from './types.ts';
 
 /** Joints with confidence below this are treated as missing (DESIGN.md D8). */

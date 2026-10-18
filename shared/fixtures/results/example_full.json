@@ -185,6 +185,7 @@
       },
       "joints": [
         "rSho",
+        "rElb",
         "rWri"
       ]
     },
@@ -235,6 +236,7 @@
         "en": "Racket head up"
       },
       "joints": [
+        "rElb",
         "rWri"
       ]
     }
@@ -298,7 +300,7 @@
       "detail": "Vai của bạn vẫn hướng nhiều về phía lưới khi kéo vợt.",
       "whyItMatters": "Xoay người giúp dùng lực cả thân, cầu đi sâu hơn mà tay đỡ mỏi.",
       "cue": {
-        "vi": "Chĩa vai trái về phía cầu",
+        "vi": "Chĩa vai không cầm vợt về phía cầu",
         "en": "Point your non-racket shoulder at the shuttle"
       },
       "evidence": [

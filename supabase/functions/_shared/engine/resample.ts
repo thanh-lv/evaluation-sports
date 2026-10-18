@@ -77,8 +77,9 @@ export function resampleTrack(raw: RawTrack, hz: AnalysisHz): GridTrack {
       }
       if (span > HERMITE_GAP_MAX_US) continue;
       // Hermite needs a good end on both sides: the neighbouring observation must be the adjacent raw sample.
-      const a0 = p > 0 ? obs[p - 1] : -1;
-      const b1 = p + 2 < obs.length ? obs[p + 2] : -1;
+      if (p < 1 || p + 2 >= obs.length) continue;
+      const a0 = obs[p - 1];
+      const b1 = obs[p + 2];
       if (a0 !== a - 1 || b1 !== b + 1) continue;
       const dA = (raw.tUs[a] - raw.tUs[a0]) / 1e6;
       const dB = (raw.tUs[b1] - raw.tUs[b]) / 1e6;

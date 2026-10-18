@@ -45,7 +45,11 @@ export function present(series: Series): number[] {
  * Least-squares polynomial fit of order ≤ 2 to (t, y). Callers pass times relative to the point of interest, so
  * `[a0, a1, a2]` are the value, first derivative and half the second derivative there. Null when singular.
  */
-export function polyFit(ts: readonly number[], ys: readonly number[], order: 0 | 1 | 2): [number, number, number] | null {
+export function polyFit(
+  ts: readonly number[],
+  ys: readonly number[],
+  order: 0 | 1 | 2,
+): [number, number, number] | null {
   const n = ts.length;
   if (n < order + 1) return null;
   if (order === 0) {
@@ -206,4 +210,26 @@ export function parabolicPeak(series: Series, i: number): { delta: number; value
   if (den >= 0) return { delta: 0, value: v0 };
   const delta = clamp((0.5 * (a - b)) / den, -0.5, 0.5);
   return { delta, value: v0 - 0.25 * (a - b) * delta };
+}
+
+/**
+ * Leverage of the point t = 0 for a least-squares polynomial fit of the given order on `ts`, i.e. the variance of
+ * the fitted value at 0 in units of the noise variance: (XᵀX)⁻¹₀₀. Infinity when singular.
+ */
+export function leverageAt0(ts: readonly number[], order: 1 | 2): number {
+  let s0 = 0, s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+  for (const t of ts) {
+    const t2 = t * t;
+    s0 += 1;
+    s1 += t;
+    s2 += t2;
+    s3 += t2 * t;
+    s4 += t2 * t2;
+  }
+  if (order === 1) {
+    const det = s0 * s2 - s1 * s1;
+    return det > 0 ? s2 / det : Infinity;
+  }
+  const det = s0 * (s2 * s4 - s3 * s3) - s1 * (s1 * s4 - s3 * s2) + s2 * (s1 * s3 - s2 * s2);
+  return det > 0 ? (s2 * s4 - s3 * s3) / det : Infinity;
 }
