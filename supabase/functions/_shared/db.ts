@@ -91,23 +91,48 @@ function assertMatch(match: Match, op: string): void {
   if (Object.keys(match).length === 0) throw new Error(`db.${op} needs at least one filter`);
 }
 
-// deno-lint-ignore no-explicit-any
-function applyMatch<Q extends { eq: (c: string, v: any) => Q; is: (c: string, v: null) => Q }>(q: Q, match: Match): Q {
+/**
+ * The slice of the postgrest-js 2.117.2 builders used here, without their select-string type parsing (a runtime
+ * `columns` string makes that inference explode with TS2589). Awaiting a builder yields `PgResult`.
+ */
+interface PgResult {
+  data: unknown;
+  error: { code?: string; message?: string; details?: string; hint?: string } | null;
+  count?: number | null;
+}
+type CountOption = { count?: 'exact' };
+interface LooseQuery extends PromiseLike<PgResult> {
+  eq(column: string, value: unknown): LooseQuery;
+  is(column: string, value: null): LooseQuery;
+  order(column: string, options: { ascending: boolean }): LooseQuery;
+  limit(n: number): LooseQuery;
+}
+interface LooseTable {
+  select(columns: string): LooseQuery;
+  insert(rows: Row | Row[], options: CountOption): LooseQuery;
+  upsert(rows: Row | Row[], options: CountOption & { onConflict?: string; ignoreDuplicates?: boolean }): LooseQuery;
+  update(patch: Row, options: CountOption): LooseQuery;
+  delete(options: CountOption): LooseQuery;
+}
+
+function applyMatch(q: LooseQuery, match: Match): LooseQuery {
   let out = q;
   for (const [col, value] of Object.entries(match)) out = value === null ? out.is(col, null) : out.eq(col, value);
   return out;
 }
 
 export function createDb(client: SupabaseClient): Db {
-  const from = (schema: DbSchema, table: string) => client.schema(schema).from(table);
-  const check = <T>(res: { data: T; error: { code?: string; message?: string } | null }): T => {
+  const from = (schema: DbSchema, table: string) => client.schema(schema).from(table) as unknown as LooseTable;
+  const check = (res: PgResult): unknown => {
     if (res.error) throw fromPostgrestError(res.error);
     return res.data;
   };
 
   return {
     async rpc<T>(schema: DbSchema, fn: string, args: Record<string, unknown> = {}): Promise<T> {
-      return check(await client.schema(schema).rpc(fn, args)) as T;
+      const res = await client.schema(schema).rpc(fn, args);
+      if (res.error) throw fromPostgrestError(res.error);
+      return res.data as T;
     },
     async selectOne<T>(schema: DbSchema, table: string, columns: string, match: Match): Promise<T | null> {
       const rows = check(await applyMatch(from(schema, table).select(columns), match).limit(1)) as T[] | null;
@@ -154,11 +179,15 @@ export function createDb(client: SupabaseClient): Db {
   };
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export function createAuthAdmin(client: SupabaseClient): AuthAdmin {
   const admin = client.auth.admin;
-  const isNotFound = (e: { status?: number; code?: string } | null) => e?.status === 404 || e?.code === 'user_not_found';
+  const isNotFound = (e: { status?: number; code?: string } | null) =>
+    e?.status === 404 || e?.code === 'user_not_found';
   return {
     async getUser(userId) {
+      if (!UUID_RE.test(userId)) return null; // supabase-js would throw a plain Error
       const { data, error } = await admin.getUserById(userId);
       if (error) {
         if (isNotFound(error)) return null;
@@ -173,6 +202,7 @@ export function createAuthAdmin(client: SupabaseClient): AuthAdmin {
       };
     },
     async deleteUser(userId) {
+      if (!UUID_RE.test(userId)) return false;
       const { error } = await admin.deleteUser(userId, false);
       if (error) {
         if (isNotFound(error)) return false;

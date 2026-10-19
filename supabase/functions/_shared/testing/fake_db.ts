@@ -65,7 +65,7 @@ export class FakeDb implements Db {
     }
   }
 
-  async rpc<T>(schema: DbSchema, fn: string, args: Record<string, unknown> = {}): Promise<T> {
+  async rpc<T = unknown>(schema: DbSchema, fn: string, args: Record<string, unknown> = {}): Promise<T> {
     const target = `${schema}.${fn}`;
     this.record('rpc', target, args);
     const impl = this.rpcs.get(target);
@@ -81,14 +81,14 @@ export class FakeDb implements Db {
     });
   }
 
-  selectOne<T>(schema: DbSchema, table: string, columns: string, match: Match): Promise<T | null> {
+  selectOne<T = Row>(schema: DbSchema, table: string, columns: string, match: Match): Promise<T | null> {
     return this.run('selectOne', `${schema}.${table}`, match, () => {
       const row = this.table(schema, table).find((r) => matches(r, match));
       return row ? (project(row, columns) as T) : null;
     });
   }
 
-  selectMany<T>(
+  selectMany<T = Row>(
     schema: DbSchema,
     table: string,
     columns: string,

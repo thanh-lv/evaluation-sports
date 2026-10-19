@@ -1,0 +1,163 @@
+{
+  "_about": "Home (DESIGN.md §2.2 step 3, §9.3 cap messaging). Owner: App shell agent.",
+  "home.analyze": {
+    "comment": "Main button on Home: starts a new analysis (DESIGN.md §2.2 step 3). US English 'Analyze'.",
+    "en": "Analyze a stroke",
+    "vi": "Phân tích cú đánh"
+  },
+  "home.analyze.subtitle": {
+    "comment": "Text above the Analyze button.",
+    "en": "Film 5–10 repetitions of one stroke (up to 30 seconds) or pick a clip from Photos or Files.",
+    "vi": "Quay 5–10 lần một kỹ thuật (tối đa 30 giây) hoặc chọn video có sẵn trong Ảnh hay Tệp."
+  },
+  "home.banner.videos_cleaned": {
+    "comment": "Notice after the automatic clean-up (DESIGN.md D16). %1$lld = number of videos, %2$lld = 60.",
+    "en": "Videos older than %2$lld days were removed from this iPhone to free up space (%1$lld removed). Your results are kept.",
+    "vi": "Đã xoá %1$lld video cũ hơn %2$lld ngày khỏi iPhone để giải phóng dung lượng. Kết quả phân tích vẫn được giữ."
+  },
+  "home.camera_guide": {
+    "comment": "Row that opens the camera guide.",
+    "en": "Camera guide",
+    "vi": "Hướng dẫn đặt máy quay"
+  },
+  "home.camera_guide.subtitle": {
+    "comment": "Subtitle of the camera guide row.",
+    "en": "Where to put your phone for each stroke",
+    "vi": "Đặt điện thoại ở đâu cho từng kỹ thuật"
+  },
+  "home.history": {
+    "comment": "Toolbar button (accessibility label) that opens History.",
+    "en": "History",
+    "vi": "Lịch sử"
+  },
+  "home.last_result.empty": {
+    "comment": "Empty state of the last-result card.",
+    "en": "No analyses yet. Film one stroke 5–10 times to get your first feedback.",
+    "vi": "Chưa có phân tích nào. Hãy quay 5–10 lần một kỹ thuật để nhận nhận xét đầu tiên."
+  },
+  "home.last_result.fix_first": {
+    "comment": "Last result card line. %@ = title of the #1 fix written by the coach.",
+    "en": "Fix this first: %@",
+    "vi": "Sửa điều này trước: %@"
+  },
+  "home.last_result.partial": {
+    "comment": "Last result without a score (partial, DESIGN.md §10.2).",
+    "en": "Not enough data",
+    "vi": "Chưa đủ dữ liệu"
+  },
+  "home.last_result.title": {
+    "comment": "Section title on Home.",
+    "en": "Last result",
+    "vi": "Kết quả gần nhất"
+  },
+  "home.learn.title": {
+    "comment": "Section title above the camera guide and sample links.",
+    "en": "Get better clips",
+    "vi": "Quay video tốt hơn"
+  },
+  "home.not_configured": {
+    "comment": "Developer-only notice when the xcconfig hosts are missing; never seen in a release build.",
+    "en": "This build has no server configured. Run make dev or add Config/Secrets.xcconfig.",
+    "vi": "Bản dựng này chưa cấu hình máy chủ. Hãy chạy make dev hoặc thêm Config/Secrets.xcconfig."
+  },
+  "home.offline": {
+    "comment": "Notice on Home while the anonymous sign-in waits for the network.",
+    "en": "You're offline. You can still watch the sample analysis and read the camera guide.",
+    "vi": "Bạn đang ngoại tuyến. Bạn vẫn có thể xem phân tích mẫu và hướng dẫn đặt máy quay."
+  },
+  "home.progress": {
+    "comment": "Row that opens the progress charts (Premium or trial).",
+    "en": "Progress",
+    "vi": "Tiến bộ"
+  },
+  "home.progress.subtitle": {
+    "comment": "Subtitle of the progress row.",
+    "en": "Your scores over time for each stroke",
+    "vi": "Điểm của bạn theo thời gian cho từng kỹ thuật"
+  },
+  "home.quota.bonus": {
+    "comment": "Chip shown while the free first-ever advanced analysis is available (DESIGN.md §9.3).",
+    "en": "First analysis: advanced, free",
+    "vi": "Phân tích nâng cao miễn phí lần đầu"
+  },
+  "home.quota.free_empty": {
+    "comment": "Quota chip, free tier at the cap. %@ = day/month the month resets (ICT).",
+    "en": "No analyses left this month · New ones on %@",
+    "vi": "Đã hết lượt tháng này · Lượt mới vào %@"
+  },
+  "home.quota.free_remaining": {
+    "comment": "Quota chip, free tier. %1$lld = analyses left, %2$lld = monthly total (from my_status).",
+    "en": "%1$lld of %2$lld analyses left this month",
+    "vi": "Còn %1$lld/%2$lld lượt tháng này"
+  },
+  "home.quota.in_flight": {
+    "comment": "Banner when the in-flight limit (1) is reached.",
+    "en": "Another analysis is still being processed. Please wait for it to finish.",
+    "vi": "Một phân tích khác đang được xử lý. Hãy đợi phân tích đó xong rồi thử lại."
+  },
+  "home.quota.loading": {
+    "comment": "Placeholder chip while my_status loads.",
+    "en": "Checking your analyses…",
+    "vi": "Đang kiểm tra lượt phân tích…"
+  },
+  "home.quota.next_on": {
+    "comment": "Banner when a Premium user at the cap taps Analyze. %@ = day/month.",
+    "en": "You've used all your analyses for now. New ones arrive on %@.",
+    "vi": "Bạn đã dùng hết lượt. Lượt mới vào %@."
+  },
+  "home.quota.premium_empty": {
+    "comment": "Quota chip, Premium at the cap (never the paywall). %@ = day/month.",
+    "en": "New analyses on %@",
+    "vi": "Lượt mới vào %@"
+  },
+  "home.quota.premium_remaining": {
+    "comment": "Quota chip, Premium. %1$lld = left, %2$lld = monthly total, %3$@ = day/month of the next window.",
+    "en": "%1$lld of %2$lld left · New ones on %3$@",
+    "vi": "Còn %1$lld/%2$lld lượt · Lượt mới vào %3$@"
+  },
+  "home.quota.trial_empty": {
+    "comment": "Quota chip, trial at the cap. %@ = day/month the paid year starts (DESIGN.md §9.3).",
+    "en": "Trial analyses used · Your yearly plan starts %@",
+    "vi": "Đã dùng hết lượt dùng thử · Gói năm bắt đầu %@"
+  },
+  "home.quota.trial_ended_on": {
+    "comment": "Banner when a trial user at the cap taps Analyze. %@ = day/month.",
+    "en": "You've used all trial analyses. Your yearly plan starts on %@.",
+    "vi": "Bạn đã dùng hết lượt dùng thử. Gói năm bắt đầu %@."
+  },
+  "home.quota.trial_remaining": {
+    "comment": "Quota chip, 7-day trial. %1$lld = left, %2$lld = trial total.",
+    "en": "Trial: %1$lld of %2$lld analyses left",
+    "vi": "Dùng thử: còn %1$lld/%2$lld lượt"
+  },
+  "home.sample": {
+    "comment": "Row that opens the offline sample analysis.",
+    "en": "Sample analysis",
+    "vi": "Phân tích mẫu"
+  },
+  "home.sample.subtitle": {
+    "comment": "Subtitle of the sample row.",
+    "en": "See what a result looks like, no video needed",
+    "vi": "Xem thử một kết quả, không cần quay video"
+  },
+  "home.save_history": {
+    "comment": "Row that opens sign-in (Apple or email) to keep history across devices (D14).",
+    "en": "Save your history",
+    "vi": "Lưu lịch sử"
+  },
+  "home.save_history.subtitle": {
+    "comment": "Subtitle of the save-history row.",
+    "en": "Sign in with Apple or email to use it on another device",
+    "vi": "Đăng nhập bằng Apple hoặc email để dùng trên thiết bị khác"
+  },
+  "home.settings": {
+    "comment": "Toolbar button (accessibility label) that opens Settings.",
+    "en": "Settings",
+    "vi": "Cài đặt"
+  },
+  "home.title": {
+    "comment": "Large title on Home.",
+    "en": "Ready to practice?",
+    "vi": "Sẵn sàng tập chưa?"
+  }
+}

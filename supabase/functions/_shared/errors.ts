@@ -5,7 +5,13 @@
  * Handlers throw `HttpError`; the router turns it into a JSON response. Anything else thrown becomes a generic
  * 500 `internal` whose message never leaves the server.
  */
-import { type ApiError, apiError, type ApiErrorCode, API_ERROR_STATUS, httpStatusFor } from '@shared/contracts/index.ts';
+import {
+  API_ERROR_STATUS,
+  type ApiError,
+  apiError,
+  type ApiErrorCode,
+  httpStatusFor,
+} from '@shared/contracts/index.ts';
 
 export interface HttpErrorOptions {
   tips?: readonly string[];

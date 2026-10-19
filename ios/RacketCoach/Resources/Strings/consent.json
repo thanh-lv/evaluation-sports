@@ -1,0 +1,113 @@
+{
+  "_about": "Consent sheet (DESIGN.md §2.2 step 5, §11). Generated once from docs/legal/consent-texts.{vi,en}.md §1: edit the legal doc first, then this file. Owner: App shell agent.",
+  "consent.ai.body": {
+    "comment": "(b) Full text with line breaks and bullets. Exact legal wording; must keep the best-effort blur wording and Anthropic's retention period.",
+    "en": "Your feedback is written by Claude, an AI model made by Anthropic PBC in the USA. For each analysis we send Anthropic:\n• the pose coordinates of your strokes;\n• up to 5 still images, with faces automatically blurred (best effort, which cannot be guaranteed in every case) and other people masked;\n• sport, skill, camera view, handedness and level.\nYour video is never uploaded. We delete the still images as soon as the analysis finishes, at the latest after 72 hours. Under Anthropic's current policy, data sent through its API is deleted automatically within 30 days (longer if flagged for a usage-policy violation) and is not used to train AI models.\nYou can withdraw consent at any time in Settings › Privacy; you then won't be able to start new analyses.",
+    "vi": "Nhận xét được viết bởi Claude, mô hình AI của Anthropic PBC tại Hoa Kỳ. Với mỗi phân tích, chúng tôi gửi cho Anthropic:\n• toạ độ tư thế của các cú đánh;\n• tối đa 5 ảnh tĩnh, trong đó khuôn mặt được tự động làm mờ (ở mức tốt nhất có thể, không đảm bảo trong mọi trường hợp) và những người khác bị che;\n• môn, kỹ thuật, góc quay, tay thuận và trình độ.\nVideo của bạn không bao giờ được tải lên. Chúng tôi xoá ảnh tĩnh ngay khi phân tích xong, chậm nhất sau 72 giờ. Theo chính sách hiện hành của Anthropic, dữ liệu gửi qua API được tự động xoá trong vòng 30 ngày (lâu hơn nếu bị gắn cờ vi phạm chính sách sử dụng) và không được dùng để huấn luyện AI.\nBạn có thể rút lại đồng ý bất cứ lúc nào trong Cài đặt › Quyền riêng tư; khi đó bạn sẽ không tạo được phân tích mới."
+  },
+  "consent.ai.checkbox": {
+    "comment": "(b) Checkbox label, unticked by default.",
+    "en": "I agree to send the data above to Anthropic in the USA for AI analysis.",
+    "vi": "Tôi đồng ý gửi dữ liệu nêu trên cho Anthropic tại Hoa Kỳ để AI phân tích."
+  },
+  "consent.ai.title": {
+    "comment": "(b) Required item title: AI processing by Anthropic (USA). Changing (b) requires bumping consent_versions.ai.",
+    "en": "AI analysis by Anthropic (Claude, USA) (required)",
+    "vi": "Phân tích bằng AI của Anthropic (Claude, Hoa Kỳ) (bắt buộc)"
+  },
+  "consent.button.accept": {
+    "comment": "Primary button; enabled only when (a) and (b) are ticked.",
+    "en": "Agree and continue",
+    "vi": "Đồng ý và tiếp tục"
+  },
+  "consent.button.later": {
+    "comment": "Declines for now: the analysis is not submitted.",
+    "en": "Not now",
+    "vi": "Để sau"
+  },
+  "consent.calibration.body": {
+    "comment": "(c) Explanation.",
+    "en": "If you turn this on, we may use your pose data and analysis results, with identifying information removed and without images, to calibrate the scoring and check quality. You can turn it off at any time in Settings › Privacy.",
+    "vi": "Nếu bạn bật, chúng tôi có thể dùng dữ liệu tư thế và kết quả phân tích của bạn, sau khi đã loại bỏ thông tin định danh và không kèm ảnh, để hiệu chỉnh thang chấm và kiểm tra chất lượng. Bạn có thể tắt bất cứ lúc nào trong Cài đặt › Quyền riêng tư."
+  },
+  "consent.calibration.title": {
+    "comment": "(c) Optional item title.",
+    "en": "Improve accuracy (optional)",
+    "vi": "Cải thiện độ chính xác (không bắt buộc)"
+  },
+  "consent.calibration.toggle": {
+    "comment": "(c) Toggle label, off by default (DESIGN.md §2.2 step 5c).",
+    "en": "Allow anonymized data to be used to improve accuracy",
+    "vi": "Cho phép dùng dữ liệu đã ẩn danh để cải thiện độ chính xác"
+  },
+  "consent.consumption.body": {
+    "comment": "(d) Explanation of consumption information sent to Apple on refund requests.",
+    "en": "When you ask Apple for a refund of Premium, Apple may ask us how you used the service. If you turn this on, we send Apple a summary such as how much of the service you used, how long you have used it and your in-app purchase history; we never send images, pose data or feedback content. If you leave it off, we send nothing.",
+    "vi": "Khi bạn yêu cầu Apple hoàn tiền gói Premium, Apple có thể hỏi chúng tôi về mức sử dụng của bạn. Nếu bạn bật, chúng tôi gửi cho Apple bản tóm tắt như mức độ bạn đã dùng dịch vụ, thời gian sử dụng và lịch sử mua trong ứng dụng; không gửi ảnh, dữ liệu tư thế hay nội dung nhận xét. Nếu bạn không bật, chúng tôi không gửi gì."
+  },
+  "consent.consumption.title": {
+    "comment": "(d) Optional item title.",
+    "en": "Share with Apple on refund requests (optional)",
+    "vi": "Chia sẻ với Apple khi hoàn tiền (không bắt buộc)"
+  },
+  "consent.consumption.toggle": {
+    "comment": "(d) Toggle label, off by default.",
+    "en": "Allow sending usage information to Apple when I request a refund",
+    "vi": "Cho phép gửi thông tin sử dụng cho Apple khi tôi yêu cầu hoàn tiền"
+  },
+  "consent.declined.message": {
+    "comment": "Shown after 'Not now'.",
+    "en": "You can still view the sample analysis. To analyze your own videos, agree to the two required items.",
+    "vi": "Bạn vẫn có thể xem phân tích mẫu. Để phân tích video của bạn, cần đồng ý hai mục bắt buộc."
+  },
+  "consent.intro": {
+    "comment": "Intro of the consent sheet.",
+    "en": "For the AI to review your strokes, we need your consent. The first two items are required; the last two are up to you.",
+    "vi": "Để AI nhận xét cú đánh của bạn, chúng tôi cần sự đồng ý của bạn. Hai mục đầu là bắt buộc; hai mục sau tuỳ bạn chọn."
+  },
+  "consent.link.ai": {
+    "comment": "Link to the AI disclosure web page.",
+    "en": "AI Disclosure",
+    "vi": "Công bố về AI"
+  },
+  "consent.link.privacy": {
+    "comment": "Link to the privacy policy web page.",
+    "en": "Privacy Policy",
+    "vi": "Chính sách quyền riêng tư"
+  },
+  "consent.pdpl.body": {
+    "comment": "(a) Full text. Exact legal wording from docs/legal/consent-texts.*.md; counsel review pending.",
+    "en": "We process pose data (the positions of your body joints over time), up to 5 still images and the details you choose (sport, skill, camera view, handedness, level) to analyze your strokes and keep your history. The data is stored on Supabase servers in Singapore, which means it is transferred outside Vietnam. Still images are deleted as soon as the analysis finishes, at the latest after 72 hours. Pose data and results are kept until you delete the analysis or your account; pose data is deleted automatically after 24 months without using the app.",
+    "vi": "Chúng tôi xử lý dữ liệu tư thế (vị trí các khớp cơ thể theo thời gian), tối đa 5 ảnh tĩnh và thông tin bạn chọn (môn, kỹ thuật, góc quay, tay thuận, trình độ) để phân tích cú đánh và lưu lịch sử cho bạn. Dữ liệu được lưu trên máy chủ của Supabase tại Singapore, tức là được chuyển ra ngoài Việt Nam. Ảnh tĩnh bị xoá ngay khi phân tích xong, chậm nhất sau 72 giờ. Dữ liệu tư thế và kết quả được giữ đến khi bạn xoá phân tích hoặc tài khoản; dữ liệu tư thế tự xoá sau 24 tháng bạn không dùng ứng dụng."
+  },
+  "consent.pdpl.checkbox": {
+    "comment": "(a) Checkbox label, unticked by default.",
+    "en": "I agree to the processing and the transfer to Singapore described above.",
+    "vi": "Tôi đồng ý với việc xử lý dữ liệu và chuyển dữ liệu đến Singapore như trên."
+  },
+  "consent.pdpl.title": {
+    "comment": "(a) Required item title: processing and cross-border transfer (PDPL). Changing (a) requires bumping consent_versions.pdpl.",
+    "en": "Data processing and storage in Singapore (required)",
+    "vi": "Xử lý dữ liệu và lưu trữ tại Singapore (bắt buộc)"
+  },
+  "consent.reconsent.intro": {
+    "comment": "Intro when a consent version changed.",
+    "en": "Please review and agree to keep analyzing.",
+    "vi": "Vui lòng xem lại và đồng ý để tiếp tục phân tích."
+  },
+  "consent.reconsent.title": {
+    "comment": "Title when a consent version changed since the user agreed.",
+    "en": "We've updated how we handle your data",
+    "vi": "Chúng tôi đã cập nhật cách xử lý dữ liệu"
+  },
+  "consent.required_hint": {
+    "comment": "Shown above the button until both required items are ticked.",
+    "en": "Tick both required items to continue.",
+    "vi": "Hãy đánh dấu hai mục bắt buộc để tiếp tục."
+  },
+  "consent.title": {
+    "comment": "Title of the first-submit consent sheet (DESIGN.md §2.2 step 5).",
+    "en": "Before your first analysis",
+    "vi": "Trước khi phân tích lần đầu"
+  }
+}

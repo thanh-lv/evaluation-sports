@@ -90,7 +90,7 @@ export interface MoveOptions {
 export interface StorageService {
   signedUrl(bucket: string, path: string, expiresInSec: number): Promise<string>;
   /** null when the object does not exist. */
-  download(bucket: string, path: string): Promise<Uint8Array | null>;
+  download(bucket: string, path: string): Promise<Uint8Array<ArrayBuffer> | null>;
   downloadText(bucket: string, path: string): Promise<string | null>;
   downloadJson<T = unknown>(bucket: string, path: string): Promise<T | null>;
   upload(bucket: string, path: string, body: Uint8Array | Blob | string, options: UploadOptions): Promise<void>;
@@ -228,7 +228,7 @@ export function createStorageService(api: BucketsApi, options: StorageServiceOpt
     fail('move', first.error);
   };
 
-  const download = async (bucket: string, path: string): Promise<Uint8Array | null> => {
+  const download = async (bucket: string, path: string): Promise<Uint8Array<ArrayBuffer> | null> => {
     const { data, error } = await api.from(bucket).download(normalizeStoragePath(path));
     if (error) {
       if (isNotFound(error)) return null;

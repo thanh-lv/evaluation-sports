@@ -1,0 +1,138 @@
+{
+  "_about": "Shared strings (App shell). Owner: App shell agent. Other features: add your own <area>.json instead of editing this file.",
+  "common.beta": {
+    "comment": "Label next to every score: scores are still being calibrated (DESIGN.md D3). Keep lowercase.",
+    "en": "beta",
+    "vi": "beta"
+  },
+  "common.cancel": {
+    "comment": "Generic cancel button.",
+    "en": "Cancel",
+    "vi": "Huỷ"
+  },
+  "common.close": {
+    "comment": "Generic close button / accessibility label of an X button.",
+    "en": "Close",
+    "vi": "Đóng"
+  },
+  "common.coming_soon": {
+    "comment": "Development placeholder for a screen that is not built yet.",
+    "en": "This screen is coming in a later build.",
+    "vi": "Màn hình này sẽ có trong bản cập nhật tới."
+  },
+  "common.continue": {
+    "comment": "Generic continue button.",
+    "en": "Continue",
+    "vi": "Tiếp tục"
+  },
+  "common.done": {
+    "comment": "Generic done button.",
+    "en": "Done",
+    "vi": "Xong"
+  },
+  "common.loading": {
+    "comment": "Spinner caption.",
+    "en": "Loading…",
+    "vi": "Đang tải…"
+  },
+  "common.ok": {
+    "comment": "Generic OK button.",
+    "en": "OK",
+    "vi": "OK"
+  },
+  "common.optional": {
+    "comment": "Marks a form field the user may skip.",
+    "en": "Optional",
+    "vi": "Không bắt buộc"
+  },
+  "common.retry": {
+    "comment": "Retry button after an error.",
+    "en": "Try again",
+    "vi": "Thử lại"
+  },
+  "handedness.left": {
+    "comment": "Handedness option: holds the racket in the left hand.",
+    "en": "Left-handed",
+    "vi": "Tay trái"
+  },
+  "handedness.right": {
+    "comment": "Handedness option: holds the racket in the right hand.",
+    "en": "Right-handed",
+    "vi": "Tay phải"
+  },
+  "level.advanced": {
+    "comment": "Player level 4 of 4 (DESIGN.md §10.2). Never a club rating or DUPR.",
+    "en": "Advanced",
+    "vi": "Nâng cao"
+  },
+  "level.beginner": {
+    "comment": "Player level 1 of 4 (DESIGN.md §10.2).",
+    "en": "Beginner",
+    "vi": "Mới bắt đầu"
+  },
+  "level.improving": {
+    "comment": "Player level 2 of 4 (DESIGN.md §10.2).",
+    "en": "Improving",
+    "vi": "Đang tiến bộ"
+  },
+  "level.intermediate": {
+    "comment": "Player level 3 of 4 (DESIGN.md §10.2).",
+    "en": "Intermediate",
+    "vi": "Trung cấp"
+  },
+  "route.account_link": {
+    "comment": "Title of the sign-in sheet that keeps history across devices (D14).",
+    "en": "Save your history",
+    "vi": "Lưu lịch sử"
+  },
+  "route.camera_guide": {
+    "comment": "Title of the camera setup guide screen.",
+    "en": "Camera guide",
+    "vi": "Hướng dẫn đặt máy quay"
+  },
+  "route.history": {
+    "comment": "Title of the history screen.",
+    "en": "History",
+    "vi": "Lịch sử"
+  },
+  "route.new_analysis": {
+    "comment": "Title of the new analysis flow.",
+    "en": "New analysis",
+    "vi": "Phân tích mới"
+  },
+  "route.paywall": {
+    "comment": "Title of the subscription screen. Brand-like, keep 'Premium'.",
+    "en": "Premium",
+    "vi": "Premium"
+  },
+  "route.progress": {
+    "comment": "Title of the progress charts screen.",
+    "en": "Progress",
+    "vi": "Tiến bộ"
+  },
+  "route.result": {
+    "comment": "Title of the analysis result screen.",
+    "en": "Your result",
+    "vi": "Kết quả"
+  },
+  "route.sample_analysis": {
+    "comment": "Title of the offline sample analysis (demo).",
+    "en": "Sample analysis",
+    "vi": "Phân tích mẫu"
+  },
+  "route.settings": {
+    "comment": "Title of the settings screen.",
+    "en": "Settings",
+    "vi": "Cài đặt"
+  },
+  "sport.badminton": {
+    "comment": "Sport name.",
+    "en": "Badminton",
+    "vi": "Cầu lông"
+  },
+  "sport.pickleball": {
+    "comment": "Sport name (kept in English in Vietnamese).",
+    "en": "Pickleball",
+    "vi": "Pickleball"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "_about": "Welcome screen (DESIGN.md §2.2 step 1). Owner: App shell agent.",
+  "welcome.ai_note": {
+    "comment": "Small print under the Welcome buttons (Vietnam AI Law 134/2025 transparency).",
+    "en": "Feedback is AI-generated and may be inaccurate. Not medical advice.",
+    "vi": "Nhận xét do AI tạo, có thể chưa chính xác. Không phải lời khuyên y tế."
+  },
+  "welcome.card.fix.body": {
+    "comment": "Welcome value card 1 body.",
+    "en": "Film one stroke and get the most important fix, with a cue and a drill to practice.",
+    "vi": "Quay một kỹ thuật, nhận ngay điểm quan trọng nhất cần sửa kèm mẹo và bài tập."
+  },
+  "welcome.card.fix.title": {
+    "comment": "Welcome value card 1 title: the app gives one priority fix per analysis.",
+    "en": "One fix to start with",
+    "vi": "Một điểm cần sửa trước"
+  },
+  "welcome.card.privacy.body": {
+    "comment": "Welcome value card 2 body. Same facts as the camera permission text (DESIGN.md §10.1); never claim all faces are blurred.",
+    "en": "Body movement is read on your iPhone. Only pose data and up to 5 still images, faces blurred, are sent, after you agree.",
+    "vi": "Chuyển động được đọc ngay trên máy. Chỉ dữ liệu tư thế và tối đa 5 ảnh tĩnh (đã làm mờ khuôn mặt) được gửi đi, sau khi bạn đồng ý."
+  },
+  "welcome.card.privacy.title": {
+    "comment": "Welcome value card 2 title. Must stay true: the video is never uploaded.",
+    "en": "Your video stays on your iPhone",
+    "vi": "Video ở lại trên iPhone của bạn"
+  },
+  "welcome.card.sports.body": {
+    "comment": "Welcome value card 3 body.",
+    "en": "A score with six parts, your strengths and a short practice plan for each stroke.",
+    "vi": "Điểm tổng với 6 tiêu chí, điểm mạnh của bạn và kế hoạch tập ngắn cho từng kỹ thuật."
+  },
+  "welcome.card.sports.title": {
+    "comment": "Welcome value card 3 title.",
+    "en": "Badminton and pickleball",
+    "vi": "Cầu lông và pickleball"
+  },
+  "welcome.language": {
+    "comment": "Prefix of the language picker link on Welcome, followed by the current language name.",
+    "en": "Language:",
+    "vi": "Ngôn ngữ:"
+  },
+  "welcome.sample": {
+    "comment": "Secondary button on Welcome: opens the offline demo (DESIGN.md §2.2 step 1).",
+    "en": "See a sample analysis",
+    "vi": "Xem phân tích mẫu"
+  },
+  "welcome.start": {
+    "comment": "Primary button on Welcome (DESIGN.md §2.2 step 1).",
+    "en": "Get started",
+    "vi": "Bắt đầu"
+  },
+  "welcome.subtitle": {
+    "comment": "Tagline under the app name on Welcome. No medical or 'like a real coach' claims (DESIGN.md §10.2).",
+    "en": "Your AI coach for badminton and pickleball technique.",
+    "vi": "Huấn luyện viên AI giúp bạn sửa kỹ thuật cầu lông và pickleball."
+  }
+}

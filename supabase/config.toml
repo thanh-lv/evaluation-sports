@@ -409,22 +409,37 @@ deno_version = 2
 # [edge_runtime.secrets]
 # secret_key = "env(SECRET_VALUE)"
 
-# verify_jwt per DESIGN.md §6.1. `analyze` hosts both the user routes (catalog/prepare/submit: the handler verifies
-# the JWT itself with getClaims) and /analyze/run (x-internal-secret from pg_net), so the gateway check is off for
-# the whole function. `cron` checks x-cron-secret; `appstore-webhook` is called by Apple without a JWT.
-# The other functions keep the default verify_jwt = true (verify-subscription, apple-auth-exchange, account-merge,
-# delete-account).
-#
-# NOTE: the CLI refuses to start when a [functions.<name>] entry has no supabase/functions/<name>/index.ts, so each
-# entry below stays commented until its function lands. Uncomment it in the same change that adds the function.
-# [functions.analyze]
-# verify_jwt = false
-#
-# [functions.cron]
-# verify_jwt = false
-#
-# [functions.appstore-webhook]
-# verify_jwt = false
+# Edge Functions. The gateway JWT check (verify_jwt) is OFF for every function and each handler authenticates in
+# code (_shared/auth.ts), so the behaviour is the same everywhere:
+# - user routes (analyze catalog/prepare/submit, verify-subscription, apple-auth-exchange, account-merge,
+#   delete-account) call requireUser(), which verifies the bearer JWT with supabase-js getClaims() (asymmetric
+#   signing keys: the legacy gateway check cannot verify them);
+# - /analyze/run checks x-internal-secret and /cron checks x-cron-secret (pg_net sends no user JWT);
+# - appstore-webhook is called by Apple without a JWT (the signed payload is verified instead);
+# - CORS preflights (OPTIONS, no Authorization header) from the Web Lab reach the function.
+# supabase/functions/deno.json is picked up as the import map (the "@shared/" alias) without an import_map entry.
+# NOTE: `supabase start` / `functions serve` fail ("failed to read file … index.ts") while any entry below has no
+# supabase/functions/<name>/index.ts.
+[functions.analyze]
+verify_jwt = false
+
+[functions.cron]
+verify_jwt = false
+
+[functions.appstore-webhook]
+verify_jwt = false
+
+[functions.verify-subscription]
+verify_jwt = false
+
+[functions.apple-auth-exchange]
+verify_jwt = false
+
+[functions.account-merge]
+verify_jwt = false
+
+[functions.delete-account]
+verify_jwt = false
 
 [analytics]
 enabled = true

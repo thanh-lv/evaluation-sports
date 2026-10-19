@@ -1,0 +1,63 @@
+{
+  "_about": "About you (DESIGN.md §2.2 step 2, D21). Owner: App shell agent.",
+  "about.age.attest": {
+    "comment": "Checkbox shown only when the birth year is exactly at the minimum age. %lld = app_config.min_user_age. Exact text: docs/legal/consent-texts.*.md §3.",
+    "en": "I confirm that I am at least %lld years old.",
+    "vi": "Tôi xác nhận tôi đã đủ %lld tuổi."
+  },
+  "about.age.blocked": {
+    "comment": "Polite block below the minimum age. %lld = app_config.min_user_age. Exact text: docs/legal/consent-texts.*.md §3.",
+    "en": "Sorry, RacketCoach is currently only for people aged %lld and over.",
+    "vi": "Rất tiếc, RacketCoach hiện chỉ dành cho người từ %lld tuổi trở lên."
+  },
+  "about.birth_year.placeholder": {
+    "comment": "First (neutral) row of the birth-year wheel; nothing is pre-selected.",
+    "en": "Select a year",
+    "vi": "Chọn năm sinh"
+  },
+  "about.birth_year.title": {
+    "comment": "Birth-year question (docs/legal/consent-texts.*.md §3).",
+    "en": "What year were you born?",
+    "vi": "Bạn sinh năm nào?"
+  },
+  "about.birth_year.why": {
+    "comment": "Explains why the birth year is asked.",
+    "en": "We only use your birth year to check the minimum age.",
+    "vi": "Chúng tôi chỉ dùng năm sinh để kiểm tra độ tuổi tối thiểu."
+  },
+  "about.continue": {
+    "comment": "Button at the bottom of About you; enabled when the age check passes and handedness is chosen.",
+    "en": "Continue",
+    "vi": "Tiếp tục"
+  },
+  "about.handedness.hint": {
+    "comment": "Hint under the handedness choice (racket for badminton, paddle for pickleball).",
+    "en": "The hand that holds the racket or paddle.",
+    "vi": "Tay bạn cầm vợt."
+  },
+  "about.handedness.title": {
+    "comment": "Handedness question.",
+    "en": "Which hand do you play with?",
+    "vi": "Bạn đánh bằng tay nào?"
+  },
+  "about.level.hint": {
+    "comment": "Hint under the optional level choice. Do not mention club ratings or DUPR.",
+    "en": "This helps the AI pitch its feedback at the right level. You can change it later in Settings.",
+    "vi": "Giúp AI nhận xét phù hợp với trình độ của bạn. Bạn có thể đổi sau trong Cài đặt."
+  },
+  "about.level.title": {
+    "comment": "Optional level question.",
+    "en": "Your level",
+    "vi": "Trình độ của bạn"
+  },
+  "about.subtitle": {
+    "comment": "Subtitle of About you.",
+    "en": "Three quick questions so the feedback fits you.",
+    "vi": "Ba câu hỏi nhanh để nhận xét phù hợp với bạn."
+  },
+  "about.title": {
+    "comment": "Title of the About you screen (DESIGN.md §2.2 step 2).",
+    "en": "About you",
+    "vi": "Về bạn"
+  }
+}

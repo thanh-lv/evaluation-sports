@@ -8,11 +8,12 @@
  * - `requireSecret(req, header, secret)`: constant-time shared-secret check for `/analyze/run` and `/cron`.
  *
  * The gateway's `verify_jwt` is off for every function (config.toml); this module is the only check.
+ * Constant-time comparison comes from crypto.ts.
  */
 import { createClient } from '@supabase/supabase-js';
 import { LOWER_UUID_RE } from '@shared/contracts/index.ts';
 import { ConfigError, httpError } from './errors.ts';
-import type { ServerEnv } from './env.ts';
+import { getEnv, type ServerEnv } from './env.ts';
 import { timingSafeEqual } from './crypto.ts';
 
 /** The claims we rely on (subset of supabase-js `JwtPayload`). */
@@ -54,17 +55,28 @@ export function bearerToken(req: Request): string | null {
   return m ? m[1] : null;
 }
 
-let defaultVerifier: ClaimsVerifier | null = null;
+/** Header names of the shared-secret routes (pg_net sends them; see migrations/…0900_cron.sql). */
+export const INTERNAL_SECRET_HEADER = 'x-internal-secret';
+export const CRON_SECRET_HEADER = 'x-cron-secret';
 
-/** A shared supabase-js auth client (anon/publishable key, no session persistence). JWKS are cached by supabase-js. */
-export function createClaimsVerifier(env: Pick<ServerEnv, 'supabaseUrl' | 'anonKey'>): ClaimsVerifier {
+type VerifierEnv = Pick<ServerEnv, 'supabaseUrl' | 'anonKey'> & Partial<Pick<ServerEnv, 'jwks'>>;
+
+/**
+ * A supabase-js auth client (anon/publishable key, no session). With `env.jwks` (the runtime's `SUPABASE_JWKS`)
+ * getClaims verifies without fetching; an unknown `kid` still falls back to the cached JWKS endpoint.
+ */
+export function createClaimsVerifier(env: VerifierEnv): ClaimsVerifier {
   const client = createClient(env.supabaseUrl, env.anonKey, {
     auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
   });
-  return client.auth;
+  const jwks = env.jwks ?? undefined;
+  return { getClaims: (jwt) => client.auth.getClaims(jwt, jwks ? { jwks } : undefined) };
 }
 
-export function getClaimsVerifier(env: Pick<ServerEnv, 'supabaseUrl' | 'anonKey'>): ClaimsVerifier {
+let defaultVerifier: ClaimsVerifier | null = null;
+
+/** The per-worker verifier (one client, one JWKS cache). */
+export function getClaimsVerifier(env: VerifierEnv = getEnv()): ClaimsVerifier {
   defaultVerifier ??= createClaimsVerifier(env);
   return defaultVerifier;
 }
@@ -104,11 +116,18 @@ export async function verifyAccessToken(token: string, verifier: ClaimsVerifier)
   return { userId, isAnonymous: claims.is_anonymous === true, token, claims };
 }
 
-/** `requireUser(req, verifier)`: the authenticated caller (anonymous users included; check `isAnonymous`). */
-export function requireUser(req: Request, verifier: ClaimsVerifier): Promise<AuthedUser> {
+/**
+ * The authenticated caller (anonymous users included; check `isAnonymous`). Handlers pass their injected verifier;
+ * without one the per-worker verifier built from `getEnv()` is used.
+ */
+export function requireUser(req: Request, verifier?: ClaimsVerifier): Promise<AuthedUser> {
   const token = bearerToken(req);
   if (!token) return Promise.reject(httpError('unauthorized', 'missing bearer token'));
-  return verifyAccessToken(token, verifier);
+  try {
+    return verifyAccessToken(token, verifier ?? getClaimsVerifier());
+  } catch (err) {
+    return Promise.reject(err);
+  }
 }
 
 /**

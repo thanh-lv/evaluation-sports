@@ -1,0 +1,3030 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "about.age.attest" : {
+      "comment" : "Checkbox shown only when the birth year is exactly at the minimum age. %lld = app_config.min_user_age. Exact text: docs/legal/consent-texts.*.md §3.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I confirm that I am at least %lld years old."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tôi xác nhận tôi đã đủ %lld tuổi."
+          }
+        }
+      }
+    },
+    "about.age.blocked" : {
+      "comment" : "Polite block below the minimum age. %lld = app_config.min_user_age. Exact text: docs/legal/consent-texts.*.md §3.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, RacketCoach is currently only for people aged %lld and over."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rất tiếc, RacketCoach hiện chỉ dành cho người từ %lld tuổi trở lên."
+          }
+        }
+      }
+    },
+    "about.birth_year.placeholder" : {
+      "comment" : "First (neutral) row of the birth-year wheel; nothing is pre-selected.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a year"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn năm sinh"
+          }
+        }
+      }
+    },
+    "about.birth_year.title" : {
+      "comment" : "Birth-year question (docs/legal/consent-texts.*.md §3).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What year were you born?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn sinh năm nào?"
+          }
+        }
+      }
+    },
+    "about.birth_year.why" : {
+      "comment" : "Explains why the birth year is asked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We only use your birth year to check the minimum age."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chúng tôi chỉ dùng năm sinh để kiểm tra độ tuổi tối thiểu."
+          }
+        }
+      }
+    },
+    "about.continue" : {
+      "comment" : "Button at the bottom of About you; enabled when the age check passes and handedness is chosen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        }
+      }
+    },
+    "about.handedness.hint" : {
+      "comment" : "Hint under the handedness choice (racket for badminton, paddle for pickleball).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The hand that holds the racket or paddle."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tay bạn cầm vợt."
+          }
+        }
+      }
+    },
+    "about.handedness.title" : {
+      "comment" : "Handedness question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which hand do you play with?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn đánh bằng tay nào?"
+          }
+        }
+      }
+    },
+    "about.level.hint" : {
+      "comment" : "Hint under the optional level choice. Do not mention club ratings or DUPR.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This helps the AI pitch its feedback at the right level. You can change it later in Settings."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giúp AI nhận xét phù hợp với trình độ của bạn. Bạn có thể đổi sau trong Cài đặt."
+          }
+        }
+      }
+    },
+    "about.level.title" : {
+      "comment" : "Optional level question.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your level"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trình độ của bạn"
+          }
+        }
+      }
+    },
+    "about.subtitle" : {
+      "comment" : "Subtitle of About you.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three quick questions so the feedback fits you."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ba câu hỏi nhanh để nhận xét phù hợp với bạn."
+          }
+        }
+      }
+    },
+    "about.title" : {
+      "comment" : "Title of the About you screen (DESIGN.md §2.2 step 2).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About you"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Về bạn"
+          }
+        }
+      }
+    },
+    "camera.tip.choose_skill" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick the skill that is actually in the clip."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn đúng kỹ thuật có trong video."
+          }
+        }
+      }
+    },
+    "camera.tip.clip_length" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep the clip between 3 and 30 seconds."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giữ video trong khoảng 3–30 giây."
+          }
+        }
+      }
+    },
+    "camera.tip.fps_60" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record at 60 fps and turn off \"Auto FPS\" in Settings › Camera › Record Video."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quay 60 fps và tắt \"FPS tự động\" trong Cài đặt › Camera › Quay video."
+          }
+        }
+      }
+    },
+    "camera.tip.full_body" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep your whole body and racket in frame, from racket tip to feet."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Để thấy toàn thân và cả vợt, từ đầu vợt đến bàn chân."
+          }
+        }
+      }
+    },
+    "camera.tip.lighting" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Film in good light and avoid backlight."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quay nơi đủ sáng, tránh ngược sáng."
+          }
+        }
+      }
+    },
+    "camera.tip.move_closer" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move the phone a little closer."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt máy gần hơn một chút."
+          }
+        }
+      }
+    },
+    "camera.tip.one_player" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep only the player in frame if you can."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉ để người đánh trong khung hình nếu được."
+          }
+        }
+      }
+    },
+    "camera.tip.player_height" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The player should fill about ½–⅔ of the frame height."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người đánh nên chiếm khoảng ½–⅔ chiều cao khung hình."
+          }
+        }
+      }
+    },
+    "camera.tip.recommended_view" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use the recommended camera view for this skill."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dùng góc quay khuyến nghị cho kỹ thuật này."
+          }
+        }
+      }
+    },
+    "camera.tip.repetitions" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repeat one stroke 5–10 times."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lặp lại một kỹ thuật 5–10 lần."
+          }
+        }
+      }
+    },
+    "camera.tip.steady_camera" : {
+      "comment" : "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use a tripod or prop the phone up firmly; don't hold it."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dùng chân máy hoặc kê máy thật chắc, đừng cầm tay."
+          }
+        }
+      }
+    },
+    "common.beta" : {
+      "comment" : "Label next to every score: scores are still being calibrated (DESIGN.md D3). Keep lowercase.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "beta"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "beta"
+          }
+        }
+      }
+    },
+    "common.cancel" : {
+      "comment" : "Generic cancel button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huỷ"
+          }
+        }
+      }
+    },
+    "common.close" : {
+      "comment" : "Generic close button / accessibility label of an X button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đóng"
+          }
+        }
+      }
+    },
+    "common.coming_soon" : {
+      "comment" : "Development placeholder for a screen that is not built yet.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This screen is coming in a later build."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Màn hình này sẽ có trong bản cập nhật tới."
+          }
+        }
+      }
+    },
+    "common.continue" : {
+      "comment" : "Generic continue button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        }
+      }
+    },
+    "common.done" : {
+      "comment" : "Generic done button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xong"
+          }
+        }
+      }
+    },
+    "common.loading" : {
+      "comment" : "Spinner caption.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading…"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đang tải…"
+          }
+        }
+      }
+    },
+    "common.ok" : {
+      "comment" : "Generic OK button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "common.optional" : {
+      "comment" : "Marks a form field the user may skip.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không bắt buộc"
+          }
+        }
+      }
+    },
+    "common.retry" : {
+      "comment" : "Retry button after an error.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thử lại"
+          }
+        }
+      }
+    },
+    "consent.ai.body" : {
+      "comment" : "(b) Full text with line breaks and bullets. Exact legal wording; must keep the best-effort blur wording and Anthropic's retention period.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your feedback is written by Claude, an AI model made by Anthropic PBC in the USA. For each analysis we send Anthropic:\n• the pose coordinates of your strokes;\n• up to 5 still images, with faces automatically blurred (best effort, which cannot be guaranteed in every case) and other people masked;\n• sport, skill, camera view, handedness and level.\nYour video is never uploaded. We delete the still images as soon as the analysis finishes, at the latest after 72 hours. Under Anthropic's current policy, data sent through its API is deleted automatically within 30 days (longer if flagged for a usage-policy violation) and is not used to train AI models.\nYou can withdraw consent at any time in Settings › Privacy; you then won't be able to start new analyses."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhận xét được viết bởi Claude, mô hình AI của Anthropic PBC tại Hoa Kỳ. Với mỗi phân tích, chúng tôi gửi cho Anthropic:\n• toạ độ tư thế của các cú đánh;\n• tối đa 5 ảnh tĩnh, trong đó khuôn mặt được tự động làm mờ (ở mức tốt nhất có thể, không đảm bảo trong mọi trường hợp) và những người khác bị che;\n• môn, kỹ thuật, góc quay, tay thuận và trình độ.\nVideo của bạn không bao giờ được tải lên. Chúng tôi xoá ảnh tĩnh ngay khi phân tích xong, chậm nhất sau 72 giờ. Theo chính sách hiện hành của Anthropic, dữ liệu gửi qua API được tự động xoá trong vòng 30 ngày (lâu hơn nếu bị gắn cờ vi phạm chính sách sử dụng) và không được dùng để huấn luyện AI.\nBạn có thể rút lại đồng ý bất cứ lúc nào trong Cài đặt › Quyền riêng tư; khi đó bạn sẽ không tạo được phân tích mới."
+          }
+        }
+      }
+    },
+    "consent.ai.checkbox" : {
+      "comment" : "(b) Checkbox label, unticked by default.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I agree to send the data above to Anthropic in the USA for AI analysis."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tôi đồng ý gửi dữ liệu nêu trên cho Anthropic tại Hoa Kỳ để AI phân tích."
+          }
+        }
+      }
+    },
+    "consent.ai.title" : {
+      "comment" : "(b) Required item title: AI processing by Anthropic (USA). Changing (b) requires bumping consent_versions.ai.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI analysis by Anthropic (Claude, USA) (required)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích bằng AI của Anthropic (Claude, Hoa Kỳ) (bắt buộc)"
+          }
+        }
+      }
+    },
+    "consent.button.accept" : {
+      "comment" : "Primary button; enabled only when (a) and (b) are ticked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agree and continue"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đồng ý và tiếp tục"
+          }
+        }
+      }
+    },
+    "consent.button.later" : {
+      "comment" : "Declines for now: the analysis is not submitted.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not now"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Để sau"
+          }
+        }
+      }
+    },
+    "consent.calibration.body" : {
+      "comment" : "(c) Explanation.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you turn this on, we may use your pose data and analysis results, with identifying information removed and without images, to calibrate the scoring and check quality. You can turn it off at any time in Settings › Privacy."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu bạn bật, chúng tôi có thể dùng dữ liệu tư thế và kết quả phân tích của bạn, sau khi đã loại bỏ thông tin định danh và không kèm ảnh, để hiệu chỉnh thang chấm và kiểm tra chất lượng. Bạn có thể tắt bất cứ lúc nào trong Cài đặt › Quyền riêng tư."
+          }
+        }
+      }
+    },
+    "consent.calibration.title" : {
+      "comment" : "(c) Optional item title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve accuracy (optional)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cải thiện độ chính xác (không bắt buộc)"
+          }
+        }
+      }
+    },
+    "consent.calibration.toggle" : {
+      "comment" : "(c) Toggle label, off by default (DESIGN.md §2.2 step 5c).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow anonymized data to be used to improve accuracy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cho phép dùng dữ liệu đã ẩn danh để cải thiện độ chính xác"
+          }
+        }
+      }
+    },
+    "consent.consumption.body" : {
+      "comment" : "(d) Explanation of consumption information sent to Apple on refund requests.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you ask Apple for a refund of Premium, Apple may ask us how you used the service. If you turn this on, we send Apple a summary such as how much of the service you used, how long you have used it and your in-app purchase history; we never send images, pose data or feedback content. If you leave it off, we send nothing."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khi bạn yêu cầu Apple hoàn tiền gói Premium, Apple có thể hỏi chúng tôi về mức sử dụng của bạn. Nếu bạn bật, chúng tôi gửi cho Apple bản tóm tắt như mức độ bạn đã dùng dịch vụ, thời gian sử dụng và lịch sử mua trong ứng dụng; không gửi ảnh, dữ liệu tư thế hay nội dung nhận xét. Nếu bạn không bật, chúng tôi không gửi gì."
+          }
+        }
+      }
+    },
+    "consent.consumption.title" : {
+      "comment" : "(d) Optional item title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share with Apple on refund requests (optional)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chia sẻ với Apple khi hoàn tiền (không bắt buộc)"
+          }
+        }
+      }
+    },
+    "consent.consumption.toggle" : {
+      "comment" : "(d) Toggle label, off by default.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow sending usage information to Apple when I request a refund"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cho phép gửi thông tin sử dụng cho Apple khi tôi yêu cầu hoàn tiền"
+          }
+        }
+      }
+    },
+    "consent.declined.message" : {
+      "comment" : "Shown after 'Not now'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can still view the sample analysis. To analyze your own videos, agree to the two required items."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn vẫn có thể xem phân tích mẫu. Để phân tích video của bạn, cần đồng ý hai mục bắt buộc."
+          }
+        }
+      }
+    },
+    "consent.intro" : {
+      "comment" : "Intro of the consent sheet.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For the AI to review your strokes, we need your consent. The first two items are required; the last two are up to you."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Để AI nhận xét cú đánh của bạn, chúng tôi cần sự đồng ý của bạn. Hai mục đầu là bắt buộc; hai mục sau tuỳ bạn chọn."
+          }
+        }
+      }
+    },
+    "consent.link.ai" : {
+      "comment" : "Link to the AI disclosure web page.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI Disclosure"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Công bố về AI"
+          }
+        }
+      }
+    },
+    "consent.link.privacy" : {
+      "comment" : "Link to the privacy policy web page.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chính sách quyền riêng tư"
+          }
+        }
+      }
+    },
+    "consent.pdpl.body" : {
+      "comment" : "(a) Full text. Exact legal wording from docs/legal/consent-texts.*.md; counsel review pending.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We process pose data (the positions of your body joints over time), up to 5 still images and the details you choose (sport, skill, camera view, handedness, level) to analyze your strokes and keep your history. The data is stored on Supabase servers in Singapore, which means it is transferred outside Vietnam. Still images are deleted as soon as the analysis finishes, at the latest after 72 hours. Pose data and results are kept until you delete the analysis or your account; pose data is deleted automatically after 24 months without using the app."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chúng tôi xử lý dữ liệu tư thế (vị trí các khớp cơ thể theo thời gian), tối đa 5 ảnh tĩnh và thông tin bạn chọn (môn, kỹ thuật, góc quay, tay thuận, trình độ) để phân tích cú đánh và lưu lịch sử cho bạn. Dữ liệu được lưu trên máy chủ của Supabase tại Singapore, tức là được chuyển ra ngoài Việt Nam. Ảnh tĩnh bị xoá ngay khi phân tích xong, chậm nhất sau 72 giờ. Dữ liệu tư thế và kết quả được giữ đến khi bạn xoá phân tích hoặc tài khoản; dữ liệu tư thế tự xoá sau 24 tháng bạn không dùng ứng dụng."
+          }
+        }
+      }
+    },
+    "consent.pdpl.checkbox" : {
+      "comment" : "(a) Checkbox label, unticked by default.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I agree to the processing and the transfer to Singapore described above."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tôi đồng ý với việc xử lý dữ liệu và chuyển dữ liệu đến Singapore như trên."
+          }
+        }
+      }
+    },
+    "consent.pdpl.title" : {
+      "comment" : "(a) Required item title: processing and cross-border transfer (PDPL). Changing (a) requires bumping consent_versions.pdpl.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data processing and storage in Singapore (required)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xử lý dữ liệu và lưu trữ tại Singapore (bắt buộc)"
+          }
+        }
+      }
+    },
+    "consent.reconsent.intro" : {
+      "comment" : "Intro when a consent version changed.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please review and agree to keep analyzing."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng xem lại và đồng ý để tiếp tục phân tích."
+          }
+        }
+      }
+    },
+    "consent.reconsent.title" : {
+      "comment" : "Title when a consent version changed since the user agreed.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We've updated how we handle your data"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chúng tôi đã cập nhật cách xử lý dữ liệu"
+          }
+        }
+      }
+    },
+    "consent.required_hint" : {
+      "comment" : "Shown above the button until both required items are ticked.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tick both required items to continue."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy đánh dấu hai mục bắt buộc để tiếp tục."
+          }
+        }
+      }
+    },
+    "consent.title" : {
+      "comment" : "Title of the first-submit consent sheet (DESIGN.md §2.2 step 5).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before your first analysis"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trước khi phân tích lần đầu"
+          }
+        }
+      }
+    },
+    "error.age_attestation_required" : {
+      "comment" : "Profile check age_attestation_required.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please confirm your age to continue."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy xác nhận độ tuổi của bạn để tiếp tục."
+          }
+        }
+      }
+    },
+    "error.analysis_conflict" : {
+      "comment" : "API error analysis_conflict (409).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This analysis has already been sent or is being processed."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích này đã được gửi hoặc đang được xử lý."
+          }
+        }
+      }
+    },
+    "error.analysis_not_found" : {
+      "comment" : "API error analysis_not_found (404).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't find this analysis."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không tìm thấy phân tích này."
+          }
+        }
+      }
+    },
+    "error.auth.email_invalid" : {
+      "comment" : "Email address rejected.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a valid email address."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Địa chỉ email chưa đúng."
+          }
+        }
+      }
+    },
+    "error.auth.generic" : {
+      "comment" : "Any other sign-in error.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't sign you in. Please try again."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không đăng nhập được. Hãy thử lại."
+          }
+        }
+      }
+    },
+    "error.auth.identity_exists" : {
+      "comment" : "Identity already linked to another account (normally handled by merging).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This account already exists."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tài khoản này đã tồn tại."
+          }
+        }
+      }
+    },
+    "error.auth.linking_disabled" : {
+      "comment" : "Sign-in provider or manual linking disabled on the server.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing in isn't available right now. Please try again later."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiện chưa đăng nhập được. Hãy thử lại sau."
+          }
+        }
+      }
+    },
+    "error.auth.otp_invalid" : {
+      "comment" : "Email one-time code rejected.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That code is wrong or has expired. Check it or ask for a new one."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mã không đúng hoặc đã hết hạn. Hãy kiểm tra lại hoặc gửi mã mới."
+          }
+        }
+      }
+    },
+    "error.busy_try_later" : {
+      "comment" : "API error busy_try_later (503), daily budget guard.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We're very busy right now. Please try again later."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hệ thống đang quá tải. Hãy thử lại sau."
+          }
+        }
+      }
+    },
+    "error.cancelled" : {
+      "comment" : "The operation was cancelled.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelled."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã huỷ."
+          }
+        }
+      }
+    },
+    "error.clip_too_long" : {
+      "comment" : "Prepare rejection clip_too_long.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The clip is too long. Keep it between 3 and 30 seconds."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video quá dài. Hãy giữ video trong khoảng 3–30 giây."
+          }
+        }
+      }
+    },
+    "error.clip_too_short" : {
+      "comment" : "Prepare rejection clip_too_short.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The clip is too short. Keep it between 3 and 30 seconds."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video quá ngắn. Hãy giữ video trong khoảng 3–30 giây."
+          }
+        }
+      }
+    },
+    "error.consent_required" : {
+      "comment" : "API error consent_required (403).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please agree to the two required items before analyzing."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn cần đồng ý hai mục bắt buộc trước khi phân tích."
+          }
+        }
+      }
+    },
+    "error.decoding" : {
+      "comment" : "Response could not be decoded (contract drift).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app received data it couldn't read. Please update RacketCoach."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng nhận được dữ liệu không đọc được. Hãy cập nhật RacketCoach."
+          }
+        }
+      }
+    },
+    "error.forbidden" : {
+      "comment" : "API error forbidden (403), e.g. an old result locked on the free plan.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have access to this."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn không có quyền xem nội dung này."
+          }
+        }
+      }
+    },
+    "error.fps_too_low" : {
+      "comment" : "Prepare rejection fps_too_low.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The frame rate is too low (below 24 fps)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tốc độ khung hình quá thấp (dưới 24 fps)."
+          }
+        }
+      }
+    },
+    "error.frames_missing" : {
+      "comment" : "API error frames_missing (422) at submit.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some images didn't finish uploading. Please try again."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một số ảnh chưa tải lên xong. Hãy thử gửi lại."
+          }
+        }
+      }
+    },
+    "error.generic" : {
+      "comment" : "Fallback error message.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong. Please try again."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã có lỗi xảy ra. Hãy thử lại."
+          }
+        }
+      }
+    },
+    "error.in_flight" : {
+      "comment" : "API error in_flight (429).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another analysis is still being processed. Please wait for it to finish."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một phân tích khác đang được xử lý. Hãy đợi phân tích đó xong rồi thử lại."
+          }
+        }
+      }
+    },
+    "error.internal" : {
+      "comment" : "API error internal (500).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong on our server. Please try again in a few minutes."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ gặp lỗi. Hãy thử lại sau ít phút."
+          }
+        }
+      }
+    },
+    "error.invalid_payload" : {
+      "comment" : "API error invalid_payload (422).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app sent data the server couldn't read. Please update RacketCoach and try again."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ không đọc được dữ liệu gửi lên. Hãy cập nhật RacketCoach rồi thử lại."
+          }
+        }
+      }
+    },
+    "error.linked_to_other_account" : {
+      "comment" : "API error linked_to_other_account (409), DESIGN.md §9.4 step 4.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your subscription is linked to another account. Tap Restore to move it here."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gói đang gắn với tài khoản khác — bấm Khôi phục để chuyển về đây."
+          }
+        }
+      }
+    },
+    "error.low_visibility" : {
+      "comment" : "Prepare rejection low_visibility.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The player is hard to see clearly."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khó nhìn rõ người đánh."
+          }
+        }
+      }
+    },
+    "error.method_not_allowed" : {
+      "comment" : "API error method_not_allowed (405).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This request isn't supported. Please update RacketCoach."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yêu cầu này không được hỗ trợ. Hãy cập nhật RacketCoach."
+          }
+        }
+      }
+    },
+    "error.no_strokes_detected" : {
+      "comment" : "Prepare rejection no_strokes_detected (422, no credit used). Tips are shown below it.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't find any strokes in this clip."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không thấy cú đánh nào trong video."
+          }
+        }
+      }
+    },
+    "error.not_configured" : {
+      "comment" : "Developer builds without xcconfig hosts.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This build has no server configured."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bản dựng này chưa cấu hình máy chủ."
+          }
+        }
+      }
+    },
+    "error.not_found" : {
+      "comment" : "API error not_found (404).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't find what you were looking for."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không tìm thấy nội dung bạn cần."
+          }
+        }
+      }
+    },
+    "error.not_signed_in" : {
+      "comment" : "No session yet (silent anonymous sign-in still pending).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Still connecting to the server. Please try again in a moment."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng đang kết nối tới máy chủ. Hãy thử lại sau giây lát."
+          }
+        }
+      }
+    },
+    "error.offline" : {
+      "comment" : "Device offline.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No internet connection. Check Wi-Fi or mobile data."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có kết nối mạng. Hãy kiểm tra Wi‑Fi hoặc dữ liệu di động."
+          }
+        }
+      }
+    },
+    "error.payload_too_large" : {
+      "comment" : "API error payload_too_large (413).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This clip has too much data to analyze. Keep it to 30 seconds or less."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video có quá nhiều dữ liệu để phân tích. Hãy giữ video không quá 30 giây."
+          }
+        }
+      }
+    },
+    "error.player_too_small" : {
+      "comment" : "Prepare rejection player_too_small.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The player is too small in the frame."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người đánh quá nhỏ trong khung hình."
+          }
+        }
+      }
+    },
+    "error.quota_exceeded" : {
+      "comment" : "API error quota_exceeded (402). The paywall or the reset date is shown next to it.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've used all your analyses for this period."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn đã dùng hết lượt phân tích của kỳ này."
+          }
+        }
+      }
+    },
+    "error.rate_limited" : {
+      "comment" : "API error rate_limited (429).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many requests. Please try again in a few minutes."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn thao tác hơi nhanh. Hãy thử lại sau ít phút."
+          }
+        }
+      }
+    },
+    "error.server" : {
+      "comment" : "Non-2xx answer without a contracts body.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Our server is having trouble. Please try again later."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ đang gặp sự cố. Hãy thử lại sau."
+          }
+        }
+      }
+    },
+    "error.skill_not_available" : {
+      "comment" : "Prepare rejection skill_not_available.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This skill isn't available right now."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kỹ thuật này hiện chưa được hỗ trợ."
+          }
+        }
+      }
+    },
+    "error.target_lost" : {
+      "comment" : "Prepare rejection target_lost.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We lost track of the player during the clip."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mất dấu người đánh trong video."
+          }
+        }
+      }
+    },
+    "error.timeout" : {
+      "comment" : "Request timed out.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The connection took too long. Please try again."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kết nối quá lâu. Hãy thử lại."
+          }
+        }
+      }
+    },
+    "error.too_few_frames" : {
+      "comment" : "Prepare rejection too_few_frames.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too few frames show the player clearly."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Có quá ít khung hình thấy rõ người đánh."
+          }
+        }
+      }
+    },
+    "error.transfer_rate_limited" : {
+      "comment" : "API error transfer_rate_limited (429), restore moved the subscription more than 3 times in 30 days.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This subscription was moved too often recently. Please try again later or contact support."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gói này đã được chuyển nhiều lần gần đây. Hãy thử lại sau hoặc liên hệ hỗ trợ."
+          }
+        }
+      }
+    },
+    "error.unauthorized" : {
+      "comment" : "API error unauthorized (401).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your session has expired. Please reopen the app."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phiên làm việc đã hết hạn. Hãy mở lại ứng dụng."
+          }
+        }
+      }
+    },
+    "error.under_min_age" : {
+      "comment" : "Profile check under_min_age (birth year below app_config.min_user_age).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, you're not old enough to use RacketCoach yet."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rất tiếc, bạn chưa đủ tuổi để dùng RacketCoach."
+          }
+        }
+      }
+    },
+    "error.upstream_unavailable" : {
+      "comment" : "API error upstream_unavailable (502).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The AI coach is busy right now. Please try again in a few minutes."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HLV AI đang bận. Hãy thử lại sau ít phút."
+          }
+        }
+      }
+    },
+    "framing.hint.backlight" : {
+      "comment" : "Live framing hint: the picture is too dark or too bright.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too much backlight"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngược sáng"
+          }
+        }
+      }
+    },
+    "framing.hint.move_closer" : {
+      "comment" : "Live framing hint: the player is too small in the frame.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move closer"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiến lại gần hơn"
+          }
+        }
+      }
+    },
+    "framing.hint.no_player" : {
+      "comment" : "Live framing hint: nobody detected.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No player in view"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chưa thấy người đánh"
+          }
+        }
+      }
+    },
+    "framing.hint.show_feet" : {
+      "comment" : "Live framing hint: ankles are not visible.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show your feet"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thấy cả bàn chân"
+          }
+        }
+      }
+    },
+    "framing.hint.step_back" : {
+      "comment" : "Live framing hint while recording: the player fills too much of the frame (DESIGN.md §5.4 step 0).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step back"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lùi xa hơn"
+          }
+        }
+      }
+    },
+    "handedness.left" : {
+      "comment" : "Handedness option: holds the racket in the left hand.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left-handed"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tay trái"
+          }
+        }
+      }
+    },
+    "handedness.right" : {
+      "comment" : "Handedness option: holds the racket in the right hand.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right-handed"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tay phải"
+          }
+        }
+      }
+    },
+    "home.analyze" : {
+      "comment" : "Main button on Home: starts a new analysis (DESIGN.md §2.2 step 3). US English 'Analyze'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyze a stroke"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích cú đánh"
+          }
+        }
+      }
+    },
+    "home.analyze.subtitle" : {
+      "comment" : "Text above the Analyze button.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Film 5–10 repetitions of one stroke (up to 30 seconds) or pick a clip from Photos or Files."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quay 5–10 lần một kỹ thuật (tối đa 30 giây) hoặc chọn video có sẵn trong Ảnh hay Tệp."
+          }
+        }
+      }
+    },
+    "home.banner.videos_cleaned" : {
+      "comment" : "Notice after the automatic clean-up (DESIGN.md D16). %1$lld = number of videos, %2$lld = 60.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Videos older than %2$lld days were removed from this iPhone to free up space (%1$lld removed). Your results are kept."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã xoá %1$lld video cũ hơn %2$lld ngày khỏi iPhone để giải phóng dung lượng. Kết quả phân tích vẫn được giữ."
+          }
+        }
+      }
+    },
+    "home.camera_guide" : {
+      "comment" : "Row that opens the camera guide.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera guide"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hướng dẫn đặt máy quay"
+          }
+        }
+      }
+    },
+    "home.camera_guide.subtitle" : {
+      "comment" : "Subtitle of the camera guide row.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Where to put your phone for each stroke"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt điện thoại ở đâu cho từng kỹ thuật"
+          }
+        }
+      }
+    },
+    "home.history" : {
+      "comment" : "Toolbar button (accessibility label) that opens History.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lịch sử"
+          }
+        }
+      }
+    },
+    "home.last_result.empty" : {
+      "comment" : "Empty state of the last-result card.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No analyses yet. Film one stroke 5–10 times to get your first feedback."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chưa có phân tích nào. Hãy quay 5–10 lần một kỹ thuật để nhận nhận xét đầu tiên."
+          }
+        }
+      }
+    },
+    "home.last_result.fix_first" : {
+      "comment" : "Last result card line. %@ = title of the #1 fix written by the coach.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fix this first: %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sửa điều này trước: %@"
+          }
+        }
+      }
+    },
+    "home.last_result.partial" : {
+      "comment" : "Last result without a score (partial, DESIGN.md §10.2).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not enough data"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chưa đủ dữ liệu"
+          }
+        }
+      }
+    },
+    "home.last_result.title" : {
+      "comment" : "Section title on Home.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last result"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kết quả gần nhất"
+          }
+        }
+      }
+    },
+    "home.learn.title" : {
+      "comment" : "Section title above the camera guide and sample links.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get better clips"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quay video tốt hơn"
+          }
+        }
+      }
+    },
+    "home.not_configured" : {
+      "comment" : "Developer-only notice when the xcconfig hosts are missing; never seen in a release build.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This build has no server configured. Run make dev or add Config/Secrets.xcconfig."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bản dựng này chưa cấu hình máy chủ. Hãy chạy make dev hoặc thêm Config/Secrets.xcconfig."
+          }
+        }
+      }
+    },
+    "home.offline" : {
+      "comment" : "Notice on Home while the anonymous sign-in waits for the network.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're offline. You can still watch the sample analysis and read the camera guide."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn đang ngoại tuyến. Bạn vẫn có thể xem phân tích mẫu và hướng dẫn đặt máy quay."
+          }
+        }
+      }
+    },
+    "home.progress" : {
+      "comment" : "Row that opens the progress charts (Premium or trial).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiến bộ"
+          }
+        }
+      }
+    },
+    "home.progress.subtitle" : {
+      "comment" : "Subtitle of the progress row.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your scores over time for each stroke"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điểm của bạn theo thời gian cho từng kỹ thuật"
+          }
+        }
+      }
+    },
+    "home.quota.bonus" : {
+      "comment" : "Chip shown while the free first-ever advanced analysis is available (DESIGN.md §9.3).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First analysis: advanced, free"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích nâng cao miễn phí lần đầu"
+          }
+        }
+      }
+    },
+    "home.quota.free_empty" : {
+      "comment" : "Quota chip, free tier at the cap. %@ = day/month the month resets (ICT).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No analyses left this month · New ones on %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã hết lượt tháng này · Lượt mới vào %@"
+          }
+        }
+      }
+    },
+    "home.quota.free_remaining" : {
+      "comment" : "Quota chip, free tier. %1$lld = analyses left, %2$lld = monthly total (from my_status).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld analyses left this month"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Còn %1$lld/%2$lld lượt tháng này"
+          }
+        }
+      }
+    },
+    "home.quota.in_flight" : {
+      "comment" : "Banner when the in-flight limit (1) is reached.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another analysis is still being processed. Please wait for it to finish."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một phân tích khác đang được xử lý. Hãy đợi phân tích đó xong rồi thử lại."
+          }
+        }
+      }
+    },
+    "home.quota.loading" : {
+      "comment" : "Placeholder chip while my_status loads.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checking your analyses…"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đang kiểm tra lượt phân tích…"
+          }
+        }
+      }
+    },
+    "home.quota.next_on" : {
+      "comment" : "Banner when a Premium user at the cap taps Analyze. %@ = day/month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've used all your analyses for now. New ones arrive on %@."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn đã dùng hết lượt. Lượt mới vào %@."
+          }
+        }
+      }
+    },
+    "home.quota.premium_empty" : {
+      "comment" : "Quota chip, Premium at the cap (never the paywall). %@ = day/month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New analyses on %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lượt mới vào %@"
+          }
+        }
+      }
+    },
+    "home.quota.premium_remaining" : {
+      "comment" : "Quota chip, Premium. %1$lld = left, %2$lld = monthly total, %3$@ = day/month of the next window.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld left · New ones on %3$@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Còn %1$lld/%2$lld lượt · Lượt mới vào %3$@"
+          }
+        }
+      }
+    },
+    "home.quota.trial_empty" : {
+      "comment" : "Quota chip, trial at the cap. %@ = day/month the paid year starts (DESIGN.md §9.3).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trial analyses used · Your yearly plan starts %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã dùng hết lượt dùng thử · Gói năm bắt đầu %@"
+          }
+        }
+      }
+    },
+    "home.quota.trial_ended_on" : {
+      "comment" : "Banner when a trial user at the cap taps Analyze. %@ = day/month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've used all trial analyses. Your yearly plan starts on %@."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn đã dùng hết lượt dùng thử. Gói năm bắt đầu %@."
+          }
+        }
+      }
+    },
+    "home.quota.trial_remaining" : {
+      "comment" : "Quota chip, 7-day trial. %1$lld = left, %2$lld = trial total.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trial: %1$lld of %2$lld analyses left"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dùng thử: còn %1$lld/%2$lld lượt"
+          }
+        }
+      }
+    },
+    "home.sample" : {
+      "comment" : "Row that opens the offline sample analysis.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample analysis"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích mẫu"
+          }
+        }
+      }
+    },
+    "home.sample.subtitle" : {
+      "comment" : "Subtitle of the sample row.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See what a result looks like, no video needed"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xem thử một kết quả, không cần quay video"
+          }
+        }
+      }
+    },
+    "home.save_history" : {
+      "comment" : "Row that opens sign-in (Apple or email) to keep history across devices (D14).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save your history"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lưu lịch sử"
+          }
+        }
+      }
+    },
+    "home.save_history.subtitle" : {
+      "comment" : "Subtitle of the save-history row.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with Apple or email to use it on another device"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng nhập bằng Apple hoặc email để dùng trên thiết bị khác"
+          }
+        }
+      }
+    },
+    "home.settings" : {
+      "comment" : "Toolbar button (accessibility label) that opens Settings.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt"
+          }
+        }
+      }
+    },
+    "home.title" : {
+      "comment" : "Large title on Home.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to practice?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sẵn sàng tập chưa?"
+          }
+        }
+      }
+    },
+    "language.en" : {
+      "comment" : "Language option. Always written in its own language.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "language.system" : {
+      "comment" : "Language option that follows the device (Vietnamese when the storefront or region is Vietnam).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theo hệ thống"
+          }
+        }
+      }
+    },
+    "language.system_sheets_note" : {
+      "comment" : "Note under the language picker (DESIGN.md §10.1).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System screens such as the camera permission and purchases always follow your iPhone's language."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Các hộp thoại của hệ thống, như xin quyền camera và mua gói, luôn theo ngôn ngữ của iPhone."
+          }
+        }
+      }
+    },
+    "language.system_with_current" : {
+      "comment" : "Language option 'System' followed by the language it currently resolves to, e.g. 'System (English)'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System (%@)"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theo hệ thống (%@)"
+          }
+        }
+      }
+    },
+    "language.title" : {
+      "comment" : "Title of the language picker.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngôn ngữ"
+          }
+        }
+      }
+    },
+    "language.vi" : {
+      "comment" : "Language option. Always written in its own language.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếng Việt"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếng Việt"
+          }
+        }
+      }
+    },
+    "level.advanced" : {
+      "comment" : "Player level 4 of 4 (DESIGN.md §10.2). Never a club rating or DUPR.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nâng cao"
+          }
+        }
+      }
+    },
+    "level.beginner" : {
+      "comment" : "Player level 1 of 4 (DESIGN.md §10.2).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginner"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mới bắt đầu"
+          }
+        }
+      }
+    },
+    "level.improving" : {
+      "comment" : "Player level 2 of 4 (DESIGN.md §10.2).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improving"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đang tiến bộ"
+          }
+        }
+      }
+    },
+    "level.intermediate" : {
+      "comment" : "Player level 3 of 4 (DESIGN.md §10.2).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intermediate"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trung cấp"
+          }
+        }
+      }
+    },
+    "route.account_link" : {
+      "comment" : "Title of the sign-in sheet that keeps history across devices (D14).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save your history"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lưu lịch sử"
+          }
+        }
+      }
+    },
+    "route.camera_guide" : {
+      "comment" : "Title of the camera setup guide screen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera guide"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hướng dẫn đặt máy quay"
+          }
+        }
+      }
+    },
+    "route.history" : {
+      "comment" : "Title of the history screen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lịch sử"
+          }
+        }
+      }
+    },
+    "route.new_analysis" : {
+      "comment" : "Title of the new analysis flow.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New analysis"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích mới"
+          }
+        }
+      }
+    },
+    "route.paywall" : {
+      "comment" : "Title of the subscription screen. Brand-like, keep 'Premium'.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        }
+      }
+    },
+    "route.progress" : {
+      "comment" : "Title of the progress charts screen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiến bộ"
+          }
+        }
+      }
+    },
+    "route.result" : {
+      "comment" : "Title of the analysis result screen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your result"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kết quả"
+          }
+        }
+      }
+    },
+    "route.sample_analysis" : {
+      "comment" : "Title of the offline sample analysis (demo).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sample analysis"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phân tích mẫu"
+          }
+        }
+      }
+    },
+    "route.settings" : {
+      "comment" : "Title of the settings screen.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt"
+          }
+        }
+      }
+    },
+    "sport.badminton" : {
+      "comment" : "Sport name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badminton"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cầu lông"
+          }
+        }
+      }
+    },
+    "sport.pickleball" : {
+      "comment" : "Sport name (kept in English in Vietnamese).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pickleball"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pickleball"
+          }
+        }
+      }
+    },
+    "welcome.ai_note" : {
+      "comment" : "Small print under the Welcome buttons (Vietnam AI Law 134/2025 transparency).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback is AI-generated and may be inaccurate. Not medical advice."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhận xét do AI tạo, có thể chưa chính xác. Không phải lời khuyên y tế."
+          }
+        }
+      }
+    },
+    "welcome.card.fix.body" : {
+      "comment" : "Welcome value card 1 body.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Film one stroke and get the most important fix, with a cue and a drill to practice."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quay một kỹ thuật, nhận ngay điểm quan trọng nhất cần sửa kèm mẹo và bài tập."
+          }
+        }
+      }
+    },
+    "welcome.card.fix.title" : {
+      "comment" : "Welcome value card 1 title: the app gives one priority fix per analysis.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One fix to start with"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một điểm cần sửa trước"
+          }
+        }
+      }
+    },
+    "welcome.card.privacy.body" : {
+      "comment" : "Welcome value card 2 body. Same facts as the camera permission text (DESIGN.md §10.1); never claim all faces are blurred.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Body movement is read on your iPhone. Only pose data and up to 5 still images, faces blurred, are sent, after you agree."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển động được đọc ngay trên máy. Chỉ dữ liệu tư thế và tối đa 5 ảnh tĩnh (đã làm mờ khuôn mặt) được gửi đi, sau khi bạn đồng ý."
+          }
+        }
+      }
+    },
+    "welcome.card.privacy.title" : {
+      "comment" : "Welcome value card 2 title. Must stay true: the video is never uploaded.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your video stays on your iPhone"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video ở lại trên iPhone của bạn"
+          }
+        }
+      }
+    },
+    "welcome.card.sports.body" : {
+      "comment" : "Welcome value card 3 body.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A score with six parts, your strengths and a short practice plan for each stroke."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điểm tổng với 6 tiêu chí, điểm mạnh của bạn và kế hoạch tập ngắn cho từng kỹ thuật."
+          }
+        }
+      }
+    },
+    "welcome.card.sports.title" : {
+      "comment" : "Welcome value card 3 title.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badminton and pickleball"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cầu lông và pickleball"
+          }
+        }
+      }
+    },
+    "welcome.language" : {
+      "comment" : "Prefix of the language picker link on Welcome, followed by the current language name.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language:"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngôn ngữ:"
+          }
+        }
+      }
+    },
+    "welcome.sample" : {
+      "comment" : "Secondary button on Welcome: opens the offline demo (DESIGN.md §2.2 step 1).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See a sample analysis"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xem phân tích mẫu"
+          }
+        }
+      }
+    },
+    "welcome.start" : {
+      "comment" : "Primary button on Welcome (DESIGN.md §2.2 step 1).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu"
+          }
+        }
+      }
+    },
+    "welcome.subtitle" : {
+      "comment" : "Tagline under the app name on Welcome. No medical or 'like a real coach' claims (DESIGN.md §10.2).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your AI coach for badminton and pickleball technique."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huấn luyện viên AI giúp bạn sửa kỹ thuật cầu lông và pickleball."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

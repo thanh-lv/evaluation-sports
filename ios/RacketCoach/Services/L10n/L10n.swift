@@ -12,10 +12,23 @@ import Foundation
 /// arguments use `String(format:)` specifiers (`%lld`, `%@`, positional `%1$lld`). Plural variations in the catalog
 /// compile to `.stringsdict` and are honoured by `format`.
 enum L10n {
+    /// The language non-view strings use. `AppModel` sets it whenever the resolved app language changes; before that
+    /// it is computed from the stored choice (`AppLanguage.currentResolved()`).
+    static var currentLanguage: Language {
+        override.get() ?? AppLanguage.currentResolved()
+    }
+
+    /// Called by `AppModel` (and tests) so `L10n` follows the in-app picker exactly.
+    static func setCurrentLanguage(_ language: Language?) {
+        override.set(language)
+    }
+
+    private static let override = LanguageOverride()
+
     /// Localized value of `key` in `language` (default: the language currently picked in the app).
     /// A missing key returns the key itself, which `scripts/check_ios_resources.py` prevents for literal keys.
     static func string(_ key: String, language: Language? = nil) -> String {
-        let lang = language ?? AppLanguage.currentResolved()
+        let lang = language ?? currentLanguage
         return bundle(for: lang).localizedString(forKey: key, value: nil, table: nil)
     }
 
@@ -25,7 +38,7 @@ enum L10n {
     }
 
     static func format(_ key: String, arguments: [CVarArg], language: Language? = nil) -> String {
-        let lang = language ?? AppLanguage.currentResolved()
+        let lang = language ?? currentLanguage
         let format = bundle(for: lang).localizedString(forKey: key, value: nil, table: nil)
         return String(format: format, locale: lang.locale, arguments: arguments)
     }
@@ -53,6 +66,23 @@ enum L10n {
             }
             return bundle
         }
+    }
+}
+
+private final class LanguageOverride: @unchecked Sendable {
+    private let lock = NSLock()
+    private var value: Language?
+
+    func get() -> Language? {
+        lock.lock()
+        defer { lock.unlock() }
+        return value
+    }
+
+    func set(_ newValue: Language?) {
+        lock.lock()
+        value = newValue
+        lock.unlock()
     }
 }
 

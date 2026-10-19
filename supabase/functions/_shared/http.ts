@@ -292,6 +292,7 @@ export function createRouter(options: RouterOptions, routes: readonly RouteDef[]
     const url = new URL(req.url);
     const path = stripFunctionPrefix(url.pathname, options.fn);
     let routePattern = '(unmatched)';
+    let errorCode: string | undefined;
     let log = fnLog.child({ req_id: requestId });
     const method = req.method.toUpperCase();
 
@@ -325,6 +326,7 @@ export function createRouter(options: RouterOptions, routes: readonly RouteDef[]
       }
     } catch (err) {
       const httpErr = toHttpError(err);
+      errorCode = httpErr.code;
       if (httpErr.status >= 500) {
         log.error('request failed', { code: httpErr.code, ...errorFields(httpErr.cause ?? err) });
       }
@@ -348,6 +350,7 @@ export function createRouter(options: RouterOptions, routes: readonly RouteDef[]
         method,
         route: routePattern,
         status: final.status,
+        code: errorCode,
         ms: Math.round(performance.now() - started),
       });
     }

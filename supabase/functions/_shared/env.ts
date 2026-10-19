@@ -10,6 +10,7 @@
  * one function are optional here; read them with `requireConfig(value, NAME)` where they are needed, so a missing
  * Apple key does not take down `/analyze`.
  */
+import type { JWK } from '@supabase/supabase-js';
 import { ConfigError } from './errors.ts';
 import { type LogLevel, parseLogLevel } from './log.ts';
 
@@ -34,6 +35,8 @@ export interface AppleEnv {
   apiOrigin: { production: string; sandbox: string };
   /** DeviceCheck origin (`APPLE_DEVICECHECK_HOST`). */
   deviceCheckOrigin: string;
+  /** PEM of Apple Root CA G3 (`APPLE_ROOT_CA_G3_PEM`) for JWS chain checks (apple/jws.ts); none is embedded. */
+  rootCaPem?: string | null;
 }
 
 export interface ServerEnv {
@@ -42,6 +45,8 @@ export interface ServerEnv {
   serviceKey: string;
   /** Anon / publishable key (used to verify user JWTs). */
   anonKey: string;
+  /** Auth signing keys injected by the runtime (`SUPABASE_JWKS`); saves the JWKS fetch in `getClaims`. */
+  jwks: { keys: JWK[] } | null;
   anthropicApiKey: string | null;
   claudeMode: ClaudeMode;
   internalSecret: string | null;
@@ -78,7 +83,9 @@ function fromKeyMap(src: EnvSource, name: string): string | null {
     const parsed = JSON.parse(raw) as unknown;
     if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
       const map = parsed as Record<string, unknown>;
-      const value = typeof map.default === 'string' ? map.default : Object.values(map).find((v) => typeof v === 'string');
+      const value = typeof map.default === 'string'
+        ? map.default
+        : Object.values(map).find((v) => typeof v === 'string');
       if (typeof value === 'string' && value.trim() !== '') return value.trim();
     }
   } catch {
@@ -92,6 +99,18 @@ function bool(src: EnvSource, name: string): boolean {
   if (v === null || v === 'false' || v === '0' || v === 'no') return false;
   if (v === 'true' || v === '1' || v === 'yes') return true;
   throw new ConfigError(`${name} must be true or false`);
+}
+
+/** `SUPABASE_JWKS` (`{"keys": [...]}`); null when absent or malformed (getClaims then fetches the JWKS). */
+function jwksFrom(src: EnvSource): { keys: JWK[] } | null {
+  const raw = opt(src, 'SUPABASE_JWKS');
+  if (raw === null) return null;
+  try {
+    const parsed = JSON.parse(raw) as { keys?: unknown };
+    return Array.isArray(parsed?.keys) && parsed.keys.length > 0 ? { keys: parsed.keys as JWK[] } : null;
+  } catch {
+    return null;
+  }
 }
 
 /** PEM keys pasted into a one-line secret often carry literal `\n`; restore real newlines. */
@@ -167,12 +186,14 @@ export function loadEnv(src: EnvSource = Deno.env): ServerEnv {
       opt(src, 'APPLE_DEVICECHECK_HOST') ?? DEFAULT_APPLE_DEVICECHECK_HOST,
       'APPLE_DEVICECHECK_HOST',
     ),
+    rootCaPem: pem(src, 'APPLE_ROOT_CA_G3_PEM'),
   };
 
   return {
     supabaseUrl: supabaseUrl!.replace(/\/+$/, ''),
     serviceKey: serviceKey!,
     anonKey: anonKey!,
+    jwks: jwksFrom(src),
     anthropicApiKey,
     claudeMode,
     internalSecret: opt(src, 'INTERNAL_SECRET'),
@@ -187,8 +208,8 @@ export function loadEnv(src: EnvSource = Deno.env): ServerEnv {
 }
 
 /** Decodes standard or URL-safe base64 and checks the length (32 bytes = AES-256). */
-export function assertBase64Key(value: string, name: string, bytes = 32): Uint8Array {
-  let decoded: Uint8Array;
+export function assertBase64Key(value: string, name: string, bytes = 32): Uint8Array<ArrayBuffer> {
+  let decoded: Uint8Array<ArrayBuffer>;
   try {
     const std = value.replace(/-/g, '+').replace(/_/g, '/');
     const padded = std + '='.repeat((4 - (std.length % 4)) % 4);

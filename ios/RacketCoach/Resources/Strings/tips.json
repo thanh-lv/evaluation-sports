@@ -1,0 +1,58 @@
+{
+  "_generated": "by scripts/build-xcstrings.py from TIP_KEYS (contracts/common.ts) and the tip tables in docs/camera-guide.{en,vi}.md. Edit the camera guide, not this file.",
+  "camera.tip.choose_skill": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Pick the skill that is actually in the clip.",
+    "vi": "Chọn đúng kỹ thuật có trong video."
+  },
+  "camera.tip.clip_length": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Keep the clip between 3 and 30 seconds.",
+    "vi": "Giữ video trong khoảng 3–30 giây."
+  },
+  "camera.tip.fps_60": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Record at 60 fps and turn off \"Auto FPS\" in Settings › Camera › Record Video.",
+    "vi": "Quay 60 fps và tắt \"FPS tự động\" trong Cài đặt › Camera › Quay video."
+  },
+  "camera.tip.full_body": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Keep your whole body and racket in frame, from racket tip to feet.",
+    "vi": "Để thấy toàn thân và cả vợt, từ đầu vợt đến bàn chân."
+  },
+  "camera.tip.lighting": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Film in good light and avoid backlight.",
+    "vi": "Quay nơi đủ sáng, tránh ngược sáng."
+  },
+  "camera.tip.move_closer": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Move the phone a little closer.",
+    "vi": "Đặt máy gần hơn một chút."
+  },
+  "camera.tip.one_player": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Keep only the player in frame if you can.",
+    "vi": "Chỉ để người đánh trong khung hình nếu được."
+  },
+  "camera.tip.player_height": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "The player should fill about ½–⅔ of the frame height.",
+    "vi": "Người đánh nên chiếm khoảng ½–⅔ chiều cao khung hình."
+  },
+  "camera.tip.recommended_view": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Use the recommended camera view for this skill.",
+    "vi": "Dùng góc quay khuyến nghị cho kỹ thuật này."
+  },
+  "camera.tip.repetitions": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Repeat one stroke 5–10 times.",
+    "vi": "Lặp lại một kỹ thuật 5–10 lần."
+  },
+  "camera.tip.steady_camera": {
+    "comment": "Recording tip shown after a rejected clip and in the camera guide (contracts TIP_KEYS).",
+    "en": "Use a tripod or prop the phone up firmly; don't hold it.",
+    "vi": "Dùng chân máy hoặc kê máy thật chắc, đừng cầm tay."
+  }
+}

@@ -6,7 +6,7 @@ import type { BucketApi, BucketsApi, ListEntryLike, StorageErrorLike } from '../
 import { createStorageService, type StorageService, type StorageServiceOptions } from '../storage.ts';
 
 export interface StoredObject {
-  bytes: Uint8Array;
+  bytes: Uint8Array<ArrayBuffer>;
   contentType: string;
 }
 
@@ -43,7 +43,7 @@ export class MemoryStorage implements BucketsApi {
   /** Seeds an object directly. */
   put(bucket: string, path: string, body: string | Uint8Array = '{}', contentType = 'application/json'): void {
     this.bucket(bucket).set(path, {
-      bytes: typeof body === 'string' ? new TextEncoder().encode(body) : body,
+      bytes: typeof body === 'string' ? new TextEncoder().encode(body) : new Uint8Array(body),
       contentType,
     });
   }
@@ -54,7 +54,7 @@ export class MemoryStorage implements BucketsApi {
 
   from(bucketName: string): BucketApi {
     const objects = this.bucket(bucketName);
-    const self = this;
+    const { removeCalls, moveCalls } = this;
     return {
       list(path = '', options = {}) {
         const folder = path.replace(/^\/+|\/+$/g, '');
@@ -79,13 +79,13 @@ export class MemoryStorage implements BucketsApi {
         return Promise.resolve({ data: sorted.slice(offset, offset + limit), error: null });
       },
       remove(paths) {
-        self.removeCalls.push({ bucket: bucketName, count: paths.length });
+        removeCalls.push({ bucket: bucketName, count: paths.length });
         const removed: unknown[] = [];
         for (const p of paths) if (objects.delete(p)) removed.push({ name: p });
         return Promise.resolve({ data: removed, error: null });
       },
       move(from, to) {
-        self.moveCalls.push({ bucket: bucketName, from, to });
+        moveCalls.push({ bucket: bucketName, from, to });
         const obj = objects.get(from);
         if (!obj) return Promise.resolve({ data: null, error: notFound });
         if (objects.has(to)) return Promise.resolve({ data: null, error: exists('ResourceAlreadyExists') });
@@ -99,7 +99,7 @@ export class MemoryStorage implements BucketsApi {
           ? new TextEncoder().encode(body)
           : body instanceof Blob
           ? new Uint8Array(await body.arrayBuffer())
-          : body;
+          : new Uint8Array(body);
         objects.set(path, { bytes, contentType: options.contentType ?? 'text/plain;charset=UTF-8' });
         return { data: { path }, error: null };
       },

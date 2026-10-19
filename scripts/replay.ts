@@ -1,24 +1,38 @@
 /**
- * Replays the server pipeline on a pose.v1 file (DESIGN.md §13.1): prepare (engine) now; the Claude step is a
- * clearly marked hook for the Claude module (M6), followed by composeScores.
+ * Replays the server pipeline on a pose.v1 file (DESIGN.md §13.1): prepare (engine), then optionally the Claude step
+ * (build_request → mock/fixture model → runOnce → postprocess → compose) producing a coach-result.v1.
  *
  *   deno run -A --config supabase/functions/deno.json scripts/replay.ts <pose.json>
  *        [--view side|behind|front|diagonal] [--exclude 1,3] [--handedness right|left] [--frame-mode frames|pose_only]
- *        [--out <dir>]                      write response.json, prepared.json, pose.clean.json there
- *        [--mock-claude <output.json>]      run the (mock) Claude step and compose the final scores
+ *        [--out <dir>]                      write response.json, prepared.json, pose.clean.json (+ request.json,
+ *                                           result.json with a Claude step) there
+ *        [--mock]                           Claude step with the built-in mock generator (CLAUDE_MODE=mock)
+ *        [--mock-claude <output.json>]      Claude step answering with a coach.v1 fixture (shared/fixtures/claude/)
+ *        [--lang vi|en] [--kind basic|standard] [--no-frames]
  *   deno run -A --config supabase/functions/deno.json scripts/replay.ts --golden [--check]
- *        write / check the golden prepare responses shared/fixtures/prepare/<synthetic fixture>.json
+ *        write / check the golden prepare responses shared/fixtures/prepare/<synthetic fixture>.json and the golden
+ *        mock results shared/fixtures/results/replay_<fixture>.<lang>.json (GOLDEN_RESULTS)
+ * No network: the live model is exercised only by scripts/smoke-claude.ts.
  */
-import { type ConfirmedCameraView, type Handedness, PoseV1, type QuotaPreview } from '@shared/contracts/index.ts';
 import {
-  composeScores,
-  prepare,
-  type PreparedAnalysisV1,
-  type PrepareOptions,
-  type VisualJudgmentInput,
-  withQuota,
-} from '@shared/engine/index.ts';
+  type AnalysisKind,
+  type ConfirmedCameraView,
+  type Handedness,
+  type Language,
+  PoseV1,
+  type QuotaPreview,
+} from '@shared/contracts/index.ts';
+import { prepare, type PreparedAnalysisV1, type PrepareOptions, withQuota } from '@shared/engine/index.ts';
 import { loadRubric } from '@shared/rubric/load.ts';
+import {
+  type CoachAttemptResult,
+  type CoachModelClient,
+  DEFAULT_MODEL_ROUTES,
+  type FrameImage,
+  mockCoachClient,
+  runCoachAttempt,
+  staticCoachClient,
+} from '@shared/claude/index.ts';
 import { prettyJson, repoPath } from './_lib/json.ts';
 import { SYNTHETIC_FIXTURES } from './gen-synthetic-pose.ts';
 
@@ -47,32 +61,89 @@ export async function goldenText(name: string): Promise<string> {
 }
 
 // ---------------------------------------------------------------------------------------------------------------
-// HOOK(M6): the Claude step. The Claude module replaces this function with
-//   buildRequest(prepared, frames, language) → runOnce (or a mocked response) → postprocess → visual judgments,
-// returning the normalised V judgments (and, later, the whole post-processed output for the result builder).
-// Until then a mock output file is read naively: only `visual_checkpoints` is used, so composeScores can be
-// exercised end to end.
-// ---------------------------------------------------------------------------------------------------------------
-async function claudeStep(
-  prepared: PreparedAnalysisV1,
-  mockPath: string | null,
-): Promise<VisualJudgmentInput[] | null> {
-  if (!mockPath) return null;
-  console.log(`\n[claude] HOOK(M6) not wired yet: reading visual_checkpoints from ${mockPath} only`);
-  const raw = JSON.parse(await Deno.readTextFile(mockPath)) as {
-    visual_checkpoints?: { checkpoint_id: string; level: number; confidence: string }[];
-  };
-  const allowed = new Set(prepared.visualToJudge.map((v) => v.checkpointId));
-  return (raw.visual_checkpoints ?? [])
-    .filter((v) => allowed.has(v.checkpoint_id))
-    .map((v) => ({
-      checkpointId: v.checkpoint_id,
-      level: prepared.frameMode === 'pose_only' ? -1 : Math.max(-1, Math.min(4, Math.round(v.level))),
-      confidence:
-        (['low', 'medium', 'high'].includes(v.confidence.toLowerCase())
-          ? v.confidence.toLowerCase()
-          : 'low') as VisualJudgmentInput['confidence'],
-    }));
+// Claude step (M6)
+
+/** Fixed timestamp so replayed results are stable. */
+export const GOLDEN_CREATED_AT = '2026-10-20T08:00:00Z';
+
+/** Golden mock results checked by `--golden --check` (fixture name, narrative language). */
+export const GOLDEN_RESULTS: readonly { name: string; lang: Language }[] = [
+  { name: 'synthetic_bd_clear_fh_60', lang: 'vi' },
+  { name: 'synthetic_pb_dink_60', lang: 'en' },
+];
+
+/** Stand-in JPEG payload: the mock never decodes images, and replay never calls the live API. */
+const PLACEHOLDER_JPEG = '/9j/placeholder';
+
+export interface ClaudeStepOptions {
+  language?: Language;
+  kind?: AnalysisKind;
+  /** null → built-in mock generator; otherwise a coach.v1 output document (already parsed). */
+  fixture?: unknown;
+  /** Attach the uploaded frames (default true; pose_only never attaches any). */
+  frames?: boolean;
+  createdAt?: string;
+}
+
+/** Runs the Claude step on a prepared analysis with the mock generator or a fixture output. */
+export function replayClaude(prepared: PreparedAnalysisV1, opts: ClaudeStepOptions = {}): Promise<CoachAttemptResult> {
+  const language = opts.language ?? 'vi';
+  const rubric = loadRubric(prepared.sport);
+  const frames: FrameImage[] = opts.frames === false ? [] : prepared.frameRequests
+    .filter((f) => f.upload)
+    .map((f) => ({ frameId: f.frameId as FrameImage['frameId'], jpegBase64: PLACEHOLDER_JPEG }));
+  const fixture = opts.fixture;
+  return runCoachAttempt({
+    prepared,
+    rubric,
+    language,
+    route: DEFAULT_MODEL_ROUTES[opts.kind ?? 'standard'],
+    frames,
+    kind: opts.kind ?? 'standard',
+    createdAt: opts.createdAt ?? GOLDEN_CREATED_AT,
+    client: (req): CoachModelClient =>
+      fixture === undefined || fixture === null
+        ? mockCoachClient({ prepared, rubric, language, sentFrameIds: req.sentFrameIds })
+        : staticCoachClient(() => fixture, 'ok', 'fixture'),
+  });
+}
+
+/** Golden mock result text for a synthetic fixture. */
+export async function goldenResultText(name: string, lang: Language): Promise<string> {
+  const pose = JSON.parse(await Deno.readTextFile(repoPath(`shared/fixtures/pose/${name}.json`)));
+  const { out } = replayPrepare(pose);
+  if (!out.ok) throw new Error(`${name}: rejected ${out.code}`);
+  const attempt = await replayClaude(out.prepared, { language: lang });
+  if (!attempt.composed) throw new Error(`${name}: Claude step outcome ${attempt.run.outcome.kind}`);
+  return prettyJson(attempt.composed.result);
+}
+
+/** request.json for --out: the request with image data elided. */
+function redactedRequest(attempt: CoachAttemptResult): unknown {
+  return JSON.parse(JSON.stringify(attempt.request.params, (k, v) => (k === 'data' ? `<${String(v).length} b64>` : v)));
+}
+
+function printAttempt(a: CoachAttemptResult): void {
+  const { outcome, call } = a.run;
+  console.log(`\n[claude] ${call.modelRequested} → ${outcome.kind}; frames sent: ${a.request.sentFrameIds.join(',') || '—'}`);
+  if (outcome.kind !== 'ok' || !a.post || !a.composed) {
+    console.log(`  ${call.error ?? ''}`);
+    return;
+  }
+  for (const f of a.post.flags) console.log(`  flag ${f.type}: ${f.detail}`);
+  const r = a.composed.result;
+  if (r.status === 'rejected') {
+    console.log(`  REJECTED ${r.rejection?.code} tips ${r.rejection?.tips.join(', ')}`);
+    return;
+  }
+  const o = r.overall;
+  console.log(`  overall ${o.displayScore ?? '—'} ${o.level ?? ''} coverage ${o.coverage}${o.partial ? ' PARTIAL' : ''}`);
+  for (const s of r.subScores) console.log(`  ${s.key.padEnd(9)} ${s.displayScore ?? '—'} (${s.confidence})`);
+  console.log(`  hero: ${r.hero ? `${r.hero.checkpointId} ${r.hero.faultId ?? ''} "${r.hero.title}" ${r.hero.frameId ?? ''}` : '—'}`);
+  for (const w of r.weaknesses) console.log(`  − ${w.checkpointId} ${w.faultId ?? ''} "${w.title}"`);
+  for (const s of r.strengths) console.log(`  + ${s.checkpointId} "${s.title}"`);
+  for (const p of r.plan) console.log(`  plan ${p.priority}: ${p.faultId ?? ''} drills ${p.drills.map((d) => d.id).join(', ')}`);
+  console.log(`  summary: ${r.summary}`);
 }
 
 function arg(name: string): string | null {
@@ -146,6 +217,23 @@ async function golden(check: boolean): Promise<number> {
       console.log(`wrote      ${rel}`);
     }
   }
+  for (const { name, lang } of GOLDEN_RESULTS) {
+    const rel = `shared/fixtures/results/replay_${name}.${lang}.json`;
+    const text = await goldenResultText(name, lang);
+    if (check) {
+      let current = '';
+      try {
+        current = await Deno.readTextFile(repoPath(rel));
+      } catch { /* missing → out of sync */ }
+      if (current !== text) {
+        console.error(`${rel} is out of sync (run scripts/replay.ts --golden)`);
+        failed++;
+      } else console.log(`in sync    ${rel}`);
+    } else {
+      await Deno.writeTextFile(repoPath(rel), text);
+      console.log(`wrote      ${rel}`);
+    }
+  }
   return failed ? 1 : 0;
 }
 
@@ -154,7 +242,8 @@ async function main(): Promise<number> {
   const file = Deno.args.find((a, i) => !a.startsWith('--') && (i === 0 || !Deno.args[i - 1].startsWith('--')));
   if (!file) {
     console.error(
-      'usage: replay.ts <pose.json> [--view v] [--exclude 1,2] [--handedness h] [--out dir] [--mock-claude f]',
+      'usage: replay.ts <pose.json> [--view v] [--exclude 1,2] [--handedness h] [--out dir] [--mock | --mock-claude f]' +
+        ' [--lang vi|en] [--kind basic|standard] [--no-frames]',
     );
     return 2;
   }
@@ -178,14 +267,24 @@ async function main(): Promise<number> {
     await Deno.writeTextFile(`${dir}/pose.clean.json`, JSON.stringify(out.cleanTrack));
     console.log(`\nwrote ${dir}/{response,prepared}.json and pose.clean.json`);
   }
-  const judgments = await claudeStep(out.prepared, arg('--mock-claude'));
-  if (judgments) {
-    const skill = loadRubric(pose.session.sport).skills.find((s) => s.id === out.prepared.skill)!;
-    const composed = composeScores(out.prepared.checkpointTable, judgments, skill);
-    const o = composed.overall;
-    console.log(`\ncomposed: overall ${o.displayScore ?? '—'} (raw ${o.score?.toFixed(1) ?? '—'}) ${o.level ?? ''}`);
-    console.log(`  coverage ${o.coverage.toFixed(3)}${o.partial ? ' PARTIAL' : ''}${o.capped ? ' capped at 85' : ''}`);
-    for (const s of composed.subScores) console.log(`  ${s.key.padEnd(9)} ${s.displayScore ?? '—'} (${s.confidence})`);
+  const fixturePath = arg('--mock-claude');
+  if (fixturePath || Deno.args.includes('--mock')) {
+    const lang = (arg('--lang') ?? 'vi') as Language;
+    if (lang !== 'vi' && lang !== 'en') throw new Error('--lang must be vi or en');
+    const kind = (arg('--kind') ?? 'standard') as AnalysisKind;
+    const attempt = await replayClaude(out.prepared, {
+      language: lang,
+      kind,
+      fixture: fixturePath ? JSON.parse(await Deno.readTextFile(fixturePath)) : null,
+      frames: !Deno.args.includes('--no-frames'),
+    });
+    printAttempt(attempt);
+    if (dir) {
+      await Deno.writeTextFile(`${dir}/request.json`, prettyJson(redactedRequest(attempt)));
+      if (attempt.composed) await Deno.writeTextFile(`${dir}/result.json`, prettyJson(attempt.composed.result));
+      console.log(`wrote ${dir}/request.json${attempt.composed ? ' and result.json' : ''}`);
+    }
+    if (!attempt.composed) return 1;
   }
   return 0;
 }

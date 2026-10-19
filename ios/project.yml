@@ -1,0 +1,199 @@
+# XcodeGen spec for the RacketCoach iOS app (DESIGN.md §5.1). Generate with `xcodegen generate` (XcodeGen ≥ 2.42,
+# which understands String Catalogs) from this folder, then open RacketCoach.xcodeproj.
+#
+# Configurations:
+#   Debug   → Config/Debug.xcconfig: local Supabase stack (`make dev` writes Config/Local.xcconfig), http, ATS local
+#             networking allowed. Used by the `RacketCoach-Local` scheme and by unit tests.
+#   Release → Config/Release.xcconfig: hosted project (Config/Secrets.xcconfig, copied from Secrets.example.xcconfig),
+#             https only. Used by the `RacketCoach` scheme for run, profile and archive.
+# The xcconfig files hold hosts only and never contain a double slash; URLs are built in AppConfiguration.swift.
+name: RacketCoach
+
+options:
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+configs:
+  Debug: debug
+  Release: release
+
+configFiles:
+  Debug: Config/Debug.xcconfig
+  Release: Config/Release.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    SWIFT_STRICT_CONCURRENCY: targeted
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    TARGETED_DEVICE_FAMILY: "1"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+
+packages:
+  CoachCore:
+    path: Packages/CoachCore
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    exactVersion: 2.55.3
+
+targets:
+  RacketCoach:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: RacketCoach
+        excludes:
+          # Translation sources: merged into Localizable.xcstrings / InfoPlist.xcstrings by scripts/build-xcstrings.py.
+          - "Resources/Strings/**"
+    dependencies:
+      - package: CoachCore
+      - package: Supabase
+        product: Supabase
+    entitlements:
+      path: Config/RacketCoach.entitlements
+      properties:
+        com.apple.developer.applesignin:
+          - Default
+    info:
+      path: Config/Info.plist
+      properties:
+        CFBundleDisplayName: RacketCoach
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations:
+          - en
+          - vi
+        # Base value; the shipped text comes from InfoPlist.xcstrings (vi + en, DESIGN.md §10.1).
+        NSCameraUsageDescription: >-
+          RacketCoach uses the camera to record your strokes. The video is analyzed on your iPhone and never
+          uploaded. Only pose data and up to 5 still images (faces automatically blurred) are sent for AI analysis,
+          after you agree.
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Movie
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes:
+              - public.movie
+              - public.mpeg-4
+              - com.apple.quicktime-movie
+        LSSupportsOpeningDocumentsInPlace: false
+        ITSAppUsesNonExemptEncryption: false
+        # Build-time values from Config/*.xcconfig, read by AppConfiguration via Bundle.main.infoDictionary.
+        RC_ENVIRONMENT: $(RC_ENVIRONMENT)
+        SUPABASE_SCHEME: $(SUPABASE_SCHEME)
+        SUPABASE_HOST: $(SUPABASE_HOST)
+        SUPABASE_PUBLISHABLE_KEY: $(SUPABASE_PUBLISHABLE_KEY)
+        LEGAL_HOST: $(LEGAL_HOST)
+        SUPPORT_HOST: $(SUPPORT_HOST)
+        SUBSCRIPTION_GROUP_ID: $(SUBSCRIPTION_GROUP_ID)
+    settings:
+      base:
+        PRODUCT_NAME: RacketCoach
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).racketcoach
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES
+        # JSON fixtures used only by SwiftUI previews; stripped from archives.
+        DEVELOPMENT_ASSET_PATHS: "\"RacketCoach/Resources/PreviewFixtures\""
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: targeted
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+    postBuildScripts:
+      # ATS exception and local-network prompt text for the local Supabase stack, Debug only
+      # (RC_ALLOW_LOCAL_NETWORKING = YES in Config/Debug.xcconfig). XcodeGen generates one Info.plist for every
+      # configuration and INFOPLIST_KEY_* cannot express the NSAppTransportSecurity dictionary, so the keys are added
+      # to the processed Info.plist of Debug builds before code signing. Release builds never contain them
+      # (scripts/check_ios_resources.py checks that project.yml does not declare them statically).
+      - name: Allow local networking (Debug only)
+        basedOnDependencyAnalysis: false
+        showEnvVars: false
+        script: |
+          if [ "${RC_ALLOW_LOCAL_NETWORKING}" != "YES" ]; then
+            exit 0
+          fi
+          PLIST="${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"
+          /usr/libexec/PlistBuddy -c "Delete :NSAppTransportSecurity" "${PLIST}" >/dev/null 2>&1 || true
+          /usr/libexec/PlistBuddy -c "Delete :NSLocalNetworkUsageDescription" "${PLIST}" >/dev/null 2>&1 || true
+          /usr/libexec/PlistBuddy \
+            -c "Add :NSAppTransportSecurity dict" \
+            -c "Add :NSAppTransportSecurity:NSAllowsLocalNetworking bool true" \
+            -c "Add :NSLocalNetworkUsageDescription string 'Development build: connects to the local Supabase stack on your Mac.'" \
+            "${PLIST}"
+
+  RacketCoachTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: RacketCoachTests
+      - path: RacketCoach/Resources/PreviewFixtures
+        buildPhase: resources
+    dependencies:
+      # CoachCore is linked into the host app; the tests import it from the build products (linking it a second
+      # time would duplicate its symbols in the test bundle).
+      - target: RacketCoach
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).racketcoach.tests
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: targeted
+
+schemes:
+  # Release-like: hosted backend (Config/Secrets.xcconfig). Unit tests use Debug (mocks only, no backend).
+  RacketCoach:
+    build:
+      targets:
+        RacketCoach: all
+        RacketCoachTests: [test]
+    run:
+      config: Release
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - RacketCoachTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+  # Local development: Debug + Config/Local.xcconfig from `make dev`, StoreKit testing in Xcode.
+  RacketCoach-Local:
+    build:
+      targets:
+        RacketCoach: all
+        RacketCoachTests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: RacketCoach/Resources/Products.storekit
+    test:
+      config: Debug
+      targets:
+        - RacketCoachTests
+    profile:
+      config: Debug
+    analyze:
+      config: Debug
+    archive:
+      config: Release

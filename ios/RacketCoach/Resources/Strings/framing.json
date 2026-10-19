@@ -1,0 +1,28 @@
+{
+  "_about": "Live framing hints (CoachCore FramingHint raw values). Seeded by the App shell; owned by the Capture (LiveFraming) agent from now on.",
+  "framing.hint.backlight": {
+    "comment": "Live framing hint: the picture is too dark or too bright.",
+    "en": "Too much backlight",
+    "vi": "Ngược sáng"
+  },
+  "framing.hint.move_closer": {
+    "comment": "Live framing hint: the player is too small in the frame.",
+    "en": "Move closer",
+    "vi": "Tiến lại gần hơn"
+  },
+  "framing.hint.no_player": {
+    "comment": "Live framing hint: nobody detected.",
+    "en": "No player in view",
+    "vi": "Chưa thấy người đánh"
+  },
+  "framing.hint.show_feet": {
+    "comment": "Live framing hint: ankles are not visible.",
+    "en": "Show your feet",
+    "vi": "Thấy cả bàn chân"
+  },
+  "framing.hint.step_back": {
+    "comment": "Live framing hint while recording: the player fills too much of the frame (DESIGN.md §5.4 step 0).",
+    "en": "Step back",
+    "vi": "Lùi xa hơn"
+  }
+}

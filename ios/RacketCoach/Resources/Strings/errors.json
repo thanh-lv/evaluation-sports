@@ -1,0 +1,213 @@
+{
+  "_about": "User-facing error messages (AppError.messageKey). error.<code> exists for every contracts ApiErrorCode; scripts/check_ios_resources.py checks it. Owner: App shell agent.",
+  "error.age_attestation_required": {
+    "comment": "Profile check age_attestation_required.",
+    "en": "Please confirm your age to continue.",
+    "vi": "Hãy xác nhận độ tuổi của bạn để tiếp tục."
+  },
+  "error.analysis_conflict": {
+    "comment": "API error analysis_conflict (409).",
+    "en": "This analysis has already been sent or is being processed.",
+    "vi": "Phân tích này đã được gửi hoặc đang được xử lý."
+  },
+  "error.analysis_not_found": {
+    "comment": "API error analysis_not_found (404).",
+    "en": "We couldn't find this analysis.",
+    "vi": "Không tìm thấy phân tích này."
+  },
+  "error.auth.email_invalid": {
+    "comment": "Email address rejected.",
+    "en": "Please enter a valid email address.",
+    "vi": "Địa chỉ email chưa đúng."
+  },
+  "error.auth.generic": {
+    "comment": "Any other sign-in error.",
+    "en": "We couldn't sign you in. Please try again.",
+    "vi": "Không đăng nhập được. Hãy thử lại."
+  },
+  "error.auth.identity_exists": {
+    "comment": "Identity already linked to another account (normally handled by merging).",
+    "en": "This account already exists.",
+    "vi": "Tài khoản này đã tồn tại."
+  },
+  "error.auth.linking_disabled": {
+    "comment": "Sign-in provider or manual linking disabled on the server.",
+    "en": "Signing in isn't available right now. Please try again later.",
+    "vi": "Hiện chưa đăng nhập được. Hãy thử lại sau."
+  },
+  "error.auth.otp_invalid": {
+    "comment": "Email one-time code rejected.",
+    "en": "That code is wrong or has expired. Check it or ask for a new one.",
+    "vi": "Mã không đúng hoặc đã hết hạn. Hãy kiểm tra lại hoặc gửi mã mới."
+  },
+  "error.busy_try_later": {
+    "comment": "API error busy_try_later (503), daily budget guard.",
+    "en": "We're very busy right now. Please try again later.",
+    "vi": "Hệ thống đang quá tải. Hãy thử lại sau."
+  },
+  "error.cancelled": {
+    "comment": "The operation was cancelled.",
+    "en": "Cancelled.",
+    "vi": "Đã huỷ."
+  },
+  "error.clip_too_long": {
+    "comment": "Prepare rejection clip_too_long.",
+    "en": "The clip is too long. Keep it between 3 and 30 seconds.",
+    "vi": "Video quá dài. Hãy giữ video trong khoảng 3–30 giây."
+  },
+  "error.clip_too_short": {
+    "comment": "Prepare rejection clip_too_short.",
+    "en": "The clip is too short. Keep it between 3 and 30 seconds.",
+    "vi": "Video quá ngắn. Hãy giữ video trong khoảng 3–30 giây."
+  },
+  "error.consent_required": {
+    "comment": "API error consent_required (403).",
+    "en": "Please agree to the two required items before analyzing.",
+    "vi": "Bạn cần đồng ý hai mục bắt buộc trước khi phân tích."
+  },
+  "error.decoding": {
+    "comment": "Response could not be decoded (contract drift).",
+    "en": "The app received data it couldn't read. Please update RacketCoach.",
+    "vi": "Ứng dụng nhận được dữ liệu không đọc được. Hãy cập nhật RacketCoach."
+  },
+  "error.forbidden": {
+    "comment": "API error forbidden (403), e.g. an old result locked on the free plan.",
+    "en": "You don't have access to this.",
+    "vi": "Bạn không có quyền xem nội dung này."
+  },
+  "error.fps_too_low": {
+    "comment": "Prepare rejection fps_too_low.",
+    "en": "The frame rate is too low (below 24 fps).",
+    "vi": "Tốc độ khung hình quá thấp (dưới 24 fps)."
+  },
+  "error.frames_missing": {
+    "comment": "API error frames_missing (422) at submit.",
+    "en": "Some images didn't finish uploading. Please try again.",
+    "vi": "Một số ảnh chưa tải lên xong. Hãy thử gửi lại."
+  },
+  "error.generic": {
+    "comment": "Fallback error message.",
+    "en": "Something went wrong. Please try again.",
+    "vi": "Đã có lỗi xảy ra. Hãy thử lại."
+  },
+  "error.in_flight": {
+    "comment": "API error in_flight (429).",
+    "en": "Another analysis is still being processed. Please wait for it to finish.",
+    "vi": "Một phân tích khác đang được xử lý. Hãy đợi phân tích đó xong rồi thử lại."
+  },
+  "error.internal": {
+    "comment": "API error internal (500).",
+    "en": "Something went wrong on our server. Please try again in a few minutes.",
+    "vi": "Máy chủ gặp lỗi. Hãy thử lại sau ít phút."
+  },
+  "error.invalid_payload": {
+    "comment": "API error invalid_payload (422).",
+    "en": "The app sent data the server couldn't read. Please update RacketCoach and try again.",
+    "vi": "Máy chủ không đọc được dữ liệu gửi lên. Hãy cập nhật RacketCoach rồi thử lại."
+  },
+  "error.linked_to_other_account": {
+    "comment": "API error linked_to_other_account (409), DESIGN.md §9.4 step 4.",
+    "en": "Your subscription is linked to another account. Tap Restore to move it here.",
+    "vi": "Gói đang gắn với tài khoản khác — bấm Khôi phục để chuyển về đây."
+  },
+  "error.low_visibility": {
+    "comment": "Prepare rejection low_visibility.",
+    "en": "The player is hard to see clearly.",
+    "vi": "Khó nhìn rõ người đánh."
+  },
+  "error.method_not_allowed": {
+    "comment": "API error method_not_allowed (405).",
+    "en": "This request isn't supported. Please update RacketCoach.",
+    "vi": "Yêu cầu này không được hỗ trợ. Hãy cập nhật RacketCoach."
+  },
+  "error.no_strokes_detected": {
+    "comment": "Prepare rejection no_strokes_detected (422, no credit used). Tips are shown below it.",
+    "en": "We couldn't find any strokes in this clip.",
+    "vi": "Không thấy cú đánh nào trong video."
+  },
+  "error.not_configured": {
+    "comment": "Developer builds without xcconfig hosts.",
+    "en": "This build has no server configured.",
+    "vi": "Bản dựng này chưa cấu hình máy chủ."
+  },
+  "error.not_found": {
+    "comment": "API error not_found (404).",
+    "en": "We couldn't find what you were looking for.",
+    "vi": "Không tìm thấy nội dung bạn cần."
+  },
+  "error.not_signed_in": {
+    "comment": "No session yet (silent anonymous sign-in still pending).",
+    "en": "Still connecting to the server. Please try again in a moment.",
+    "vi": "Ứng dụng đang kết nối tới máy chủ. Hãy thử lại sau giây lát."
+  },
+  "error.offline": {
+    "comment": "Device offline.",
+    "en": "No internet connection. Check Wi-Fi or mobile data.",
+    "vi": "Không có kết nối mạng. Hãy kiểm tra Wi‑Fi hoặc dữ liệu di động."
+  },
+  "error.payload_too_large": {
+    "comment": "API error payload_too_large (413).",
+    "en": "This clip has too much data to analyze. Keep it to 30 seconds or less.",
+    "vi": "Video có quá nhiều dữ liệu để phân tích. Hãy giữ video không quá 30 giây."
+  },
+  "error.player_too_small": {
+    "comment": "Prepare rejection player_too_small.",
+    "en": "The player is too small in the frame.",
+    "vi": "Người đánh quá nhỏ trong khung hình."
+  },
+  "error.quota_exceeded": {
+    "comment": "API error quota_exceeded (402). The paywall or the reset date is shown next to it.",
+    "en": "You've used all your analyses for this period.",
+    "vi": "Bạn đã dùng hết lượt phân tích của kỳ này."
+  },
+  "error.rate_limited": {
+    "comment": "API error rate_limited (429).",
+    "en": "Too many requests. Please try again in a few minutes.",
+    "vi": "Bạn thao tác hơi nhanh. Hãy thử lại sau ít phút."
+  },
+  "error.server": {
+    "comment": "Non-2xx answer without a contracts body.",
+    "en": "Our server is having trouble. Please try again later.",
+    "vi": "Máy chủ đang gặp sự cố. Hãy thử lại sau."
+  },
+  "error.skill_not_available": {
+    "comment": "Prepare rejection skill_not_available.",
+    "en": "This skill isn't available right now.",
+    "vi": "Kỹ thuật này hiện chưa được hỗ trợ."
+  },
+  "error.target_lost": {
+    "comment": "Prepare rejection target_lost.",
+    "en": "We lost track of the player during the clip.",
+    "vi": "Mất dấu người đánh trong video."
+  },
+  "error.timeout": {
+    "comment": "Request timed out.",
+    "en": "The connection took too long. Please try again.",
+    "vi": "Kết nối quá lâu. Hãy thử lại."
+  },
+  "error.too_few_frames": {
+    "comment": "Prepare rejection too_few_frames.",
+    "en": "Too few frames show the player clearly.",
+    "vi": "Có quá ít khung hình thấy rõ người đánh."
+  },
+  "error.transfer_rate_limited": {
+    "comment": "API error transfer_rate_limited (429), restore moved the subscription more than 3 times in 30 days.",
+    "en": "This subscription was moved too often recently. Please try again later or contact support.",
+    "vi": "Gói này đã được chuyển nhiều lần gần đây. Hãy thử lại sau hoặc liên hệ hỗ trợ."
+  },
+  "error.unauthorized": {
+    "comment": "API error unauthorized (401).",
+    "en": "Your session has expired. Please reopen the app.",
+    "vi": "Phiên làm việc đã hết hạn. Hãy mở lại ứng dụng."
+  },
+  "error.under_min_age": {
+    "comment": "Profile check under_min_age (birth year below app_config.min_user_age).",
+    "en": "Sorry, you're not old enough to use RacketCoach yet.",
+    "vi": "Rất tiếc, bạn chưa đủ tuổi để dùng RacketCoach."
+  },
+  "error.upstream_unavailable": {
+    "comment": "API error upstream_unavailable (502).",
+    "en": "The AI coach is busy right now. Please try again in a few minutes.",
+    "vi": "HLV AI đang bận. Hãy thử lại sau ít phút."
+  }
+}

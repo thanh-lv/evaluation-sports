@@ -1,0 +1,7 @@
+#include "Base.xcconfig"
+
+RC_ENVIRONMENT = production
+RC_ALLOW_LOCAL_NETWORKING = NO
+SUPABASE_SCHEME = https
+
+#include? "Secrets.xcconfig"

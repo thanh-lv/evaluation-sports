@@ -1,0 +1,33 @@
+{
+  "_about": "In-app language picker (DESIGN.md D15). Owner: App shell agent; Settings reuses LanguagePickerView.",
+  "language.en": {
+    "comment": "Language option. Always written in its own language.",
+    "en": "English",
+    "vi": "English"
+  },
+  "language.system": {
+    "comment": "Language option that follows the device (Vietnamese when the storefront or region is Vietnam).",
+    "en": "System",
+    "vi": "Theo hệ thống"
+  },
+  "language.system_sheets_note": {
+    "comment": "Note under the language picker (DESIGN.md §10.1).",
+    "en": "System screens such as the camera permission and purchases always follow your iPhone's language.",
+    "vi": "Các hộp thoại của hệ thống, như xin quyền camera và mua gói, luôn theo ngôn ngữ của iPhone."
+  },
+  "language.system_with_current": {
+    "comment": "Language option 'System' followed by the language it currently resolves to, e.g. 'System (English)'.",
+    "en": "System (%@)",
+    "vi": "Theo hệ thống (%@)"
+  },
+  "language.title": {
+    "comment": "Title of the language picker.",
+    "en": "Language",
+    "vi": "Ngôn ngữ"
+  },
+  "language.vi": {
+    "comment": "Language option. Always written in its own language.",
+    "en": "Tiếng Việt",
+    "vi": "Tiếng Việt"
+  }
+}

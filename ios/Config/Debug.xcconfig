@@ -1,0 +1,10 @@
+#include "Base.xcconfig"
+
+RC_ENVIRONMENT = local
+RC_ALLOW_LOCAL_NETWORKING = YES
+
+SUPABASE_SCHEME = http
+SUPABASE_HOST = 127.0.0.1:54321
+SUPABASE_PUBLISHABLE_KEY =
+
+#include? "Local.xcconfig"

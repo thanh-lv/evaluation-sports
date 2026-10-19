@@ -9,6 +9,7 @@ export function testEnv(overrides: Partial<ServerEnv> = {}): ServerEnv {
     supabaseUrl: 'http://supabase.test',
     serviceKey: 'sb_secret_test',
     anonKey: 'sb_publishable_test',
+    jwks: null,
     anthropicApiKey: null,
     claudeMode: 'mock',
     internalSecret: 'internal-secret-test',

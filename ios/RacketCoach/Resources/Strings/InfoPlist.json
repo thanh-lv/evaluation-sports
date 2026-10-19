@@ -1,0 +1,13 @@
+{
+  "CFBundleDisplayName": {
+    "comment": "App name under the icon. Not translated.",
+    "en": "RacketCoach",
+    "vi": "RacketCoach"
+  },
+  "NSCameraUsageDescription": {
+    "comment": "Camera permission prompt. Verbatim from DESIGN.md §10.1; do not change without updating the design and docs/legal/consent-texts.*.md §4.",
+    "en": "RacketCoach uses the camera to record your strokes. The video is analyzed on your iPhone and never uploaded. Only pose data and up to 5 still images (faces automatically blurred) are sent for AI analysis, after you agree.",
+    "vi": "Ứng dụng dùng camera để quay cú đánh của bạn. Video được phân tích trên máy và không bị tải lên. Chỉ dữ liệu tư thế và tối đa 5 ảnh tĩnh (đã tự động làm mờ khuôn mặt) được gửi đi để AI phân tích, sau khi bạn đồng ý."
+  },
+  "_about": "Info.plist strings (InfoPlist.xcstrings). Owner: App shell agent."
+}
