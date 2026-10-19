@@ -166,3 +166,77 @@ Import from `@shared/jobs/index.ts`. Edge Functions `analyze` (`/catalog`, `/pre
 - `runCronTask('daily' | 'warm', deps)`: stale jobs (72 h, claim then fail `expired`), drafts (24 h), orphan walk, pose JSON after 24 months, row purges, App Store notification history, spend alerts, warm-up (live mode only; `WARM_MARKER_IDS` in `llm_calls`).
 - `budget.ts`: `budgetDecision(status, {tier, isReviewer})` → `{level: ok | alert | exhausted | hard_cap, allow, downgradeFreeStandard}`; `maybeAlertDailySpend` (once per ICT day via `daily_spend.alerted_70`), `userCostAlertThreshold` (60 % of $1.48/month). Alerts are `log.error` lines with `alert: true` plus `ops.*` server events.
 - Tests: `supabase/tests/jobs/_backend.ts` emulates the job/quota SQL functions on a FakeDb with a clock; `supabase/tests/functions/_analyze.ts` is the handler rig; `supabase/tests/e2e/` runs the real flow (see its README).
+
+## Server API (Edge Functions)
+
+Base URL: `{SUPABASE_URL}/functions/v1/<function>`. Every request carries the project `apikey` header (publishable or
+anon key) for the gateway. Bodies are JSON; types are in `@shared/contracts/index.ts` (`api_v1.ts`, `pose_v1.ts`,
+`prepare_v1.ts`, `reprepare_v1.ts`). Every function has `verify_jwt = false` in `supabase/config.toml` and checks auth
+itself (see "Deviations" below).
+
+**Auth kinds**
+
+- **JWT**: `Authorization: Bearer <user access token>`, checked with `auth.getClaims()` (`_shared/auth.ts`, JWKS or the
+  injected `SUPABASE_JWKS`). Missing or invalid → 401 `unauthorized`. Anonymous users are accepted unless noted.
+- **Secret**: a shared-secret header compared in constant time before the body is read. Wrong or missing → 401
+  `unauthorized`; a server without the secret configured → 500 `internal` (never an open route).
+- **Apple**: no caller auth; the JWS chain in the body must verify to Apple Root CA G3.
+
+| Route | Auth | Request | Success | Errors (besides 401, 413, 422 `invalid_payload`, 500) |
+|---|---|---|---|---|
+| `GET /analyze/catalog` | JWT | — | 200 `CatalogResponseV1` (`cache-control: private, max-age=…`; cached 1 h per worker) | — |
+| `POST /analyze/prepare` | JWT | `PoseV1` (≤ 1.2 MB, 20/h) or `ReprepareV1` (60/h) | 200 `PrepareResponseV1` with `quota` | 422 prepare rejections with `tips` (the draft is stored as `rejected`), 422 `skill_not_available`, 404 `analysis_not_found` (reprepare: unknown, foreign or expired raw pose), 409 `analysis_conflict`, 429 `rate_limited` + `Retry-After` |
+| `POST /analyze/submit` | JWT | `SubmitRequest` `{analysisId, deviceCheckToken?}` | 202 `{status: queued \| processing, pollAfterMs}`; 200 `{status: succeeded, pollAfterMs: 0}` (idempotent) | 404 `analysis_not_found`, 409 `analysis_conflict` (not `prepared`), 403 `consent_required`, 422 `frames_missing`, 503 `busy_try_later` + `Retry-After` (ICT midnight; nothing reserved), 402 `quota_exceeded` `{limit, used, resetsAt}`, 429 `in_flight` |
+| `POST /analyze/run` | Secret `x-internal-secret` (`INTERNAL_SECRET`) | `{analysisId}` | 202 `{accepted: true}`; the job runs in the background with fencing | — |
+| `POST /cron` | Secret `x-cron-secret` (`CRON_SECRET`) | `{task: daily \| warm}` | 202 `{accepted: true, task}`; work in the background | — |
+| `POST /verify-subscription` | JWT | `VerifySubscriptionRequest` `{signedTransaction, reason}` (≤ 32 KB) | 200 `VerifySubscriptionResponse` | 422 malformed JWS / wrong bundle / unknown transaction, 403 `forbidden` (Xcode environment without `ALLOW_XCODE_ENV`, untrusted client chain, Xcode payload over a non-Xcode row), 409 `linked_to_other_account`, 429 `transfer_rate_limited` (3 per 30 days on `restore`), 502 `upstream_unavailable` |
+| `POST /appstore-webhook` | Apple | `{signedPayload}` (≤ 256 KB) | 200 `{ok: true, outcome}` (processed, duplicate, ignored or permanent failure; Apple must not retry) | 401 `unauthorized` (chain rejected, nothing stored), 500 `internal` (transient; Apple retries) |
+| `POST /apple-auth-exchange` | JWT | `AppleAuthExchangeRequest` `{authorizationCode}` (≤ 8 KB) | 204 | 422 `invalid_payload` (code rejected by Apple), 502 `upstream_unavailable`, 500 (SIWA keys or `TOKEN_ENC_KEY` missing, `invalid_client`) |
+| `POST /account-merge` | JWT of a permanent account | `AccountMergeRequest` `{anonAccessToken}` (≤ 16 KB) | 200 `{merged}` (a repeat after success answers from the audit log) | 403 `forbidden` (caller anonymous; anonymous token invalid, not anonymous or issued > 1 h ago; source no longer anonymous; merge refused), 422 same account, 404 `not_found` |
+| `POST /delete-account` | JWT (anonymous too) | `DeleteAccountRequest` `{confirm: true}` | 200 `{deleted: true, hadActiveSubscription, siwaManualRevoke}`; idempotent, repeat on failure | 502 `upstream_unavailable` (SIWA revoke transient), 500 (`AUDIT_PEPPER` / `TOKEN_ENC_KEY` missing) |
+
+**Common behaviour (`_shared/http.ts`)**
+
+- Errors are `ApiError` `{code, message?, tips?, limit?, used?, resetsAt?}` with the status from `httpStatusFor`
+  (table at the top). Unknown errors become 500 `internal` without the message.
+- Unknown route → 404 `not_found`; wrong method → 405 `method_not_allowed` + `Allow`; `OPTIONS` → 204; `HEAD` runs the
+  `GET` route.
+- Default body limit 64 KB (413 `payload_too_large`, checked from `content-length` and while streaming).
+- Every response carries `x-request-id` (a safe incoming value is echoed). CORS is a wildcard on the app-facing
+  functions (bearer auth, no cookies) and off for `cron` and `appstore-webhook`.
+- Results are not an HTTP route: the app reads `rpc get_result(p_analysis_id)`, `rpc my_status()` and the `analyses`
+  row through PostgREST (docs/database.md).
+
+**Environment (`_shared/env.ts`, template `supabase/functions/.env.example`)**
+
+| Name | Used by | Notes |
+|---|---|---|
+| `SUPABASE_URL`, `SUPABASE_SECRET_KEY(S)` / `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_PUBLISHABLE_KEY(S)` / `SUPABASE_ANON_KEY`, `SUPABASE_JWKS` | all | Injected by the runtime; never set them yourself (the `SUPABASE_` prefix is reserved). Missing URL/keys fail at startup |
+| `CLAUDE_MODE` | analyze, cron | `live` (default) or `mock`. Mock only when set explicitly; `live` without a key is a startup error, and an unset mode without a key fails jobs `internal` with an alert (never mock output) |
+| `ANTHROPIC_API_KEY` | analyze, cron | Live mode |
+| `INTERNAL_SECRET`, `CRON_SECRET` | analyze `/run`, cron | Must equal the Vault secrets `internal_secret` / `cron_secret` that pg_cron sends |
+| `TOKEN_ENC_KEY` | apple-auth-exchange, delete-account | base64/base64url of 32 bytes (AES-256-GCM) |
+| `AUDIT_PEPPER` | delete-account | `sha256(uid + pepper)` audit subjects |
+| `LOG_PEPPER`, `LOG_LEVEL` | all | Optional; `debug \| info \| warn \| error` |
+| `APPLE_BUNDLE_ID`, `APPLE_APP_APPLE_ID`, `APPLE_TEAM_ID` (alias `APPLE_SIWA_TEAM_ID`) | Apple functions |  |
+| `APPLE_IAP_KEY_ID`, `APPLE_IAP_ISSUER_ID`, `APPLE_IAP_PRIVATE_KEY` | verify-subscription, webhook, account-merge | App Store Server API key (literal `\n` become newlines) |
+| `APPLE_SIWA_KEY_ID`, `APPLE_SIWA_PRIVATE_KEY`, `APPLE_SIWA_CLIENT_ID` | apple-auth-exchange, delete-account | Client id defaults to the bundle id |
+| `APPLE_DEVICECHECK_KEY_ID`, `APPLE_DEVICECHECK_PRIVATE_KEY` | analyze `/submit` | Without them no first-ever bonus is granted |
+| `APPLE_API_HOST_PROD`, `APPLE_API_HOST_SANDBOX`, `APPLE_DEVICECHECK_HOST` | Apple functions | Host overrides for mocks |
+| `APPLE_ROOT_CA_G3_PEM` | Apple functions | Extra trusted roots; G3 is embedded |
+| `ALLOW_XCODE_ENV` | verify-subscription | Dev project only |
+
+A secret a function needs but does not have is a 500 `internal` on that function only (`requireConfig`), logged with
+its name; other functions keep working.
+
+**Deviations from DESIGN §6.1**
+
+- `verify_jwt = false` everywhere (DESIGN: true on the JWT routes). `analyze` mixes JWT routes with the secret-only
+  `/run`, and the gateway check would reject pg_net's calls; with the asymmetric signing keys the in-code
+  `getClaims()` check is the supported path. Every JWT route calls `requireUser` first (tests in
+  `supabase/tests/functions` and `supabase/tests/server`).
+- `/analyze/prepare` also limits `reprepare.v1` (60/h, bucket `reprepare`), which DESIGN leaves open.
+
+**Tests:** handler rigs with fakes in `supabase/tests/{functions,apple,accounts,server}`; the live flow (anonymous
+user → prepare → frames → submit → result → quota → 402, plus the secret routes) is `supabase/tests/e2e/flow.test.ts`,
+run by `scripts/check.sh` as its own optional step.

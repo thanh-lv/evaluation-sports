@@ -32,7 +32,12 @@ const projectId = () =>
 
 const skipReason = Deno.env.get('RC_SKIP_E2E') === '1' ? 'RC_SKIP_E2E=1' : null;
 const stack: LocalStack | null = skipReason ? null : await getLocalStack();
-if (!stack) {
+if (!stack && !skipReason && Deno.env.get('RC_E2E_REQUIRE') === '1') {
+  // scripts/check.sh sets this after it has seen the stack answer: a lost stack is a failure, not a silent skip.
+  Deno.test('e2e: local Supabase stack required (RC_E2E_REQUIRE=1)', () => {
+    throw new Error('local Supabase stack not reachable (npx supabase status -o env failed)');
+  });
+} else if (!stack) {
   console.warn(
     `e2e flow skipped: ${
       skipReason ?? 'local Supabase stack not running (npx supabase start)'

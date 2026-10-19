@@ -27,7 +27,8 @@ objects are deleted afterwards. It takes about 25 s once the packages are cached
 
 | Variable                                        | Effect                                                                                                             |
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `RC_SKIP_E2E=1`                                 | Skip the test (for example inside `scripts/check.sh` runs that should not start the edge runtime)                  |
+| `RC_SKIP_E2E=1`                                 | Skip the test (`scripts/check.sh` runs it as its own step; `SKIP_E2E=1` skips that step)                           |
+| `RC_E2E_REQUIRE=1`                              | Fail instead of skipping when the stack is not reachable (set by `scripts/check.sh`)                               |
 | `RC_E2E_ENV_FILE=supabase/functions/.env.local` | Serve with your own env file instead of the generated one (it must set `CLAUDE_MODE=mock`)                         |
 | `RC_E2E_SERVE=0`                                | Do not start `functions serve`; use the one you already run (pass `RC_E2E_ENV_FILE` so the test knows the secrets) |
 | `SUPABASE_CLI_VERSION`                          | CLI version for `npx supabase` (default 2.119.0)                                                                   |
