@@ -22,7 +22,9 @@ function sessionBlock(p: PreparedAnalysisV1, rubric: RubricBundle): string {
   const active = p.strokes.filter((s) => !s.excluded).length;
   const excluded = p.strokes.length - active;
   const view = p.viewSource === 'user'
-    ? `${p.view} (confirmed by the user; tracking guessed ${p.viewGuess.view}, confidence ${f2(p.viewGuess.confidence)})`
+    ? `${p.view} (confirmed by the user; tracking guessed ${p.viewGuess.view}, confidence ${
+      f2(p.viewGuess.confidence)
+    })`
     : `${p.view} (not confirmed; tracking guess, confidence ${f2(p.viewGuess.confidence)})`;
   return [
     '<session>',
@@ -116,7 +118,16 @@ function candidatesBlock(p: PreparedAnalysisV1, rubric: RubricBundle): string {
     lines.push('rank | checkpoint_id | fault_id | side | impact | s | c | allowed drills (default first)');
     c.weaknesses.forEach((w, i) =>
       lines.push(
-        [i + 1, w.checkpointId, w.faultId ?? 'none', w.reading, w.impact.toFixed(3), f2(w.s), f2(w.c), drillsOf(w.faultId)]
+        [
+          i + 1,
+          w.checkpointId,
+          w.faultId ?? 'none',
+          w.reading,
+          w.impact.toFixed(3),
+          f2(w.s),
+          f2(w.c),
+          drillsOf(w.faultId),
+        ]
           .join(' | '),
       )
     );

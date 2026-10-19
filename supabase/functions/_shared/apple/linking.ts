@@ -62,7 +62,11 @@ export function normalizeToken(token: unknown): string | null {
   return UUID_RE.test(t) ? t : null;
 }
 
-export async function resolveTokenOwner(token: string | null, callerId: string, lookup: OwnerLookup): Promise<TokenOwner> {
+export async function resolveTokenOwner(
+  token: string | null,
+  callerId: string,
+  lookup: OwnerLookup,
+): Promise<TokenOwner> {
   if (token === null) return 'none';
   if (token === callerId) return 'caller';
   if (await lookup.wasMergedInto(token, callerId)) return 'merged_into_caller';

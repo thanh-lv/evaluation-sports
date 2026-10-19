@@ -29,7 +29,9 @@ export interface AppleAuthExchangeDeps {
 export function siwaHttpError(err: unknown): unknown {
   if (!(err instanceof SiwaError)) return err;
   if (err.transient) return httpError('upstream_unavailable', 'Apple unavailable', { cause: err });
-  if (err.error === 'invalid_client' || err.status === 401) return new HttpError('internal', 'internal error', { cause: err });
+  if (err.error === 'invalid_client' || err.status === 401) {
+    return new HttpError('internal', 'internal error', { cause: err });
+  }
   return httpError('invalid_payload', 'authorization code rejected', { cause: err });
 }
 

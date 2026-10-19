@@ -3,7 +3,7 @@
  * breakpoint. Rendered deterministically from the rubric JSON in English only, so it is byte-identical across
  * languages and users (one cache prefix per model × sport). Covers every skill, enabled or not, like the schema.
  */
-import { SUB_SCORE_KEYS, type Sport, type SubScoreKey } from '../../contracts/common.ts';
+import { type Sport, SUB_SCORE_KEYS, type SubScoreKey } from '../../contracts/common.ts';
 import { targetText } from '../../engine/checkpoints.ts';
 import { loadRubric } from '../../rubric/load.ts';
 import type { CheckpointDef, DrillDef, FaultDef, RubricBundle, SkillDef } from '../../rubric/types.ts';
@@ -17,7 +17,8 @@ const SUB_SCORE_MEANING: Readonly<Record<SubScoreKey, string>> = {
   recovery: 'returning to a balanced ready position after the stroke',
 };
 
-const TAG_MEANING = 'Tags: M = measured from pose; M~ = measured, rough; V = you judge it from the frames (level 0-4);' +
+const TAG_MEANING =
+  'Tags: M = measured from pose; M~ = measured, rough; V = you judge it from the frames (level 0-4);' +
   ' N = not assessable from video (mention it under not_assessable when relevant).';
 
 function oneLine(s: string): string {

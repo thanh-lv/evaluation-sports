@@ -3,10 +3,17 @@
  * the measured value is shown next to it by the app. Numbers with their unit are removed, then any stray digit.
  */
 
-/** A number (optionally signed, with decimals or a range) followed by an optional unit. */
+/** Hedge words and prepositions that only make sense in front of a number ("at about 95°", "ở khoảng 95°"). */
+const APPROX =
+  String.raw`(?:(?:at|by|to|about|around|approximately|roughly|nearly|almost|only|just|ở|ở mức|khoảng|chừng|tầm|` +
+  String.raw`xấp xỉ|chỉ|đến|tới)\s+){0,2}`;
+
+/** A number (optionally hedged, signed, with decimals or a range) followed by an optional unit. */
 const NUMBER_WITH_UNIT = new RegExp(
-  String.raw`[+\-−±~≈]?\s*\d+(?:[.,]\d+)*(?:\s*(?:[-–—]|to|đến|tới)\s*\d+(?:[.,]\d+)*)?` +
-    String.raw`\s*(?:%|°|º|độ|degrees?|deg|cm|mm|km\/h|m\/s|t\/s|ms|giây|seconds?|secs?|s|m|t|x|×|lần|times|phần trăm|percent)?` +
+  `(?<![\\p{L}\\p{N}])` + APPROX +
+    String.raw`[+\-−±~≈]?\s*\d+(?:[.,]\d+)*(?:\s*(?:[-–—]|to|đến|tới)\s*\d+(?:[.,]\d+)*)?` +
+    String
+      .raw`\s*(?:%|°|º|độ|degrees?|deg|cm|mm|km\/h|m\/s|t\/s|ms|giây|seconds?|secs?|s|m|t|x|×|lần|times|phần trăm|percent)?` +
     String.raw`(?![\p{L}\p{N}])`,
   'giu',
 );
@@ -18,7 +25,7 @@ export function hasDigits(text: string): boolean {
 
 /** Removes numbers with their units and tidies the spacing and punctuation left behind. */
 export function stripNumbers(text: string): string {
-  return text
+  const out = text
     .replace(NUMBER_WITH_UNIT, ' ')
     .replace(STRAY, ' ')
     .replace(/\(\s*\)/g, ' ')
@@ -27,6 +34,8 @@ export function stripNumbers(text: string): string {
     .replace(/\s{2,}/g, ' ')
     .replace(/^[\s,.;:–—-]+/, '')
     .trim();
+  // Keep the sentence case of the original when its first word was removed.
+  return /^\P{Ll}/u.test(text.trim()) ? capitalize(out) : out;
 }
 
 /** Words that contain at least one letter. */

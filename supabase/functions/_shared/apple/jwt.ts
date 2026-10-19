@@ -103,7 +103,11 @@ export type TokenProvider = () => Promise<string>;
  * Wraps a signer so the same token is returned until `reuseSec` has passed (keep it well below the token lifetime).
  * A failed signing is not cached.
  */
-export function cachedToken(sign: (now: Date) => Promise<string>, reuseSec: number, now = () => new Date()): TokenProvider {
+export function cachedToken(
+  sign: (now: Date) => Promise<string>,
+  reuseSec: number,
+  now = () => new Date(),
+): TokenProvider {
   let current: { token: Promise<string>; until: number } | null = null;
   return () => {
     const t = now().getTime();

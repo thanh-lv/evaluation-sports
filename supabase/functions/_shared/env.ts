@@ -35,7 +35,7 @@ export interface AppleEnv {
   apiOrigin: { production: string; sandbox: string };
   /** DeviceCheck origin (`APPLE_DEVICECHECK_HOST`). */
   deviceCheckOrigin: string;
-  /** PEM of Apple Root CA G3 (`APPLE_ROOT_CA_G3_PEM`) for JWS chain checks (apple/jws.ts); none is embedded. */
+  /** Extra trusted root PEM(s) (`APPLE_ROOT_CA_G3_PEM`) for JWS chain checks, added to the embedded Apple Root CA G3. */
   rootCaPem?: string | null;
 }
 
@@ -156,8 +156,11 @@ export function loadEnv(src: EnvSource = Deno.env): ServerEnv {
   if (modeRaw !== null && modeRaw !== 'mock' && modeRaw !== 'live') {
     throw new ConfigError('CLAUDE_MODE must be mock or live');
   }
-  const claudeMode: ClaudeMode = (modeRaw as ClaudeMode | null) ?? (anthropicApiKey ? 'live' : 'mock');
-  if (claudeMode === 'live' && !anthropicApiKey) throw new ConfigError('CLAUDE_MODE=live needs ANTHROPIC_API_KEY');
+  // Mock mode only when asked for explicitly: a production deploy that lost its key must fail its jobs loudly (the
+  // analyze function then has no model client), never serve canned results. An explicit `live` without a key is a
+  // startup error; the implicit default is not, so functions that never call Claude keep working.
+  const claudeMode: ClaudeMode = (modeRaw as ClaudeMode | null) ?? 'live';
+  if (modeRaw === 'live' && !anthropicApiKey) throw new ConfigError('CLAUDE_MODE=live needs ANTHROPIC_API_KEY');
 
   const tokenEncKey = opt(src, 'TOKEN_ENC_KEY');
   if (tokenEncKey !== null) assertBase64Key(tokenEncKey, 'TOKEN_ENC_KEY');

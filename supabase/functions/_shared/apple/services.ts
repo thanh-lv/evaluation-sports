@@ -16,7 +16,7 @@ export interface AppleServices {
   api: AppStoreApi;
   siwa: SiwaClient;
   deviceCheck: DeviceCheckClient;
-  /** Trusted roots for JWS chains (DER); throws a ConfigError when `APPLE_ROOT_CA_G3_PEM` is malformed. */
+  /** Trusted roots for JWS chains (DER): embedded Apple Root CA G3 plus `APPLE_ROOT_CA_G3_PEM` (ConfigError if malformed). */
   roots(): readonly Uint8Array[];
 }
 

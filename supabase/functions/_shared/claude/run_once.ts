@@ -81,9 +81,51 @@ function fallbackUsed(message: CoachMessage): boolean {
     message.content.some((b) => (b as { type: string }).type === 'fallback');
 }
 
-/** Concatenated `text` blocks (thinking and fallback blocks are skipped: blocks are read by type). */
+/**
+ * Concatenated `text` blocks after the last `fallback` block (thinking blocks are skipped: blocks are read by type).
+ * A non-streaming mid-output decline omits the declined partial, but if one is ever present it must not be glued in
+ * front of the fallback model's JSON.
+ */
 export function responseText(message: CoachMessage): string {
-  return message.content.filter((b) => b.type === 'text').map((b) => (b as { text: string }).text).join('');
+  const blocks = message.content as { type: string; text?: string }[];
+  let start = 0;
+  blocks.forEach((b, i) => {
+    if (b.type === 'fallback') start = i + 1;
+  });
+  return blocks.slice(start).filter((b) => b.type === 'text').map((b) => b.text ?? '').join('');
+}
+
+interface IterationLike {
+  type?: string;
+  model?: string | null;
+  input_tokens?: number;
+  output_tokens?: number;
+  cache_read_input_tokens?: number;
+  cache_creation_input_tokens?: number;
+  cache_creation?: { ephemeral_1h_input_tokens?: number } | null;
+}
+
+/**
+ * Billed cost of a response. Top-level `usage` covers only the attempt that produced the message; after a server-side
+ * fallback, `usage.iterations` lists every attempt (the declined one included) with its own model, and is the billing
+ * source of truth. Summing it errs on the safe side for the budget guard.
+ */
+export function billedCostUsd(message: CoachMessage, requestedModel: string): number {
+  const iterations = ((message.usage.iterations ?? []) as IterationLike[]).filter((i) =>
+    i.type === 'message' || i.type === 'fallback_message'
+  );
+  if (iterations.length < 2) return costUsd(message.model ?? requestedModel, usageOf(message));
+  let usd = 0;
+  for (const i of iterations) {
+    usd += costUsd(i.model ?? (i.type === 'message' ? requestedModel : message.model), {
+      inputTokens: i.input_tokens ?? 0,
+      outputTokens: i.output_tokens ?? 0,
+      cacheReadInputTokens: i.cache_read_input_tokens ?? 0,
+      cacheCreationInputTokens: i.cache_creation_input_tokens ?? 0,
+      cacheCreation1hInputTokens: i.cache_creation?.ephemeral_1h_input_tokens ?? 0,
+    });
+  }
+  return Math.round(usd * 1e6) / 1e6;
 }
 
 /** Pure classification of a response that arrived (HTTP 200). */
@@ -186,7 +228,7 @@ export async function runOnce(params: CoachRequestParams, route: ModelRoute, dep
       stopReason: message?.stop_reason ?? null,
       refusalCategory: outcome.kind === 'refusal' ? outcome.category : null,
       usage,
-      costUsd: costUsd(served ?? params.model, usage),
+      costUsd: message ? billedCostUsd(message, params.model) : 0,
       latencyMs,
       requestId: message ? requestIdOf(message) : errorRequestId,
       fallbackUsed: message ? fallbackUsed(message) : false,

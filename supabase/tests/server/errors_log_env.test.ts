@@ -162,7 +162,7 @@ Deno.test('loadEnv: minimal env, defaults and trailing slash trimmed', () => {
   assertEquals(env.supabaseUrl, 'http://kong:8000');
   assertEquals(env.serviceKey, 'legacy-service');
   assertEquals(env.anonKey, 'legacy-anon');
-  assertEquals(env.claudeMode, 'mock');
+  assertEquals(env.claudeMode, 'live'); // mock only when CLAUDE_MODE=mock is explicit
   assertEquals(env.anthropicApiKey, null);
   assertEquals(env.internalSecret, null);
   assertEquals(env.allowXcodeEnv, false);
@@ -197,10 +197,14 @@ Deno.test('loadEnv: missing required values are listed in one clear error', () =
   assertThrows(() => loadEnv(envSource({ ...BASE, SUPABASE_URL: 'not a url' })), ConfigError, 'SUPABASE_URL');
 });
 
-Deno.test('loadEnv: CLAUDE_MODE defaults to live with a key, mock without; live needs a key', () => {
+Deno.test('loadEnv: CLAUDE_MODE defaults to live (mock only when explicit); explicit live needs a key', () => {
   assertEquals(loadEnv(envSource({ ...BASE, ANTHROPIC_API_KEY: 'sk-ant-x' })).claudeMode, 'live');
   assertEquals(loadEnv(envSource({ ...BASE, ANTHROPIC_API_KEY: 'sk-ant-x', CLAUDE_MODE: 'MOCK' })).claudeMode, 'mock');
-  assertEquals(loadEnv(envSource({ ...BASE, ANTHROPIC_API_KEY: '  ' })).claudeMode, 'mock');
+  // a missing key never silently switches to the mock generator
+  const noKey = loadEnv(envSource({ ...BASE, ANTHROPIC_API_KEY: '  ' }));
+  assertEquals(noKey.claudeMode, 'live');
+  assertEquals(noKey.anthropicApiKey, null);
+  assertEquals(loadEnv(envSource({ ...BASE, CLAUDE_MODE: 'mock' })).claudeMode, 'mock');
   assertThrows(() => loadEnv(envSource({ ...BASE, CLAUDE_MODE: 'live' })), ConfigError, 'ANTHROPIC_API_KEY');
   assertThrows(() => loadEnv(envSource({ ...BASE, CLAUDE_MODE: 'replay' })), ConfigError, 'mock or live');
 });

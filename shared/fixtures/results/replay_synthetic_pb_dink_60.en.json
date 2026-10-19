@@ -1,0 +1,1020 @@
+{
+  "schema": "coach-result.v1",
+  "analysisId": "1c3eef79-f802-4645-846e-9f06e26688d5",
+  "sport": "pickleball",
+  "skill": "pb.dink",
+  "narrativeLanguage": "en",
+  "createdAt": "2026-10-20T08:00:00Z",
+  "status": "succeeded",
+  "rejection": null,
+  "access": "full",
+  "locked": {
+    "strengths": 0,
+    "weaknesses": 0,
+    "plan": 0
+  },
+  "aiGenerated": true,
+  "hero": {
+    "checkpointId": "pb.ready.PR4",
+    "faultId": "pb.ready.paddle_down",
+    "title": "Paddle hanging low",
+    "observation": "Even in your best stroke, paddle hangs low while waiting.",
+    "cue": {
+      "vi": "Vợt trước ngực, sẵn sàng",
+      "en": "Paddle up, chest height, in front"
+    },
+    "drill": {
+      "id": "pb.drill.paddle_up_reaction",
+      "title": {
+        "vi": "Phản xạ vợt cao",
+        "en": "Paddle-up reaction volleys"
+      },
+      "steps": {
+        "vi": ["Đứng cách tường khoảng hai đến ba mét, vợt trước ngực.", "Đánh bóng nhẹ vào tường và chặn bóng bật lại trước khi bóng chạm đất.", "Sau mỗi cú, đưa vợt về ngay trước ngực.", "Có bạn tập: đứng ở kitchen, đánh vô lê qua lại chậm."],
+        "en": ["Stand two to three meters from a wall, paddle in front of your chest.", "Hit the ball gently at the wall and block the rebound before it bounces.", "After each hit, bring the paddle straight back in front of your chest.", "With a partner: stand at the kitchen and trade slow volleys."]
+      },
+      "dose": {
+        "sets": 3,
+        "reps": 15,
+        "seconds": null
+      },
+      "safety": null
+    },
+    "frameId": "F1",
+    "joints": ["rSho", "rElb", "rWri"]
+  },
+  "overall": {
+    "displayScore": 60,
+    "level": "intermediate",
+    "coverage": 0.92,
+    "partial": false,
+    "beta": true
+  },
+  "subScores": [
+    {
+      "key": "stance",
+      "displayScore": 80,
+      "coverage": 0.94,
+      "confidence": "high",
+      "name": {
+        "vi": "Tư thế & Thăng bằng",
+        "en": "Stance & Balance"
+      }
+    },
+    {
+      "key": "footwork",
+      "displayScore": 100,
+      "coverage": 0.6,
+      "confidence": "medium",
+      "name": {
+        "vi": "Di chuyển (bộ pháp)",
+        "en": "Footwork"
+      }
+    },
+    {
+      "key": "swing",
+      "displayScore": 0,
+      "coverage": 0.9,
+      "confidence": "high",
+      "name": {
+        "vi": "Kỹ thuật vung vợt",
+        "en": "Swing mechanics"
+      }
+    },
+    {
+      "key": "contact",
+      "displayScore": 90,
+      "coverage": 1,
+      "confidence": "high",
+      "name": {
+        "vi": "Điểm chạm bóng",
+        "en": "Contact point (pickleball)"
+      }
+    },
+    {
+      "key": "follow",
+      "displayScore": 100,
+      "coverage": 1,
+      "confidence": "high",
+      "name": {
+        "vi": "Kết thúc động tác",
+        "en": "Follow-through"
+      }
+    },
+    {
+      "key": "recovery",
+      "displayScore": 0,
+      "coverage": 1,
+      "confidence": "high",
+      "name": {
+        "vi": "Về vị trí (hồi vị)",
+        "en": "Recovery"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "pb.ready.PR1",
+      "subscore": "stance",
+      "assess": "M",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "1.00–1.60",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 1.0097
+        },
+        {
+          "strokeId": 2,
+          "value": 1.0079
+        },
+        {
+          "strokeId": 3,
+          "value": 1.0018
+        },
+        {
+          "strokeId": 4,
+          "value": 1.0144
+        },
+        {
+          "strokeId": 5,
+          "value": 1.0005
+        }
+      ],
+      "name": {
+        "vi": "Hai chân rộng bằng hoặc hơn vai",
+        "en": "Feet shoulder-width or wider"
+      },
+      "joints": ["lAnk", "rAnk"]
+    },
+    {
+      "id": "pb.ready.PR2",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "23°",
+      "targetText": "15–45°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 23.1491
+        },
+        {
+          "strokeId": 2,
+          "value": 22.9802
+        },
+        {
+          "strokeId": 3,
+          "value": 23.2519
+        },
+        {
+          "strokeId": 4,
+          "value": 23.6017
+        },
+        {
+          "strokeId": 5,
+          "value": 23.6631
+        }
+      ],
+      "name": {
+        "vi": "Gối chùng",
+        "en": "Knees bent"
+      },
+      "joints": ["lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+    },
+    {
+      "id": "pb.ready.PR3",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "14°",
+      "targetText": "10–30°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 13.9372
+        },
+        {
+          "strokeId": 2,
+          "value": 14.4772
+        },
+        {
+          "strokeId": 3,
+          "value": 14.1701
+        },
+        {
+          "strokeId": 4,
+          "value": 14.2114
+        },
+        {
+          "strokeId": 5,
+          "value": 14.7676
+        }
+      ],
+      "name": {
+        "vi": "Trọng tâm hơi dồn về trước",
+        "en": "Weight slightly forward"
+      },
+      "joints": ["neck", "root"]
+    },
+    {
+      "id": "pb.ready.PR4",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 0,
+      "c": 1,
+      "valueText": "0.05 T",
+      "targetText": "0.50–1.20 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.039
+        },
+        {
+          "strokeId": 2,
+          "value": 0.0562
+        },
+        {
+          "strokeId": 3,
+          "value": 0.0362
+        },
+        {
+          "strokeId": 4,
+          "value": 0.049
+        },
+        {
+          "strokeId": 5,
+          "value": 0.0512
+        }
+      ],
+      "name": {
+        "vi": "Vợt giơ trước ngực",
+        "en": "Paddle up in front"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "pb.ready.PR5",
+      "subscore": "stance",
+      "assess": "M~",
+      "s": 1,
+      "c": 1,
+      "valueText": "0.78 T",
+      "targetText": "≥ 0.30 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.779
+        },
+        {
+          "strokeId": 2,
+          "value": 0.7879
+        },
+        {
+          "strokeId": 3,
+          "value": 0.7723
+        },
+        {
+          "strokeId": 4,
+          "value": 0.7731
+        },
+        {
+          "strokeId": 5,
+          "value": 0.791
+        }
+      ],
+      "name": {
+        "vi": "Vợt đưa ra trước người",
+        "en": "Paddle out in front"
+      },
+      "joints": ["rSho", "rWri"]
+    },
+    {
+      "id": "pb.ready.PR6",
+      "subscore": "stance",
+      "assess": "V",
+      "s": 0.75,
+      "c": 0.7,
+      "valueText": "3/4",
+      "targetText": "4/4",
+      "perStroke": [],
+      "name": {
+        "vi": "Đầu vợt hướng lên",
+        "en": "Paddle tip up"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "pb.ready.PR7",
+      "subscore": "stance",
+      "assess": "M~",
+      "s": 1,
+      "c": 0.6,
+      "valueText": "10°",
+      "targetText": "≤ 25°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 9.738
+        },
+        {
+          "strokeId": 2,
+          "value": 9.9337
+        },
+        {
+          "strokeId": 3,
+          "value": 9.6754
+        },
+        {
+          "strokeId": 4,
+          "value": 9.9992
+        },
+        {
+          "strokeId": 5,
+          "value": 9.3935
+        }
+      ],
+      "name": {
+        "vi": "Đứng đối diện lưới",
+        "en": "Square to the net"
+      },
+      "joints": ["lSho", "rSho", "lHip", "rHip"]
+    },
+    {
+      "id": "pb.split.S1",
+      "subscore": "footwork",
+      "assess": "M~",
+      "s": 1,
+      "c": 0.6,
+      "valueText": "5/5",
+      "targetText": "✓",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 1
+        },
+        {
+          "strokeId": 2,
+          "value": 1
+        },
+        {
+          "strokeId": 3,
+          "value": 1
+        },
+        {
+          "strokeId": 4,
+          "value": 1
+        },
+        {
+          "strokeId": 5,
+          "value": 1
+        }
+      ],
+      "name": {
+        "vi": "Bật nhún (split step) trước khi di chuyển",
+        "en": "Split step before moving"
+      },
+      "joints": ["root", "lKne", "rKne", "lAnk", "rAnk"]
+    },
+    {
+      "id": "pb.dink.DK1",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "24°",
+      "targetText": "20–50°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 24.4986
+        },
+        {
+          "strokeId": 2,
+          "value": 23.5505
+        },
+        {
+          "strokeId": 3,
+          "value": 24.0052
+        },
+        {
+          "strokeId": 4,
+          "value": 24.1439
+        },
+        {
+          "strokeId": 5,
+          "value": 22.0415
+        }
+      ],
+      "name": {
+        "vi": "Hạ thấp trọng tâm",
+        "en": "Low base"
+      },
+      "joints": ["lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+    },
+    {
+      "id": "pb.dink.DK2",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "17°",
+      "targetText": "≤ 35°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 15.7366
+        },
+        {
+          "strokeId": 2,
+          "value": 18.1859
+        },
+        {
+          "strokeId": 3,
+          "value": 17.3519
+        },
+        {
+          "strokeId": 4,
+          "value": 17.3372
+        },
+        {
+          "strokeId": 5,
+          "value": 16.1452
+        }
+      ],
+      "name": {
+        "vi": "Chùng gối, không cúi lưng",
+        "en": "Bend the knees, not the waist"
+      },
+      "joints": ["neck", "root", "lKne", "rKne"]
+    },
+    {
+      "id": "pb.dink.DK3",
+      "subscore": "swing",
+      "assess": "M~",
+      "s": 0,
+      "c": 1,
+      "valueText": "0.85 T",
+      "targetText": "≤ 0.40 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.7218
+        },
+        {
+          "strokeId": 2,
+          "value": 0.4707
+        },
+        {
+          "strokeId": 3,
+          "value": 0.8512
+        },
+        {
+          "strokeId": 4,
+          "value": 0.8714
+        },
+        {
+          "strokeId": 5,
+          "value": 0.8948
+        }
+      ],
+      "name": {
+        "vi": "Lấy đà ngắn",
+        "en": "Compact backswing"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "pb.dink.DK4",
+      "subscore": "swing",
+      "assess": "V",
+      "s": 0,
+      "c": 0.7,
+      "valueText": "0/4",
+      "targetText": "4/4",
+      "perStroke": [],
+      "name": {
+        "vi": "Nâng bóng bằng vai, cổ tay chắc",
+        "en": "Shoulder lift, firm wrist"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "pb.dink.DK5",
+      "subscore": "contact",
+      "assess": "M~",
+      "s": 0.63,
+      "c": 1,
+      "valueText": "0.77 T",
+      "targetText": "0.20–0.70 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.6267
+        },
+        {
+          "strokeId": 2,
+          "value": 0.8158
+        },
+        {
+          "strokeId": 3,
+          "value": 0.7401
+        },
+        {
+          "strokeId": 4,
+          "value": 0.7743
+        },
+        {
+          "strokeId": 5,
+          "value": 0.79
+        }
+      ],
+      "name": {
+        "vi": "Chạm bóng phía trước",
+        "en": "Contact in front"
+      },
+      "joints": ["rSho", "rWri"]
+    },
+    {
+      "id": "pb.dink.DK6",
+      "subscore": "contact",
+      "assess": "M~",
+      "s": 1,
+      "c": 1,
+      "valueText": "1.9 T/s",
+      "targetText": "≥ 0.2 T/s",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 1.8027
+        },
+        {
+          "strokeId": 2,
+          "value": 2.1233
+        },
+        {
+          "strokeId": 3,
+          "value": 1.8557
+        },
+        {
+          "strokeId": 4,
+          "value": 2.1628
+        },
+        {
+          "strokeId": 5,
+          "value": 1.9247
+        }
+      ],
+      "name": {
+        "vi": "Nâng bóng nhẹ từ dưới lên",
+        "en": "Gentle low-to-high lift"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "pb.dink.DK7",
+      "subscore": "follow",
+      "assess": "M~",
+      "s": 1,
+      "c": 1,
+      "valueText": "0.54 T",
+      "targetText": "≤ 0.80 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.7498
+        },
+        {
+          "strokeId": 2,
+          "value": 0.4428
+        },
+        {
+          "strokeId": 3,
+          "value": 0.5952
+        },
+        {
+          "strokeId": 4,
+          "value": 0.5425
+        },
+        {
+          "strokeId": 5,
+          "value": 0.5298
+        }
+      ],
+      "name": {
+        "vi": "Theo vợt ngắn",
+        "en": "Short follow-through"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "pb.dink.DK8",
+      "subscore": "contact",
+      "assess": "M~",
+      "s": 1,
+      "c": 1,
+      "valueText": "0.08 T",
+      "targetText": "≤ 0.15 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.0818
+        },
+        {
+          "strokeId": 2,
+          "value": 0.055
+        },
+        {
+          "strokeId": 3,
+          "value": 0.0733
+        },
+        {
+          "strokeId": 4,
+          "value": 0.149
+        },
+        {
+          "strokeId": 5,
+          "value": 0.077
+        }
+      ],
+      "name": {
+        "vi": "Giữ đầu yên khi chạm bóng",
+        "en": "Head still at contact"
+      },
+      "joints": ["nose", "neck"]
+    },
+    {
+      "id": "pb.dink.DK9",
+      "subscore": "stance",
+      "assess": "M~",
+      "s": 1,
+      "c": 1,
+      "valueText": "0.1 T/s",
+      "targetText": "≤ 0.5 T/s",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.072
+        },
+        {
+          "strokeId": 2,
+          "value": 0.347
+        },
+        {
+          "strokeId": 3,
+          "value": 0.0316
+        },
+        {
+          "strokeId": 4,
+          "value": 0.294
+        },
+        {
+          "strokeId": 5,
+          "value": 0.05
+        }
+      ],
+      "name": {
+        "vi": "Người đứng vững khi chạm bóng",
+        "en": "Body settled at contact"
+      },
+      "joints": ["root", "lAnk", "rAnk"]
+    },
+    {
+      "id": "pb.dink.DK10",
+      "subscore": "footwork",
+      "assess": "M~",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "-1.20–1.20 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.6949
+        },
+        {
+          "strokeId": 2,
+          "value": 0.8842
+        },
+        {
+          "strokeId": 3,
+          "value": 0.8085
+        },
+        {
+          "strokeId": 4,
+          "value": 0.8334
+        },
+        {
+          "strokeId": 5,
+          "value": 0.8348
+        }
+      ],
+      "name": {
+        "vi": "Bước chân thay vì với tay",
+        "en": "Moves the feet instead of reaching"
+      },
+      "joints": ["rSho", "rWri", "root"]
+    },
+    {
+      "id": "pb.dink.DK11",
+      "subscore": "recovery",
+      "assess": "M",
+      "s": 0,
+      "c": 1,
+      "valueText": "0.05 T",
+      "targetText": "≥ 0.50 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.054
+        },
+        {
+          "strokeId": 2,
+          "value": 0.0219
+        },
+        {
+          "strokeId": 3,
+          "value": 0.0568
+        },
+        {
+          "strokeId": 4,
+          "value": 0.0363
+        },
+        {
+          "strokeId": 5,
+          "value": 0.0488
+        }
+      ],
+      "name": {
+        "vi": "Đưa vợt về tư thế chuẩn bị",
+        "en": "Paddle back to ready"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "pb.dink.DK12",
+      "subscore": "contact",
+      "assess": "N",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "",
+      "perStroke": [],
+      "name": {
+        "vi": "Bóng rơi vào kitchen",
+        "en": "Ball lands in the kitchen"
+      },
+      "joints": []
+    }
+  ],
+  "strengths": [
+    {
+      "checkpointId": "pb.dink.DK2",
+      "title": "Bend the knees, not the waist",
+      "detail": "Chest stays up on the dink. Keep it up.",
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 4384462,
+          "frameId": "F3",
+          "metricKey": "pb.dink.DK2",
+          "observation": "In your best stroke, chest stays up on the dink.",
+          "plain": {
+            "vi": "thân người giữ thẳng khi dink",
+            "en": "chest stays up on the dink"
+          },
+          "detail": {
+            "valueText": "17°",
+            "targetText": "≤ 35°"
+          },
+          "joints": ["neck", "root", "lKne", "rKne"]
+        }
+      ]
+    },
+    {
+      "checkpointId": "pb.dink.DK1",
+      "title": "Low base",
+      "detail": "Low base, knees bent on the dink. Keep it up.",
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 4384462,
+          "frameId": "F3",
+          "metricKey": "pb.dink.DK1",
+          "observation": "In your best stroke, low base, knees bent on the dink.",
+          "plain": {
+            "vi": "hạ thấp trọng tâm, gối chùng khi dink",
+            "en": "low base, knees bent on the dink"
+          },
+          "detail": {
+            "valueText": "24°",
+            "targetText": "20–50°"
+          },
+          "joints": ["lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "checkpointId": "pb.dink.DK3",
+      "faultId": "pb.dink.big_backswing",
+      "severity": "medium",
+      "title": "Big backswing, ball pops up",
+      "detail": "In most of your strokes, big backswing on the dink.",
+      "whyItMatters": "A big backswing pops the ball up for an attack.",
+      "cue": {
+        "vi": "Bắt đầu vợt ở điểm chạm bóng",
+        "en": "Start the paddle at contact"
+      },
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 4384462,
+          "frameId": "F5",
+          "metricKey": "pb.dink.DK3",
+          "observation": "Even in your best stroke, big backswing on the dink.",
+          "plain": {
+            "vi": "lấy đà quá lớn khi dink",
+            "en": "big backswing on the dink"
+          },
+          "detail": {
+            "valueText": "0.85 T",
+            "targetText": "≤ 0.40 T"
+          },
+          "joints": ["rElb", "rWri"]
+        }
+      ]
+    }
+  ],
+  "plan": [
+    {
+      "priority": 1,
+      "faultId": "pb.ready.paddle_down",
+      "title": "Paddle up, chest height, in front",
+      "howToFix": "Paddle up, chest height, in front. Practise it slowly first to feel the movement, then build up speed.",
+      "cues": ["Paddle up, chest height, in front"],
+      "goal": "Paddle held up in front while waiting.",
+      "target": {
+        "metricKey": "pb.ready.PR4",
+        "current": "0.05 T",
+        "goal": "0.50–1.20 T"
+      },
+      "drills": [
+        {
+          "id": "pb.drill.paddle_up_reaction",
+          "title": {
+            "vi": "Phản xạ vợt cao",
+            "en": "Paddle-up reaction volleys"
+          },
+          "steps": {
+            "vi": ["Đứng cách tường khoảng hai đến ba mét, vợt trước ngực.", "Đánh bóng nhẹ vào tường và chặn bóng bật lại trước khi bóng chạm đất.", "Sau mỗi cú, đưa vợt về ngay trước ngực.", "Có bạn tập: đứng ở kitchen, đánh vô lê qua lại chậm."],
+            "en": ["Stand two to three meters from a wall, paddle in front of your chest.", "Hit the ball gently at the wall and block the rebound before it bounces.", "After each hit, bring the paddle straight back in front of your chest.", "With a partner: stand at the kitchen and trade slow volleys."]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 15,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    },
+    {
+      "priority": 2,
+      "faultId": "pb.dink.big_backswing",
+      "title": "Start the paddle at contact",
+      "howToFix": "Start the paddle at contact. Practise it slowly first to feel the movement, then build up speed.",
+      "cues": ["Start the paddle at contact"],
+      "goal": "Almost no backswing.",
+      "target": {
+        "metricKey": "pb.dink.DK3",
+        "current": "0.85 T",
+        "goal": "≤ 0.40 T"
+      },
+      "drills": [
+        {
+          "id": "pb.drill.no_backswing_dink",
+          "title": {
+            "vi": "Dink không lấy đà",
+            "en": "No-backswing dinks"
+          },
+          "steps": {
+            "vi": ["Đứng ở vạch kitchen, gối chùng.", "Đặt vợt sẵn ở điểm chạm phía trước người.", "Nâng bóng nhẹ qua lưới bằng vai, không đưa vợt ra sau.", "Tập một mình: dink vào tường thấp hoặc tự thả bóng."],
+            "en": ["Stand at the kitchen line with your knees bent.", "Set the paddle at the contact point in front of you.", "Lift the ball gently over the net from the shoulder, with no backswing.", "Alone: dink against a low wall or drop the ball yourself."]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 20,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    }
+  ],
+  "strokes": [
+    {
+      "id": 1,
+      "tStartUs": 1432427,
+      "tContactUs": 2626998,
+      "contactIsEstimate": true,
+      "tEndUs": 3633855,
+      "phases": {
+        "ready": 1667709,
+        "bsEnd": 2134079,
+        "contact": 2632779,
+        "ftStop": 2984242
+      },
+      "role": null
+    },
+    {
+      "id": 2,
+      "tStartUs": 3283126,
+      "tContactUs": 4379739,
+      "contactIsEstimate": true,
+      "tEndUs": 5382846,
+      "phases": {
+        "ready": 3432436,
+        "bsEnd": 4148834,
+        "contact": 4384462,
+        "ftStop": 4632364
+      },
+      "role": "best"
+    },
+    {
+      "id": 3,
+      "tStartUs": 5067301,
+      "tContactUs": 6261564,
+      "contactIsEstimate": true,
+      "tEndUs": 7267264,
+      "phases": {
+        "ready": 5350972,
+        "bsEnd": 5700102,
+        "contact": 6266420,
+        "ftStop": 6565864
+      },
+      "role": null
+    },
+    {
+      "id": 4,
+      "tStartUs": 6934431,
+      "tContactUs": 8110318,
+      "contactIsEstimate": true,
+      "tEndUs": 9115880,
+      "phases": {
+        "ready": 7182003,
+        "bsEnd": 7900109,
+        "contact": 8116237,
+        "ftStop": 8367830
+      },
+      "role": null
+    },
+    {
+      "id": 5,
+      "tStartUs": 8683461,
+      "tContactUs": 9833058,
+      "contactIsEstimate": true,
+      "tEndUs": 10833694,
+      "phases": {
+        "ready": 8834290,
+        "bsEnd": 9300995,
+        "contact": 9834526,
+        "ftStop": 10101190
+      },
+      "role": "worst"
+    }
+  ],
+  "safety": [
+    {
+      "kind": "warmup",
+      "message": "Warm up your shoulders, wrists and knees for a few minutes before practice.",
+      "localized": null,
+      "checkpointId": null
+    }
+  ],
+  "notAssessable": [
+    {
+      "aspect": "Ball lands in the kitchen",
+      "howToCapture": "Film closer, in good light, with the phone held steady."
+    }
+  ],
+  "recordingTips": ["Fix the phone at hip height and keep your whole body in the frame."],
+  "rulesTip": {
+    "vi": "Kitchen (vùng cấm vô lê) là vùng sát lưới: khi đứng trong đó hoặc chạm vạch, bạn chỉ được đánh bóng sau khi bóng đã nảy. Dink tốt rơi vào kitchen bên đối thủ.",
+    "en": "The kitchen (non-volley zone) is the area next to the net: while you are in it or on its line, you may only hit the ball after it bounces. A good dink lands in your opponent's kitchen."
+  },
+  "summary": "Nice work on bend the knees, not the waist. The first thing to fix: paddle hanging low. Work on one point per session and film again after a few sessions.",
+  "meta": {
+    "model": "claude-sonnet-5-5",
+    "kind": "standard",
+    "promptVersion": "coach-prompt-2.0",
+    "rubricVersion": "pb-2026.10.18+drills-2026.10.18",
+    "algoVersion": "engine-1.1.0",
+    "schemaVersion": "coach.v1"
+  }
+}

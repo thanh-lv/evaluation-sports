@@ -15,6 +15,7 @@ Postgres schema, RLS, functions, Storage and cron for RacketCoach. The spec is D
 | `…0600_storage.sql` | Buckets and Storage policies |
 | `…0700_analytics_config.sql` | `app_config`, `enabled_skills`, `events`, `log_event`, retention helper |
 | `…0900_cron.sql` | pg_net and pg_cron jobs |
+| `…1100_jobs_fixes.sql` | M7: `private.rate_limits` + `rate_limit_hit` (prepare 20/h), daily-cron queries (`cron_stale_jobs`, `cron_expired_drafts`, `cron_inactive_pose`, `cron_purge_rate_limits`), `recent_model_use` (warm-up) |
 | `supabase/seed.sql` | Plan limits, model routes, app config, enabled skills, local demo reviewer email |
 | `supabase/tests/database/*.test.sql` | pgTAP tests (11 files) |
 | `supabase/tests/sql/*.sh` | Runner, concurrency proof, fixture check, HTTP smoke test |
@@ -109,6 +110,9 @@ client request gets 401 or 403.
 | `purge_expired_rows()` | jsonb | For the daily cron: deletes events older than 13 months, `llm_outputs` older than 90 days, and processed notifications |
 | `redact_result_free(result)` | jsonb | The free view of a full result |
 | `dispatch_due_jobs(p_limit = 5)`, `call_cron_task(p_task)` | int, bigint | pg_cron entry points (see Cron) |
+| `rate_limit_hit(p_user_id, p_bucket, p_limit, p_window_s = 3600)` | jsonb | `{allowed, count, limit, resetAt}`; fixed windows aligned to the epoch; denied hits count too (1100) |
+| `cron_stale_jobs(p_older_than_s = 259200, p_limit)`, `cron_expired_drafts(p_older_than_s = 86400, p_limit)`, `cron_inactive_pose(p_months = 24, p_limit)`, `cron_purge_rate_limits()` | table / int | Daily-cron candidates (1100). The caller claims a stale job before `fail_analysis(…, 'expired')` |
+| `recent_model_use(p_hours = 20)` | table | `(model, sport, analysis_id)` of served calls; warm-up calls come back with a marker `analysis_id` (1100) |
 
 ### Client RPCs: `supabase.rpc(name, args)`, authenticated (anonymous users included)
 
@@ -146,7 +150,7 @@ select vault.create_secret('<same value as INTERNAL_SECRET in supabase/functions
 select vault.create_secret('<same value as CRON_SECRET>', 'cron_secret');
 ```
 
-On the hosted project, `project_url` is `https://<ref>.supabase.co`.
+On the hosted project, `project_url` is `https://<ref>.supabase.co`. `bash supabase/tests/e2e/vault_secrets.sh [env-file]` sets the three local secrets from the functions' env file (local databases only; see supabase/tests/e2e/README.md).
 
 ## Seed and the demo reviewer
 

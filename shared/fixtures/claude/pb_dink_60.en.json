@@ -1,0 +1,127 @@
+{
+  "schema_version": "coach.v1",
+  "language": "en",
+  "input_check": {
+    "is_assessable": true,
+    "sport_matches": true,
+    "skill_matches": true,
+    "subject_visibility": "good",
+    "issues": [],
+    "note": ""
+  },
+  "visual_checkpoints": [
+    {
+      "checkpoint_id": "pb.ready.PR6",
+      "level": 1,
+      "confidence": "medium",
+      "frame_ids": ["F1"],
+      "note": "The paddle sits low near the waist with the tip pointing down."
+    },
+    {
+      "checkpoint_id": "pb.dink.DK4",
+      "level": 3,
+      "confidence": "high",
+      "frame_ids": ["F3", "F5"],
+      "note": "Mostly a shoulder lift with only a small wrist movement."
+    }
+  ],
+  "summary": "Your dink comes from a nice low, stable base, and your chest stays up through the shot. The main thing to fix is where your paddle waits between shots: it hangs low, so you are late on fast balls. Keep the paddle up in front of your chest and shorten your backswing.",
+  "strengths": [
+    {
+      "checkpoint_id": "pb.dink.DK2",
+      "title": "Chest stays up",
+      "detail": "You bend your knees instead of folding at the waist. That keeps your eyes level and your dinks consistent.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F3",
+          "metric_key": "pb.dink.DK2",
+          "observation": "Your chest stays upright while your knees do the bending."
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "pb.dink.DK4",
+      "title": "Smooth shoulder lift",
+      "detail": "The dink comes from your shoulder, not a wrist flick. That keeps the paddle face steady.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F3",
+          "metric_key": "",
+          "observation": "The paddle face stays steady as you lift through the ball."
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "checkpoint_id": "pb.ready.PR4",
+      "fault_id": "pb.ready.paddle_down",
+      "severity": "high",
+      "title": "Paddle hangs low between shots",
+      "detail": "While you wait for the ball, your paddle drops to knee height. Fast balls at your body then catch you late.",
+      "why_it_matters": "A paddle held up in front saves time and lets you block hard shots at the kitchen.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F1",
+          "metric_key": "pb.ready.PR4",
+          "observation": "In the ready position the paddle hangs by your knee."
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "pb.dink.DK3",
+      "fault_id": "pb.dink.big_backswing",
+      "severity": "medium",
+      "title": "Backswing too big for a dink",
+      "detail": "You take the paddle back further than a dink needs. A big swing makes the ball pop up.",
+      "why_it_matters": "A short swing keeps your dinks low and hard to attack.",
+      "evidence": [
+        {
+          "stroke_id": 5,
+          "frame_id": "",
+          "metric_key": "pb.dink.DK3",
+          "observation": "The paddle travels well behind your hip before contact."
+        }
+      ]
+    }
+  ],
+  "improvements": [
+    {
+      "priority": 1,
+      "fault_id": "pb.ready.paddle_down",
+      "title": "Keep the paddle up and in front",
+      "how_to_fix": "After every shot, bring the paddle back up in front of your chest. Hold it there with the tip up.",
+      "cues": ["Paddle up after every shot", "Tip up, in front"],
+      "drill_ids": ["pb.drill.paddle_up_reaction"],
+      "goal": "Paddle at chest height between shots."
+    },
+    {
+      "priority": 2,
+      "fault_id": "pb.dink.big_backswing",
+      "title": "Shorten the backswing",
+      "how_to_fix": "Start the dink with the paddle already in front. Lift the ball with your shoulder instead of swinging.",
+      "cues": ["Short and soft", "Lift, don't swing"],
+      "drill_ids": ["pb.drill.no_backswing_dink"],
+      "goal": "Paddle stays in front of your body on the dink."
+    }
+  ],
+  "safety_notes": [
+    {
+      "kind": "load",
+      "message": "Long dink sessions in a low stance load your knees; take short breaks."
+    }
+  ],
+  "not_assessable": [
+    {
+      "aspect": "Where your dinks land",
+      "how_to_capture": "Film from behind the baseline so the kitchen is in view."
+    }
+  ],
+  "recording_tips": [
+    "Keep the phone steady at hip height.",
+    "Record at least six dinks in a row."
+  ]
+}

@@ -208,7 +208,8 @@ class Ctx {
   }
 
   flag(type: PostFlagType, detail: string): void {
-    this.flags.push({ type, detail });
+    // details can echo model strings (enum values, language); flags are logged, so keep them short
+    this.flags.push({ type, detail: detail.length > 120 ? `${detail.slice(0, 120)}…` : detail });
   }
 
   t(text: LocalizedText): string {
@@ -301,7 +302,10 @@ function evidenceStep(
     const mk = e.metric_key.trim() === '' ? null : x.checkpointIds.match(e.metric_key);
     const metricKey = mk && x.tableIds.has(mk) ? mk : null;
     if (sid === null || (!frameId && !metricKey)) {
-      x.flag('evidence_dropped', `${checkpointId}: stroke ${e.stroke_id} frame "${e.frame_id}" metric "${e.metric_key}"`);
+      x.flag(
+        'evidence_dropped',
+        `${checkpointId}: stroke ${e.stroke_id} frame "${e.frame_id}" metric "${e.metric_key}"`,
+      );
       continue;
     }
     let observation = x.clean(e.observation, `evidence.${checkpointId}`, fallbackObservation) ?? fallbackObservation;
@@ -309,7 +313,7 @@ function evidenceStep(
       observation = stripNumbers(observation);
       x.flag('observation_stripped', checkpointId);
     }
-    if (wordCount(observation) < POSTPROCESS_LIMITS.minObservationWords) {
+    if (wordCount(observation) < POSTPROCESS_LIMITS.minObservationWords && observation !== fallbackObservation) {
       observation = fallbackObservation;
       x.flag('observation_replaced', checkpointId);
     }

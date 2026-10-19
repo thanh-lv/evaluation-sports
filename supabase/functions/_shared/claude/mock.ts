@@ -31,6 +31,8 @@ const T = {
   keep: { vi: 'Hãy giữ thói quen này.', en: 'Keep it up.' },
   most: { vi: 'Ở phần lớn các cú đánh,', en: 'In most of your strokes,' },
   likely: { vi: 'Có thể', en: 'Likely,' },
+  bestStroke: { vi: 'Ở cú đánh tốt nhất,', en: 'In your best stroke,' },
+  evenBest: { vi: 'Ngay cả ở cú đánh tốt nhất,', en: 'Even in your best stroke,' },
   practise: {
     vi: 'Tập chậm trước để cảm nhận động tác, rồi tăng dần tốc độ.',
     en: 'Practise it slowly first to feel the movement, then build up speed.',
@@ -129,15 +131,21 @@ export function mockCoachOutput(src: MockSource): CoachOutputV1 {
 
   const strengths = p.candidates.strengths.slice(0, 2).map((s) => {
     const def = defs.get(s.checkpointId)!;
-    const obs = sentence(t(s.plain));
-    return { checkpoint_id: s.checkpointId, title: t(def.name), detail: `${obs} ${t(T.keep)}`, evidence: evidence(s.checkpointId, obs) };
+    const obs = `${t(T.bestStroke)} ${lower(t(s.plain))}.`;
+    const detail = `${sentence(t(s.plain))} ${t(T.keep)}`;
+    return { checkpoint_id: s.checkpointId, title: t(def.name), detail, evidence: evidence(s.checkpointId, obs) };
   });
   if (!strengths.length) {
     const v = visual.find((x) => x.level >= 3);
     const def = v && defs.get(v.checkpoint_id);
     if (v && def) {
-      const obs = sentence(t({ vi: def.plain.vi.ok, en: def.plain.en.ok }));
-      strengths.push({ checkpoint_id: v.checkpoint_id, title: t(def.name), detail: obs, evidence: [{ stroke_id: best.id, frame_id: v.frame_ids[0], metric_key: '', observation: obs }] });
+      const obs = `${t(T.bestStroke)} ${lower(def.plain[lang].ok)}.`;
+      strengths.push({
+        checkpoint_id: v.checkpoint_id,
+        title: t(def.name),
+        detail: obs,
+        evidence: [{ stroke_id: best.id, frame_id: v.frame_ids[0], metric_key: '', observation: obs }],
+      });
     }
   }
 
@@ -152,14 +160,22 @@ export function mockCoachOutput(src: MockSource): CoachOutputV1 {
     const v = visual.find((x) => x.level >= 0 && x.level <= 1);
     const def = v && defs.get(v.checkpoint_id);
     if (v && def) {
-      const fault = rubric.faults.find((f) => f.checkpoint === v.checkpoint_id && (f.when === 'low' || f.when === 'false'));
-      weakSources.push({ id: v.checkpoint_id, faultId: fault?.id ?? null, plain: def.plain[lang].low, c: 0.7, frame: v.frame_ids[0] });
+      const fault = rubric.faults.find((f) =>
+        f.checkpoint === v.checkpoint_id && (f.when === 'low' || f.when === 'false')
+      );
+      weakSources.push({
+        id: v.checkpoint_id,
+        faultId: fault?.id ?? null,
+        plain: def.plain[lang].low,
+        c: 0.7,
+        frame: v.frame_ids[0],
+      });
     }
   }
   const weaknesses = weakSources.map((w, i) => {
     const fault = w.faultId ? faults.get(w.faultId) : undefined;
     const def = defs.get(w.id)!;
-    const obs = w.c < 0.5 ? `${t(T.likely)} ${lower(w.plain)}.` : sentence(w.plain);
+    const obs = `${t(w.c < 0.5 ? T.likely : T.evenBest)} ${lower(w.plain)}.`;
     return {
       checkpoint_id: w.id,
       fault_id: w.faultId ?? NO_FAULT,
@@ -227,17 +243,28 @@ export function staticCoachClient(body: () => unknown, scenario: MockScenario = 
     create(params) {
       switch (scenario) {
         case 'refusal':
-          return Promise.resolve(fakeMessage({ model: params.model, stopReason: 'refusal', refusalCategory: 'general_harms' }));
+          return Promise.resolve(
+            fakeMessage({ model: params.model, stopReason: 'refusal', refusalCategory: 'general_harms' }),
+          );
         case 'max_tokens':
-          return Promise.resolve(fakeMessage({ model: params.model, stopReason: 'max_tokens', text: '{"schema_version":' }));
+          return Promise.resolve(
+            fakeMessage({ model: params.model, stopReason: 'max_tokens', text: '{"schema_version":' }),
+          );
         case 'overloaded':
           return Promise.reject(
-            new APIError(529, { type: 'error', error: { type: 'overloaded_error', message: 'Overloaded' } }, 'Overloaded', new Headers()),
+            new APIError(
+              529,
+              { type: 'error', error: { type: 'overloaded_error', message: 'Overloaded' } },
+              'Overloaded',
+              new Headers(),
+            ),
           );
         case 'invalid_json':
           return Promise.resolve(fakeMessage({ model: params.model, text: '{"schema_version": "coach.v1", ' }));
         case 'ok':
-          return Promise.resolve(fakeMessage({ model: params.model, text: JSON.stringify(body()), withThinking: true }));
+          return Promise.resolve(
+            fakeMessage({ model: params.model, text: JSON.stringify(body()), withThinking: true }),
+          );
       }
     },
   };

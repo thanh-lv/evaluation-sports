@@ -4,9 +4,9 @@
  */
 import type { AnalysisKind } from '../contracts/common.ts';
 import type { Logger } from '../log.ts';
-import { type BuiltCoachRequest, buildCoachRequest, type CoachRequestInput } from './build_request.ts';
+import { buildCoachRequest, type BuiltCoachRequest, type CoachRequestInput } from './build_request.ts';
 import type { CoachModelClient } from './client.ts';
-import { composeResult, type ComposeOutput } from './compose.ts';
+import { type ComposeOutput, composeResult } from './compose.ts';
 import { postprocess, type PostprocessResult } from './postprocess.ts';
 import { runOnce, type RunResult } from './run_once.ts';
 
@@ -47,7 +47,9 @@ export async function runCoachAttempt(input: CoachAttemptInput): Promise<CoachAt
     sentFrameIds: request.sentFrameIds,
   };
   const post = postprocess(run.outcome.output, ctx);
-  if (post.flags.length) input.log?.info('claude_postprocess', { flags: post.flags.map((f) => `${f.type}: ${f.detail}`) });
+  if (post.flags.length) {
+    input.log?.info('claude_postprocess', { flags: post.flags.map((f) => `${f.type}: ${f.detail}`) });
+  }
   const composed = composeResult({
     ...ctx,
     post,

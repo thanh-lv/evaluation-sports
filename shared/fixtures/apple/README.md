@@ -15,3 +15,16 @@ else.** They stand in for Apple's StoreKit signing chain in `supabase/tests/appl
 | `test_p8.key.pem` | P-256 PKCS#8 key in the App Store Connect `.p8` format (ES256 JWT tests) |
 
 All certificates except `leaf_expired` are valid 2025-01-01 – 2050-01-01. Keys are PKCS#8 PEM.
+
+## `real/` — Apple's production chain (public certificates, no keys)
+
+| File | What it is |
+|---|---|
+| `real/apple_root_ca_g3.crt.pem` | Apple Root CA - G3, SHA-256 `63:34:3A:BF:B8:9A:6A:03:EB:B5:7E:9B:3F:5F:A7:BE:7C:4F:5C:75:6F:30:17:B3:A8:C4:88:C3:65:3E:91:79` (same certificate as `APPLE_ROOT_CA_G3_PEM` in `_shared/apple/jws.ts`) |
+| `real/apple_wwdr_g6.crt.pem` | Apple Worldwide Developer Relations CA - G6 (intermediate, OID `1.2.840.113635.100.6.2.1`) |
+| `real/apple_receipt_signing_leaf.crt.pem` | "Prod ECC Mac App Store and iTunes Store Receipt Signing", valid 2025-09-19 – 2027-10-13 (OID `1.2.840.113635.100.6.11.1`) |
+
+www.apple.com is blocked from the build container, so these were copied from the test vectors of Apple's own
+`@apple/app-store-server-library@3.1.0` (npm, author Apple Inc.); the root's fingerprint matches the value published by
+Apple and pinned by `app-store-server-api`. `supabase/tests/apple/jws.test.ts` verifies the chain with our DER/WebCrypto
+code at 2025-11-01.

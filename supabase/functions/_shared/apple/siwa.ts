@@ -7,7 +7,7 @@
  */
 import type { AppleEnv } from '../env.ts';
 import { ConfigError } from '../errors.ts';
-import { fetchWithTimeout, type FetchLike } from '../http.ts';
+import { type FetchLike, fetchWithTimeout } from '../http.ts';
 import { cachedToken, siwaClientSecret, type TokenProvider } from './jwt.ts';
 
 export const SIWA_ORIGIN = 'https://appleid.apple.com';
@@ -52,7 +52,11 @@ export function createSiwaClient(config: SiwaClientConfig): SiwaClient {
   const origin = config.origin ?? SIWA_ORIGIN;
 
   async function post(path: string, form: Record<string, string>): Promise<Response> {
-    const body = new URLSearchParams({ client_id: config.clientId, client_secret: await config.clientSecret(), ...form });
+    const body = new URLSearchParams({
+      client_id: config.clientId,
+      client_secret: await config.clientSecret(),
+      ...form,
+    });
     let res: Response;
     try {
       res = await doFetch(`${origin}${path}`, {
@@ -71,7 +75,12 @@ export function createSiwaClient(config: SiwaClientConfig): SiwaClient {
     } catch {
       // not JSON
     }
-    throw new SiwaError(`siwa ${path} ${res.status}${error ? ` ${error}` : ''}`, res.status, error, res.status === 429 || res.status >= 500);
+    throw new SiwaError(
+      `siwa ${path} ${res.status}${error ? ` ${error}` : ''}`,
+      res.status,
+      error,
+      res.status === 429 || res.status >= 500,
+    );
   }
 
   return {
@@ -86,7 +95,10 @@ export function createSiwaClient(config: SiwaClientConfig): SiwaClient {
       if (typeof parsed.refresh_token !== 'string' || parsed.refresh_token === '') {
         throw new SiwaError('siwa /auth/token returned no refresh token', res.status, null, false);
       }
-      return { refreshToken: parsed.refresh_token, idToken: typeof parsed.id_token === 'string' ? parsed.id_token : null };
+      return {
+        refreshToken: parsed.refresh_token,
+        idToken: typeof parsed.id_token === 'string' ? parsed.id_token : null,
+      };
     },
     async revoke(refreshToken) {
       const res = await post('/auth/revoke', { token: refreshToken, token_type_hint: 'refresh_token' });
@@ -101,10 +113,17 @@ export function createSiwaClientFromEnv(apple: AppleEnv, fetchImpl?: FetchLike):
   const sign = (now: Date) => {
     if (!apple.teamId || !apple.siwaKeyId || !apple.siwaPrivateKey || !clientId) {
       return Promise.reject(
-        new ConfigError('missing environment: APPLE_TEAM_ID, APPLE_SIWA_KEY_ID, APPLE_SIWA_PRIVATE_KEY, APPLE_BUNDLE_ID'),
+        new ConfigError(
+          'missing environment: APPLE_TEAM_ID, APPLE_SIWA_KEY_ID, APPLE_SIWA_PRIVATE_KEY, APPLE_BUNDLE_ID',
+        ),
       );
     }
-    return siwaClientSecret({ teamId: apple.teamId, clientId, keyId: apple.siwaKeyId, privateKey: apple.siwaPrivateKey }, now);
+    return siwaClientSecret({
+      teamId: apple.teamId,
+      clientId,
+      keyId: apple.siwaKeyId,
+      privateKey: apple.siwaPrivateKey,
+    }, now);
   };
   return createSiwaClient({ clientId, clientSecret: cachedToken(sign, 12 * 3600), fetch: fetchImpl });
 }

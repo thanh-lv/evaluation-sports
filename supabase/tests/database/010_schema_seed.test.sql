@@ -11,7 +11,7 @@ from unnest(array['profiles', 'analyses', 'analysis_results', 'feedback', 'plan_
 
 select is(
   (select count(*)::int from pg_tables where schemaname = 'private'),
-  9, 'private schema has its 9 tables');
+  10, 'private schema has its 10 tables (rate_limits from migration 1100)');
 
 select is(
   (select array_agg(n.nspname || '.' || c.relname order by n.nspname || '.' || c.relname)

@@ -1,0 +1,294 @@
+# Rubric: pickleball (pb-2026.10.18+drills-2026.10.18)
+
+## Sub-scores
+
+- stance: ready position, base width, knee bend, balance
+- footwork: split step, steps and lunges into the hitting position
+- swing: body turn, backswing, elbow and arm path
+- contact: contact height, position in front of the body, arm extension
+- follow: follow-through direction and finish
+- recovery: returning to a balanced ready position after the stroke
+
+## Skills
+
+### pb.serve — Serve
+family: underarm; views recommended S, allowed S/D
+sub-score weights: stance 15, footwork 0, swing 30, contact 25, follow 20, recovery 10
+checkpoints: pb.serve.SV1, pb.serve.SV2, pb.serve.SV3, pb.serve.SV4, pb.serve.SV5, pb.serve.SV6, pb.serve.SV7, pb.serve.SV8, pb.serve.SV9, pb.serve.SV10, pb.serve.SV11, pb.serve.SV12
+
+### pb.dink — Dink
+family: underarm; views recommended S, allowed S/D
+sub-score weights: stance 25, footwork 10, swing 20, contact 25, follow 10, recovery 10
+checkpoints: pb.ready.PR1, pb.ready.PR2, pb.ready.PR3, pb.ready.PR4, pb.ready.PR5, pb.ready.PR6, pb.ready.PR7, pb.split.S1, pb.dink.DK1, pb.dink.DK2, pb.dink.DK3, pb.dink.DK4, pb.dink.DK5, pb.dink.DK6, pb.dink.DK7, pb.dink.DK8, pb.dink.DK9, pb.dink.DK10, pb.dink.DK11, pb.dink.DK12
+
+### pb.drop3 — Third-shot drop
+family: underarm; views recommended S, allowed S/D/B
+sub-score weights: stance 20, footwork 10, swing 25, contact 20, follow 15, recovery 10
+checkpoints: pb.ready.PR1, pb.ready.PR2, pb.ready.PR3, pb.ready.PR4, pb.ready.PR5, pb.ready.PR6, pb.split.S1, pb.drop3.TD1, pb.drop3.TD2, pb.drop3.TD3, pb.drop3.TD4, pb.drop3.TD5, pb.drop3.TD6, pb.drop3.TD7, pb.drop3.TD8, pb.drop3.TD9
+
+### pb.return — Return of serve
+family: side; views recommended S, allowed S/D
+sub-score weights: stance 10, footwork 20, swing 25, contact 20, follow 10, recovery 15
+checkpoints: pb.ready.PR1, pb.ready.PR2, pb.ready.PR3, pb.ready.PR4, pb.ready.PR5, pb.ready.PR6, pb.split.S1, pb.return.RT2, pb.return.RT3, pb.return.RT4, pb.return.RT5, pb.return.RT6, pb.return.RT7, pb.return.RT8
+
+### pb.drive — Drive
+family: side; views recommended S, allowed S/B/D
+sub-score weights: stance 15, footwork 10, swing 30, contact 20, follow 15, recovery 10
+checkpoints: pb.ready.PR1, pb.ready.PR2, pb.ready.PR3, pb.ready.PR4, pb.ready.PR5, pb.ready.PR6, pb.split.S1, pb.drive.DV1, pb.drive.DV2, pb.drive.DV3, pb.drive.DV4, pb.drive.DV5, pb.drive.DV6, pb.drive.DV7, pb.drive.DV8
+
+### pb.volley — Volley
+family: side; views recommended S, allowed S/D
+sub-score weights: stance 20, footwork 10, swing 20, contact 30, follow 10, recovery 10
+checkpoints: pb.ready.PR1, pb.ready.PR2, pb.ready.PR3, pb.ready.PR4, pb.ready.PR5, pb.ready.PR6, pb.ready.PR7, pb.split.S1, pb.volley.VO1, pb.volley.VO2, pb.volley.VO3, pb.volley.VO4, pb.volley.VO5, pb.volley.VO6, pb.volley.VO7, pb.volley.VO8, pb.volley.VO9
+
+## Checkpoints
+
+Tags: M = measured from pose; M~ = measured, rough; V = you judge it from the frames (level 0-4); N = not assessable from video (mention it under not_assessable when relevant).
+View factors: S = side, B = behind (front uses B, mirrored), D = 45° diagonal; 0 = not visible from that view. Levels for V items: 0 = clearly wrong … 4 = correct, as the anchors describe.
+
+- pb.ready.PR1 | Feet shoulder-width or wider | M | phase ready | stance | weight 1 | views S 0 / B 1 / D 0.6 | target 1.00–1.60 (ratio)
+    faults: pb.ready.narrow_feet (low)
+- pb.ready.PR2 | Knees bent | M | phase ready | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 15–45°
+    faults: pb.ready.straight_legs (low)
+- pb.ready.PR3 | Weight slightly forward | M | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target 10–30°
+    faults: pb.ready.weight_back (low)
+- pb.ready.PR4 | Paddle up in front | M | phase ready | stance | weight 2 | views S 1 / B 1 / D 1 | target 0.50–1.20 T
+    faults: pb.ready.paddle_down (low)
+- pb.ready.PR5 | Paddle out in front | M~ | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.30 T
+    faults: pb.ready.paddle_close (low)
+- pb.ready.PR6 | Paddle tip up | V | phase ready | stance | weight 1 | views S 1 / B 1 / D 1
+    level 0: Paddle tip points at the ground; paddle hangs by the leg.
+    level 1: Paddle low near the waist, tip pointing down or sideways.
+    level 2: Paddle at waist height, tip roughly horizontal.
+    level 3: Paddle in front at chest level, tip slightly up.
+    level 4: Paddle in front of the chest, tip up, face neutral, ready for either side.
+    faults: pb.ready.tip_down (low)
+- pb.ready.PR7 | Square to the net | M~ | phase ready | stance | weight 1 | views S 0.6 / B 1 / D 0 | target ≤ 25°
+    faults: pb.ready.turned (high)
+- pb.split.S1 | Split step before moving | M~ | phase window | footwork | weight 1 | views S 0.6 / B 0.6 / D 0.6 | target ✓ | velocity-based
+    faults: pb.split.no_split (false)
+- pb.serve.SV1 | Staggered stance | M~ | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target 0.30–1.20 T
+    faults: pb.serve.square_stance (low)
+- pb.serve.SV2 | Knees relaxed | M | phase ready | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 10–40°
+    faults: pb.serve.stiff_legs (low)
+- pb.serve.SV3 | Weight back at the backswing | M~ | phase bsEnd | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≤ 0.45 (ratio)
+    faults: pb.serve.early_weight (high)
+- pb.serve.SV4 | Long pendulum arm | M~ | phase contact | swing | weight 1 | views S 0.6 / B 0.6 / D 0.6 | target ≥ 130°
+    faults: pb.serve.bent_elbow (low)
+- pb.serve.SV5 | Contact in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.20 T
+    faults: pb.serve.late_contact (low)
+- pb.serve.SV6 | Contact below the waist | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.10 T
+    faults: pb.serve.high_contact (high)
+- pb.serve.SV7 | Paddle moving up at contact | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.3 T/s | velocity-based
+    faults: pb.serve.flat_swing (low)
+- pb.serve.SV8 | Weight transfers forward | M~ | phase contact+0.2 | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.60 (ratio)
+    faults: pb.serve.no_transfer (low)
+- pb.serve.SV9 | Follows through to the target | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.80 T
+    faults: pb.serve.short_finish (low)
+- pb.serve.SV10 | Stays back after serving | M~ | phase recovery | recovery | weight 1 | views S 0.6 / B 1 / D 0.6 | target ≤ 1.00 T
+    faults: pb.serve.runs_in (high)
+- pb.serve.SV11 | Firm wrist, smooth swing | V | phase contact | swing | weight 1 | views S 1 / B 0.6 / D 1
+    level 0: Wristy slap or flick; the paddle whips past the hand.
+    level 1: Jerky swing with a noticeable wrist flick.
+    level 2: Mostly an arm swing with some wrist movement.
+    level 3: Smooth pendulum swing with a small wrist movement.
+    level 4: Smooth pendulum from the shoulder; wrist firm, paddle and forearm move as one.
+    faults: pb.serve.wrist_flick (low)
+- pb.serve.SV12 | Serve depth and placement | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- pb.dink.DK1 | Low base | M | phase contact | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 20–50°
+    faults: pb.dink.standing_tall (low)
+- pb.dink.DK2 | Bend the knees, not the waist | M | phase contact | stance | weight 2 | views S 1 / B 0 / D 0.6 | target ≤ 35°
+    faults: pb.dink.waist_bend (high)
+- pb.dink.DK3 | Compact backswing | M~ | phase window | swing | weight 2 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.40 T
+    faults: pb.dink.big_backswing (high)
+- pb.dink.DK4 | Shoulder lift, firm wrist | V | phase contact | swing | weight 1 | views S 1 / B 0.6 / D 1
+    level 0: Wrist flick drives the shot; the paddle face changes sharply.
+    level 1: Clear wrist movement; the arm bends and snaps.
+    level 2: A mix of shoulder lift and wrist movement.
+    level 3: Mostly a shoulder lift with a small wrist movement.
+    level 4: Smooth lift from the shoulder; wrist and elbow firm, paddle face steady.
+    faults: pb.dink.wristy (low)
+- pb.dink.DK5 | Contact in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target 0.20–0.70 T
+    faults: pb.dink.late_contact (low)
+- pb.dink.DK6 | Gentle low-to-high lift | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.2 T/s | velocity-based
+    faults: pb.dink.no_lift (low)
+- pb.dink.DK7 | Short follow-through | M~ | phase window | follow | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.80 T
+    faults: pb.dink.long_follow (high)
+- pb.dink.DK8 | Head still at contact | M~ | phase window | contact | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.15 T
+    faults: pb.dink.head_moves (high)
+- pb.dink.DK9 | Body settled at contact | M~ | phase contact | stance | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.5 T/s | velocity-based
+    faults: pb.dink.moving_at_contact (high)
+- pb.dink.DK10 | Moves the feet instead of reaching | M~ | phase contact | footwork | weight 1 | views S 0 / B 1 / D 0.6 | target -1.20–1.20 T
+    faults: pb.dink.reaching_fh (high), pb.dink.reaching_bh (low)
+- pb.dink.DK11 | Paddle back to ready | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.50 T
+    faults: pb.dink.paddle_drops (low)
+- pb.dink.DK12 | Ball lands in the kitchen | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- pb.drop3.TD1 | Settled at contact | M~ | phase contact | stance | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.6 T/s | velocity-based
+    faults: pb.drop3.on_the_run (high)
+- pb.drop3.TD2 | Knees bent at contact | M | phase contact | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 20–45°
+    faults: pb.drop3.standing_tall (low)
+- pb.drop3.TD3 | Contact in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.20 T
+    faults: pb.drop3.late_contact (low)
+- pb.drop3.TD4 | Controlled lift finish | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target 0.70–1.30 T
+    faults: pb.drop3.low_finish (low), pb.drop3.high_finish (high)
+- pb.drop3.TD5 | Moderate backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target 0.40–1.00 T
+    faults: pb.drop3.big_backswing (high)
+- pb.drop3.TD6 | Quiet wrist, slightly open face | V | phase contact | swing | weight 1 | views S 1 / B 0.6 / D 1
+    level 0: Wrist snaps or slaps; paddle face closed or changing sharply.
+    level 1: Noticeable wrist action; the face angle is unstable.
+    level 2: Some wrist movement; face roughly neutral.
+    level 3: Quiet wrist; face slightly open.
+    level 4: Wrist firm and quiet, face slightly open, paddle lifts with the shoulder.
+    faults: pb.drop3.wristy (low)
+- pb.drop3.TD7 | Moves up after the drop | M~ | phase recovery | recovery | weight 1 | views S 0.6 / B 0 / D 0.6 | target ≥ 0.60 T
+    faults: pb.drop3.stays_back (low)
+- pb.drop3.TD8 | Paddle rising at contact | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.3 T/s | velocity-based
+    faults: pb.drop3.flat_swing (low)
+- pb.drop3.TD9 | Ball lands in the kitchen | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- pb.return.RT2 | Feet set before the hit | V | phase contact | footwork | weight 1 | views S 1 / B 1 / D 1
+    level 0: Still running or lunging at contact, off balance.
+    level 1: Moving at contact; upper body leaning to reach.
+    level 2: Feet mostly set, slightly off balance.
+    level 3: Feet set and balanced, with a small late adjustment.
+    level 4: Feet set early, balanced, weight moving into the ball.
+    faults: pb.return.not_set (low)
+- pb.return.RT3 | Shoulder turn | M~ | phase bsEnd | swing | weight 1 | views S 0.6 / B 1 / D 0 | target ≥ 30°
+    faults: pb.return.no_turn (low)
+- pb.return.RT4 | Compact backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target 0.50–1.50 T
+    faults: pb.return.big_backswing (high)
+- pb.return.RT5 | Contact in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.20 T
+    faults: pb.return.late_contact (low)
+- pb.return.RT6 | Moves to the kitchen after the return | M~ | phase recovery | recovery | weight 2 | views S 0.6 / B 0 / D 0.6 | target ≥ 1.00 T
+    faults: pb.return.stays_back (low)
+- pb.return.RT7 | Low-to-high swing | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.3 T/s | velocity-based
+    faults: pb.return.flat_swing (low)
+- pb.return.RT8 | Full, high finish | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.90 T
+    faults: pb.return.low_finish (low)
+- pb.drive.DV1 | Unit turn | M~ | phase bsEnd | swing | weight 1 | views S 0.6 / B 1 / D 0 | target ≥ 45°
+    faults: pb.drive.arm_only (low)
+- pb.drive.DV2 | Medium backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target 0.80–1.80 T
+    faults: pb.drive.short_backswing (low), pb.drive.big_backswing (high)
+- pb.drive.DV3 | Contact in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target 0.20–0.80 T
+    faults: pb.drive.late_contact (low)
+- pb.drive.DV4 | Weight transfers forward | M~ | phase contact+0.2 | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.60 (ratio)
+    faults: pb.drive.weight_back (low)
+- pb.drive.DV5 | Low-to-high swing | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.5 T/s | velocity-based
+    faults: pb.drive.hits_down (low)
+- pb.drive.DV6 | Finish across the body | M | phase window | follow | weight 1 | views S 0 / B 1 / D 0.6 | target ✓
+    faults: pb.drive.short_finish (false)
+- pb.drive.DV7 | Finish at shoulder height | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.90 T
+    faults: pb.drive.low_finish (low)
+- pb.drive.DV8 | Paddle back to ready | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target 0.50–1.30 T
+    faults: pb.drive.slow_reset (low)
+- pb.volley.VO1 | Paddle up and ready | M | phase bsEnd | swing | weight 2 | views S 1 / B 1 / D 1 | target 0.60–1.40 T
+    faults: pb.volley.paddle_down (low)
+- pb.volley.VO2 | Little or no backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.30 T
+    faults: pb.volley.big_swing (high)
+- pb.volley.VO3 | Contact well in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.40 T
+    faults: pb.volley.late_contact (low)
+- pb.volley.VO4 | Short punch | M~ | phase window | follow | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.60 T
+    faults: pb.volley.long_follow (high)
+- pb.volley.VO5 | Stable, bent knees | M | phase contact | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 15–45°
+    faults: pb.volley.standing_tall (low)
+- pb.volley.VO6 | Settled at contact | M~ | phase contact | stance | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.6 T/s | velocity-based
+    faults: pb.volley.moving (high)
+- pb.volley.VO7 | Not leaning back | M | phase contact | stance | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0° | injury-flag (the server adds a fixed safety note)
+    faults: pb.volley.leaning_back (low)
+- pb.volley.VO8 | Firm wrist, compact elbow | V | phase contact | contact | weight 1 | views S 1 / B 1 / D 1
+    level 0: Wrist floppy; elbow flared high and out (chicken wing); paddle face unstable.
+    level 1: Wrist bends at contact; elbow pulled away from the body.
+    level 2: Wrist mostly firm; elbow slightly flared.
+    level 3: Firm wrist, elbow in front of the body, small flaws.
+    level 4: Firm wrist, elbow relaxed in front, paddle face stable through contact.
+    faults: pb.volley.chicken_wing (low)
+- pb.volley.VO9 | Paddle back to ready | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target 0.50–1.30 T
+    faults: pb.volley.paddle_drops (low)
+
+## Faults
+
+when = the reading that triggers the fault: low / high = below / above the target band, false = a check that failed. Use only the drills listed for the fault.
+
+- pb.ready.narrow_feet | checkpoint pb.ready.PR1 | when low | Feet too close together | cue "Feet at least shoulder-width" | drills pb.drill.ready_hold, pb.drill.split_on_cue (default first)
+- pb.ready.straight_legs | checkpoint pb.ready.PR2 | when low | Standing tall | cue "Athletic stance, knees soft" | drills pb.drill.ready_hold, pb.drill.split_on_cue (default first)
+- pb.ready.weight_back | checkpoint pb.ready.PR3 | when low | Weight back on the heels | cue "Weight forward, nose over toes" | drills pb.drill.ready_hold (default first)
+- pb.ready.paddle_down | checkpoint pb.ready.PR4 | when low | Paddle hanging low | cue "Paddle up, chest height, in front" | drills pb.drill.paddle_up_reaction, pb.drill.ready_hold (default first)
+- pb.ready.paddle_close | checkpoint pb.ready.PR5 | when low | Paddle tucked against the body | cue "Paddle out in front" | drills pb.drill.paddle_up_reaction (default first)
+- pb.ready.tip_down | checkpoint pb.ready.PR6 | when low | Paddle tip down | cue "Paddle tip up" | drills pb.drill.paddle_up_reaction (default first)
+- pb.ready.turned | checkpoint pb.ready.PR7 | when high | Turned away from the net | cue "Both toes to the net" | drills pb.drill.shuffle_dink (default first)
+- pb.split.no_split | checkpoint pb.split.S1 | when false | No split step | cue "Small hop as they hit" | drills pb.drill.split_on_cue (default first)
+- pb.serve.square_stance | checkpoint pb.serve.SV1 | when low | Feet side by side | cue "Non-paddle foot forward" | drills pb.drill.pendulum_swing (default first)
+- pb.serve.stiff_legs | checkpoint pb.serve.SV2 | when low | Stiff legs | cue "Soften your knees first" | drills pb.drill.pendulum_swing (default first)
+- pb.serve.early_weight | checkpoint pb.serve.SV3 | when high | Weight forward too early | cue "Rock back, then swing forward" | drills pb.drill.pendulum_swing (default first)
+- pb.serve.bent_elbow | checkpoint pb.serve.SV4 | when low | Elbow bending through the serve | cue "Swing from the shoulder, like a pendulum" | drills pb.drill.pendulum_swing (default first)
+- pb.serve.late_contact | checkpoint pb.serve.SV5 | when low | Late contact | cue "Drop the ball in front" | drills pb.drill.pendulum_swing, pb.drill.deep_serve_target (default first)
+- pb.serve.high_contact | checkpoint pb.serve.SV6 | when high | Contact too high | cue "Low to high, below the belly button" | drills pb.drill.pendulum_swing (default first)
+- pb.serve.flat_swing | checkpoint pb.serve.SV7 | when low | Sidearm swing, not low to high | cue "Low to high, finish at eye level" | drills pb.drill.pendulum_swing (default first)
+- pb.serve.no_transfer | checkpoint pb.serve.SV8 | when low | No weight transfer | cue "Step into the serve" | drills pb.drill.pendulum_swing, pb.drill.deep_serve_target (default first)
+- pb.serve.short_finish | checkpoint pb.serve.SV9 | when low | Pushing the serve short | cue "Swing through to the target" | drills pb.drill.deep_serve_target (default first)
+- pb.serve.runs_in | checkpoint pb.serve.SV10 | when high | Running in after the serve | cue "Serve, stay back, split" | drills pb.drill.deep_serve_target (default first)
+- pb.serve.wrist_flick | checkpoint pb.serve.SV11 | when low | Wrist flick on the serve | cue "Firm wrist, swing from the shoulder" | drills pb.drill.pendulum_swing (default first)
+- pb.dink.standing_tall | checkpoint pb.dink.DK1 | when low | Standing tall on the dink | cue "Get low with your legs" | drills pb.drill.knee_bend_dink (default first)
+- pb.dink.waist_bend | checkpoint pb.dink.DK2 | when high | Bending at the waist | cue "Sit down, don't bow" | drills pb.drill.knee_bend_dink (default first)
+- pb.dink.big_backswing | checkpoint pb.dink.DK3 | when high | Big backswing, ball pops up | cue "Start the paddle at contact" | drills pb.drill.no_backswing_dink (default first)
+- pb.dink.wristy | checkpoint pb.dink.DK4 | when low | Wristy flick | cue "Lift with the shoulder, wrist firm" | drills pb.drill.no_backswing_dink, pb.drill.dink_rally (default first)
+- pb.dink.late_contact | checkpoint pb.dink.DK5 | when low | Late contact | cue "Meet it in front" | drills pb.drill.no_backswing_dink, pb.drill.shuffle_dink (default first)
+- pb.dink.no_lift | checkpoint pb.dink.DK6 | when low | Flat push, no lift | cue "Lift gently, low to high" | drills pb.drill.knee_bend_dink, pb.drill.dink_rally (default first)
+- pb.dink.long_follow | checkpoint pb.dink.DK7 | when high | Follow-through too long | cue "Short finish toward the target" | drills pb.drill.no_backswing_dink (default first)
+- pb.dink.head_moves | checkpoint pb.dink.DK8 | when high | Head moving through contact | cue "Head still, watch the ball onto the paddle" | drills pb.drill.dink_rally (default first)
+- pb.dink.moving_at_contact | checkpoint pb.dink.DK9 | when high | Moving through contact | cue "Get there, settle, then dink" | drills pb.drill.shuffle_dink (default first)
+- pb.dink.reaching_fh | checkpoint pb.dink.DK10 | when high | Reaching on the forehand | cue "Move your feet first" | drills pb.drill.shuffle_dink (default first)
+- pb.dink.reaching_bh | checkpoint pb.dink.DK10 | when low | Reaching on the backhand | cue "Move your feet first" | drills pb.drill.shuffle_dink (default first)
+- pb.dink.paddle_drops | checkpoint pb.dink.DK11 | when low | Paddle drops after each dink | cue "Back to paddle up" | drills pb.drill.dink_rally, pb.drill.paddle_up_reaction (default first)
+- pb.drop3.on_the_run | checkpoint pb.drop3.TD1 | when high | Hitting on the run | cue "Stop, hit, then go" | drills pb.drill.drop_and_split (default first)
+- pb.drop3.standing_tall | checkpoint pb.drop3.TD2 | when low | Standing tall on the drop | cue "Get low to the ball" | drills pb.drill.knee_bend_dink, pb.drill.drop_ladder (default first)
+- pb.drop3.late_contact | checkpoint pb.drop3.TD3 | when low | Late contact | cue "Meet it in front" | drills pb.drill.drop_ladder (default first)
+- pb.drop3.low_finish | checkpoint pb.drop3.TD4 | when low | Low finish, ball into the net | cue "Lift from the shoulder" | drills pb.drill.drop_ladder (default first)
+- pb.drop3.high_finish | checkpoint pb.drop3.TD4 | when high | Too much swing, ball floats | cue "Lift, don't hit" | drills pb.drill.drop_ladder (default first)
+- pb.drop3.big_backswing | checkpoint pb.drop3.TD5 | when high | Backswing too big | cue "Small backswing, soft lift" | drills pb.drill.drop_ladder (default first)
+- pb.drop3.wristy | checkpoint pb.drop3.TD6 | when low | Too much wrist | cue "Firm wrist, lift from the shoulder" | drills pb.drill.drop_ladder (default first)
+- pb.drop3.stays_back | checkpoint pb.drop3.TD7 | when low | Staying back after the drop | cue "Good drop, move up" | drills pb.drill.drop_and_split (default first)
+- pb.drop3.flat_swing | checkpoint pb.drop3.TD8 | when low | Flat swing, ball goes straight | cue "Lift up under the ball" | drills pb.drill.drop_ladder, pb.drill.knee_bend_dink (default first)
+- pb.return.not_set | checkpoint pb.return.RT2 | when low | Feet not set at contact | cue "Arrive early, set, then hit" | drills pb.drill.split_on_cue (default first)
+- pb.return.no_turn | checkpoint pb.return.RT3 | when low | No shoulder turn | cue "Turn the shoulders as one unit" | drills pb.drill.unit_turn_shadow (default first)
+- pb.return.big_backswing | checkpoint pb.return.RT4 | when high | Backswing too long | cue "Short backswing, deep return" | drills pb.drill.unit_turn_shadow (default first)
+- pb.return.late_contact | checkpoint pb.return.RT5 | when low | Late contact | cue "Meet it in front" | drills pb.drill.unit_turn_shadow (default first)
+- pb.return.stays_back | checkpoint pb.return.RT6 | when low | Staying back after the return | cue "Return deep, then run to the kitchen" | drills pb.drill.return_and_run (default first)
+- pb.return.flat_swing | checkpoint pb.return.RT7 | when low | Hard and low into the net | cue "High, deep, slow is fine" | drills pb.drill.brush_up (default first)
+- pb.return.low_finish | checkpoint pb.return.RT8 | when low | Low finish | cue "Swing through, finish high" | drills pb.drill.brush_up (default first)
+- pb.drive.arm_only | checkpoint pb.drive.DV1 | when low | Arm-only drive | cue "Turn shoulders and paddle together" | drills pb.drill.unit_turn_shadow (default first)
+- pb.drive.short_backswing | checkpoint pb.drive.DV2 | when low | Backswing too short | cue "Take the paddle back with the shoulders" | drills pb.drill.unit_turn_shadow (default first)
+- pb.drive.big_backswing | checkpoint pb.drive.DV2 | when high | Backswing too long | cue "Compact backswing, hit in front" | drills pb.drill.unit_turn_shadow (default first)
+- pb.drive.late_contact | checkpoint pb.drive.DV3 | when low | Late contact | cue "Meet it in front" | drills pb.drill.unit_turn_shadow, pb.drill.brush_up (default first)
+- pb.drive.weight_back | checkpoint pb.drive.DV4 | when low | Weight stays back | cue "Step into the ball" | drills pb.drill.unit_turn_shadow (default first)
+- pb.drive.hits_down | checkpoint pb.drive.DV5 | when low | Hitting down into the net | cue "Brush up the back of the ball" | drills pb.drill.brush_up (default first)
+- pb.drive.short_finish | checkpoint pb.drive.DV6 | when false | Short finish | cue "Finish over the opposite shoulder" | drills pb.drill.brush_up (default first)
+- pb.drive.low_finish | checkpoint pb.drive.DV7 | when low | Low finish | cue "Finish at shoulder height" | drills pb.drill.brush_up (default first)
+- pb.drive.slow_reset | checkpoint pb.drive.DV8 | when low | Slow to reset after the drive | cue "Hit, then paddle up" | drills pb.drill.paddle_up_reaction (default first)
+- pb.volley.paddle_down | checkpoint pb.volley.VO1 | when low | Paddle down, late volley | cue "Paddle up before they hit" | drills pb.drill.paddle_up_reaction (default first)
+- pb.volley.big_swing | checkpoint pb.volley.VO2 | when high | Swinging at volleys | cue "Punch, don't swing" | drills pb.drill.wall_punch_volley (default first)
+- pb.volley.late_contact | checkpoint pb.volley.VO3 | when low | Contact too close to the body | cue "Meet it well in front" | drills pb.drill.wall_punch_volley, pb.drill.paddle_up_reaction (default first)
+- pb.volley.long_follow | checkpoint pb.volley.VO4 | when high | Follow-through too long | cue "Short punch, then stop" | drills pb.drill.wall_punch_volley (default first)
+- pb.volley.standing_tall | checkpoint pb.volley.VO5 | when low | Straight legs on the volley | cue "Knees soft, stay solid" | drills pb.drill.ready_hold (default first)
+- pb.volley.moving | checkpoint pb.volley.VO6 | when high | Moving through the volley | cue "Split, settle, then volley" | drills pb.drill.split_on_cue (default first)
+- pb.volley.leaning_back | checkpoint pb.volley.VO7 | when low | Leaning back | cue "Weight forward" | drills pb.drill.wall_punch_volley, pb.drill.turn_and_step_back (default first)
+- pb.volley.chicken_wing | checkpoint pb.volley.VO8 | when low | Chicken-wing elbow, loose wrist | cue "Elbow in front, wrist firm" | drills pb.drill.wall_punch_volley (default first)
+- pb.volley.paddle_drops | checkpoint pb.volley.VO9 | when low | Paddle drops after the volley | cue "Volley, then paddle up" | drills pb.drill.paddle_up_reaction (default first)
+
+## Drills
+
+- pb.drill.ready_hold | Ready-position hold | 3 sets × 30 s | Stand with feet shoulder-width or wider, knees bent, weight slightly forward.
+- pb.drill.paddle_up_reaction | Paddle-up reaction volleys | 3 sets × 15 reps | Stand two to three meters from a wall, paddle in front of your chest.
+- pb.drill.split_on_cue | Split step on a cue | 3 sets × 10 reps | Stand in the ready position, paddle in front.
+- pb.drill.pendulum_swing | Slow pendulum swings | 3 sets × 10 reps | Stand with your non-paddle foot forward and your weight on the back foot.
+- pb.drill.deep_serve_target | Deep serves to a target | 3 sets × 10 reps | Place a towel about one meter inside the far baseline.
+- pb.drill.no_backswing_dink | No-backswing dinks | 3 sets × 20 reps | Stand at the kitchen line with your knees bent.
+- pb.drill.knee_bend_dink | Knee-bend dinks | 3 sets × 60 s | Dink cross-court with a partner or against a wall.
+- pb.drill.shuffle_dink | Shuffle dinks | 3 sets × 60 s | Stand at the kitchen line facing the net.
+- pb.drill.dink_rally | Dink rally | 3 sets × 30 reps | Dink back and forth with a partner, aiming for thirty in a row.
+- pb.drill.drop_ladder | Drop ladder | 3 sets × 10 reps | Start at mid-court and hit soft drops into the kitchen.
+- pb.drill.drop_and_split | Drop, move up and split | 3 sets × 8 reps | Get settled at the baseline before you hit the drop.
+- pb.drill.return_and_run | Return and run to the kitchen | 3 sets × 10 reps | Have a partner serve; alone, drop the ball yourself.
+- pb.drill.unit_turn_shadow | Unit-turn shadow swings | 3 sets × 10 reps | Start in the ready position.
+- pb.drill.brush_up | Low-to-high brush | 3 sets × 10 reps | Shadow swing from low to high, as if brushing up the back of the ball.
+- pb.drill.wall_punch_volley | Wall punch volleys | 3 sets × 30 reps | Stand about two meters from a wall, paddle in front of your chest.
+- pb.drill.turn_and_step_back | Turn and crossover back | 3 sets × 6 reps | Stand at the kitchen line in the ready position.

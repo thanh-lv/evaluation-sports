@@ -125,7 +125,9 @@ function redactedRequest(attempt: CoachAttemptResult): unknown {
 
 function printAttempt(a: CoachAttemptResult): void {
   const { outcome, call } = a.run;
-  console.log(`\n[claude] ${call.modelRequested} → ${outcome.kind}; frames sent: ${a.request.sentFrameIds.join(',') || '—'}`);
+  console.log(
+    `\n[claude] ${call.modelRequested} → ${outcome.kind}; frames sent: ${a.request.sentFrameIds.join(',') || '—'}`,
+  );
   if (outcome.kind !== 'ok' || !a.post || !a.composed) {
     console.log(`  ${call.error ?? ''}`);
     return;
@@ -137,14 +139,34 @@ function printAttempt(a: CoachAttemptResult): void {
     return;
   }
   const o = r.overall;
-  console.log(`  overall ${o.displayScore ?? '—'} ${o.level ?? ''} coverage ${o.coverage}${o.partial ? ' PARTIAL' : ''}`);
+  console.log(
+    `  overall ${o.displayScore ?? '—'} ${o.level ?? ''} coverage ${o.coverage}${o.partial ? ' PARTIAL' : ''}`,
+  );
   for (const s of r.subScores) console.log(`  ${s.key.padEnd(9)} ${s.displayScore ?? '—'} (${s.confidence})`);
-  console.log(`  hero: ${r.hero ? `${r.hero.checkpointId} ${r.hero.faultId ?? ''} "${r.hero.title}" ${r.hero.frameId ?? ''}` : '—'}`);
+  console.log(
+    `  hero: ${
+      r.hero ? `${r.hero.checkpointId} ${r.hero.faultId ?? ''} "${r.hero.title}" ${r.hero.frameId ?? ''}` : '—'
+    }`,
+  );
   for (const w of r.weaknesses) console.log(`  − ${w.checkpointId} ${w.faultId ?? ''} "${w.title}"`);
   for (const s of r.strengths) console.log(`  + ${s.checkpointId} "${s.title}"`);
-  for (const p of r.plan) console.log(`  plan ${p.priority}: ${p.faultId ?? ''} drills ${p.drills.map((d) => d.id).join(', ')}`);
+  for (const p of r.plan) {
+    console.log(`  plan ${p.priority}: ${p.faultId ?? ''} drills ${p.drills.map((d) => d.id).join(', ')}`);
+  }
   console.log(`  summary: ${r.summary}`);
 }
+
+/** Flags followed by a value (every other `--flag` is boolean). */
+const VALUE_FLAGS = new Set([
+  '--view',
+  '--exclude',
+  '--handedness',
+  '--frame-mode',
+  '--out',
+  '--mock-claude',
+  '--lang',
+  '--kind',
+]);
 
 function arg(name: string): string | null {
   const i = Deno.args.indexOf(name);
@@ -239,7 +261,7 @@ async function golden(check: boolean): Promise<number> {
 
 async function main(): Promise<number> {
   if (Deno.args.includes('--golden')) return await golden(Deno.args.includes('--check'));
-  const file = Deno.args.find((a, i) => !a.startsWith('--') && (i === 0 || !Deno.args[i - 1].startsWith('--')));
+  const file = Deno.args.find((a, i) => !a.startsWith('--') && (i === 0 || !VALUE_FLAGS.has(Deno.args[i - 1])));
   if (!file) {
     console.error(
       'usage: replay.ts <pose.json> [--view v] [--exclude 1,2] [--handedness h] [--out dir] [--mock | --mock-claude f]' +
@@ -248,7 +270,7 @@ async function main(): Promise<number> {
     return 2;
   }
   const exclude = arg('--exclude');
-  const { pose, out } = replayPrepare(JSON.parse(await Deno.readTextFile(file)), {
+  const { out } = replayPrepare(JSON.parse(await Deno.readTextFile(file)), {
     view: (arg('--view') as ConfirmedCameraView | null) ?? undefined,
     excludedStrokeIds: exclude ? exclude.split(',').map(Number) : undefined,
     handedness: (arg('--handedness') as Handedness | null) ?? undefined,

@@ -71,7 +71,9 @@ async function repointAppleTokens(deps: AccountMergeDeps, userId: string, log: L
     original_transaction_id: string;
     environment: string;
     transaction_info: JwsTransaction | null;
-  }>('public', 'app_store_subscriptions', 'original_transaction_id, environment, transaction_info', { user_id: userId });
+  }>('public', 'app_store_subscriptions', 'original_transaction_id, environment, transaction_info', {
+    user_id: userId,
+  });
   let updated = 0;
   let failed = 0;
   for (const s of subs) {
@@ -85,7 +87,10 @@ async function repointAppleTokens(deps: AccountMergeDeps, userId: string, log: L
       updated++;
     } catch (err) {
       failed++;
-      log.warn('set app account token failed', { originalTransactionId: s.original_transaction_id, ...errorFields(err) });
+      log.warn('set app account token failed', {
+        originalTransactionId: s.original_transaction_id,
+        ...errorFields(err),
+      });
     }
   }
   return [updated, failed];

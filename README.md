@@ -21,7 +21,7 @@ Claude judges the visual checkpoints and writes the coaching text (VI/EN). The v
 | `supabase/tests/database/`, `supabase/tests/sql/` | pgTAP files and the shell suite (`run.sh`: db reset, pgTAP, concurrency, fixtures, API smoke) on the local stack |
 | `shared/schemas/` | JSON Schemas generated from the Zod contracts (`make schemas`), incl. the server-internal `prepared.v1.json` |
 | `shared/fixtures/` | `pose/` (synthetic clips + truth), `prepare/` (golden prepare responses), `results/`, `claude/`, `labels/` fixtures shared by Deno, Swift and the Web Lab |
-| `scripts/` | `check.sh`, `gen-schemas.ts`, `gen-minimal-fixture.ts`, `gen-synthetic-pose.ts`, `replay.ts` (engine replay + goldens), `bench-engine.ts`, `fit-contact-offsets.ts` |
+| `scripts/` | `check.sh`, `gen-schemas.ts`, `gen-minimal-fixture.ts`, `gen-synthetic-pose.ts`, `replay.ts` (engine + Claude-step replay, goldens), `smoke-claude.ts` and `warm-schemas.ts` (live API, `--yes-spend`), `bench-engine.ts`, `fit-contact-offsets.ts` |
 | `ios/Packages/CoachCore/` | Swift package: sampling, tracking, quality gate, pose.v1 payload, crop/overlay math, Codable contracts (tests run on Linux too) |
 | `ios/Tools/PoseDump/` | macOS CLI: video → pose.v1 with Apple Vision (built on a Mac) |
 | `weblab/` | Browser lab: MediaPipe → pose.v1 → prepare/submit/result, labeler (planned) |

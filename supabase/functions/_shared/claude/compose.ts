@@ -198,7 +198,14 @@ class Composer {
     const lang = this.input.language;
     return this.input.prepared.candidates.injury.flatMap((hit) => {
       const safety = this.defs.get(hit.checkpointId)?.safety;
-      return safety ? [{ kind: 'technique_risk' as const, message: safety[lang], localized: safety, checkpointId: hit.checkpointId }] : [];
+      return safety
+        ? [{
+          kind: 'technique_risk' as const,
+          message: safety[lang],
+          localized: safety,
+          checkpointId: hit.checkpointId,
+        }]
+        : [];
     });
   }
 }
@@ -303,7 +310,12 @@ export function composeResult(input: ComposeInput): ComposeOutput {
     const safety: ResultSafetyNote[] = [
       ...k.injuryNotes(),
       ...(post.medicalHit
-        ? [{ kind: 'see_professional' as const, message: MEDICAL_NOTE[language], localized: MEDICAL_NOTE, checkpointId: null }]
+        ? [{
+          kind: 'see_professional' as const,
+          message: MEDICAL_NOTE[language],
+          localized: MEDICAL_NOTE,
+          checkpointId: null,
+        }]
         : []),
       ...post.safetyNotes.map((n) => ({ kind: n.kind, message: n.message, localized: null, checkpointId: null })),
     ];
@@ -312,7 +324,13 @@ export function composeResult(input: ComposeInput): ComposeOutput {
       status: 'succeeded',
       rejection: null,
       hero,
-      overall: { displayScore: o.displayScore, level: o.level, coverage: r2(o.coverage), partial: o.partial, beta: true },
+      overall: {
+        displayScore: o.displayScore,
+        level: o.level,
+        coverage: r2(o.coverage),
+        partial: o.partial,
+        beta: true,
+      },
       subScores: k.subScores(),
       checkpoints: k.checkpoints(),
       strengths: post.strengths.map((s) => ({

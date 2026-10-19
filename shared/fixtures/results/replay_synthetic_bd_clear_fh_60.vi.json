@@ -1,0 +1,957 @@
+{
+  "schema": "coach-result.v1",
+  "analysisId": "92ba493b-54a9-40e1-a378-b17d0f5e3be1",
+  "sport": "badminton",
+  "skill": "bd.clear_fh",
+  "narrativeLanguage": "vi",
+  "createdAt": "2026-10-20T08:00:00Z",
+  "status": "succeeded",
+  "rejection": null,
+  "access": "full",
+  "locked": {
+    "strengths": 0,
+    "weaknesses": 0,
+    "plan": 0
+  },
+  "aiGenerated": true,
+  "hero": {
+    "checkpointId": "bd.clear_fh.C5",
+    "faultId": "bd.clear_fh.low_contact",
+    "title": "Chạm cầu thấp",
+    "observation": "Ngay cả ở cú đánh tốt nhất, chạm cầu thấp, tay chưa vươn hết.",
+    "cue": {
+      "vi": "Vào sau cầu sớm, đánh ở điểm cao",
+      "en": "Get behind it early, hit at the top"
+    },
+    "drill": {
+      "id": "bd.drill.hanging_shuttle",
+      "title": {
+        "vi": "Đánh bóng quả cầu treo",
+        "en": "Shadow swings at a hanging shuttle"
+      },
+      "steps": {
+        "vi": ["Treo một quả cầu bằng dây ở độ cao vợt chạm khi bạn vươn hết tay.", "Đứng hơi lùi sau quả cầu, xoay người nghiêng.", "Vung chậm để mặt vợt chạm nhẹ quả cầu ở điểm cao nhất, hơi phía trước trán.", "Về tư thế chuẩn bị sau mỗi lần."],
+        "en": ["Hang a shuttle on a string at the height your racket reaches with your arm fully up.", "Stand slightly behind it, turned side-on.", "Swing slowly so the racket face touches the shuttle at the top, just in front of your forehead.", "Return to ready after each swing."]
+      },
+      "dose": {
+        "sets": 3,
+        "reps": 15,
+        "seconds": null
+      },
+      "safety": null
+    },
+    "frameId": "F3",
+    "joints": ["rSho", "rElb", "rWri"]
+  },
+  "overall": {
+    "displayScore": 60,
+    "level": "intermediate",
+    "coverage": 0.8,
+    "partial": false,
+    "beta": true
+  },
+  "subScores": [
+    {
+      "key": "stance",
+      "displayScore": 85,
+      "coverage": 0.93,
+      "confidence": "high",
+      "name": {
+        "vi": "Tư thế & Thăng bằng",
+        "en": "Stance & Balance"
+      }
+    },
+    {
+      "key": "footwork",
+      "displayScore": 100,
+      "coverage": 0.46,
+      "confidence": "medium",
+      "name": {
+        "vi": "Di chuyển (bộ pháp)",
+        "en": "Footwork"
+      }
+    },
+    {
+      "key": "swing",
+      "displayScore": 70,
+      "coverage": 0.87,
+      "confidence": "high",
+      "name": {
+        "vi": "Kỹ thuật vung vợt",
+        "en": "Swing mechanics"
+      }
+    },
+    {
+      "key": "contact",
+      "displayScore": 5,
+      "coverage": 0.9,
+      "confidence": "high",
+      "name": {
+        "vi": "Điểm chạm cầu",
+        "en": "Contact point (badminton)"
+      }
+    },
+    {
+      "key": "follow",
+      "displayScore": 100,
+      "coverage": 0.8,
+      "confidence": "high",
+      "name": {
+        "vi": "Kết thúc động tác",
+        "en": "Follow-through"
+      }
+    },
+    {
+      "key": "recovery",
+      "displayScore": 40,
+      "coverage": 0.8,
+      "confidence": "high",
+      "name": {
+        "vi": "Về vị trí (hồi vị)",
+        "en": "Recovery"
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "bd.ready.R1",
+      "subscore": "stance",
+      "assess": "M",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "1.00–1.60",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.9974
+        },
+        {
+          "strokeId": 2,
+          "value": 1.0008
+        },
+        {
+          "strokeId": 3,
+          "value": 1.0125
+        },
+        {
+          "strokeId": 4,
+          "value": 0.9934
+        }
+      ],
+      "name": {
+        "vi": "Hai chân rộng hơn vai",
+        "en": "Feet slightly wider than shoulders"
+      },
+      "joints": ["lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.ready.R2",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "23°",
+      "targetText": "15–45°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 23.6901
+        },
+        {
+          "strokeId": 2,
+          "value": 23.198
+        },
+        {
+          "strokeId": 3,
+          "value": 23.1212
+        },
+        {
+          "strokeId": 4,
+          "value": 23.2669
+        }
+      ],
+      "name": {
+        "vi": "Gối hơi chùng",
+        "en": "Knees softly bent"
+      },
+      "joints": ["lHip", "rHip", "lKne", "rKne", "lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.ready.R3",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 0.55,
+      "c": 1,
+      "valueText": "6°",
+      "targetText": "10–30°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 5.5121
+        },
+        {
+          "strokeId": 2,
+          "value": 5.5113
+        },
+        {
+          "strokeId": 3,
+          "value": 5.3763
+        },
+        {
+          "strokeId": 4,
+          "value": 5.5141
+        }
+      ],
+      "name": {
+        "vi": "Thân người hơi đổ về trước",
+        "en": "Slight forward lean"
+      },
+      "joints": ["neck", "root"]
+    },
+    {
+      "id": "bd.ready.R4",
+      "subscore": "stance",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "0.56 T",
+      "targetText": "0.50–1.30 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.5529
+        },
+        {
+          "strokeId": 2,
+          "value": 0.5463
+        },
+        {
+          "strokeId": 3,
+          "value": 0.5593
+        },
+        {
+          "strokeId": 4,
+          "value": 0.5752
+        }
+      ],
+      "name": {
+        "vi": "Vợt giơ trước ngực",
+        "en": "Racket up in front"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "bd.ready.R6",
+      "subscore": "stance",
+      "assess": "N",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "",
+      "perStroke": [],
+      "name": {
+        "vi": "Trọng tâm trên mũi bàn chân",
+        "en": "On the balls of the feet"
+      },
+      "joints": ["lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.ready.R7",
+      "subscore": "stance",
+      "assess": "V",
+      "s": 0.75,
+      "c": 0.7,
+      "valueText": "3/4",
+      "targetText": "4/4",
+      "perStroke": [],
+      "name": {
+        "vi": "Đầu vợt hướng lên",
+        "en": "Racket head up"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "bd.split.S1",
+      "subscore": "footwork",
+      "assess": "M~",
+      "s": 1,
+      "c": 0.6,
+      "valueText": "4/4",
+      "targetText": "✓",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 1
+        },
+        {
+          "strokeId": 2,
+          "value": 1
+        },
+        {
+          "strokeId": 3,
+          "value": 1
+        },
+        {
+          "strokeId": 4,
+          "value": 1
+        }
+      ],
+      "name": {
+        "vi": "Bật nhún (split step) trước khi di chuyển",
+        "en": "Split step before moving"
+      },
+      "joints": ["root", "lKne", "rKne", "lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.clear_fh.C1",
+      "subscore": "swing",
+      "assess": "M~",
+      "s": 0,
+      "c": 0.6,
+      "valueText": "10°",
+      "targetText": "≥ 60°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 8.9037
+        },
+        {
+          "strokeId": 2,
+          "value": 9.8251
+        },
+        {
+          "strokeId": 3,
+          "value": 9.9976
+        },
+        {
+          "strokeId": 4,
+          "value": 10.8309
+        }
+      ],
+      "name": {
+        "vi": "Xoay người nghiêng",
+        "en": "Side-on turn"
+      },
+      "joints": ["lSho", "rSho", "lHip", "rHip"]
+    },
+    {
+      "id": "bd.clear_fh.C2",
+      "subscore": "swing",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "2.06 T",
+      "targetText": "≥ 1.10 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 2.0517
+        },
+        {
+          "strokeId": 2,
+          "value": 2.03
+        },
+        {
+          "strokeId": 3,
+          "value": 2.0714
+        },
+        {
+          "strokeId": 4,
+          "value": 2.0851
+        }
+      ],
+      "name": {
+        "vi": "Tay không cầm vợt giơ cao",
+        "en": "Non-racket arm up"
+      },
+      "joints": ["lSho", "lElb", "lWri"]
+    },
+    {
+      "id": "bd.clear_fh.C3",
+      "subscore": "swing",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "0.61 T",
+      "targetText": "≥ -0.15 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.6233
+        },
+        {
+          "strokeId": 2,
+          "value": 0.6085
+        },
+        {
+          "strokeId": 3,
+          "value": 0.6068
+        },
+        {
+          "strokeId": 4,
+          "value": 0.6127
+        }
+      ],
+      "name": {
+        "vi": "Khuỷu tay cao khi vung",
+        "en": "Racket elbow up"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C4",
+      "subscore": "swing",
+      "assess": "M~",
+      "s": 0.74,
+      "c": 1,
+      "valueText": "0.51",
+      "targetText": "≥ 0.55",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.5124
+        },
+        {
+          "strokeId": 2,
+          "value": 0.5086
+        },
+        {
+          "strokeId": 3,
+          "value": 0.5019
+        },
+        {
+          "strokeId": 4,
+          "value": 0.5173
+        }
+      ],
+      "name": {
+        "vi": "Chuyển trọng tâm từ sau ra trước",
+        "en": "Weight transfer, back to front"
+      },
+      "joints": ["root", "lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.clear_fh.C5",
+      "subscore": "contact",
+      "assess": "M",
+      "s": 0,
+      "c": 1,
+      "valueText": "0.42",
+      "targetText": "≥ 0.85",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.4717
+        },
+        {
+          "strokeId": 2,
+          "value": 0.4786
+        },
+        {
+          "strokeId": 3,
+          "value": 0.3126
+        },
+        {
+          "strokeId": 4,
+          "value": 0.3717
+        }
+      ],
+      "name": {
+        "vi": "Chạm cầu ở điểm cao",
+        "en": "Hits at a high point"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C6",
+      "subscore": "contact",
+      "assess": "M~",
+      "s": 0.11,
+      "c": 1,
+      "valueText": "0.89 T",
+      "targetText": "0.00–0.60 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.8342
+        },
+        {
+          "strokeId": 2,
+          "value": 0.815
+        },
+        {
+          "strokeId": 3,
+          "value": 0.9964
+        },
+        {
+          "strokeId": 4,
+          "value": 0.9367
+        }
+      ],
+      "name": {
+        "vi": "Chạm cầu hơi phía trước",
+        "en": "Contact slightly in front"
+      },
+      "joints": ["rSho", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C7",
+      "subscore": "contact",
+      "assess": "M~",
+      "s": 0.07,
+      "c": 0.6,
+      "valueText": "130°",
+      "targetText": "≥ 150°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 126.2926
+        },
+        {
+          "strokeId": 2,
+          "value": 124.1582
+        },
+        {
+          "strokeId": 3,
+          "value": 139.7971
+        },
+        {
+          "strokeId": 4,
+          "value": 132.77
+        }
+      ],
+      "name": {
+        "vi": "Tay gần duỗi thẳng khi chạm cầu",
+        "en": "Arm nearly straight at contact"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C8",
+      "subscore": "follow",
+      "assess": "M",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "✓",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0
+        },
+        {
+          "strokeId": 2,
+          "value": 0
+        },
+        {
+          "strokeId": 3,
+          "value": 0
+        },
+        {
+          "strokeId": 4,
+          "value": 0
+        }
+      ],
+      "name": {
+        "vi": "Vợt kết thúc chéo qua người",
+        "en": "Racket finishes across the body"
+      },
+      "joints": ["rSho", "rElb", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C9",
+      "subscore": "follow",
+      "assess": "M~",
+      "s": 1,
+      "c": 0.6,
+      "valueText": "9°",
+      "targetText": "≤ 25°",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 10.5265
+        },
+        {
+          "strokeId": 2,
+          "value": 8.6323
+        },
+        {
+          "strokeId": 3,
+          "value": 8.8579
+        },
+        {
+          "strokeId": 4,
+          "value": 9.0262
+        }
+      ],
+      "name": {
+        "vi": "Thân người xoay theo",
+        "en": "Trunk rotates through"
+      },
+      "joints": ["lSho", "rSho"]
+    },
+    {
+      "id": "bd.clear_fh.C10",
+      "subscore": "follow",
+      "assess": "M",
+      "s": 1,
+      "c": 1,
+      "valueText": "-0.03 T",
+      "targetText": "≤ 1.00 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": -0.0252
+        },
+        {
+          "strokeId": 2,
+          "value": -0.031
+        },
+        {
+          "strokeId": 3,
+          "value": -0.0335
+        },
+        {
+          "strokeId": 4,
+          "value": -0.0567
+        }
+      ],
+      "name": {
+        "vi": "Vợt kết thúc thấp",
+        "en": "Racket finishes low"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C11",
+      "subscore": "recovery",
+      "assess": "M~",
+      "s": 1,
+      "c": 0.6,
+      "valueText": "0.15 T",
+      "targetText": "≤ 1.00 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.0064
+        },
+        {
+          "strokeId": 2,
+          "value": 0.2746
+        },
+        {
+          "strokeId": 3,
+          "value": 0.29
+        },
+        {
+          "strokeId": 4,
+          "value": 0.0308
+        }
+      ],
+      "name": {
+        "vi": "Về vị trí sau khi đánh",
+        "en": "Moves back to base"
+      },
+      "joints": ["root", "lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.clear_fh.C12",
+      "subscore": "recovery",
+      "assess": "M",
+      "s": 0,
+      "c": 1,
+      "valueText": "0.50 T",
+      "targetText": "≥ 0.80 T",
+      "perStroke": [
+        {
+          "strokeId": 1,
+          "value": 0.4961
+        },
+        {
+          "strokeId": 2,
+          "value": 0.492
+        },
+        {
+          "strokeId": 3,
+          "value": 0.4948
+        },
+        {
+          "strokeId": 4,
+          "value": 0.4966
+        }
+      ],
+      "name": {
+        "vi": "Giơ vợt lên lại sau khi đánh",
+        "en": "Racket back up after the shot"
+      },
+      "joints": ["rElb", "rWri"]
+    },
+    {
+      "id": "bd.clear_fh.C13",
+      "subscore": "footwork",
+      "assess": "V",
+      "s": 1,
+      "c": 0.7,
+      "valueText": "4/4",
+      "targetText": "4/4",
+      "perStroke": [],
+      "name": {
+        "vi": "Vào sau cầu sớm",
+        "en": "Gets behind the shuttle early"
+      },
+      "joints": ["root", "lAnk", "rAnk"]
+    },
+    {
+      "id": "bd.clear_fh.C14",
+      "subscore": "contact",
+      "assess": "N",
+      "s": null,
+      "c": 0,
+      "valueText": "",
+      "targetText": "",
+      "perStroke": [],
+      "name": {
+        "vi": "Cầu bay cao và sâu",
+        "en": "Shuttle goes high and deep"
+      },
+      "joints": []
+    }
+  ],
+  "strengths": [
+    {
+      "checkpointId": "bd.clear_fh.C3",
+      "title": "Khuỷu tay cao khi vung",
+      "detail": "Khuỷu tay nâng cao như ném bóng. Hãy giữ thói quen này.",
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 4850258,
+          "frameId": "F2",
+          "metricKey": "bd.clear_fh.C3",
+          "observation": "Ở cú đánh tốt nhất, khuỷu tay nâng cao như ném bóng.",
+          "plain": {
+            "vi": "khuỷu tay nâng cao như ném bóng",
+            "en": "elbow up like a throw"
+          },
+          "detail": {
+            "valueText": "0.61 T",
+            "targetText": "≥ -0.15 T"
+          },
+          "joints": ["rSho", "rElb", "rWri"]
+        }
+      ]
+    },
+    {
+      "checkpointId": "bd.clear_fh.C2",
+      "title": "Tay không cầm vợt giơ cao",
+      "detail": "Tay không cầm vợt giơ cao chỉ cầu. Hãy giữ thói quen này.",
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 4850258,
+          "frameId": "F2",
+          "metricKey": "bd.clear_fh.C2",
+          "observation": "Ở cú đánh tốt nhất, tay không cầm vợt giơ cao chỉ cầu.",
+          "plain": {
+            "vi": "tay không cầm vợt giơ cao chỉ cầu",
+            "en": "free arm up, pointing at the shuttle"
+          },
+          "detail": {
+            "valueText": "2.06 T",
+            "targetText": "≥ 1.10 T"
+          },
+          "joints": ["lSho", "lElb", "lWri"]
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "checkpointId": "bd.clear_fh.C1",
+      "faultId": "bd.clear_fh.no_turn",
+      "severity": "medium",
+      "title": "Chưa xoay người nghiêng",
+      "detail": "Ở phần lớn các cú đánh, vai còn hướng về lưới khi kéo vợt.",
+      "whyItMatters": "Xoay người giúp dùng lực cả thân, cầu đi sâu hơn mà tay đỡ mỏi.",
+      "cue": {
+        "vi": "Chĩa vai không cầm vợt về phía cầu",
+        "en": "Point your non-racket shoulder at the shuttle"
+      },
+      "evidence": [
+        {
+          "strokeId": 2,
+          "tUs": 4850258,
+          "frameId": "F2",
+          "metricKey": "bd.clear_fh.C1",
+          "observation": "Ngay cả ở cú đánh tốt nhất, vai còn hướng về lưới khi kéo vợt.",
+          "plain": {
+            "vi": "vai còn hướng về lưới khi kéo vợt",
+            "en": "shoulders still face the net"
+          },
+          "detail": {
+            "valueText": "10°",
+            "targetText": "≥ 60°"
+          },
+          "joints": ["lSho", "rSho", "lHip", "rHip"]
+        }
+      ]
+    }
+  ],
+  "plan": [
+    {
+      "priority": 1,
+      "faultId": "bd.clear_fh.low_contact",
+      "title": "Vào sau cầu sớm, đánh ở điểm cao",
+      "howToFix": "Vào sau cầu sớm, đánh ở điểm cao. Tập chậm trước để cảm nhận động tác, rồi tăng dần tốc độ.",
+      "cues": ["Vào sau cầu sớm, đánh ở điểm cao"],
+      "goal": "Chạm cầu ở điểm cao.",
+      "target": {
+        "metricKey": "bd.clear_fh.C5",
+        "current": "0.42",
+        "goal": "≥ 0.85"
+      },
+      "drills": [
+        {
+          "id": "bd.drill.hanging_shuttle",
+          "title": {
+            "vi": "Đánh bóng quả cầu treo",
+            "en": "Shadow swings at a hanging shuttle"
+          },
+          "steps": {
+            "vi": ["Treo một quả cầu bằng dây ở độ cao vợt chạm khi bạn vươn hết tay.", "Đứng hơi lùi sau quả cầu, xoay người nghiêng.", "Vung chậm để mặt vợt chạm nhẹ quả cầu ở điểm cao nhất, hơi phía trước trán.", "Về tư thế chuẩn bị sau mỗi lần."],
+            "en": ["Hang a shuttle on a string at the height your racket reaches with your arm fully up.", "Stand slightly behind it, turned side-on.", "Swing slowly so the racket face touches the shuttle at the top, just in front of your forehead.", "Return to ready after each swing."]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 15,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    },
+    {
+      "priority": 2,
+      "faultId": "bd.clear_fh.no_turn",
+      "title": "Chĩa vai không cầm vợt về phía cầu",
+      "howToFix": "Chĩa vai không cầm vợt về phía cầu. Tập chậm trước để cảm nhận động tác, rồi tăng dần tốc độ.",
+      "cues": ["Chĩa vai không cầm vợt về phía cầu"],
+      "goal": "Vai xoay nghiêng rõ khi kéo vợt.",
+      "target": {
+        "metricKey": "bd.clear_fh.C1",
+        "current": "10°",
+        "goal": "≥ 60°"
+      },
+      "drills": [
+        {
+          "id": "bd.drill.shadow_turn_point",
+          "title": {
+            "vi": "Xoay người và chỉ tay",
+            "en": "Shadow turn-and-point"
+          },
+          "steps": {
+            "vi": ["Đứng ở tư thế chuẩn bị.", "Xoay vai, tay không cầm vợt chỉ lên cầu tưởng tượng.", "Vung vợt chậm rồi về tư thế chuẩn bị."],
+            "en": ["Start in the ready stance.", "Turn your shoulders and point the free hand at an imaginary shuttle.", "Swing slowly, then return to ready."]
+          },
+          "dose": {
+            "sets": 3,
+            "reps": 10,
+            "seconds": null
+          },
+          "safety": null
+        }
+      ]
+    }
+  ],
+  "strokes": [
+    {
+      "id": 1,
+      "tStartUs": 1584512,
+      "tContactUs": 2773306,
+      "contactIsEstimate": true,
+      "tEndUs": 3765612,
+      "phases": {
+        "ready": 1817277,
+        "bsEnd": 2533118,
+        "contact": 2767877,
+        "ftStop": 2900592
+      },
+      "role": null
+    },
+    {
+      "id": 2,
+      "tStartUs": 3916745,
+      "tContactUs": 5107877,
+      "contactIsEstimate": true,
+      "tEndUs": 6099509,
+      "phases": {
+        "ready": 4149927,
+        "bsEnd": 4850258,
+        "contact": 5100488,
+        "ftStop": 5234366
+      },
+      "role": "best"
+    },
+    {
+      "id": 3,
+      "tStartUs": 6366741,
+      "tContactUs": 7547958,
+      "contactIsEstimate": true,
+      "tEndUs": 8549414,
+      "phases": {
+        "ready": 6583091,
+        "bsEnd": 7317070,
+        "contact": 7550151,
+        "ftStop": 7667249
+      },
+      "role": null
+    },
+    {
+      "id": 4,
+      "tStartUs": 8649076,
+      "tContactUs": 9847599,
+      "contactIsEstimate": true,
+      "tEndUs": 10849661,
+      "phases": {
+        "ready": 8867307,
+        "bsEnd": 9634226,
+        "contact": 9850181,
+        "ftStop": 9984066
+      },
+      "role": "worst"
+    }
+  ],
+  "safety": [
+    {
+      "kind": "warmup",
+      "message": "Khởi động vai, cổ tay và gối vài phút trước khi tập.",
+      "localized": null,
+      "checkpointId": null
+    }
+  ],
+  "notAssessable": [
+    {
+      "aspect": "Trọng tâm trên mũi bàn chân",
+      "howToCapture": "Quay gần hơn, đủ sáng và giữ điện thoại cố định."
+    },
+    {
+      "aspect": "Cầu bay cao và sâu",
+      "howToCapture": "Quay gần hơn, đủ sáng và giữ điện thoại cố định."
+    }
+  ],
+  "recordingTips": ["Đặt điện thoại cố định ngang hông và quay toàn thân.", "Thử quay từ góc được gợi ý cho kỹ thuật này."],
+  "rulesTip": {
+    "vi": "Cầu rơi trúng vạch là cầu trong. Phông cầu tốt bay cao và rơi sát vạch cuối sân.",
+    "en": "A shuttle that lands on the line is in. A good clear goes high and lands near the back line."
+  },
+  "summary": "Bạn đã làm tốt phần khuỷu tay cao khi vung. Điều nên sửa trước tiên: chạm cầu thấp. Mỗi buổi tập trung vào một điểm và quay lại video sau vài buổi.",
+  "meta": {
+    "model": "claude-sonnet-5-5",
+    "kind": "standard",
+    "promptVersion": "coach-prompt-2.0",
+    "rubricVersion": "bd-2026.10.18+drills-2026.10.18",
+    "algoVersion": "engine-1.1.0",
+    "schemaVersion": "coach.v1"
+  }
+}

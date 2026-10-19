@@ -105,6 +105,10 @@ async function verifySubscription(
   // 4. linking policy on Apple's token
   const lookup = createOwnerLookup(deps.db, deps.authAdmin);
   const existing = await loadSubscription(deps.db, origTx);
+  if (xcode && existing && existing.environment !== 'Xcode') {
+    // an unverified local payload must never overwrite or move an App Store (Sandbox/Production) subscription
+    throw httpError('forbidden', 'Xcode transaction collides with an App Store subscription');
+  }
   const appleToken = normalizeToken(state.transaction.appAccountToken);
   const tokenOwner = await resolveTokenOwner(appleToken, callerId, lookup);
   const rowOwner = await resolveRowOwner(existing?.user_id, callerId, lookup);

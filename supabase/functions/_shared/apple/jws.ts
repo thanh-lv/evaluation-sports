@@ -7,18 +7,50 @@
  *   signed by the intermediate and carries OID 1.2.840.113635.100.6.11.1; every certificate is valid at the check date
  *   (the payload's `signedDate`, else now); the JWS signature (ES256) verifies with the leaf key.
  *
- * Trusted roots: none is embedded (www.apple.com was unreachable from the build container). Production reads
- * `APPLE_ROOT_CA_G3_PEM` (docs/apple-setup.md); tests pass their own root. No roots configured → `no_trusted_roots`.
- * Revocation (OCSP) is not checked.
+ * Trusted roots: Apple Root CA - G3 is embedded (`APPLE_ROOT_CA_G3_PEM`, SHA-256 fingerprint pinned in
+ * `APPLE_ROOT_CA_G3_SHA256` and checked by the tests). `APPLE_ROOT_CA_G3_PEM` in the environment ADDS roots (e.g. after
+ * an Apple rotation; docs/apple-setup.md). Tests pass their own roots. Revocation (OCSP) is not checked.
  */
 import { fromBase64Url } from '../crypto.ts';
-import { base64ToBytes, bytesEqual, ecdsaDerToRaw, OID, type ParsedCertificate, parseCertificate, pemCertificates } from './der.ts';
+import {
+  base64ToBytes,
+  bytesEqual,
+  ecdsaDerToRaw,
+  OID,
+  parseCertificate,
+  type ParsedCertificate,
+  pemCertificates,
+} from './der.ts';
 
 export const APPLE_LEAF_OID = '1.2.840.113635.100.6.11.1';
 export const APPLE_INTERMEDIATE_OID = '1.2.840.113635.100.6.2.1';
 
-/** Embedded Apple Root CA G3 PEM: empty because it could not be downloaded here; see `trustedRootsFromEnv`. */
-export const EMBEDDED_APPLE_ROOTS_PEM: readonly string[] = [];
+/**
+ * Apple Root CA - G3 (https://www.apple.com/certificateauthority/AppleRootCA-G3.cer). www.apple.com is blocked from the
+ * build container, so the certificate was taken from Apple's own `@apple/app-store-server-library@3.1.0` (npm, author
+ * Apple Inc.) and checked against the published SHA-256 fingerprint below (also pinned by `app-store-server-api`).
+ * Valid 2014-04-30 – 2039-04-30.
+ */
+export const APPLE_ROOT_CA_G3_PEM = `-----BEGIN CERTIFICATE-----
+MIICQzCCAcmgAwIBAgIILcX8iNLFS5UwCgYIKoZIzj0EAwMwZzEbMBkGA1UEAwwS
+QXBwbGUgUm9vdCBDQSAtIEczMSYwJAYDVQQLDB1BcHBsZSBDZXJ0aWZpY2F0aW9u
+IEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwHhcN
+MTQwNDMwMTgxOTA2WhcNMzkwNDMwMTgxOTA2WjBnMRswGQYDVQQDDBJBcHBsZSBS
+b290IENBIC0gRzMxJjAkBgNVBAsMHUFwcGxlIENlcnRpZmljYXRpb24gQXV0aG9y
+aXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzB2MBAGByqGSM49
+AgEGBSuBBAAiA2IABJjpLz1AcqTtkyJygRMc3RCV8cWjTnHcFBbZDuWmBSp3ZHtf
+TjjTuxxEtX/1H7YyYl3J6YRbTzBPEVoA/VhYDKX1DyxNB0cTddqXl5dvMVztK517
+IDvYuVTZXpmkOlEKMaNCMEAwHQYDVR0OBBYEFLuw3qFYM4iapIqZ3r6966/ayySr
+MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMDA2gA
+MGUCMQCD6cHEFl4aXTQY2e3v9GwOAEZLuN+yRhHFD/3meoyhpmvOwgPUnPWTxnS4
+at+qIxUCMG1mihDK1A3UT82NQz60imOlM27jbdoXt2QfyFMm+YhidDkLF1vLUagM
+6BgD56KyKA==
+-----END CERTIFICATE-----`;
+
+/** SHA-256 of the DER of Apple Root CA - G3 (hex, lowercase). */
+export const APPLE_ROOT_CA_G3_SHA256 = '63343abfb89a6a03ebb57e9b3f5fa7be7c4f5c756f3017b3a8c488c3653e9179';
+
+export const EMBEDDED_APPLE_ROOTS_PEM: readonly string[] = [APPLE_ROOT_CA_G3_PEM];
 
 export type JwsFailure =
   | 'malformed'
@@ -66,7 +98,9 @@ function parseJsonObject(bytes: Uint8Array, what: string): Record<string, unknow
   } catch {
     throw new JwsError('malformed', `${what} is not JSON`);
   }
-  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new JwsError('malformed', `${what} not an object`);
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new JwsError('malformed', `${what} not an object`);
+  }
   return value as Record<string, unknown>;
 }
 
@@ -142,28 +176,51 @@ function parseX5c(x5c: unknown): ParsedCertificate[] {
   }
 }
 
+/**
+ * Checks a parsed [leaf, intermediate, root] chain against `roots` at `at`: trusted root, intermediate is a CA with
+ * the WWDR OID and signed by the root, leaf carries the receipt-signing OID and is signed by the intermediate, every
+ * certificate valid at `at`. Throws `JwsError`.
+ */
+export async function verifyChain(
+  chain: readonly ParsedCertificate[],
+  roots: readonly Uint8Array[],
+  at: Date,
+): Promise<void> {
+  if (roots.length === 0) throw new JwsError('no_trusted_roots');
+  if (chain.length !== 3) throw new JwsError('bad_chain', 'x5c must hold 3 certificates');
+  const [leaf, intermediate, root] = chain;
+  if (!roots.some((r) => bytesEqual(r, root.der))) throw new JwsError('untrusted_root');
+  if (!intermediate.isCA) throw new JwsError('not_ca', 'intermediate');
+  if (leaf.isCA) throw new JwsError('bad_chain', 'leaf is a CA');
+  if (!intermediate.extensions.has(APPLE_INTERMEDIATE_OID)) throw new JwsError('missing_oid', 'intermediate');
+  if (!leaf.extensions.has(APPLE_LEAF_OID)) throw new JwsError('missing_oid', 'leaf');
+  for (const cert of chain) {
+    if (at < cert.notBefore || at > cert.notAfter) throw new JwsError('expired', at.toISOString());
+  }
+  if (!(await signedBy(intermediate, root))) throw new JwsError('chain_signature', 'intermediate');
+  if (!(await signedBy(leaf, intermediate))) throw new JwsError('chain_signature', 'leaf');
+}
+
+/** Parses base64 DER certificates (an `x5c` array) for `verifyChain`. */
+export function parseChain(x5c: unknown): ParsedCertificate[] {
+  return parseX5c(x5c);
+}
+
 /** Verifies `jws` against `roots` (see module doc) and returns the payload. Throws `JwsError`. */
 export async function verifyJws<T = Record<string, unknown>>(jws: string, options: VerifyOptions): Promise<T> {
   if (options.roots.length === 0) throw new JwsError('no_trusted_roots');
   const decoded = decodeJws<T>(jws);
   if (decoded.header.alg !== 'ES256') throw new JwsError('unsupported_alg', String(decoded.header.alg));
-  const [leaf, intermediate, root] = parseX5c(decoded.header.x5c);
-
-  if (!options.roots.some((r) => bytesEqual(r, root.der))) throw new JwsError('untrusted_root');
-  if (!intermediate.isCA) throw new JwsError('not_ca', 'intermediate');
-  if (!intermediate.extensions.has(APPLE_INTERMEDIATE_OID)) throw new JwsError('missing_oid', 'intermediate');
-  if (!leaf.extensions.has(APPLE_LEAF_OID)) throw new JwsError('missing_oid', 'leaf');
+  const chain = parseX5c(decoded.header.x5c);
 
   const signedDate = (decoded.payload as { signedDate?: unknown }).signedDate;
   const at = options.at ??
-    (typeof signedDate === 'number' && Number.isFinite(signedDate) ? new Date(signedDate) : (options.now?.() ?? new Date()));
-  for (const cert of [leaf, intermediate, root]) {
-    if (at < cert.notBefore || at > cert.notAfter) throw new JwsError('expired', at.toISOString());
-  }
+    (typeof signedDate === 'number' && Number.isFinite(signedDate)
+      ? new Date(signedDate)
+      : (options.now?.() ?? new Date()));
+  await verifyChain(chain, options.roots, at);
 
-  if (!(await signedBy(intermediate, root))) throw new JwsError('chain_signature', 'intermediate');
-  if (!(await signedBy(leaf, intermediate))) throw new JwsError('chain_signature', 'leaf');
-
+  const leaf = chain[0];
   if (leaf.curve !== OID.p256) throw new JwsError('unsupported_alg', 'leaf key is not P-256');
   const key = await importEcKey(leaf);
   if (decoded.signature.length !== 64) throw new JwsError('bad_signature', 'ES256 signature must be 64 bytes');
@@ -177,7 +234,7 @@ export async function verifyJws<T = Record<string, unknown>>(jws: string, option
   return decoded.payload;
 }
 
-/** Trusted roots: the embedded ones plus every certificate in `APPLE_ROOT_CA_G3_PEM`. */
+/** Trusted roots: the embedded Apple Root CA - G3 plus every certificate in `APPLE_ROOT_CA_G3_PEM` (env). */
 export function trustedRoots(pem: string | null | undefined): Uint8Array<ArrayBuffer>[] {
   const out = EMBEDDED_APPLE_ROOTS_PEM.flatMap((p) => pemCertificates(p));
   if (pem) {

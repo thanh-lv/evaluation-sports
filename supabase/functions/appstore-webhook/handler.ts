@@ -1,7 +1,7 @@
 /**
  * POST /appstore-webhook (DESIGN §9.5): App Store Server Notifications V2. No JWT (Apple calls it); the
- * `signedPayload` chain is verified when `APPLE_ROOT_CA_G3_PEM` is set, and every effect comes from Apple's
- * re-fetched state (`_shared/apple/notifications.ts`).
+ * `signedPayload` chain is verified against Apple Root CA G3 (embedded, plus `APPLE_ROOT_CA_G3_PEM`) as an extra
+ * check, and every effect comes from Apple's re-fetched state (`_shared/apple/notifications.ts`).
  *
  * Responses: 200 processed / duplicate / ignored / permanent failure (Apple must not retry); 422 malformed;
  * 401 chain rejected; 500 transient failure (Apple retries).

@@ -142,7 +142,27 @@ Import from `@shared/engine/index.ts`. Everything is pure and deterministic; the
 - Helpers: `displayScore`, `levelFor`, `scoreMetric`, `readingOf`, `faultFor`, `weakSide`, `VISUAL_CONFIDENCE`, `SCORE_CONSTANTS`.
 
 **Tools**
-- `scripts/replay.ts <pose.json> [--view …] [--exclude 1,2] [--handedness …] [--out dir] [--mock-claude f]` prints the engine state. `HOOK(M6)` in that file marks where the Claude step plugs in.
-- `scripts/replay.ts --golden [--check]` writes or checks `shared/fixtures/prepare/<synthetic>.json`.
+- `scripts/replay.ts <pose.json> [--view …] [--exclude 1,2] [--handedness …] [--frame-mode …] [--out dir] [--mock | --mock-claude f] [--lang vi|en] [--kind basic|standard] [--no-frames]` prints the engine state; with `--mock` (built-in generator) or `--mock-claude <coach.v1 file>` (`shared/fixtures/claude/`) it also runs the Claude step and prints the composed result (`--out` adds `request.json` and `result.json`).
+- `scripts/replay.ts --golden [--check]` writes or checks `shared/fixtures/prepare/<synthetic>.json` and the mock results `shared/fixtures/results/replay_<synthetic>.<lang>.json`.
+- `scripts/smoke-claude.ts` and `scripts/warm-schemas.ts` call the live API and refuse to run without `--yes-spend`.
+
+## Claude module (`_shared/claude/`)
+
+Import from `@shared/claude/index.ts`. No DB access; I/O goes through `CoachModelClient` (`anthropicCoachClient` live, `mockCoachClient` for `CLAUDE_MODE=mock`, `coachClientForMode(env.claudeMode, key, mockSource)`). `CLAUDE_MODE` defaults to `live`; mock is used only when `CLAUDE_MODE=mock` is set explicitly (live without `ANTHROPIC_API_KEY` fails jobs `internal` with an alert, never falls back to mock).
+- `runCoachAttempt({prepared, rubric, language, route, frames, maxTokensMult?, kind, createdAt, client, log?})` = `buildCoachRequest` → `runOnce` → (ok) `postprocess` → `composeResult`. Returns `{request, run: {outcome, call}, post, composed}`.
+- `run.outcome.kind` (§8.3): `ok` | `refusal` (`category`) | `max_tokens` | `parse_error` | `retryable` (`reason`: rate_limited/overloaded/server_error/timeout/network) | `bad_request`. The caller maps it to finalize / requeue / fail.
+- `run.call` is the `private.llm_calls` row for every attempt: `modelRequested`, `modelServed`, `effort`, `stopReason`, `refusalCategory`, `usage` (four meters), `costUsd` (price of the served model; after a server-side fallback, the sum of every attempt in `usage.iterations` at its own model's card), `latencyMs`, `requestId`, `fallbackUsed`, `error`.
+- `composed.result` is a full (`access: full`) validated `CoachResultV1`, `status` `succeeded` or `rejected` (input check, §8.4 step 1); `composed.scores` is the engine `ComposedScores` (null when rejected). `post.flags` are the postprocess decisions to log.
+- `fallbacks: "default"` + its beta are sent only to models on the `supportsServerFallback` allowlist (Sonnet 5.5, Opus 5.5, Opus 5, Fable 5.1). `DEFAULT_MODEL_ROUTES` mirrors the `model_routes` seed; `modelRouteFromRow` parses a row. `warmOnce(route, sport, deps)` is the grammar/cache warm-up for the cron `warm` task.
 - `scripts/bench-engine.ts` measures a 30 s 60 Hz clip (budget 300 ms excluding parse).
 - `scripts/fit-contact-offsets.ts [--check]` fits offsets from `shared/fixtures/labels/*.csv`; the CSV format is in that folder's README.
+
+## Analyze job and cron (`_shared/jobs/`, `_shared/budget.ts`)
+
+Import from `@shared/jobs/index.ts`. Edge Functions `analyze` (`/catalog`, `/prepare`, `/submit`, `/run`) and `cron` (`{task: daily | warm}`) are thin routers over it; their dependencies are injected (`analyze/deps.ts`, `cron/handler.ts`).
+- `runOnce(analysisId, deps)` is one job invocation with exactly one model call: results already stored → claim + finalize only; otherwise claim (fencing) → prepared state + frames (base64) → Claude module → `decideAction` → `finalize_analysis` / `requeue_analysis` / `fail_analysis`. Every attempt writes `private.llm_calls` (parse failures have `error` starting with `parse_error`), `record_llm_cost` and, when there is output, `llm_outputs`. Returns `{status: finalized | requeued | failed | fence_lost | not_claimed | terminal | not_found, …}`.
+- `decideAction` (`policy.ts`, `JOB_LIMITS`): max_tokens → requeue ×1.5 once; parse error → requeue once; retryable → requeue after 30 s·2^attempt while attempt < 3, then `upstream_unavailable`; 400 → `bad_request` + alert; refusal → `model_refusal`; a claim past attempt 6 fails `internal` without a call.
+- Frames are deleted at finalize; failed jobs keep them up to 72 h (the daily walk removes them). `InFlightJobs` + `installShutdownRequeue` requeue running jobs on `beforeunload`.
+- `runCronTask('daily' | 'warm', deps)`: stale jobs (72 h, claim then fail `expired`), drafts (24 h), orphan walk, pose JSON after 24 months, row purges, App Store notification history, spend alerts, warm-up (live mode only; `WARM_MARKER_IDS` in `llm_calls`).
+- `budget.ts`: `budgetDecision(status, {tier, isReviewer})` → `{level: ok | alert | exhausted | hard_cap, allow, downgradeFreeStandard}`; `maybeAlertDailySpend` (once per ICT day via `daily_spend.alerted_70`), `userCostAlertThreshold` (60 % of $1.48/month). Alerts are `log.error` lines with `alert: true` plus `ops.*` server events.
+- Tests: `supabase/tests/jobs/_backend.ts` emulates the job/quota SQL functions on a FakeDb with a clock; `supabase/tests/functions/_analyze.ts` is the handler rig; `supabase/tests/e2e/` runs the real flow (see its README).

@@ -34,9 +34,19 @@ export interface BuiltCoachRequest {
   sentFrameIds: UploadFrameId[];
 }
 
-/** Haiku 5.5 has no server-side fallback: `fallbacks` must never be sent to it. */
+/**
+ * Models documented to accept `fallbacks: "default"` (claude-api skill). Anything else (Haiku 5.5, Sonnet 5, a model
+ * id typed into `model_routes`) gets neither the parameter nor its beta: an allowlist, so a new id fails closed.
+ */
+const SERVER_FALLBACK_MODELS: ReadonlySet<string> = new Set([
+  'claude-sonnet-5-5',
+  'claude-opus-5-5',
+  'claude-opus-5',
+  'claude-fable-5-1',
+]);
+
 export function supportsServerFallback(model: string): boolean {
-  return !model.startsWith('claude-haiku');
+  return SERVER_FALLBACK_MODELS.has(model);
 }
 
 /** The two system blocks; identical for every request of a sport (cache prefix). */

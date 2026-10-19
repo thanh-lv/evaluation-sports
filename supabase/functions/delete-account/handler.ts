@@ -9,7 +9,7 @@
  * 4. Null `user_id` and `app_account_token` on the account's subscriptions (Apple billing continues until the user
  *    cancels: `hadActiveSubscription`).
  * 5. `auth.admin.deleteUser` (rows cascade).
- * 6. Audit with `sha256(uid + AUDIT_PEPPER)`; no raw uid is kept.
+ * 6. Audit with `sha256(uid + AUDIT_PEPPER)`; no raw uid is kept (earlier rows keyed by the uid are re-keyed).
  */
 import { DeleteAccountRequest, type DeleteAccountResponse } from '@shared/contracts/index.ts';
 import { type ClaimsVerifier, requireUser } from '@shared/auth.ts';
@@ -38,8 +38,15 @@ type SiwaOutcome = 'revoked' | 'manual' | 'none';
 /** Subscription statuses that keep Apple billing alive: active, billing retry, grace. */
 const BILLING_STATUSES = new Set([1, 3, 4]);
 
-async function auditExists(db: Db, action: string, subject: string): Promise<{ details: Record<string, unknown> } | null> {
-  return await db.selectOne<{ details: Record<string, unknown> }>('private', 'audit_log', 'details', { action, subject });
+async function auditExists(
+  db: Db,
+  action: string,
+  subject: string,
+): Promise<{ details: Record<string, unknown> } | null> {
+  return await db.selectOne<{ details: Record<string, unknown> }>('private', 'audit_log', 'details', {
+    action,
+    subject,
+  });
 }
 
 function usesAppleSignIn(claims: Record<string, unknown>): boolean {
@@ -63,7 +70,11 @@ async function revokeSiwa(
   }
   let refreshToken: string;
   try {
-    refreshToken = await decryptString(await importAesKey(requireConfig(deps.tokenEncKey, 'TOKEN_ENC_KEY')), row.ciphertext, userId);
+    refreshToken = await decryptString(
+      await importAesKey(requireConfig(deps.tokenEncKey, 'TOKEN_ENC_KEY')),
+      row.ciphertext,
+      userId,
+    );
   } catch (err) {
     if ((err as Error).name === 'ConfigError') throw err;
     log.warn('stored siwa token unreadable', errorFields(err)); // e.g. TOKEN_ENC_KEY rotated
@@ -78,6 +89,9 @@ async function revokeSiwa(
     }
     throw siwaHttpError(err); // transient: fail now, the user retries
   }
+  // drop the revoked token now (step 3 early), so a re-run after a later failure does not revoke it again: Apple may
+  // reject the dead token and the answer would then wrongly say siwaManualRevoke
+  await deps.db.delete('private', 'apple_auth_tokens', { user_id: userId });
   await deps.db.insert('private', 'audit_log', { action: 'siwa_revoked', subject, details: {} });
   return 'revoked';
 }
@@ -113,10 +127,12 @@ export function createDeleteAccountHandler(deps: DeleteAccountDeps): (req: Reque
       let objectsRemoved = 0;
       for (const bucket of BUCKETS) objectsRemoved += await deps.storage.removePrefix(bucket, uid); // 2
       await deps.db.delete('private', 'apple_auth_tokens', { user_id: uid }); // 3
-      await deps.db.update('public', 'app_store_subscriptions', { user_id: null, app_account_token: null }, {
-        user_id: uid,
-      }); // 4
+      const unlink = { user_id: null, app_account_token: null };
+      await deps.db.update('public', 'app_store_subscriptions', unlink, { user_id: uid }); // 4
+      await deps.db.update('public', 'app_store_subscriptions', unlink, { app_account_token: uid });
       const userExisted = await deps.authAdmin.deleteUser(uid); // 5
+      // audit rows keyed by the raw uid (account_merge*) become pseudonymous too (audit_log contract)
+      await deps.db.update('private', 'audit_log', { subject }, { subject: uid });
       if (!(await auditExists(deps.db, 'account_deleted', subject))) {
         await deps.db.insert('private', 'audit_log', {
           action: 'account_deleted',
@@ -125,11 +141,13 @@ export function createDeleteAccountHandler(deps: DeleteAccountDeps): (req: Reque
         }); // 6
       }
       ctx.log.info('account deleted', { siwa, objectsRemoved, userExisted });
-      return json({
-        deleted: true,
-        hadActiveSubscription,
-        siwaManualRevoke: siwa === 'manual',
-      } satisfies DeleteAccountResponse);
+      return json(
+        {
+          deleted: true,
+          hadActiveSubscription,
+          siwaManualRevoke: siwa === 'manual',
+        } satisfies DeleteAccountResponse,
+      );
     }),
   ]);
 }

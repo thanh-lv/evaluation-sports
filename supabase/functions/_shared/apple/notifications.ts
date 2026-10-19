@@ -2,8 +2,8 @@
  * App Store Server Notifications V2 processing (DESIGN §9.5), shared by `appstore-webhook` and the daily
  * notification-history task (`syncNotificationHistory`, called by `/cron daily` for Production and Sandbox).
  *
- * 1. Decode `signedPayload`; verify its chain when trusted roots are configured (an extra check: no effect below
- *    depends on the payload alone).
+ * 1. Decode `signedPayload`; verify its chain against the trusted roots (an extra check: no effect below depends on
+ *    the payload alone). Callers always pass the embedded Apple root; an empty list skips the check (logged).
  * 2. `INSERT … ON CONFLICT DO NOTHING` into `private.appstore_notifications`; short-circuit only when the stored row
  *    is `processed`, otherwise process again (processing is idempotent).
  * 3. Re-fetch the subscription from Apple and act only on that. REFUND / REVOKE revoke only when the re-fetched
@@ -85,7 +85,10 @@ function decodedForStorage(payload: NotificationPayload): Row {
   return { ...payload, ...(data ? { data } : {}) } as Row;
 }
 
-export async function processSignedPayload(deps: NotificationDeps, signedPayload: string): Promise<NotificationOutcome> {
+export async function processSignedPayload(
+  deps: NotificationDeps,
+  signedPayload: string,
+): Promise<NotificationOutcome> {
   const now = deps.now ?? (() => new Date());
   let payload: NotificationPayload;
   try {
@@ -103,7 +106,9 @@ export async function processSignedPayload(deps: NotificationDeps, signedPayload
       return { outcome: 'unverified', reason: err instanceof JwsError ? err.reason : 'error' };
     }
   } else {
-    deps.log.warn('notification chain not verified: no trusted Apple root configured', { type: payload.notificationType });
+    deps.log.warn('notification chain not verified: no trusted Apple root configured', {
+      type: payload.notificationType,
+    });
   }
 
   const data = payload.data ?? {};
@@ -158,7 +163,9 @@ export async function processSignedPayload(deps: NotificationDeps, signedPayload
       : 'internal';
     log[transient ? 'error' : 'warn']('notification failed', { transient, error, ...errorFields(err) });
     try {
-      await deps.db.update('private', 'appstore_notifications', { status: 'failed', error }, { notification_uuid: uuid });
+      await deps.db.update('private', 'appstore_notifications', { status: 'failed', error }, {
+        notification_uuid: uuid,
+      });
     } catch (e) {
       log.error('notification status write failed', errorFields(e));
     }
@@ -389,4 +396,3 @@ export async function syncNotificationHistory(
   }
   return results;
 }
-

@@ -25,6 +25,7 @@ export * from './compose.ts';
 export * from './medical_filter.ts';
 export * from './mock.ts';
 export * from './pipeline.ts';
+export * from './warm.ts';
 export { fakeMessage, type FakeMessageOptions } from './fake_message.ts';
 export { BASE_SYSTEM_V2 } from './prompts/base_system.ts';
 export { renderRubricText, rubricText } from './prompts/rubric_text.ts';

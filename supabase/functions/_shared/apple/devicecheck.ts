@@ -7,7 +7,7 @@
  */
 import type { AppleEnv } from '../env.ts';
 import { ConfigError } from '../errors.ts';
-import { fetchWithTimeout, type FetchLike } from '../http.ts';
+import { type FetchLike, fetchWithTimeout } from '../http.ts';
 import { cachedToken, DEVICECHECK_TOKEN_REUSE_SEC, deviceCheckToken, type TokenProvider } from './jwt.ts';
 
 export const DEVICECHECK_TIMEOUT_MS = 5_000;
@@ -62,7 +62,11 @@ export function createDeviceCheckClient(config: DeviceCheckConfig): DeviceCheckC
     }
     if (res.ok) return res;
     await res.body?.cancel().catch(() => {});
-    const kind = res.status === 400 ? 'invalid_token' : res.status === 401 || res.status === 403 ? 'config' : 'transient';
+    const kind = res.status === 400
+      ? 'invalid_token'
+      : res.status === 401 || res.status === 403
+      ? 'config'
+      : 'transient';
     throw new DeviceCheckError(`devicecheck ${path} ${res.status}`, res.status, kind);
   }
 
@@ -98,7 +102,11 @@ export function createDeviceCheckClientFromEnv(apple: AppleEnv, fetchImpl?: Fetc
         new ConfigError('missing environment: APPLE_TEAM_ID, APPLE_DEVICECHECK_KEY_ID, APPLE_DEVICECHECK_PRIVATE_KEY'),
       );
     }
-    return deviceCheckToken({ teamId: apple.teamId, keyId: apple.deviceCheckKeyId, privateKey: apple.deviceCheckPrivateKey }, now);
+    return deviceCheckToken({
+      teamId: apple.teamId,
+      keyId: apple.deviceCheckKeyId,
+      privateKey: apple.deviceCheckPrivateKey,
+    }, now);
   };
   return createDeviceCheckClient({
     origin: apple.deviceCheckOrigin,

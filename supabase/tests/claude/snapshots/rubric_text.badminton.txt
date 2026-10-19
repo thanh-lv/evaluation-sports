@@ -1,0 +1,293 @@
+# Rubric: badminton (bd-2026.10.18+drills-2026.10.18)
+
+## Sub-scores
+
+- stance: ready position, base width, knee bend, balance
+- footwork: split step, steps and lunges into the hitting position
+- swing: body turn, backswing, elbow and arm path
+- contact: contact height, position in front of the body, arm extension
+- follow: follow-through direction and finish
+- recovery: returning to a balanced ready position after the stroke
+
+## Skills
+
+### bd.clear_fh — Forehand overhead clear
+family: overhead; views recommended D, allowed D/B/S
+sub-score weights: stance 10, footwork 15, swing 30, contact 20, follow 10, recovery 15
+checkpoints: bd.ready.R1, bd.ready.R2, bd.ready.R3, bd.ready.R4, bd.ready.R6, bd.ready.R7, bd.split.S1, bd.clear_fh.C1, bd.clear_fh.C2, bd.clear_fh.C3, bd.clear_fh.C4, bd.clear_fh.C5, bd.clear_fh.C6, bd.clear_fh.C7, bd.clear_fh.C8, bd.clear_fh.C9, bd.clear_fh.C10, bd.clear_fh.C11, bd.clear_fh.C12, bd.clear_fh.C13, bd.clear_fh.C14
+
+### bd.smash — Smash
+family: overhead; views recommended D, allowed D/B/S
+sub-score weights: stance 10, footwork 10, swing 30, contact 25, follow 10, recovery 15
+checkpoints: bd.ready.R1, bd.ready.R2, bd.ready.R3, bd.ready.R4, bd.ready.R6, bd.ready.R7, bd.split.S1, bd.clear_fh.C1, bd.clear_fh.C2, bd.clear_fh.C3, bd.clear_fh.C13, bd.smash.SM2, bd.smash.SM3, bd.smash.SM4, bd.smash.SM5, bd.smash.SM6, bd.smash.SM7, bd.smash.SM8, bd.smash.SM9, bd.smash.SM10, bd.smash.SM11
+
+### bd.serve_low — Low backhand serve
+family: underarm; views recommended S, allowed S/D
+sub-score weights: stance 30, footwork 0, swing 25, contact 25, follow 15, recovery 5
+checkpoints: bd.serve_low.LS1, bd.serve_low.LS2, bd.serve_low.LS3, bd.serve_low.LS4, bd.serve_low.LS5, bd.serve_low.LS6, bd.serve_low.LS7, bd.serve_low.LS8, bd.serve_low.LS9, bd.serve_low.LS10, bd.serve_low.LS11
+
+### bd.net_shot — Net shot
+family: underarm; views recommended S, allowed S/D
+sub-score weights: stance 15, footwork 30, swing 10, contact 30, follow 5, recovery 10
+checkpoints: bd.ready.R1, bd.ready.R2, bd.ready.R3, bd.ready.R4, bd.ready.R6, bd.ready.R7, bd.split.S1, bd.net_shot.NS1, bd.net_shot.NS2, bd.net_shot.NS3, bd.net_shot.NS4, bd.net_shot.NS5, bd.net_shot.NS6, bd.net_shot.NS7, bd.net_shot.NS8, bd.net_shot.NS9, bd.net_shot.NS10, bd.net_shot.NS11, bd.net_shot.NS12, bd.net_shot.NS13
+
+### bd.lift — Net lift
+family: underarm; views recommended S, allowed S/D
+sub-score weights: stance 15, footwork 25, swing 20, contact 20, follow 10, recovery 10
+checkpoints: bd.ready.R1, bd.ready.R2, bd.ready.R3, bd.ready.R4, bd.ready.R6, bd.ready.R7, bd.split.S1, bd.net_shot.NS1, bd.net_shot.NS2, bd.net_shot.NS3, bd.net_shot.NS4, bd.net_shot.NS5, bd.net_shot.NS6, bd.net_shot.NS7, bd.net_shot.NS8, bd.net_shot.NS12, bd.lift.NL1, bd.lift.NL2, bd.lift.NL3
+
+### bd.serve_high — High forehand serve
+family: underarm; views recommended S, allowed S/D
+sub-score weights: stance 20, footwork 0, swing 30, contact 20, follow 20, recovery 10
+checkpoints: bd.serve_low.LS1, bd.serve_high.HS1, bd.serve_high.HS2, bd.serve_high.HS3, bd.serve_high.HS4, bd.serve_high.HS5, bd.serve_high.HS6, bd.serve_high.HS7, bd.serve_high.HS8, bd.serve_high.HS9
+
+## Checkpoints
+
+Tags: M = measured from pose; M~ = measured, rough; V = you judge it from the frames (level 0-4); N = not assessable from video (mention it under not_assessable when relevant).
+View factors: S = side, B = behind (front uses B, mirrored), D = 45° diagonal; 0 = not visible from that view. Levels for V items: 0 = clearly wrong … 4 = correct, as the anchors describe.
+
+- bd.ready.R1 | Feet slightly wider than shoulders | M | phase ready | stance | weight 1 | views S 0 / B 1 / D 0.6 | target 1.00–1.60 (ratio)
+    faults: bd.ready.narrow_feet (low)
+- bd.ready.R2 | Knees softly bent | M | phase ready | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 15–45°
+    faults: bd.ready.straight_legs (low)
+- bd.ready.R3 | Slight forward lean | M | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target 10–30°
+    faults: bd.ready.weight_back (low)
+- bd.ready.R4 | Racket up in front | M | phase ready | stance | weight 1 | views S 1 / B 1 / D 1 | target 0.50–1.30 T
+    faults: bd.ready.racket_down (low)
+- bd.ready.R6 | On the balls of the feet | N | phase ready | stance | weight 1 | views S 0 / B 0 / D 0
+- bd.ready.R7 | Racket head up | V | phase ready | stance | weight 1 | views S 1 / B 1 / D 1
+    level 0: Racket head points at the floor; racket hangs by the leg.
+    level 1: Racket head below the hand; racket held low near the waist.
+    level 2: Racket head roughly level with the hand, between waist and chest height.
+    level 3: Racket head slightly above the hand, in front of the body.
+    level 4: Racket head clearly up, in front of the chest, ready to hit.
+    faults: bd.ready.head_down (low)
+- bd.split.S1 | Split step before moving | M~ | phase window | footwork | weight 1 | views S 0.6 / B 0.6 / D 0.6 | target ✓ | velocity-based
+    faults: bd.split.no_split (false)
+- bd.clear_fh.C1 | Side-on turn | M~ | phase bsEnd | swing | weight 2 | views S 0.6 / B 1 / D 0 | target ≥ 60°
+    faults: bd.clear_fh.no_turn (low)
+- bd.clear_fh.C2 | Non-racket arm up | M | phase bsEnd | swing | weight 1 | views S 1 / B 1 / D 1 | target ≥ 1.10 T
+    faults: bd.clear_fh.limp_arm (low)
+- bd.clear_fh.C3 | Racket elbow up | M | phase bsEnd | swing | weight 2 | views S 1 / B 1 / D 1 | target ≥ -0.15 T
+    faults: bd.clear_fh.low_elbow (low)
+- bd.clear_fh.C4 | Weight transfer, back to front | M~ | phase contact+0.2 | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.55 (ratio)
+    faults: bd.clear_fh.no_weight_transfer (low)
+- bd.clear_fh.C5 | Hits at a high point | M | phase contact | contact | weight 2 | views S 1 / B 1 / D 1 | target ≥ 0.85 (ratio)
+    faults: bd.clear_fh.low_contact (low)
+- bd.clear_fh.C6 | Contact slightly in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target 0.00–0.60 T
+    faults: bd.clear_fh.late_contact (low)
+- bd.clear_fh.C7 | Arm nearly straight at contact | M~ | phase contact | contact | weight 1 | views S 0.6 / B 0.6 / D 0.6 | target ≥ 150°
+    faults: bd.clear_fh.bent_arm (low)
+- bd.clear_fh.C8 | Racket finishes across the body | M | phase window | follow | weight 1 | views S 0 / B 1 / D 0.6 | target ✓
+    faults: bd.clear_fh.short_finish (false)
+- bd.clear_fh.C9 | Trunk rotates through | M~ | phase contact+0.2 | follow | weight 1 | views S 0.6 / B 1 / D 0 | target ≤ 25°
+    faults: bd.clear_fh.no_rotation (high)
+- bd.clear_fh.C10 | Racket finishes low | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≤ 1.00 T
+    faults: bd.clear_fh.high_finish (high)
+- bd.clear_fh.C11 | Moves back to base | M~ | phase recovery | recovery | weight 1 | views S 0.6 / B 1 / D 0.6 | target ≤ 1.00 T
+    faults: bd.clear_fh.no_recovery (high)
+- bd.clear_fh.C12 | Racket back up after the shot | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.80 T
+    faults: bd.clear_fh.racket_stays_down (low)
+- bd.clear_fh.C13 | Gets behind the shuttle early | V | phase bsEnd | footwork | weight 1 | views S 1 / B 1 / D 1
+    level 0: Player is under or in front of the shuttle and has to reach back for it.
+    level 1: Player arrives late: body still moving backward at the hitting moment.
+    level 2: Player reaches the spot but is square to the net or off balance.
+    level 3: Player is behind the shuttle and mostly set, slightly rushed.
+    level 4: Player is set early behind the shuttle, side-on and balanced, ready to throw.
+    faults: bd.clear_fh.late_footwork (low)
+- bd.clear_fh.C14 | Shuttle goes high and deep | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- bd.smash.SM2 | High contact | M | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.75 (ratio)
+    faults: bd.smash.low_contact (low)
+- bd.smash.SM3 | Contact in front of the head | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target 0.20–0.90 T
+    faults: bd.smash.behind_head (low)
+- bd.smash.SM4 | Arm extends at contact | M~ | phase contact | contact | weight 1 | views S 0.6 / B 0.6 / D 0.6 | target ≥ 145°
+    faults: bd.smash.bent_arm (low)
+- bd.smash.SM5 | Body drives forward and down | M | phase contact+0.2 | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 15°
+    faults: bd.smash.arm_only (low)
+- bd.smash.SM6 | Finishes down and across | M | phase window | follow | weight 1 | views S 0 / B 1 / D 0.6 | target ✓
+    faults: bd.smash.short_finish (false)
+- bd.smash.SM7 | Soft landing, knees bent | M~ | phase ftStop | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≥ 20° | injury-flag (the server adds a fixed safety note)
+    faults: bd.smash.stiff_landing (low)
+- bd.smash.SM8 | Racket finishes low | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.60 T
+    faults: bd.smash.high_finish (high)
+- bd.smash.SM9 | Racket back up after the smash | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.80 T
+    faults: bd.smash.slow_recovery (low)
+- bd.smash.SM10 | Racket face angled down | V | phase contact | contact | weight 1 | views S 1 / B 0.6 / D 1
+    level 0: Racket face open or facing up at contact; the shuttle is pushed upward.
+    level 1: Racket roughly vertical at contact; a flat hit.
+    level 2: Racket slightly over the shuttle, but contact is level with or behind the head.
+    level 3: Racket angled down over the shuttle, contact slightly in front of the head.
+    level 4: Racket clearly angled down over the shuttle, well in front of the head, at full reach.
+    faults: bd.smash.open_face (low)
+- bd.smash.SM11 | Steep shuttle path | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- bd.serve_low.LS1 | Feet planted through the serve | M | phase window | stance | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.08 T
+    faults: bd.serve_low.feet_move (high)
+- bd.serve_low.LS2 | Balanced split stance | M~ | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target 0.30–1.20 T
+    faults: bd.serve_low.square_stance (low)
+- bd.serve_low.LS3 | Knees slightly bent | M | phase ready | stance | weight 1 | views S 1 / B 0.6 / D 0.6 | target 10–35°
+    faults: bd.serve_low.stiff_legs (low)
+- bd.serve_low.LS4 | Slight forward lean | M | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target 5–25°
+    faults: bd.serve_low.leaning_back (low)
+- bd.serve_low.LS5 | Contact in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.30 T
+    faults: bd.serve_low.cramped (low)
+- bd.serve_low.LS6 | Low, compact contact | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.70 T
+    faults: bd.serve_low.high_contact (high)
+- bd.serve_low.LS7 | Short backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.30 T
+    faults: bd.serve_low.big_backswing (high)
+- bd.serve_low.LS8 | Short push through | M~ | phase window | follow | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.50 T
+    faults: bd.serve_low.long_push (high)
+- bd.serve_low.LS9 | Racket up after serving | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.90 T
+    faults: bd.serve_low.racket_down (low)
+- bd.serve_low.LS10 | Firm wrist, thumb push | V | phase contact | swing | weight 1 | views S 1 / B 0.6 / D 1
+    level 0: Big wrist flick or slap at contact; the racket head whips through.
+    level 1: Noticeable wrist flick; the racket head passes the hand quickly.
+    level 2: Some wrist movement; the push comes mostly from the forearm.
+    level 3: Mostly a firm-wrist push with a small wrist movement.
+    level 4: Firm wrist; smooth push from the forearm and thumb, racket head steady.
+    faults: bd.serve_low.wrist_flick (low)
+- bd.serve_low.LS11 | Shuttle skims the net | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- bd.net_shot.NS1 | Racket up early | M | phase bsEnd | swing | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.70 T
+    faults: bd.net_shot.racket_low (low)
+- bd.net_shot.NS2 | Racket-leg lunge | V | phase contact | footwork | weight 2 | views S 1 / B 0.6 / D 1
+    level 0: Non-racket leg forward at contact, or no lunge at all.
+    level 1: Feet square to the net; reaching with the arm only.
+    level 2: Racket leg forward but a short step; body leaning to reach.
+    level 3: Racket-leg lunge, mostly balanced.
+    level 4: Clear racket-leg lunge, front foot pointing at the shuttle, back leg extended, balanced.
+    faults: bd.net_shot.wrong_leg (low)
+- bd.net_shot.NS3 | Long enough lunge | M | phase contact | footwork | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.80 T
+    faults: bd.net_shot.short_lunge (low)
+- bd.net_shot.NS4 | Front knee bends into the lunge | M | phase contact | footwork | weight 1 | views S 1 / B 0.6 / D 0.6 | target 50–100°
+    faults: bd.net_shot.shallow_lunge (low)
+- bd.net_shot.NS5 | Chest up in the lunge | M | phase contact | stance | weight 1 | views S 1 / B 0 / D 0.6 | target ≤ 35°
+    faults: bd.net_shot.waist_bend (high)
+- bd.net_shot.NS6 | Knee stays over the foot | M~ | phase contact | footwork | weight 1 | views S 1 / B 0 / D 0.6 | target ≤ 30° | injury-flag (the server adds a fixed safety note)
+    faults: bd.net_shot.knee_past_toes (high)
+- bd.net_shot.NS7 | Contact out in front | M~ | phase contact | contact | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.60 T
+    faults: bd.net_shot.late_contact (low)
+- bd.net_shot.NS8 | Arm extended at contact | M~ | phase contact | contact | weight 1 | views S 0.6 / B 0.6 / D 0.6 | target ≥ 130°
+    faults: bd.net_shot.bent_arm (low)
+- bd.net_shot.NS9 | High contact at the net | M | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.60 T
+    faults: bd.net_shot.low_contact (low)
+- bd.net_shot.NS10 | Tiny backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.40 T
+    faults: bd.net_shot.big_swing (high)
+- bd.net_shot.NS11 | Gentle follow-through | M~ | phase window | follow | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≤ 0.50 T
+    faults: bd.net_shot.long_follow (high)
+- bd.net_shot.NS12 | Pushes back to base | M~ | phase recovery | recovery | weight 1 | views S 0.6 / B 1 / D 0.6 | target ≤ 1.00 T
+    faults: bd.net_shot.stays_at_net (high)
+- bd.net_shot.NS13 | Shuttle tight to the net | N | phase contact | contact | weight 1 | views S 0 / B 0 / D 0
+- bd.lift.NL1 | Compact backswing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target 0.30–1.20 T
+    faults: bd.lift.big_backswing (high)
+- bd.lift.NL2 | Racket moving up at contact | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 1.0 T/s | velocity-based
+    faults: bd.lift.flat_lift (low)
+- bd.lift.NL3 | High finish | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≥ 1.00 T
+    faults: bd.lift.low_finish (low)
+- bd.serve_high.HS1 | Side-on, non-racket foot forward | M~ | phase ready | stance | weight 1 | views S 1 / B 0 / D 0.6 | target 0.50–1.50 T
+    faults: bd.serve_high.square_stance (low)
+- bd.serve_high.HS2 | Weight back in the backswing | M~ | phase bsEnd | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≤ 0.40 (ratio)
+    faults: bd.serve_high.early_weight (high)
+- bd.serve_high.HS3 | Weight moves forward | M~ | phase contact+0.2 | swing | weight 1 | views S 1 / B 0 / D 0.6 | target ≥ 0.60 (ratio)
+    faults: bd.serve_high.arm_only (low)
+- bd.serve_high.HS4 | Full swing | M~ | phase window | swing | weight 1 | views S 1 / B 0.6 / D 0.6 | target ≥ 1.00 T
+    faults: bd.serve_high.short_swing (low)
+- bd.serve_high.HS5 | Racket rising at contact | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.5 T/s | velocity-based
+    faults: bd.serve_high.flat_contact (low)
+- bd.serve_high.HS6 | Low contact | M~ | phase contact | contact | weight 1 | views S 1 / B 1 / D 1 | target ≤ 0.30 T
+    faults: bd.serve_high.high_contact (high)
+- bd.serve_high.HS7 | High finish | M | phase ftStop | follow | weight 1 | views S 1 / B 1 / D 1 | target ≥ 1.10 T
+    faults: bd.serve_high.low_finish (low)
+- bd.serve_high.HS8 | Finish over the opposite shoulder | M | phase window | follow | weight 1 | views S 0 / B 1 / D 0.6 | target ✓
+    faults: bd.serve_high.short_finish (false)
+- bd.serve_high.HS9 | Racket up after serving | M | phase recovery | recovery | weight 1 | views S 1 / B 1 / D 1 | target ≥ 0.80 T
+    faults: bd.serve_high.racket_down (low)
+
+## Faults
+
+when = the reading that triggers the fault: low / high = below / above the target band, false = a check that failed. Use only the drills listed for the fault.
+
+- bd.ready.narrow_feet | checkpoint bd.ready.R1 | when low | Feet too close together | cue "Feet just wider than shoulders" | drills bd.drill.split_on_cue, bd.drill.ready_hold (default first)
+- bd.ready.straight_legs | checkpoint bd.ready.R2 | when low | Standing tall with straight legs | cue "Sit slightly, chest over knees" | drills bd.drill.ready_hold, bd.drill.split_on_cue (default first)
+- bd.ready.weight_back | checkpoint bd.ready.R3 | when low | Weight back on the heels | cue "Nose over toes" | drills bd.drill.ready_hold (default first)
+- bd.ready.racket_down | checkpoint bd.ready.R4 | when low | Racket dropped while waiting | cue "Racket up, like about to catch" | drills bd.drill.racket_up_bounce, bd.drill.ready_hold (default first)
+- bd.ready.head_down | checkpoint bd.ready.R7 | when low | Racket head pointing down | cue "Racket head up in front" | drills bd.drill.racket_up_bounce (default first)
+- bd.split.no_split | checkpoint bd.split.S1 | when false | No split step | cue "Small hop as they hit" | drills bd.drill.split_on_cue (default first)
+- bd.clear_fh.no_turn | checkpoint bd.clear_fh.C1 | when low | Facing the net, no turn | cue "Point your non-racket shoulder at the shuttle" | drills bd.drill.shadow_turn_point, bd.drill.scissor_shadow (default first)
+- bd.clear_fh.limp_arm | checkpoint bd.clear_fh.C2 | when low | Non-racket arm hanging | cue "Point up, then pull down as you swing" | drills bd.drill.point_pull, bd.drill.shadow_turn_point (default first)
+- bd.clear_fh.low_elbow | checkpoint bd.clear_fh.C3 | when low | Low elbow, pushing the shuttle | cue "Elbow at shoulder height, like a throw" | drills bd.drill.towel_snap, bd.drill.overhead_throw (default first)
+- bd.clear_fh.no_weight_transfer | checkpoint bd.clear_fh.C4 | when low | Flat-footed, no weight transfer | cue "Load the back leg, scissor through" | drills bd.drill.scissor_shadow (default first)
+- bd.clear_fh.low_contact | checkpoint bd.clear_fh.C5 | when low | Contact too low | cue "Get behind it early, hit at the top" | drills bd.drill.hanging_shuttle, bd.drill.overhead_throw (default first)
+- bd.clear_fh.late_contact | checkpoint bd.clear_fh.C6 | when low | Late contact behind the head | cue "Meet it just in front" | drills bd.drill.hanging_shuttle, bd.drill.shadow_turn_point (default first)
+- bd.clear_fh.bent_arm | checkpoint bd.clear_fh.C7 | when low | Bent arm at contact | cue "Reach up, straighten through the hit" | drills bd.drill.overhead_throw, bd.drill.towel_snap (default first)
+- bd.clear_fh.short_finish | checkpoint bd.clear_fh.C8 | when false | Swing stops at contact | cue "Finish by your opposite hip" | drills bd.drill.opposite_hip_finish (default first)
+- bd.clear_fh.no_rotation | checkpoint bd.clear_fh.C9 | when high | Body doesn't rotate through | cue "Turn your chest through the shot" | drills bd.drill.opposite_hip_finish, bd.drill.scissor_shadow (default first)
+- bd.clear_fh.high_finish | checkpoint bd.clear_fh.C10 | when high | Racket stops high | cue "Swing all the way down" | drills bd.drill.opposite_hip_finish (default first)
+- bd.clear_fh.no_recovery | checkpoint bd.clear_fh.C11 | when high | Watching the shot, no recovery | cue "Hit, then back to center" | drills bd.drill.hit_and_recover (default first)
+- bd.clear_fh.racket_stays_down | checkpoint bd.clear_fh.C12 | when low | Racket stays down after the shot | cue "After the hit, racket up" | drills bd.drill.hit_and_recover, bd.drill.racket_up_bounce (default first)
+- bd.clear_fh.late_footwork | checkpoint bd.clear_fh.C13 | when low | Late getting behind the shuttle | cue "Move early, get behind it" | drills bd.drill.scissor_shadow, bd.drill.hanging_shuttle (default first)
+- bd.smash.low_contact | checkpoint bd.smash.SM2 | when low | Smashing from a low contact | cue "Reach up, hit at the top" | drills bd.drill.hanging_shuttle, bd.drill.kneeling_smash (default first)
+- bd.smash.behind_head | checkpoint bd.smash.SM3 | when low | Hitting behind the head | cue "Hit in front of your head" | drills bd.drill.smash_step_in, bd.drill.hanging_shuttle (default first)
+- bd.smash.bent_arm | checkpoint bd.smash.SM4 | when low | Bent arm on the smash | cue "Reach tall, then hit down" | drills bd.drill.overhead_throw, bd.drill.towel_snap (default first)
+- bd.smash.arm_only | checkpoint bd.smash.SM5 | when low | All arm, no body | cue "Turn, then drive the chest down" | drills bd.drill.kneeling_smash, bd.drill.scissor_shadow (default first)
+- bd.smash.short_finish | checkpoint bd.smash.SM6 | when false | Swing stops early | cue "Finish down by your opposite hip" | drills bd.drill.opposite_hip_finish (default first)
+- bd.smash.stiff_landing | checkpoint bd.smash.SM7 | when low | Stiff landing | cue "Land on bent knees, under you" | drills bd.drill.jump_land_hold (default first)
+- bd.smash.high_finish | checkpoint bd.smash.SM8 | when high | Racket stops high | cue "Hit down, follow down" | drills bd.drill.opposite_hip_finish, bd.drill.kneeling_smash (default first)
+- bd.smash.slow_recovery | checkpoint bd.smash.SM9 | when low | Slow recovery after the smash | cue "Smash, step in, racket up" | drills bd.drill.smash_step_in, bd.drill.hit_and_recover (default first)
+- bd.smash.open_face | checkpoint bd.smash.SM10 | when low | Open racket face on the smash | cue "Close the face over the shuttle" | drills bd.drill.kneeling_smash, bd.drill.towel_snap (default first)
+- bd.serve_low.feet_move | checkpoint bd.serve_low.LS1 | when high | Feet moving during the serve | cue "Plant both feet, then serve" | drills bd.drill.mirror_serve (default first)
+- bd.serve_low.square_stance | checkpoint bd.serve_low.LS2 | when low | Feet side by side | cue "Racket foot a little forward" | drills bd.drill.mirror_serve (default first)
+- bd.serve_low.stiff_legs | checkpoint bd.serve_low.LS3 | when low | Stiff, straight legs | cue "Soften your knees" | drills bd.drill.mirror_serve, bd.drill.serve_racket_up (default first)
+- bd.serve_low.leaning_back | checkpoint bd.serve_low.LS4 | when low | Leaning back | cue "Lean slightly toward the net" | drills bd.drill.mirror_serve (default first)
+- bd.serve_low.cramped | checkpoint bd.serve_low.LS5 | when low | Contact too close to the body | cue "Racket out in front, then push" | drills bd.drill.serve_string, bd.drill.mirror_serve (default first)
+- bd.serve_low.high_contact | checkpoint bd.serve_low.LS6 | when high | Contact too high | cue "Hold the shuttle lower, in front" | drills bd.drill.serve_string (default first)
+- bd.serve_low.big_backswing | checkpoint bd.serve_low.LS7 | when high | Backswing too big | cue "Thumb push, short and smooth" | drills bd.drill.serve_string (default first)
+- bd.serve_low.long_push | checkpoint bd.serve_low.LS8 | when high | Follow-through too long | cue "Short push, then stop" | drills bd.drill.serve_string (default first)
+- bd.serve_low.racket_down | checkpoint bd.serve_low.LS9 | when low | Racket down after the serve | cue "Serve, then racket up" | drills bd.drill.serve_racket_up (default first)
+- bd.serve_low.wrist_flick | checkpoint bd.serve_low.LS10 | when low | Wrist flick on the serve | cue "Firm wrist, push with the thumb" | drills bd.drill.serve_string, bd.drill.mirror_serve (default first)
+- bd.net_shot.racket_low | checkpoint bd.net_shot.NS1 | when low | Racket low, late contact | cue "Meet it early, at tape height" | drills bd.drill.net_touch, bd.drill.lunge_push_back (default first)
+- bd.net_shot.wrong_leg | checkpoint bd.net_shot.NS2 | when low | Wrong lunge leg | cue "Racket foot forward" | drills bd.drill.lunge_push_back (default first)
+- bd.net_shot.short_lunge | checkpoint bd.net_shot.NS3 | when low | Lunge too short | cue "Long step, let your legs reach" | drills bd.drill.lunge_push_back (default first)
+- bd.net_shot.shallow_lunge | checkpoint bd.net_shot.NS4 | when low | Shallow lunge | cue "Sink the hips, bend the front knee" | drills bd.drill.lunge_push_back (default first)
+- bd.net_shot.waist_bend | checkpoint bd.net_shot.NS5 | when high | Bending at the waist | cue "Chest up, legs do the reaching" | drills bd.drill.lunge_push_back (default first)
+- bd.net_shot.knee_past_toes | checkpoint bd.net_shot.NS6 | when high | Knee far past the toes | cue "Knee over foot, push back through the heel" | drills bd.drill.lunge_push_back (default first)
+- bd.net_shot.late_contact | checkpoint bd.net_shot.NS7 | when low | Late contact near the body | cue "Reach out and take it early" | drills bd.drill.net_touch (default first)
+- bd.net_shot.bent_arm | checkpoint bd.net_shot.NS8 | when low | Arm cramped at contact | cue "Extend the arm to the shuttle" | drills bd.drill.net_touch (default first)
+- bd.net_shot.low_contact | checkpoint bd.net_shot.NS9 | when low | Low contact | cue "Take it just after it crosses" | drills bd.drill.net_touch (default first)
+- bd.net_shot.big_swing | checkpoint bd.net_shot.NS10 | when high | Big swing on the net shot | cue "Touch and guide, no backswing" | drills bd.drill.net_touch (default first)
+- bd.net_shot.long_follow | checkpoint bd.net_shot.NS11 | when high | Follow-through too long | cue "Soft touch, then stop" | drills bd.drill.net_touch (default first)
+- bd.net_shot.stays_at_net | checkpoint bd.net_shot.NS12 | when high | Staying at the net | cue "Push off the front foot, back to base" | drills bd.drill.lunge_push_back (default first)
+- bd.lift.big_backswing | checkpoint bd.lift.NL1 | when high | Backswing too long | cue "Compact backswing, crisp lift" | drills bd.drill.lift_target (default first)
+- bd.lift.flat_lift | checkpoint bd.lift.NL2 | when low | Flat lift | cue "Lift up and over them" | drills bd.drill.lift_target (default first)
+- bd.lift.low_finish | checkpoint bd.lift.NL3 | when low | Low finish, short lift | cue "Lift through, finish high" | drills bd.drill.lift_target (default first)
+- bd.serve_high.square_stance | checkpoint bd.serve_high.HS1 | when low | Square to the net | cue "Side-on, non-racket foot forward" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.early_weight | checkpoint bd.serve_high.HS2 | when high | Weight forward too early | cue "Rock back, then forward" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.arm_only | checkpoint bd.serve_high.HS3 | when low | Arm-only serve | cue "Let your body move into the serve" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.short_swing | checkpoint bd.serve_high.HS4 | when low | Swing too short | cue "Long swing, low to high" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.flat_contact | checkpoint bd.serve_high.HS5 | when low | Flat swing at contact | cue "Swing up through the shuttle" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.high_contact | checkpoint bd.serve_high.HS6 | when high | Contact too high | cue "Drop it, hit around knee height" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.low_finish | checkpoint bd.serve_high.HS7 | when low | Low finish | cue "Finish high and freeze" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.short_finish | checkpoint bd.serve_high.HS8 | when false | Follow-through stops early | cue "Finish over the opposite shoulder" | drills bd.drill.high_serve_freeze (default first)
+- bd.serve_high.racket_down | checkpoint bd.serve_high.HS9 | when low | Racket down after the serve | cue "Serve, back to base, racket up" | drills bd.drill.serve_racket_up (default first)
+
+## Drills
+
+- bd.drill.ready_hold | Ready-stance hold | 3 sets × 30 s | Stand with feet a bit wider than your shoulders, knees soft, chest slightly forward.
+- bd.drill.racket_up_bounce | Racket-up shuttle bounces | 3 sets × 20 reps | Stand in the ready stance, racket in front of your chest.
+- bd.drill.split_on_cue | Split step on a cue | 3 sets × 10 reps | Stand in the ready stance.
+- bd.drill.shadow_turn_point | Shadow turn-and-point | 3 sets × 10 reps | Start in the ready stance.
+- bd.drill.point_pull | Point and pull | 3 sets × 10 reps | Raise the free hand and point up.
+- bd.drill.towel_snap | Towel snap | 3 sets × 10 reps | Hold one end of a towel like a racket.
+- bd.drill.overhead_throw | Overhead shuttle throw | 3 sets × 15 reps | Stand side-on, racket-side foot back.
+- bd.drill.hanging_shuttle | Shadow swings at a hanging shuttle | 3 sets × 15 reps | Hang a shuttle on a string at the height your racket reaches with your arm fully up.
+- bd.drill.scissor_shadow | Rear-court shadow with scissor kick | 3 sets × 8 reps | Start in the middle of the court in the ready stance.
+- bd.drill.opposite_hip_finish | Finish at the opposite hip | 3 sets × 10 reps | Shadow a clear swing.
+- bd.drill.hit_and_recover | Hit and recover to base | 3 sets × 8 reps | Play a clear from the back court, real or shadow.
+- bd.drill.kneeling_smash | Kneeling smash swings | 3 sets × 10 reps | Kneel on one knee on a soft mat, non-racket knee down.
+- bd.drill.jump_land_hold | Jump, land and hold | 3 sets × 8 reps | Stand with feet shoulder-width apart.
+- bd.drill.smash_step_in | Smash and step in | 3 sets × 8 reps | From mid-court, shadow a smash with contact in front of your forehead.
+- bd.drill.mirror_serve | Mirror serves | 3 sets × 10 reps | Stand side-on to a mirror, or film yourself with your phone.
+- bd.drill.serve_string | Serve under a string | 3 sets × 10 reps | Stretch a string about a hand-span above the net tape.
+- bd.drill.serve_racket_up | Serve, then racket up | 3 sets × 10 reps | Make one low serve.
+- bd.drill.net_touch | Net shots from the contact position | 3 sets × 15 reps | Stand near the net with the racket already at the contact point, at tape height.
+- bd.drill.lunge_push_back | Slow lunge and push back | 3 sets × 8 reps | From mid-court, lunge with your racket leg toward a front corner.
+- bd.drill.lift_target | Lifts to a back-court target | 3 sets × 10 reps | Place a target, such as a towel, near the back line.
+- bd.drill.high_serve_freeze | High serve, finish and freeze | 3 sets × 10 reps | Stand side-on, non-racket foot forward, weight on the back foot.

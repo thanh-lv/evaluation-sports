@@ -1,0 +1,99 @@
+{
+  "model": "claude-sonnet-5-5",
+  "max_tokens": 12000,
+  "system": [
+    {
+      "type": "text",
+      "text": "<4430 chars>"
+    },
+    {
+      "type": "text",
+      "text": "<29175 chars>",
+      "cache_control": {
+        "type": "ephemeral"
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "F1 · stroke 2 (best) · phase=ready · t=3.43s"
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/jpeg",
+            "data": "<6 b64>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "F2 · stroke 2 (best) · phase=bsEnd · t=4.15s"
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/jpeg",
+            "data": "<6 b64>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "F3 · stroke 2 (best) · phase=contact · t=4.38s"
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/jpeg",
+            "data": "<6 b64>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "F4 · stroke 2 (best) · phase=ftStop · t=4.63s"
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/jpeg",
+            "data": "<6 b64>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "F5 · stroke 2 (best) · phase=overview · t=4.38s"
+        },
+        {
+          "type": "image",
+          "source": {
+            "type": "base64",
+            "media_type": "image/jpeg",
+            "data": "<6 b64>"
+          }
+        },
+        {
+          "type": "text",
+          "text": "<session>\nsport: pickleball\nskill: pb.dink (Dink)\nframe_mode: frames\nview: side (confirmed by the user; tracking guessed side, confidence 0.95)\nhandedness: right\nanalysis: 60 Hz from a 60 fps source\nstrokes analysed: 5\ncontact times: estimated from body tracking\n</session>\n\n<quality>\ntracked frames: 599 of 599\nmean limb confidence: 0.83\nplayer height: 0.60 of the frame\ntrack resets: 0\nwarnings: none\nmeasured coverage: 0.95\n</quality>\n\n<checkpoints>\nstatus: measured = computed from pose; visual = judge it from the frames; view_excluded = not visible from this view; no_data = tracking lost it; not_assessable = cannot be judged from video.\nid | name | tag | status | value | target | s | c | per stroke\npb.ready.PR1 | Feet shoulder-width or wider | M | view_excluded | - | 1.00–1.60 | - | - | -\npb.ready.PR2 | Knees bent | M | measured | 23° | 15–45° | 1.00 | 1.00 | 1: 23° · 2: 23° · 3: 23° · 4: 24° · 5: 24°\npb.ready.PR3 | Weight slightly forward | M | measured | 14° | 10–30° | 1.00 | 1.00 | 1: 14° · 2: 14° · 3: 14° · 4: 14° · 5: 15°\npb.ready.PR4 | Paddle up in front | M | measured | 0.05 T | 0.50–1.20 T | 0.00 | 1.00 | 1: 0.04 T · 2: 0.06 T · 3: 0.04 T · 4: 0.05 T · 5: 0.05 T\npb.ready.PR5 | Paddle out in front | M~ | measured | 0.78 T | ≥ 0.30 T | 1.00 | 1.00 | 1: 0.78 T · 2: 0.79 T · 3: 0.77 T · 4: 0.77 T · 5: 0.79 T\npb.ready.PR6 | Paddle tip up | V | visual | - | - | - | - | -\npb.ready.PR7 | Square to the net | M~ | measured | 10° | ≤ 25° | 1.00 | 0.60 | 1: 10° · 2: 10° · 3: 10° · 4: 10° · 5: 9°\npb.split.S1 | Split step before moving | M~ | measured | 5/5 | ✓ | 1.00 | 0.60 | 1: ✓ · 2: ✓ · 3: ✓ · 4: ✓ · 5: ✓\npb.dink.DK1 | Low base | M | measured | 24° | 20–50° | 1.00 | 1.00 | 1: 24° · 2: 24° · 3: 24° · 4: 24° · 5: 22°\npb.dink.DK2 | Bend the knees, not the waist | M | measured | 17° | ≤ 35° | 1.00 | 1.00 | 1: 16° · 2: 18° · 3: 17° · 4: 17° · 5: 16°\npb.dink.DK3 | Compact backswing | M~ | measured | 0.85 T | ≤ 0.40 T | 0.00 | 1.00 | 1: 0.72 T · 2: 0.47 T · 3: 0.85 T · 4: 0.87 T · 5: 0.89 T\npb.dink.DK4 | Shoulder lift, firm wrist | V | visual | - | - | - | - | -\npb.dink.DK5 | Contact in front | M~ | measured | 0.77 T | 0.20–0.70 T | 0.63 | 1.00 | 1: 0.63 T · 2: 0.82 T · 3: 0.74 T · 4: 0.77 T · 5: 0.79 T\npb.dink.DK6 | Gentle low-to-high lift | M~ | measured | 1.9 T/s | ≥ 0.2 T/s | 1.00 | 1.00 | 1: 1.8 T/s · 2: 2.1 T/s · 3: 1.9 T/s · 4: 2.2 T/s · 5: 1.9 T/s\npb.dink.DK7 | Short follow-through | M~ | measured | 0.54 T | ≤ 0.80 T | 1.00 | 1.00 | 1: 0.75 T · 2: 0.44 T · 3: 0.60 T · 4: 0.54 T · 5: 0.53 T\npb.dink.DK8 | Head still at contact | M~ | measured | 0.08 T | ≤ 0.15 T | 1.00 | 1.00 | 1: 0.08 T · 2: 0.06 T · 3: 0.07 T · 4: 0.15 T · 5: 0.08 T\npb.dink.DK9 | Body settled at contact | M~ | measured | 0.1 T/s | ≤ 0.5 T/s | 1.00 | 1.00 | 1: 0.1 T/s · 2: 0.3 T/s · 3: 0.0 T/s · 4: 0.3 T/s · 5: 0.1 T/s\npb.dink.DK10 | Moves the feet instead of reaching | M~ | view_excluded | - | -1.20–1.20 T | - | - | -\npb.dink.DK11 | Paddle back to ready | M | measured | 0.05 T | ≥ 0.50 T | 0.00 | 1.00 | 1: 0.05 T · 2: 0.02 T · 3: 0.06 T · 4: 0.04 T · 5: 0.05 T\npb.dink.DK12 | Ball lands in the kitchen | N | not_assessable | - | - | - | - | -\n</checkpoints>\n\n<strokes>\nid | role | quality | stroke score | ready | end of backswing | contact (estimate) | follow-through\n1 | - | 0.94 | 0.71 | 1.67s | 2.13s | 2.63s | 2.98s\n2 | best | 0.95 | 0.76 | 3.43s | 4.15s | 4.38s | 4.63s\n3 | - | 0.93 | 0.69 | 5.35s | 5.70s | 6.27s | 6.57s\n4 | - | 0.99 | 0.69 | 7.18s | 7.90s | 8.12s | 8.37s\n5 | worst | 0.94 | 0.68 | 8.83s | 9.30s | 9.83s | 10.10s\n</strokes>\n\n<candidates>\nweaknesses (most impact first):\nrank | checkpoint_id | fault_id | side | impact | s | c | allowed drills (default first)\n1 | pb.ready.PR4 | pb.ready.paddle_down | low | 0.500 | 0.00 | 1.00 | pb.drill.paddle_up_reaction, pb.drill.ready_hold\n2 | pb.dink.DK3 | pb.dink.big_backswing | high | 0.400 | 0.00 | 1.00 | pb.drill.no_backswing_dink\n3 | pb.dink.DK11 | pb.dink.paddle_drops | low | 0.100 | 0.00 | 1.00 | pb.drill.dink_rally, pb.drill.paddle_up_reaction\n4 | pb.dink.DK5 | none | high | 0.093 | 0.63 | 1.00 | -\nstrengths (strongest first):\nrank | checkpoint_id | s | c\n1 | pb.dink.DK2 | 1.00 | 1.00\n2 | pb.dink.DK1 | 1.00 | 1.00\n3 | pb.dink.DK6 | 1.00 | 1.00\n4 | pb.dink.DK8 | 1.00 | 1.00\n5 | pb.dink.DK9 | 1.00 | 1.00\n6 | pb.ready.PR2 | 1.00 | 1.00\n</candidates>\n\n<visual_to_judge>\ncheckpoint_id | phase | frames | view factor (anchors are in the rubric)\npb.ready.PR6 | ready | F1 | 1\npb.dink.DK4 | contact | F3, F5 | 1\n</visual_to_judge>\n\nOutput language: en"
+        }
+      ]
+    }
+  ],
+  "output_config": {
+    "effort": "low",
+    "format": {
+      "type": "json_schema",
+      "schema": "<coach.v1 pickleball schema>"
+    }
+  },
+  "betas": [
+    "server-side-fallback-2026-07-01"
+  ],
+  "fallbacks": "default"
+}

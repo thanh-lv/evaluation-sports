@@ -13,7 +13,7 @@
  */
 import type { AppleEnv } from '../env.ts';
 import { ConfigError, HttpError, httpError } from '../errors.ts';
-import { fetchWithTimeout, type FetchLike } from '../http.ts';
+import { type FetchLike, fetchWithTimeout } from '../http.ts';
 import { appStoreApiToken, cachedToken, type TokenProvider } from './jwt.ts';
 import type { ApiEnvironment, NotificationHistoryResponse, StatusResponse, TransactionInfoResponse } from './types.ts';
 
@@ -111,7 +111,12 @@ export function createAppStoreApi(config: AppStoreApiConfig): AppStoreApi {
       // no JSON body
     }
     const transient = res.status === 429 || res.status >= 500;
-    throw new AppleApiError(`apple api ${res.status}${errorCode ? ` (${errorCode})` : ''}`, res.status, errorCode, transient);
+    throw new AppleApiError(
+      `apple api ${res.status}${errorCode ? ` (${errorCode})` : ''}`,
+      res.status,
+      errorCode,
+      transient,
+    );
   }
 
   const jsonOf = async <T>(res: Response): Promise<T> => {
@@ -157,7 +162,9 @@ export function createAppStoreApiFromEnv(apple: AppleEnv, fetchImpl?: FetchLike)
   const sign = (now: Date) => {
     if (!apple.iapKeyId || !apple.iapIssuerId || !apple.iapPrivateKey || !apple.bundleId) {
       return Promise.reject(
-        new ConfigError('missing environment: APPLE_IAP_KEY_ID, APPLE_IAP_ISSUER_ID, APPLE_IAP_PRIVATE_KEY, APPLE_BUNDLE_ID'),
+        new ConfigError(
+          'missing environment: APPLE_IAP_KEY_ID, APPLE_IAP_ISSUER_ID, APPLE_IAP_PRIVATE_KEY, APPLE_BUNDLE_ID',
+        ),
       );
     }
     return appStoreApiToken({
@@ -174,7 +181,10 @@ export function createAppStoreApiFromEnv(apple: AppleEnv, fetchImpl?: FetchLike)
  * HTTP mapping for a failed Apple call: transient → 502 `upstream_unavailable`; 401/403 (bad key) → 500 (logged as a
  * configuration problem); 404 → `notFound` (default 422 `invalid_payload`); other 4xx → 422.
  */
-export function toHttpErrorFromApple(err: unknown, notFound: HttpError = httpError('invalid_payload', 'unknown transaction')) {
+export function toHttpErrorFromApple(
+  err: unknown,
+  notFound: HttpError = httpError('invalid_payload', 'unknown transaction'),
+) {
   if (!(err instanceof AppleApiError)) return err;
   if (err.transient) return httpError('upstream_unavailable', 'App Store unavailable', { cause: err });
   if (err.status === 401 || err.status === 403) return new HttpError('internal', 'internal error', { cause: err });

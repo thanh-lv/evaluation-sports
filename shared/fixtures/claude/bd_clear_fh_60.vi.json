@@ -1,0 +1,133 @@
+{
+  "schema_version": "coach.v1",
+  "language": "vi",
+  "input_check": {
+    "is_assessable": true,
+    "sport_matches": true,
+    "skill_matches": true,
+    "subject_visibility": "Good",
+    "issues": [],
+    "note": ""
+  },
+  "visual_checkpoints": [
+    {
+      "checkpoint_id": "bd.ready.R7",
+      "level": 3,
+      "confidence": "Medium",
+      "frame_ids": ["F1"],
+      "note": "Đầu vợt hơi cao hơn tay, đặt trước người."
+    },
+    {
+      "checkpoint_id": "bd.clear_fh.C13",
+      "level": 2,
+      "confidence": "medium",
+      "frame_ids": ["F2", "F5"],
+      "note": "Bạn tới được vị trí nhưng người còn hơi vuông với lưới."
+    }
+  ],
+  "summary": "Bạn kéo khuỷu tay lên cao rất tốt và tay trái chỉ cầu rõ ràng. Điều cần sửa trước tiên là điểm chạm cầu còn thấp, tay chưa vươn hết lên. Tuần này hãy tập vào sau cầu sớm để đánh ở điểm cao hơn.",
+  "strengths": [
+    {
+      "checkpoint_id": "bd.clear_fh.C3",
+      "title": "Khuỷu tay nâng cao như ném bóng",
+      "detail": "Khi kéo vợt, khuỷu tay của bạn lên ngang vai như động tác ném. Đây là nền tảng tốt để có cú đánh mạnh.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F2",
+          "metric_key": "bd.clear_fh.C3",
+          "observation": "Khuỷu tay nâng cao ngang vai ở cuối nhịp kéo vợt."
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "bd.clear_fh.C2",
+      "title": "Tay trái chỉ cầu rõ ràng",
+      "detail": "Tay không cầm vợt giơ cao chỉ về phía cầu. Nó giúp bạn giữ thăng bằng và canh cầu tốt hơn.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F2",
+          "metric_key": "bd.clear_fh.C2",
+          "observation": "Tay không cầm vợt giơ cao, chỉ thẳng về phía cầu."
+        }
+      ]
+    }
+  ],
+  "weaknesses": [
+    {
+      "checkpoint_id": "bd.clear_fh.C5",
+      "fault_id": "bd.clear_fh.low_contact",
+      "severity": "High",
+      "title": "Điểm chạm cầu còn thấp",
+      "detail": "Ở hầu hết các cú, bạn chạm cầu khi tay chưa vươn hết lên. Cầu vì thế thường đi thấp và ngắn.",
+      "why_it_matters": "Chạm cầu ở điểm cao giúp cầu đi sâu và đối thủ có ít thời gian hơn.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F3",
+          "metric_key": "bd.clear_fh.C5",
+          "observation": "Tay chạm cầu ở khoảng 95° nên vẫn còn gập, chưa vươn hết."
+        },
+        {
+          "stroke_id": 4,
+          "frame_id": "",
+          "metric_key": "bd.clear_fh.C5",
+          "observation": "Cú đánh này chạm cầu còn thấp hơn, gần ngang đầu."
+        }
+      ]
+    },
+    {
+      "checkpoint_id": "bd.clear_fh.C1",
+      "fault_id": "bd.clear_fh.no_turn",
+      "severity": "medium",
+      "title": "Chưa xoay người nghiêng",
+      "detail": "Khi kéo vợt, vai bạn có thể vẫn còn hướng về lưới. Vì vậy lực chủ yếu đến từ cánh tay.",
+      "why_it_matters": "Xoay người nghiêng giúp dùng lực của cả thân, cầu đi sâu hơn mà tay đỡ mỏi.",
+      "evidence": [
+        {
+          "stroke_id": 2,
+          "frame_id": "F2",
+          "metric_key": "bd.clear_fh.C1",
+          "observation": "Vai còn khá vuông với lưới ở cuối nhịp kéo vợt."
+        }
+      ]
+    }
+  ],
+  "improvements": [
+    {
+      "priority": 1,
+      "fault_id": "bd.clear_fh.low_contact",
+      "title": "Đánh cầu ở điểm cao nhất",
+      "how_to_fix": "Di chuyển vào sau cầu sớm hơn để cầu rơi trước trán. Vươn thẳng tay lên rồi mới vụt.",
+      "cues": ["Vào sau cầu sớm", "Vươn tay lên cao", "Chạm cầu trước trán"],
+      "drill_ids": ["bd.drill.hanging_shuttle"],
+      "goal": "Tay vươn gần thẳng khi chạm cầu."
+    },
+    {
+      "priority": 2,
+      "fault_id": "bd.clear_fh.no_turn",
+      "title": "Xoay vai nghiêng khi kéo vợt",
+      "how_to_fix": "Khi cầu lên, xoay vai trái về phía cầu và đứng nghiêng. Sau đó mới vung vợt.",
+      "cues": ["Vai trái chỉ cầu", "Đứng nghiêng rồi mới vụt"],
+      "drill_ids": ["bd.drill.shadow_turn_point", "bd.drill.towel_snap"],
+      "goal": "Vai xoay nghiêng rõ khi kéo vợt."
+    }
+  ],
+  "safety_notes": [
+    {
+      "kind": "warmup",
+      "message": "Khởi động kỹ vai và cổ tay trước khi tập đánh cầu cao."
+    }
+  ],
+  "not_assessable": [
+    {
+      "aspect": "Cầu bay cao và sâu tới đâu",
+      "how_to_capture": "Quay thêm một đoạn từ phía sau sân để thấy đường cầu."
+    }
+  ],
+  "recording_tips": [
+    "Giữ điện thoại cố định ngang hông và quay toàn thân.",
+    "Quay ít nhất năm cú đánh liên tiếp."
+  ]
+}
